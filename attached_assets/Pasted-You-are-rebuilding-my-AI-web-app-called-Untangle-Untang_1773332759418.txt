@@ -1,0 +1,273 @@
+You are rebuilding my AI web app called Untangle.
+
+Untangle is not a therapy chatbot.
+
+Untangle is a thinking mirror that helps users notice mental loops and rumination patterns.
+
+The goal is to help users understand what their mind is doing.
+
+Users should feel:
+
+"I didn't realize my mind was doing that."
+
+-------------------------------------
+
+CORE PRODUCT IDEA
+
+Untangle helps users detect thinking loops such as:
+
+• rumination
+• perfectionism
+• evaluation thinking
+• control loops
+• replaying events
+• fear of making the wrong decision
+
+Untangle acts like a mirror that reflects patterns in the user's thinking.
+
+-------------------------------------
+
+USER ENTRY SCREEN
+
+When the user opens the app, show:
+
+"What feels tangled right now?"
+
+Buttons:
+
+• Before eating
+• After eating
+• My mind keeps looping
+• I feel pressure
+• Something else
+
+Also allow the user to type or speak freely.
+
+-------------------------------------
+
+INPUT SYSTEM
+
+Each message area must support THREE types of input:
+
+1. suggestion buttons
+2. text typing
+3. voice input
+
+UI layout:
+
+[ suggestion buttons ]
+
+[ text input field ]
+
+[ 🎤 voice button ]
+
+Voice input should:
+• record speech
+• convert speech to text
+• send as a message
+
+Users can switch between typing and voice anytime.
+
+-------------------------------------
+
+CONVERSATION DESIGN
+
+Untangle should feel like a thoughtful thinking partner.
+
+The AI must:
+
+• ask reflective questions
+• introduce new angles
+• notice patterns
+• occasionally deliver insights
+
+The AI must NEVER repeat the user's message.
+
+Bad example:
+
+"You feel pressure."
+
+Good example:
+
+"Is the pressure coming from too many decisions, or from trying to get them exactly right?"
+
+-------------------------------------
+
+RUMINATION DETECTION
+
+Untangle should detect repeated topics or thoughts.
+
+If the user keeps returning to the same topic, the AI can say:
+
+"We might be circling the same thought."
+
+or
+
+"It sounds like your mind keeps returning to this."
+
+These moments help users notice their loops.
+
+-------------------------------------
+
+BEFORE MEAL SUPPORT
+
+Goal: reduce overplanning and perfection thinking.
+
+Example conversation:
+
+AI:
+"Are you trying to make the perfect food choice?"
+
+Buttons:
+
+• Yes
+• I'm overthinking it
+• I don't want to get it wrong
+• Something else
+
+Example insight:
+
+"Sometimes the pressure comes from trying to make the perfect choice."
+
+-------------------------------------
+
+AFTER MEAL SUPPORT
+
+Goal: reduce replay rumination.
+
+Example conversation:
+
+User:
+"I keep replaying what I ate."
+
+AI:
+"Are you replaying details, or judging if it was good enough?"
+
+Buttons:
+
+• Replaying details
+• Judging myself
+• Both
+
+Insight example:
+
+✨ Untangle Moment
+
+"Your mind might be trying to solve the meal, even though it's already over."
+
+-------------------------------------
+
+VOICE MODE
+
+Users should be able to talk freely.
+
+Voice input allows users to:
+
+• dump thoughts
+• speak naturally
+• express emotions more easily
+
+AI responses can remain text-based.
+
+-------------------------------------
+
+UNTANGLE MOMENTS
+
+Occasionally display short insights.
+
+Example:
+
+✨ Untangle Moment
+
+"The pressure might not be the meal itself.
+It may be the need to get it exactly right."
+
+Rules:
+
+• max 2 sentences
+• calm tone
+• reflective
+• simple
+
+-------------------------------------
+
+PATTERN MAP
+
+Untangle should track recurring thinking patterns.
+
+Example screen:
+
+Your Thinking Patterns
+
+• Replay loop
+• Perfection loop
+• Fear of getting it wrong
+• Evaluation loop
+
+This helps users see their mental habits.
+
+-------------------------------------
+
+UNTANGLE MOMENT LIBRARY
+
+Users can save insights.
+
+Example screen:
+
+✨ Untangle Moments
+
+Example entries:
+
+"Sometimes pressure isn't the meal.
+It's the need to get it exactly right."
+
+-------------------------------------
+
+LOOP LIBRARY
+
+Untangle should be able to recognize these common thinking loops:
+
+• Rumination loop (replaying events)
+• Perfection loop (trying to get things exactly right)
+• Evaluation loop (judging if something is good enough)
+• Control loop (trying to optimize every decision)
+• Replay loop (revisiting the same moment repeatedly)
+• Comparison loop
+• Fear-of-wrong-choice loop
+• Overplanning loop
+
+When detected, the AI can gently reflect the pattern.
+
+-------------------------------------
+
+DESIGN GOAL
+
+Untangle should feel:
+
+• calm
+• insightful
+• reflective
+• minimal
+
+Users should feel:
+
+"My mind does this pattern."
+
+-------------------------------------
+
+KEEP EXISTING UI
+
+Do not change:
+
+• starry night background
+• calm minimal design
+• bilingual toggle
+• chat interface
+
+Only upgrade the conversation system.
+
+-------------------------------------
+
+PRODUCT MISSION
+
+Untangle helps users see the loops in their thinking so they can gently step out of them.

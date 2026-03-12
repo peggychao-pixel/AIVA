@@ -87,6 +87,19 @@ export interface UntangleChatResponse {
   response: string;
   isInsight: boolean;
   suggestions: string[];
+  loopType?: string;
+}
+
+export interface MomentItem {
+  id: number;
+  content: string;
+  loopType?: string;
+  createdAt: string;
+}
+
+export interface SaveMomentBody {
+  content: string;
+  loopType?: string;
 }
 
 export interface UntangleTranscribeBody {

@@ -1,6 +1,6 @@
 import { Router, type IRouter } from "express";
-import { db, sessionsTable } from "@workspace/db";
-import { eq } from "drizzle-orm";
+import { db, sessionsTable, momentsTable } from "@workspace/db";
+import { eq, desc } from "drizzle-orm";
 import {
   CreateSessionBody,
   UpdateSessionParams,
@@ -13,20 +13,56 @@ import {
   UntangleChatResponse,
   UntangleTranscribeBody,
   UntangleTranscribeResponse,
+  SaveMomentBody,
+  MomentItem,
+  ListMomentsResponse,
 } from "@workspace/api-zod";
 import { openai } from "@workspace/integrations-openai-ai-server";
 import { speechToText } from "@workspace/integrations-openai-ai-server/audio";
 
 const router: IRouter = Router();
 
+const LOOP_TYPES = [
+  "Rumination loop",
+  "Perfection loop",
+  "Evaluation loop",
+  "Control loop",
+  "Replay loop",
+  "Comparison loop",
+  "Fear-of-wrong-choice loop",
+  "Overplanning loop",
+];
+
+const LOOP_TYPES_LIST = LOOP_TYPES.join(", ");
+
+const BASE_RULES = `
+Rules:
+- Ask ONE question per turn. Max 2 sentences total.
+- Never repeat or paraphrase what the user just said.
+- Never use therapy language ("that must be hard", "I hear you", "it's okay").
+- Never mention breathing, mindfulness, self-compassion, calories, or weight.
+- Be dry, precise, and curious — like a sharp analyst noticing patterns.
+- If the user appears to circle back to the same topic 2+ times, reflect it plainly: "We might be circling the same thought." or "Your mind keeps returning to this — what does it want to resolve?"
+- Every 3–4 turns, if a real pattern is visible, surface a brief insight (isInsight: true, max 2 sentences, calm and observational, NOT therapeutic).
+- Identify the thinking loop type if clear, from: ${LOOP_TYPES_LIST}. Set loopType to the detected type, or null if unclear.
+- Suggestion chips must be 4–7 word honest user-voice replies — not reflective prompts, not questions.
+- Respond ONLY in valid JSON: {"response":"...","isInsight":false,"suggestions":["...","...","..."],"loopType":null}`;
+
 const SYSTEM_PROMPTS: Record<string, string> = {
-  before: `You are a sharp, dry thinking partner. The user is overplanning or overthinking what to eat. Help them notice the optimization loop — not resolve it. Ask one short question per turn, 1–2 sentences max. No therapy language. No "that must be hard." No self-compassion. No mindfulness. Be curious and direct, like a good analyst. Every 3–4 turns, if it fits, surface a brief insight about what's really going on (set isInsight: true). Suggestions must be short user replies (3–7 words each), direct and honest — not reflective prompts. Respond ONLY in JSON: {"response":"...","isInsight":false,"suggestions":["I keep second-guessing","It needs to be perfect","I don't trust myself"]}`,
+  before: `You are a thinking mirror. The user is overplanning or overthinking what to eat before a meal. Help them see the loop — not solve it. Notice if they're chasing perfection, avoiding a wrong choice, or trying to optimize. Ask one sharp question per turn.
+${BASE_RULES}`,
 
-  after: `You are a sharp, dry thinking partner. The user just ate and is replaying it, judging it, or trying to mentally resolve it. Help them see the loop. Ask one short question per turn, 1–2 sentences max. No therapy language. No calorie or diet talk. No moralizing. No food judgments. Be dry and direct. Every 3–4 turns, if it fits, surface a brief insight (set isInsight: true, 2 sentences max). Suggestions must be short user replies (3–7 words each), honest and direct — not reflective prompts. Respond ONLY in JSON: {"response":"...","isInsight":false,"suggestions":["Judging if it was right","Replaying specific bites","Both, kind of"]}`,
+  after: `You are a thinking mirror. The user is replaying, evaluating, or judging a meal they already ate. Help them notice the replay or evaluation loop. Notice if they're trying to mentally "solve" something that's already done. Ask one sharp question per turn.
+${BASE_RULES}`,
 
-  loop: `You are a sharp, dry thinking partner. The user's mind is stuck on a repeating thought. Help them notice the loop structure — what it is, not why. Ask one short question per turn, 1–2 sentences max. No therapy language. No mindfulness. No breathing. Be precise and curious. Every 3–4 turns, if it fits, surface a brief insight (set isInsight: true, 2 sentences max). Suggestions must be short user replies (3–7 words each), direct — not reflective. Respond ONLY in JSON: {"response":"...","isInsight":false,"suggestions":["The same thought keeps returning","It started after something happened","I don't know what triggered it"]}`,
+  loop: `You are a thinking mirror. The user's mind is stuck — repetitive thoughts, replays, circular thinking. Help them see the structure of the loop: what keeps pulling them back, what it's trying to resolve. Ask one sharp question per turn.
+${BASE_RULES}`,
 
-  other: `You are a sharp, dry thinking partner helping someone notice a mental loop. Ask one short question per turn, 1–2 sentences max. No therapy language. No filler. Be direct and curious. Every 3–4 turns, if it fits, surface a brief insight (set isInsight: true). Suggestions must be short user replies (3–7 words each), honest — not reflective. Respond ONLY in JSON: {"response":"...","isInsight":false,"suggestions":["option1","option2","option3"]}`,
+  pressure: `You are a thinking mirror. The user feels pressure — to make the right choice, to control the outcome, to do it perfectly. Help them notice the control or perfection loop underneath the pressure. Ask one sharp question per turn.
+${BASE_RULES}`,
+
+  other: `You are a thinking mirror helping someone notice a mental loop. Ask one sharp question per turn. Notice patterns. Surface what the mind is trying to resolve.
+${BASE_RULES}`,
 };
 
 router.post("/untangle/sessions", async (req, res): Promise<void> => {
@@ -87,6 +123,32 @@ router.patch("/untangle/sessions/:id", async (req, res): Promise<void> => {
   res.json(UpdateSessionResponse.parse(session));
 });
 
+router.post("/untangle/moments", async (req, res): Promise<void> => {
+  const parsed = SaveMomentBody.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: parsed.error.message });
+    return;
+  }
+
+  const [moment] = await db
+    .insert(momentsTable)
+    .values({
+      content: parsed.data.content,
+      loopType: parsed.data.loopType ?? null,
+    })
+    .returning();
+
+  res.status(201).json(MomentItem.parse(moment));
+});
+
+router.get("/untangle/moments", async (_req, res): Promise<void> => {
+  const moments = await db
+    .select()
+    .from(momentsTable)
+    .orderBy(desc(momentsTable.createdAt));
+  res.json(ListMomentsResponse.parse(moments));
+});
+
 router.post("/untangle/ai-response", async (req, res): Promise<void> => {
   const parsed = GetAiResponseBody.safeParse(req.body);
   if (!parsed.success) {
@@ -100,8 +162,7 @@ router.post("/untangle/ai-response", async (req, res): Promise<void> => {
     messages: [
       {
         role: "system",
-        content:
-          "You are a sharp loop-interrupt system. Generate a 1–2 sentence message that cuts off post-meal rumination. Sound like mission control — concise, dry, clinical. Never mention breathing, self-compassion, mindfulness, calories, or weight. No warmth. Just a clean cognitive interrupt.",
+        content: "You are a sharp loop-interrupt system. Generate a 1–2 sentence message that cuts off post-meal rumination. Sound like mission control — concise, dry, clinical. Never mention breathing, self-compassion, mindfulness, calories, or weight. No warmth. Just a clean cognitive interrupt.",
       },
       {
         role: "user",
@@ -136,13 +197,18 @@ router.post("/untangle/chat", async (req, res): Promise<void> => {
   try {
     const completion = await openai.chat.completions.create({
       model: "gpt-4o-mini",
-      max_completion_tokens: 200,
+      max_completion_tokens: 220,
       response_format: { type: "json_object" },
       messages,
     });
 
     const raw = completion.choices[0]?.message?.content ?? "{}";
-    let parsed_response: { response?: string; isInsight?: boolean; suggestions?: string[] };
+    let parsed_response: {
+      response?: string;
+      isInsight?: boolean;
+      suggestions?: string[];
+      loopType?: string | null;
+    };
 
     try {
       parsed_response = JSON.parse(raw);
@@ -151,18 +217,20 @@ router.post("/untangle/chat", async (req, res): Promise<void> => {
     }
 
     const result = UntangleChatResponse.parse({
-      response: parsed_response.response ?? "What's the core thought underneath this?",
+      response: parsed_response.response ?? "What part of this keeps pulling you back?",
       isInsight: parsed_response.isInsight ?? false,
-      suggestions: parsed_response.suggestions ?? ["Tell me more", "Something else", "I'm not sure"],
+      suggestions: parsed_response.suggestions ?? ["I'm not sure", "Something about the outcome", "I keep thinking about it"],
+      loopType: parsed_response.loopType ?? null,
     });
 
     res.json(result);
-  } catch (err) {
+  } catch {
     res.json(
       UntangleChatResponse.parse({
         response: "What's the part that keeps pulling you back?",
         isInsight: false,
         suggestions: ["The outcome", "The choice I made", "I'm not sure"],
+        loopType: null,
       }),
     );
   }

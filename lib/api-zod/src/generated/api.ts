@@ -150,7 +150,7 @@ export const UntangleChatHistoryItem = zod.object({
 
 export const UntangleChatBody = zod.object({
   message: zod.string().min(1),
-  mode: zod.enum(["before", "after", "loop", "other"]),
+  mode: zod.enum(["before", "after", "loop", "pressure", "other"]),
   history: zod.array(UntangleChatHistoryItem).optional(),
 });
 
@@ -167,4 +167,18 @@ export const UntangleTranscribeBody = zod.object({
 
 export const UntangleTranscribeResponse = zod.object({
   text: zod.string(),
+});
+
+export const MomentItem = zod.object({
+  id: zod.number(),
+  content: zod.string(),
+  loopType: zod.string().optional().nullable(),
+  createdAt: zod.date(),
+});
+
+export const ListMomentsResponse = zod.array(MomentItem);
+
+export const SaveMomentBody = zod.object({
+  content: zod.string().min(1),
+  loopType: zod.string().optional(),
 });

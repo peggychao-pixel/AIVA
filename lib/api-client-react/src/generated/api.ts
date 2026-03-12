@@ -24,10 +24,12 @@ import type {
   CreateSessionBody,
   ErrorResponse,
   HealthStatus,
+  MomentItem,
   OpenaiConversation,
   OpenaiConversationWithMessages,
   OpenaiError,
   OpenaiMessage,
+  SaveMomentBody,
   SendOpenaiMessageBody,
   Session,
   UntangleChatBody,
@@ -455,6 +457,137 @@ export const useGetAiResponse = <
 > => {
   return useMutation(getGetAiResponseMutationOptions(options));
 };
+
+/**
+ * @summary Save an Untangle Moment
+ */
+export const getSaveMomentUrl = () => {
+  return `/api/untangle/moments`;
+};
+
+export const saveMoment = async (
+  saveMomentBody: SaveMomentBody,
+  options?: RequestInit,
+): Promise<MomentItem> => {
+  return customFetch<MomentItem>(getSaveMomentUrl(), {
+    ...options,
+    method: "POST",
+    headers: { "Content-Type": "application/json", ...options?.headers },
+    body: JSON.stringify(saveMomentBody),
+  });
+};
+
+export const getSaveMomentMutationOptions = <
+  TError = ErrorType<unknown>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof saveMoment>>,
+    TError,
+    { data: BodyType<SaveMomentBody> },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof saveMoment>>,
+  TError,
+  { data: BodyType<SaveMomentBody> },
+  TContext
+> => {
+  const mutationKey = ["saveMoment"];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      "mutationKey" in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
+
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof saveMoment>>,
+    { data: BodyType<SaveMomentBody> }
+  > = (props) => {
+    const { data } = props ?? {};
+    return saveMoment(data, requestOptions);
+  };
+
+  return { mutationFn, ...mutationOptions };
+};
+
+export type SaveMomentMutationResult = NonNullable<Awaited<ReturnType<typeof saveMoment>>>;
+export type SaveMomentMutationBody = BodyType<SaveMomentBody>;
+export type SaveMomentMutationError = ErrorType<unknown>;
+
+export const useSaveMoment = <
+  TError = ErrorType<unknown>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof saveMoment>>,
+    TError,
+    { data: BodyType<SaveMomentBody> },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationResult<
+  Awaited<ReturnType<typeof saveMoment>>,
+  TError,
+  { data: BodyType<SaveMomentBody> },
+  TContext
+> => {
+  return useMutation(getSaveMomentMutationOptions(options));
+};
+
+/**
+ * @summary List all saved Untangle Moments
+ */
+export const getListMomentsUrl = () => {
+  return `/api/untangle/moments`;
+};
+
+export const listMoments = async (options?: RequestInit): Promise<MomentItem[]> => {
+  return customFetch<MomentItem[]>(getListMomentsUrl(), {
+    ...options,
+    method: "GET",
+  });
+};
+
+export const getListMomentsQueryKey = () => {
+  return [`/api/untangle/moments`] as const;
+};
+
+export const getListMomentsQueryOptions = <
+  TData = Awaited<ReturnType<typeof listMoments>>,
+  TError = ErrorType<unknown>,
+>(options?: {
+  query?: UseQueryOptions<Awaited<ReturnType<typeof listMoments>>, TError, TData>;
+  request?: SecondParameter<typeof customFetch>;
+}) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+  const queryKey = queryOptions?.queryKey ?? getListMomentsQueryKey();
+  const queryFn: QueryFunction<Awaited<ReturnType<typeof listMoments>>> = ({ signal }) =>
+    listMoments({ signal, ...requestOptions });
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof listMoments>>,
+    TError,
+    TData
+  > & { queryKey: QueryKey };
+};
+
+export type ListMomentsQueryResult = NonNullable<Awaited<ReturnType<typeof listMoments>>>;
+export type ListMomentsQueryError = ErrorType<unknown>;
+
+export function useListMoments<
+  TData = Awaited<ReturnType<typeof listMoments>>,
+  TError = ErrorType<unknown>,
+>(options?: {
+  query?: UseQueryOptions<Awaited<ReturnType<typeof listMoments>>, TError, TData>;
+  request?: SecondParameter<typeof customFetch>;
+}): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+  const queryOptions = getListMomentsQueryOptions(options);
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & { queryKey: QueryKey };
+  return { ...query, queryKey: queryOptions.queryKey };
+}
 
 /**
  * @summary Send a message and get an AI response

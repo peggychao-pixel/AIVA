@@ -92,6 +92,38 @@ paths:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
 
+  /untangle/moments:
+    post:
+      operationId: saveMoment
+      tags: [untangle]
+      summary: Save an Untangle Moment insight
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SaveMomentBody"
+      responses:
+        "201":
+          description: Saved moment
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MomentItem"
+    get:
+      operationId: listMoments
+      tags: [untangle]
+      summary: List all saved Untangle Moments
+      responses:
+        "200":
+          description: List of moments
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/MomentItem"
+
   /untangle/chat:
     post:
       operationId: untangleChat
@@ -341,6 +373,33 @@ components:
         - message
         - mode
 
+    MomentItem:
+      type: object
+      properties:
+        id:
+          type: integer
+        content:
+          type: string
+        loopType:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+      required:
+        - id
+        - content
+        - createdAt
+
+    SaveMomentBody:
+      type: object
+      properties:
+        content:
+          type: string
+        loopType:
+          type: string
+      required:
+        - content
+
     UntangleChatResponse:
       type: object
       properties:
@@ -352,6 +411,8 @@ components:
           type: array
           items:
             type: string
+        loopType:
+          type: string
       required:
         - response
         - isInsight

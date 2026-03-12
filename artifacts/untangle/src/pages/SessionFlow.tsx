@@ -1,10 +1,10 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
-import { useUntangleChat, useCreateSession } from "@workspace/api-client-react";
+import { useUntangleChat, useCreateSession, useSaveMoment } from "@workspace/api-client-react";
 import { VoiceButton } from "../components/VoiceButton";
 
-type Mode = "before" | "after" | "loop" | "other";
+type Mode = "before" | "after" | "loop" | "pressure" | "other";
 
 interface ChatMessage {
   id: string;
@@ -12,42 +12,97 @@ interface ChatMessage {
   content: string;
   isInsight?: boolean;
   suggestions?: string[];
+  loopType?: string | null;
 }
 
 const MODE_OPTIONS: { id: Mode; label: string; description: string }[] = [
-  { id: "before", label: "Before eating",      description: "Planning, overthinking the choice." },
-  { id: "after",  label: "After eating",       description: "Replaying, evaluating, judging." },
-  { id: "loop",   label: "My mind is looping", description: "Stuck on something, not sure what." },
-  { id: "other",  label: "Something else",     description: "Type it out below." },
+  { id: "before",   label: "Before eating",        description: "Planning, overthinking the choice." },
+  { id: "after",    label: "After eating",          description: "Replaying, evaluating, judging." },
+  { id: "loop",     label: "My mind keeps looping", description: "Stuck on something, can't stop returning." },
+  { id: "pressure", label: "I feel pressure",       description: "To get it right, to control the outcome." },
+  { id: "other",    label: "Something else",        description: "Type it out below." },
 ];
 
 const OPENING_QUESTIONS: Record<Mode, string> = {
-  before: "What's the thought you're trying to solve right now?",
-  after:  "What part of the meal is still running?",
-  loop:   "What's the thought that keeps coming back?",
-  other:  "What's tangled?",
+  before:   "What's the thought you're trying to solve right now?",
+  after:    "What part of the meal is still running?",
+  loop:     "What's the thought that keeps coming back?",
+  pressure: "What does the pressure feel like you need to control or get exactly right?",
+  other:    "What's tangled?",
 };
 
 const OPENING_SUGGESTIONS: Record<Mode, string[]> = {
-  before: ["Trying to pick the right option", "Worried I'll regret it", "Can't stop comparing"],
-  after:  ["Replaying what I ate", "Judging if it was right", "Still want to eat more"],
-  loop:   ["Same thought keeps returning", "Feeling unsettled", "Not sure what triggered it"],
-  other:  ["Something about food", "Something else entirely", "Let me type it out"],
+  before:   ["Trying to pick the right option", "Worried I'll regret it", "Can't stop comparing"],
+  after:    ["Replaying what I ate", "Judging if it was right", "Still want to eat more"],
+  loop:     ["Same thought keeps returning", "Something I can't resolve", "I don't know what triggered it"],
+  pressure: ["Making the right food choice", "Controlling what I eat", "Getting it exactly right"],
+  other:    ["Something about food", "A feeling I can't name", "Let me type it out"],
 };
 
-function InsightCard({ content }: { content: string }) {
+function InsightCard({
+  content,
+  loopType,
+  onSave,
+  saved,
+}: {
+  content: string;
+  loopType?: string | null;
+  onSave: () => void;
+  saved: boolean;
+}) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
-      className="w-full border border-primary/40 bg-primary/5 rounded p-4 space-y-2"
+      className="w-full border border-primary/40 bg-primary/5 rounded p-4 space-y-3"
     >
-      <div className="flex items-center gap-2">
+      <div className="flex items-center justify-between gap-3">
         <span className="font-mono text-[10px] text-primary uppercase tracking-[0.2em]">
           ✦ UNTANGLE MOMENT
         </span>
+        {loopType && (
+          <span className="font-mono text-[9px] text-muted-foreground border border-border/60 px-1.5 py-0.5 rounded uppercase tracking-widest flex-shrink-0">
+            {loopType}
+          </span>
+        )}
       </div>
       <p className="font-mono text-sm text-foreground leading-relaxed">{content}</p>
+      <button
+        onClick={onSave}
+        disabled={saved}
+        className={`font-mono text-[10px] uppercase tracking-widest px-3 py-1.5 rounded border transition-all ${
+          saved
+            ? "border-primary/40 text-primary cursor-default"
+            : "border-border text-muted-foreground hover:border-primary/40 hover:text-primary"
+        }`}
+      >
+        {saved ? "✓ SAVED" : "SAVE MOMENT"}
+      </button>
+    </motion.div>
+  );
+}
+
+function PatternMap({ loopTypes }: { loopTypes: string[] }) {
+  if (loopTypes.length === 0) return null;
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 6 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="border border-border/60 rounded p-3 space-y-2"
+    >
+      <p className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest">
+        PATTERN MAP — THIS SESSION
+      </p>
+      <div className="flex flex-wrap gap-2">
+        {loopTypes.map((lt) => (
+          <span
+            key={lt}
+            className="font-mono text-[10px] text-primary border border-primary/30 bg-primary/5 px-2 py-1 rounded uppercase tracking-widest"
+          >
+            {lt}
+          </span>
+        ))}
+      </div>
     </motion.div>
   );
 }
@@ -59,6 +114,8 @@ export function SessionFlow() {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState("");
   const [isThinking, setIsThinking] = useState(false);
+  const [detectedPatterns, setDetectedPatterns] = useState<string[]>([]);
+  const [savedMomentIds, setSavedMomentIds] = useState<Set<string>>(new Set());
 
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -67,10 +124,18 @@ export function SessionFlow() {
 
   const { mutateAsync: sendChat } = useUntangleChat();
   const { mutateAsync: createSession } = useCreateSession();
+  const { mutateAsync: saveMoment } = useSaveMoment();
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isThinking]);
+
+  const addPattern = (loopType: string | null | undefined) => {
+    if (!loopType) return;
+    setDetectedPatterns((prev) =>
+      prev.includes(loopType) ? prev : [...prev, loopType],
+    );
+  };
 
   const doSendMessage = async (
     text: string,
@@ -93,12 +158,15 @@ export function SessionFlow() {
         data: { message: text.trim(), mode: currentMode, history },
       });
 
+      addPattern(res.loopType);
+
       const aiMsg: ChatMessage = {
         id: `a-${Date.now()}`,
         role: "assistant",
         content: res.response,
         isInsight: res.isInsight,
         suggestions: res.suggestions,
+        loopType: res.loopType,
       };
       const withAi = [...updatedMessages, aiMsg];
       setMessages(withAi);
@@ -110,6 +178,7 @@ export function SessionFlow() {
         content: "What's the part that keeps pulling you back?",
         isInsight: false,
         suggestions: ["The outcome", "The choice", "I'm not sure"],
+        loopType: null,
       };
       const withFallback = [...updatedMessages, fallback];
       setMessages(withFallback);
@@ -122,6 +191,8 @@ export function SessionFlow() {
   const startConversation = async (selectedMode: Mode, initialText?: string) => {
     setMode(selectedMode);
     modeRef.current = selectedMode;
+    setDetectedPatterns([]);
+    setSavedMomentIds(new Set());
     setStep("chat");
 
     const opener: ChatMessage = {
@@ -130,6 +201,7 @@ export function SessionFlow() {
       content: OPENING_QUESTIONS[selectedMode],
       isInsight: false,
       suggestions: OPENING_SUGGESTIONS[selectedMode],
+      loopType: null,
     };
     setMessages([opener]);
     messagesRef.current = [opener];
@@ -157,6 +229,25 @@ export function SessionFlow() {
     doSendMessage(text, modeRef.current, messagesRef.current);
   };
 
+  const handleSaveMoment = async (msg: ChatMessage) => {
+    if (savedMomentIds.has(msg.id)) return;
+    setSavedMomentIds((prev) => new Set(prev).add(msg.id));
+    try {
+      await saveMoment({
+        data: {
+          content: msg.content,
+          loopType: msg.loopType ?? undefined,
+        },
+      });
+    } catch {
+      setSavedMomentIds((prev) => {
+        const next = new Set(prev);
+        next.delete(msg.id);
+        return next;
+      });
+    }
+  };
+
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
@@ -176,6 +267,8 @@ export function SessionFlow() {
     messagesRef.current = [];
     setInput("");
     setIsThinking(false);
+    setDetectedPatterns([]);
+    setSavedMomentIds(new Set());
   };
 
   const handleFreeSubmit = (e: React.FormEvent) => {
@@ -216,12 +309,20 @@ export function SessionFlow() {
             </span>
           )}
 
-          <Link
-            href="/history"
-            className="font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors"
-          >
-            LOG
-          </Link>
+          <div className="flex items-center gap-4">
+            <Link
+              href="/moments"
+              className="font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors"
+            >
+              ✦
+            </Link>
+            <Link
+              href="/history"
+              className="font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors"
+            >
+              LOG
+            </Link>
+          </div>
         </header>
 
         <AnimatePresence mode="wait">
@@ -237,7 +338,7 @@ export function SessionFlow() {
             >
               <div className="space-y-2">
                 <h1 className="font-mono text-4xl md:text-5xl text-foreground font-bold leading-tight">
-                  What's looping?
+                  What feels tangled<br />right now?
                 </h1>
                 <p className="font-mono text-sm text-muted-foreground">
                   Select a context or type it out.
@@ -268,7 +369,7 @@ export function SessionFlow() {
                 ))}
               </div>
 
-              <form onSubmit={handleFreeSubmit} className="space-y-3">
+              <form onSubmit={handleFreeSubmit} className="space-y-2">
                 <div className="flex gap-2">
                   <input
                     type="text"
@@ -280,11 +381,14 @@ export function SessionFlow() {
                   <button
                     type="submit"
                     disabled={!freeInput.trim()}
-                    className="px-5 py-3 bg-primary text-primary-foreground font-mono text-xs uppercase tracking-widest rounded hover:opacity-90 transition-opacity disabled:opacity-40 disabled:cursor-not-allowed"
+                    className="px-5 py-3 bg-primary text-primary-foreground font-mono text-xs rounded hover:opacity-90 transition-opacity disabled:opacity-40 disabled:cursor-not-allowed"
                   >
                     →
                   </button>
                 </div>
+                <p className="font-mono text-[10px] text-muted-foreground/40 uppercase tracking-widest">
+                  Or hold mic to speak
+                </p>
               </form>
             </motion.div>
           )}
@@ -309,7 +413,12 @@ export function SessionFlow() {
                     className={`flex flex-col ${msg.role === "user" ? "items-end" : "items-start"} gap-2`}
                   >
                     {msg.role === "assistant" && msg.isInsight ? (
-                      <InsightCard content={msg.content} />
+                      <InsightCard
+                        content={msg.content}
+                        loopType={msg.loopType}
+                        onSave={() => handleSaveMoment(msg)}
+                        saved={savedMomentIds.has(msg.id)}
+                      />
                     ) : (
                       <div
                         className={`max-w-[85%] px-4 py-3 rounded font-mono text-sm leading-relaxed ${
@@ -360,6 +469,13 @@ export function SessionFlow() {
                       </div>
                     </div>
                   </motion.div>
+                )}
+
+                {/* Pattern Map */}
+                {detectedPatterns.length > 0 && (
+                  <div className="pt-2">
+                    <PatternMap loopTypes={detectedPatterns} />
+                  </div>
                 )}
 
                 <div ref={bottomRef} />
