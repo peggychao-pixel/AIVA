@@ -13,6 +13,7 @@ interface ChatMessage {
   isInsight?: boolean;
   suggestions?: string[];
   loopType?: string | null;
+  loopIntensity?: number | null;
 }
 
 const MODE_OPTIONS: { id: Mode; label: string; description: string }[] = [
@@ -167,6 +168,7 @@ export function SessionFlow() {
         isInsight: res.isInsight,
         suggestions: res.suggestions,
         loopType: res.loopType,
+        loopIntensity: res.loopIntensity,
       };
       const withAi = [...updatedMessages, aiMsg];
       setMessages(withAi);

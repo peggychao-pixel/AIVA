@@ -87,7 +87,8 @@ export interface UntangleChatResponse {
   response: string;
   isInsight: boolean;
   suggestions: string[];
-  loopType?: string;
+  loopType?: string | null;
+  loopIntensity?: number | null;
 }
 
 export interface MomentItem {
