@@ -32,7 +32,7 @@ export function Moments() {
           </p>
           <h1 className="font-mono text-3xl text-foreground font-bold">Saved insights.</h1>
           <p className="font-mono text-xs text-muted-foreground">
-            Moments where something clicked. Saved from your conversations.
+            Moments where something clicked. Each one is a loop you understood.
           </p>
         </div>
 
@@ -60,15 +60,16 @@ export function Moments() {
             </p>
           </motion.div>
         ) : (
-          <div className="space-y-3">
+          <div className="space-y-4">
             {moments.map((moment, index) => (
               <motion.div
                 key={moment.id}
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.05 }}
-                className="border border-primary/30 bg-primary/5 rounded p-5 space-y-3"
+                className="border border-primary/30 bg-primary/5 rounded p-5 space-y-4"
               >
+                {/* Header row */}
                 <div className="flex items-start justify-between gap-3">
                   <span className="font-mono text-[10px] text-primary uppercase tracking-[0.2em]">
                     ✦ UNTANGLE MOMENT
@@ -80,12 +81,49 @@ export function Moments() {
                   )}
                 </div>
 
-                <p className="font-mono text-sm text-foreground leading-relaxed">
-                  {moment.content}
-                </p>
+                {/* Original thought */}
+                {moment.originalThought && (
+                  <div className="space-y-1">
+                    <p className="font-mono text-[9px] text-muted-foreground/60 uppercase tracking-widest">THOUGHT</p>
+                    <p className="font-mono text-xs text-foreground/70 italic">"{moment.originalThought}"</p>
+                  </div>
+                )}
 
-                <p className="font-mono text-[10px] text-muted-foreground/50 uppercase tracking-widest">
-                  {format(parseISO(moment.createdAt), "MMM d, yyyy · HH:mm")}
+                {/* Hidden driver */}
+                {moment.hiddenFear && (
+                  <div className="space-y-1">
+                    <p className="font-mono text-[9px] text-muted-foreground/60 uppercase tracking-widest">HIDDEN DRIVER</p>
+                    <p className="font-mono text-xs text-foreground/80">{moment.hiddenFear}</p>
+                  </div>
+                )}
+
+                {/* Insight */}
+                <div className="space-y-1">
+                  <p className="font-mono text-[9px] text-muted-foreground/60 uppercase tracking-widest">INSIGHT</p>
+                  <p className="font-mono text-sm text-foreground leading-relaxed">{moment.content}</p>
+                </div>
+
+                {/* Core need */}
+                {moment.coreNeed && (
+                  <div className="flex items-center gap-2">
+                    <p className="font-mono text-[9px] text-muted-foreground/60 uppercase tracking-widest">CORE NEED</p>
+                    <span className="font-mono text-[10px] text-primary/80 border border-primary/20 bg-primary/5 px-2 py-0.5 rounded uppercase tracking-widest">
+                      {moment.coreNeed}
+                    </span>
+                  </div>
+                )}
+
+                {/* Anchor phrase */}
+                {moment.anchorPhrase && (
+                  <div className="border-t border-border/30 pt-3 space-y-1">
+                    <p className="font-mono text-[9px] text-muted-foreground/60 uppercase tracking-widest">ANCHOR PHRASE</p>
+                    <p className="font-mono text-sm text-primary">"{moment.anchorPhrase}"</p>
+                  </div>
+                )}
+
+                {/* Timestamp */}
+                <p className="font-mono text-[10px] text-muted-foreground/40 uppercase tracking-widest">
+                  {format(parseISO(moment.createdAt as unknown as string), "MMM d, yyyy · HH:mm")}
                 </p>
               </motion.div>
             ))}

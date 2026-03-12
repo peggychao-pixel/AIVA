@@ -91,18 +91,29 @@ export interface UntangleChatResponse {
   loopIntensity?: number | null;
   coreNeed?: string | null;
   sessionTrigger?: string | null;
+  anchorPhrase?: string | null;
 }
 
 export interface MomentItem {
   id: number;
   content: string;
-  loopType?: string;
+  loopType?: string | null;
+  anchorPhrase?: string | null;
+  surfaceBelief?: string | null;
+  hiddenFear?: string | null;
+  coreNeed?: string | null;
+  originalThought?: string | null;
   createdAt: string;
 }
 
 export interface SaveMomentBody {
   content: string;
   loopType?: string;
+  anchorPhrase?: string;
+  surfaceBelief?: string;
+  hiddenFear?: string;
+  coreNeed?: string;
+  originalThought?: string;
 }
 
 export interface UntangleTranscribeBody {
@@ -112,4 +123,16 @@ export interface UntangleTranscribeBody {
 
 export interface UntangleTranscribeResponse {
   text: string;
+}
+
+export interface QuickUntangleBody {
+  thought: string;
+}
+
+export interface QuickUntangleResponse {
+  loopType: string;
+  loopIntensity: number;
+  insight: string;
+  anchorPhrase: string;
+  suggestion: string;
 }

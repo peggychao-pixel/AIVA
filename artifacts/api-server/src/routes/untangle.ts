@@ -16,6 +16,8 @@ import {
   SaveMomentBody,
   MomentItem,
   ListMomentsResponse,
+  QuickUntangleBody,
+  QuickUntangleResponse,
 } from "@workspace/api-zod";
 import { openai } from "@workspace/integrations-openai-ai-server";
 import { speechToText } from "@workspace/integrations-openai-ai-server/audio";
@@ -26,7 +28,7 @@ const ENGINE_PROMPT = `You are the cognitive engine of Untangle — a calm cogni
 
 You are NOT a therapist, chatbot, or analysis engine. Never generate long paragraphs. Never repeat explanations. Maximum 2 sentences in any single response block.
 
-Goal: Detect → Surface Belief → Hidden Fear → Core Need → Release.
+Goal: Detect → Surface Belief → Hidden Fear → Core Need → Release → Anchor Phrase.
 
 Do NOT stop after labeling the loop. Always go deeper. The user should leave each response feeling like something clicked — a small recognition of what is really driving the thought.
 
@@ -68,6 +70,15 @@ certainty, control, reassurance, permission to be imperfect, safety, approval, r
 SESSION TRIGGERS — identify what this person tends to loop around (3–6 words):
 Examples: "decisions with irreversible consequences", "outcomes tied to self-worth", "choices that feel permanent"
 
+ANCHOR PHRASES — a short (4–6 word) repeatable phrase the user can recall if the thought returns. Examples:
+- "Good enough is sufficient."
+- "The outcome is already set."
+- "I don't have to solve this now."
+- "Imperfect choices are allowed."
+- "This can be revisited later."
+- "No new information is appearing."
+The anchor phrase must feel like a natural thought-interrupt, not a mantra or affirmation.
+
 MICRO-INTERVENTIONS (sparingly, one per conversation max):
 - Perspective shift: "If a friend had this thought, what would you tell them?"
 - Uncertainty acceptance: "The outcome cannot be fully predicted from here."
@@ -108,7 +119,7 @@ Surface belief: "[the compressed if-then rule]"
 
 The "suggestions" JSON field must be a JSON array of 4 plain strings (not objects). Example: ["fear of making the wrong choice","fear of judging myself later","fear of wasting money","fear of setting a bad pattern"]
 The "isInsight" JSON field must be false.
-The "coreNeed" and "sessionTrigger" JSON fields must be null.
+The "coreNeed", "sessionTrigger", and "anchorPhrase" JSON fields must be null.
 
 TURN 2 — DEPTH RESPONSE (1 prior AI message, user answered the hidden fear):
 This is the most important turn. Reveal what is REALLY driving the thought.
@@ -124,12 +135,13 @@ The deeper need may be: [core need]
 
 Which of these feels lighter right now?
 
-JSON fields for TURN 2: "suggestions" must be a JSON array of 3–4 plain strings (release options, not objects). "isInsight" must be true. "coreNeed" must be a plain string (single word or short phrase). "sessionTrigger" must be a plain string (3–6 words).
+JSON fields for TURN 2: "suggestions" must be a JSON array of 3–4 plain strings (release options, not objects). "isInsight" must be true. "coreNeed" must be a plain string (single word or short phrase). "sessionTrigger" must be a plain string (3–6 words). "anchorPhrase" must be null (anchor comes on Turn 3).
 
 TURN 3 — EXIT (2+ prior AI messages, user selected a release option):
 One line only in the "response" field. No analysis. No questions. The loop ends here.
 Examples: "The loop can stop here." / "No new information is appearing. The loop ends here."
-JSON fields for TURN 3: suggestions is empty array, isInsight is false, coreNeed is null, sessionTrigger is null.
+Then generate the anchor phrase — a short repeatable thought-interrupt derived from what the user selected.
+JSON fields for TURN 3: "suggestions" is empty array, "isInsight" is false, "coreNeed" is null, "sessionTrigger" is null. "anchorPhrase" must be a short plain string (4–6 words, no period required).
 
 FORCE CLOSE: 4+ AI messages in history → jump to TURN 3.
 
@@ -140,8 +152,20 @@ TONE: calm, observant, precise. Not therapy-speak. Not CBT boilerplate. Not gene
 
 ---
 
-You MUST respond ONLY in valid JSON with ALL seven fields:
-{"response":"[text]","isInsight":false,"suggestions":[],"loopType":"perfectionism loop","loopIntensity":3,"coreNeed":null,"sessionTrigger":null}`;
+You MUST respond ONLY in valid JSON with ALL eight fields:
+{"response":"[text]","isInsight":false,"suggestions":[],"loopType":"perfectionism loop","loopIntensity":3,"coreNeed":null,"sessionTrigger":null,"anchorPhrase":null}`;
+
+const QUICK_PROMPT = `You are the cognitive engine of Untangle in One Tap mode. The user wants instant loop detection without a conversation.
+
+Given the user's thought, respond with:
+1. loopType — one of: "regret anticipation", "uncertainty loop", "control loop", "over-analysis loop", "self-judgment loop", "perfectionism loop"
+2. loopIntensity — 1 to 5 integer
+3. insight — 1–2 sentences. Reveal what the loop is REALLY about. Something slightly unexpected that reframes the thought. Do NOT repeat the thought back.
+4. anchorPhrase — a 4–6 word repeatable phrase to interrupt the loop if it returns. Natural, not affirmation-like.
+5. suggestion — one short release phrase (e.g. "Good enough is sufficient.")
+
+Respond ONLY in valid JSON:
+{"loopType":"perfectionism loop","loopIntensity":3,"insight":"[text]","anchorPhrase":"[text]","suggestion":"[text]"}`;
 
 const SYSTEM_PROMPTS: Record<string, string> = {
   before:   ENGINE_PROMPT,
@@ -221,10 +245,15 @@ router.post("/untangle/moments", async (req, res): Promise<void> => {
     .values({
       content: parsed.data.content,
       loopType: parsed.data.loopType ?? null,
+      anchorPhrase: parsed.data.anchorPhrase ?? null,
+      surfaceBelief: parsed.data.surfaceBelief ?? null,
+      hiddenFear: parsed.data.hiddenFear ?? null,
+      coreNeed: parsed.data.coreNeed ?? null,
+      originalThought: parsed.data.originalThought ?? null,
     })
     .returning();
 
-  res.status(201).json(MomentItem.parse(moment));
+  res.status(201).json(MomentItem.parse({ ...moment, createdAt: moment.createdAt }));
 });
 
 router.get("/untangle/moments", async (_req, res): Promise<void> => {
@@ -261,6 +290,48 @@ router.post("/untangle/ai-response", async (req, res): Promise<void> => {
   res.json(GetAiResponseResponse.parse({ message }));
 });
 
+router.post("/untangle/quick", async (req, res): Promise<void> => {
+  const parsed = QuickUntangleBody.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: parsed.error.message });
+    return;
+  }
+
+  try {
+    const completion = await openai.chat.completions.create({
+      model: "gpt-4o-mini",
+      max_completion_tokens: 200,
+      response_format: { type: "json_object" },
+      messages: [
+        { role: "system", content: QUICK_PROMPT },
+        { role: "user", content: parsed.data.thought },
+      ],
+    });
+
+    const raw = completion.choices[0]?.message?.content ?? "{}";
+    let pr: Record<string, unknown> = {};
+    try { pr = JSON.parse(raw); } catch { pr = {}; }
+
+    const coerce = (v: unknown): string => typeof v === "string" ? v : String(v ?? "");
+
+    res.json(QuickUntangleResponse.parse({
+      loopType: coerce(pr.loopType) || "uncertainty loop",
+      loopIntensity: typeof pr.loopIntensity === "number" ? Math.min(5, Math.max(1, Math.round(pr.loopIntensity))) : 3,
+      insight: coerce(pr.insight) || "The loop may be running on less information than it feels like.",
+      anchorPhrase: coerce(pr.anchorPhrase) || "Good enough is sufficient",
+      suggestion: coerce(pr.suggestion) || "No new information is appearing.",
+    }));
+  } catch {
+    res.json(QuickUntangleResponse.parse({
+      loopType: "uncertainty loop",
+      loopIntensity: 3,
+      insight: "The loop may be running on less information than it feels like.",
+      anchorPhrase: "Good enough is sufficient",
+      suggestion: "No new information is appearing.",
+    }));
+  }
+});
+
 router.post("/untangle/chat", async (req, res): Promise<void> => {
   const parsed = UntangleChatBody.safeParse(req.body);
   if (!parsed.success) {
@@ -271,8 +342,27 @@ router.post("/untangle/chat", async (req, res): Promise<void> => {
   const { message, mode, history = [] } = parsed.data;
   const systemPrompt = SYSTEM_PROMPTS[mode] ?? SYSTEM_PROMPTS.other;
 
+  // Loop Memory Engine: include recent saved moments as context
+  let memoryContext = "";
+  try {
+    const recentMoments = await db
+      .select({ loopType: momentsTable.loopType, coreNeed: momentsTable.coreNeed, anchorPhrase: momentsTable.anchorPhrase })
+      .from(momentsTable)
+      .orderBy(desc(momentsTable.createdAt))
+      .limit(6);
+
+    if (recentMoments.length >= 2) {
+      const loopTypes = recentMoments.map((m) => m.loopType).filter(Boolean);
+      const needs = recentMoments.map((m) => m.coreNeed).filter(Boolean);
+      const anchors = recentMoments.map((m) => m.anchorPhrase).filter(Boolean);
+      if (loopTypes.length > 0) {
+        memoryContext = `\n\nUSER HISTORY (past untangled loops): ${loopTypes.join(", ")}.${needs.length > 0 ? ` Core needs identified: ${[...new Set(needs)].join(", ")}.` : ""}${anchors.length > 0 ? ` Past anchors: "${anchors[0]}".` : ""}\nIf the current thought resembles a past loop, briefly mention the pattern (e.g. "You've noticed before that X tends to feel like Y."). Keep it to one sentence max.`;
+      }
+    }
+  } catch { /* ignore — memory is non-critical */ }
+
   const messages: { role: "system" | "user" | "assistant"; content: string }[] = [
-    { role: "system", content: systemPrompt },
+    { role: "system", content: systemPrompt + memoryContext },
     ...history.map((h) => ({
       role: h.role as "user" | "assistant",
       content: h.content,
@@ -292,11 +382,12 @@ router.post("/untangle/chat", async (req, res): Promise<void> => {
     let parsed_response: {
       response?: string;
       isInsight?: boolean;
-      suggestions?: string[];
+      suggestions?: unknown[];
       loopType?: string | null;
       loopIntensity?: number;
       coreNeed?: string | null;
       sessionTrigger?: string | null;
+      anchorPhrase?: string | null;
     };
 
     try {
@@ -337,12 +428,10 @@ router.post("/untangle/chat", async (req, res): Promise<void> => {
     const coerceToString = (s: unknown): string => {
       if (typeof s === "string") return s;
       if (s && typeof s === "object") {
-        // common keys the AI uses: text, label, value, option, description
         for (const key of ["text", "label", "value", "option", "description", "fear", "driver"]) {
           const v = (s as Record<string, unknown>)[key];
           if (typeof v === "string") return v;
         }
-        // last resort: first string value found
         const firstStr = Object.values(s as Record<string, unknown>).find((v) => typeof v === "string");
         if (typeof firstStr === "string") return firstStr;
       }
@@ -355,6 +444,7 @@ router.post("/untangle/chat", async (req, res): Promise<void> => {
 
     const coreNeed = typeof parsed_response.coreNeed === "string" ? parsed_response.coreNeed : null;
     const sessionTrigger = typeof parsed_response.sessionTrigger === "string" ? parsed_response.sessionTrigger : null;
+    const anchorPhrase = typeof parsed_response.anchorPhrase === "string" ? parsed_response.anchorPhrase : null;
 
     const result = UntangleChatResponse.parse({
       response: parsed_response.response ?? "Loop detected.\n\nSurface belief: unclear.\n\nWhat feels at stake here?",
@@ -364,6 +454,7 @@ router.post("/untangle/chat", async (req, res): Promise<void> => {
       loopIntensity,
       coreNeed,
       sessionTrigger,
+      anchorPhrase,
     });
 
     res.json(result);
@@ -377,6 +468,7 @@ router.post("/untangle/chat", async (req, res): Promise<void> => {
         loopIntensity: null,
         coreNeed: null,
         sessionTrigger: null,
+        anchorPhrase: null,
       }),
     );
   }

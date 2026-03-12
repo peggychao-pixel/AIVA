@@ -6,6 +6,11 @@ export const momentsTable = pgTable("moments", {
   id: serial("id").primaryKey(),
   content: text("content").notNull(),
   loopType: text("loop_type"),
+  anchorPhrase: text("anchor_phrase"),
+  surfaceBelief: text("surface_belief"),
+  hiddenFear: text("hidden_fear"),
+  coreNeed: text("core_need"),
+  originalThought: text("original_thought"),
   createdAt: timestamp("created_at").notNull().defaultNow(),
 });
 

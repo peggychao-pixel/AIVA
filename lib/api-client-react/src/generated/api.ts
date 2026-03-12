@@ -1264,3 +1264,83 @@ export const useSendOpenaiMessage = <
 > => {
   return useMutation(getSendOpenaiMessageMutationOptions(options));
 };
+
+/**
+ * @summary One Tap Untangle — instant loop detection without conversation
+ */
+export const getQuickUntangleUrl = () => {
+  return `/api/untangle/quick`;
+};
+
+export const quickUntangle = async (
+  quickUntangleBody: QuickUntangleBody,
+  options?: RequestInit,
+): Promise<QuickUntangleResponse> => {
+  return customFetch<QuickUntangleResponse>(getQuickUntangleUrl(), {
+    ...options,
+    method: "POST",
+    headers: { "Content-Type": "application/json", ...options?.headers },
+    body: JSON.stringify(quickUntangleBody),
+  });
+};
+
+export const getQuickUntangleMutationOptions = <
+  TError = ErrorType<unknown>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof quickUntangle>>,
+    TError,
+    { data: BodyType<QuickUntangleBody> },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof quickUntangle>>,
+  TError,
+  { data: BodyType<QuickUntangleBody> },
+  TContext
+> => {
+  const mutationKey = ["quickUntangle"];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      "mutationKey" in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
+
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof quickUntangle>>,
+    { data: BodyType<QuickUntangleBody> }
+  > = (props) => {
+    const { data } = props ?? {};
+    return quickUntangle(data, requestOptions);
+  };
+
+  return { mutationFn, ...mutationOptions };
+};
+
+export type QuickUntangleMutationResult = NonNullable<Awaited<ReturnType<typeof quickUntangle>>>;
+export type QuickUntangleMutationBody = BodyType<QuickUntangleBody>;
+export type QuickUntangleMutationError = ErrorType<unknown>;
+
+export const useQuickUntangle = <
+  TError = ErrorType<unknown>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof quickUntangle>>,
+    TError,
+    { data: BodyType<QuickUntangleBody> },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationResult<
+  Awaited<ReturnType<typeof quickUntangle>>,
+  TError,
+  { data: BodyType<QuickUntangleBody> },
+  TContext
+> => {
+  return useMutation(getQuickUntangleMutationOptions(options));
+};

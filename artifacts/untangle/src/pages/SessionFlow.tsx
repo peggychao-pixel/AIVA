@@ -1,7 +1,13 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
-import { useUntangleChat, useCreateSession, useSaveMoment } from "@workspace/api-client-react";
+import {
+  useUntangleChat,
+  useCreateSession,
+  useSaveMoment,
+  useListMoments,
+  useQuickUntangle,
+} from "@workspace/api-client-react";
 import { VoiceButton } from "../components/VoiceButton";
 
 type Mode = "before" | "after" | "loop" | "pressure" | "other";
@@ -16,6 +22,7 @@ interface ChatMessage {
   loopIntensity?: number | null;
   coreNeed?: string | null;
   sessionTrigger?: string | null;
+  anchorPhrase?: string | null;
 }
 
 const MODE_OPTIONS: { id: Mode; label: string; description: string }[] = [
@@ -41,6 +48,29 @@ const OPENING_SUGGESTIONS: Record<Mode, string[]> = {
   pressure: ["Making the right food choice", "Controlling what I eat", "Getting it exactly right"],
   other:    ["Something about food", "A feeling I can't name", "Let me type it out"],
 };
+
+const LOOP_SHORT_LABELS: Record<string, string> = {
+  "regret anticipation": "regret",
+  "uncertainty loop": "uncertainty",
+  "control loop": "control",
+  "over-analysis loop": "analysis",
+  "self-judgment loop": "self-judgment",
+  "perfectionism loop": "perfectionism",
+};
+
+const WHY_INSIGHTS: Record<string, string> = {
+  "regret anticipation": "Choices feel irreversible before they are made.",
+  "uncertainty loop":    "The outcome cannot be fully predicted from here.",
+  "control loop":        "The mind is trying to manage what isn't in its hands.",
+  "over-analysis loop":  "More information is being searched for than exists.",
+  "self-judgment loop":  "The mind is treating a moment as evidence about character.",
+  "perfectionism loop":  "The standard being applied may be impossible to meet.",
+};
+
+function intensityDots(n: number | null | undefined): string {
+  if (!n) return "";
+  return "●".repeat(n) + "○".repeat(5 - n);
+}
 
 function InsightCard({
   content,
@@ -81,6 +111,24 @@ function InsightCard({
       >
         {saved ? "✓ SAVED" : "SAVE MOMENT"}
       </button>
+    </motion.div>
+  );
+}
+
+function AnchorCard({ phrase }: { phrase: string }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 8 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="w-full border border-border/60 rounded p-4 space-y-2 bg-card"
+    >
+      <p className="font-mono text-[10px] text-muted-foreground uppercase tracking-[0.2em]">
+        ANCHOR PHRASE
+      </p>
+      <p className="font-mono text-base text-foreground font-medium">"{phrase}"</p>
+      <p className="font-mono text-[10px] text-muted-foreground/60">
+        If this thought returns, try recalling this phrase.
+      </p>
     </motion.div>
   );
 }
@@ -166,6 +214,80 @@ function PatternMap({
   );
 }
 
+function QuickUntangleCard({
+  onClose,
+}: {
+  onClose: () => void;
+}) {
+  const [thought, setThought] = useState("");
+  const { mutateAsync: runQuick, isPending, data: result } = useQuickUntangle();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!thought.trim()) return;
+    await runQuick({ data: { thought: thought.trim() } }).catch(() => {});
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 8 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 4 }}
+      className="border border-border bg-card rounded p-4 space-y-4"
+    >
+      <div className="flex items-center justify-between">
+        <p className="font-mono text-[10px] text-primary uppercase tracking-[0.2em]">⚡ ONE TAP UNTANGLE</p>
+        <button onClick={onClose} className="font-mono text-[10px] text-muted-foreground hover:text-foreground">✕</button>
+      </div>
+
+      {!result ? (
+        <form onSubmit={handleSubmit} className="space-y-3">
+          <textarea
+            value={thought}
+            onChange={(e) => setThought(e.target.value)}
+            placeholder="Type the thought that's looping..."
+            rows={2}
+            disabled={isPending}
+            className="w-full bg-background border border-border rounded px-3 py-2 font-mono text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 transition-colors resize-none"
+          />
+          <button
+            type="submit"
+            disabled={!thought.trim() || isPending}
+            className="w-full py-2 bg-primary text-primary-foreground font-mono text-xs rounded hover:opacity-90 transition-opacity disabled:opacity-40 disabled:cursor-not-allowed"
+          >
+            {isPending ? "ANALYZING..." : "UNTANGLE NOW →"}
+          </button>
+        </form>
+      ) : (
+        <div className="space-y-3">
+          <div className="flex items-center gap-3">
+            <span className="font-mono text-[10px] text-muted-foreground border border-border px-2 py-0.5 rounded uppercase tracking-widest">
+              {result.loopType}
+            </span>
+            <span className="font-mono text-[10px] text-muted-foreground">
+              {intensityDots(result.loopIntensity)}
+            </span>
+          </div>
+          <p className="font-mono text-sm text-foreground leading-relaxed">{result.insight}</p>
+          <div className="border-t border-border/40 pt-3 space-y-1">
+            <p className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest">ANCHOR PHRASE</p>
+            <p className="font-mono text-sm text-primary">"{result.anchorPhrase}"</p>
+          </div>
+          <p className="font-mono text-[10px] text-foreground/60 border border-border/40 rounded px-3 py-2">
+            {result.suggestion}
+          </p>
+          <button
+            onClick={() => { setThought(""); onClose(); }}
+            className="font-mono text-[10px] text-muted-foreground hover:text-foreground uppercase tracking-widest"
+          >
+            ← CLOSE
+          </button>
+        </div>
+      )}
+    </motion.div>
+  );
+}
+
 export function SessionFlow() {
   const [step, setStep] = useState<"home" | "chat">("home");
   const [mode, setMode] = useState<Mode>("after");
@@ -177,6 +299,13 @@ export function SessionFlow() {
   const [coreNeeds, setCoreNeeds] = useState<string[]>([]);
   const [sessionTriggers, setSessionTriggers] = useState<string[]>([]);
   const [savedMomentIds, setSavedMomentIds] = useState<Set<string>>(new Set());
+  const [showQuick, setShowQuick] = useState(false);
+
+  // Session structured data for saving
+  const [originalThought, setOriginalThought] = useState<string | null>(null);
+  const [surfaceBelief, setSurfaceBelief] = useState<string | null>(null);
+  const [hiddenFear, setHiddenFear] = useState<string | null>(null);
+  const [anchorPhrase, setAnchorPhrase] = useState<string | null>(null);
 
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -186,10 +315,38 @@ export function SessionFlow() {
   const { mutateAsync: sendChat } = useUntangleChat();
   const { mutateAsync: createSession } = useCreateSession();
   const { mutateAsync: saveMoment } = useSaveMoment();
+  const { data: savedMoments } = useListMoments();
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isThinking]);
+
+  // Rumination Radar — derive top patterns from saved moments
+  const radarTopics = useMemo(() => {
+    if (!savedMoments || savedMoments.length === 0) return [];
+    const counts = savedMoments.reduce<Record<string, number>>((acc, m) => {
+      if (m.loopType) acc[m.loopType] = (acc[m.loopType] ?? 0) + 1;
+      return acc;
+    }, {});
+    return Object.entries(counts)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 3)
+      .map(([lt]) => LOOP_SHORT_LABELS[lt] ?? lt.replace(" loop", "").replace(" anticipation", ""));
+  }, [savedMoments]);
+
+  // Why Your Brain Is Looping Today — top 3 loop types from saved moments
+  const whyInsights = useMemo(() => {
+    if (!savedMoments || savedMoments.length < 2) return [];
+    const counts = savedMoments.reduce<Record<string, number>>((acc, m) => {
+      if (m.loopType) acc[m.loopType] = (acc[m.loopType] ?? 0) + 1;
+      return acc;
+    }, {});
+    return Object.entries(counts)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 3)
+      .map(([lt]) => WHY_INSIGHTS[lt])
+      .filter(Boolean) as string[];
+  }, [savedMoments]);
 
   const addPattern = (loopType: string | null | undefined) => {
     if (!loopType) return;
@@ -201,6 +358,8 @@ export function SessionFlow() {
     currentMode: Mode,
     currentMessages: ChatMessage[],
   ) => {
+    const aiResponseCount = currentMessages.filter((m) => m.role === "assistant" && m.id !== "opener").length;
+
     const userMsg: ChatMessage = {
       id: `u-${Date.now()}`,
       role: "user",
@@ -211,6 +370,10 @@ export function SessionFlow() {
     messagesRef.current = updatedMessages;
     setIsThinking(true);
 
+    // Capture structured session data
+    if (aiResponseCount === 0) setOriginalThought(text.trim());
+    if (aiResponseCount === 1) setHiddenFear(text.trim());
+
     try {
       const history = currentMessages.map((m) => ({ role: m.role, content: m.content }));
       const res = await sendChat({
@@ -220,6 +383,13 @@ export function SessionFlow() {
       addPattern(res.loopType);
       if (res.coreNeed) setCoreNeeds((p) => (p.includes(res.coreNeed!) ? p : [...p, res.coreNeed!]));
       if (res.sessionTrigger) setSessionTriggers((p) => (p.includes(res.sessionTrigger!) ? p : [...p, res.sessionTrigger!]));
+      if (res.anchorPhrase) setAnchorPhrase(res.anchorPhrase);
+
+      // Extract surface belief from Turn 1 response text
+      if (aiResponseCount === 0) {
+        const match = res.response.match(/Surface belief:\s*"([^"]+)"/);
+        if (match) setSurfaceBelief(match[1]);
+      }
 
       const aiMsg: ChatMessage = {
         id: `a-${Date.now()}`,
@@ -231,6 +401,7 @@ export function SessionFlow() {
         loopIntensity: res.loopIntensity,
         coreNeed: res.coreNeed,
         sessionTrigger: res.sessionTrigger,
+        anchorPhrase: res.anchorPhrase,
       };
       const withAi = [...updatedMessages, aiMsg];
       setMessages(withAi);
@@ -259,6 +430,10 @@ export function SessionFlow() {
     setCoreNeeds([]);
     setSessionTriggers([]);
     setSavedMomentIds(new Set());
+    setOriginalThought(null);
+    setSurfaceBelief(null);
+    setHiddenFear(null);
+    setAnchorPhrase(null);
     setStep("chat");
 
     const opener: ChatMessage = {
@@ -303,6 +478,11 @@ export function SessionFlow() {
         data: {
           content: msg.content,
           loopType: msg.loopType ?? undefined,
+          anchorPhrase: anchorPhrase ?? undefined,
+          surfaceBelief: surfaceBelief ?? undefined,
+          hiddenFear: hiddenFear ?? undefined,
+          coreNeed: msg.coreNeed ?? coreNeeds[0] ?? undefined,
+          originalThought: originalThought ?? undefined,
         },
       });
     } catch {
@@ -337,6 +517,10 @@ export function SessionFlow() {
     setCoreNeeds([]);
     setSessionTriggers([]);
     setSavedMomentIds(new Set());
+    setOriginalThought(null);
+    setSurfaceBelief(null);
+    setHiddenFear(null);
+    setAnchorPhrase(null);
   };
 
   const handleFreeSubmit = (e: React.FormEvent) => {
@@ -346,6 +530,14 @@ export function SessionFlow() {
     setFreeInput("");
     startConversation("other", text);
   };
+
+  // Find the last AI message that has an anchor phrase (exit message)
+  const exitMessage = useMemo(() => {
+    for (let i = messages.length - 1; i >= 0; i--) {
+      if (messages[i].role === "assistant" && messages[i].anchorPhrase) return messages[i];
+    }
+    return null;
+  }, [messages]);
 
   const lastAssistantIndex = (() => {
     for (let i = messages.length - 1; i >= 0; i--) {
@@ -402,8 +594,41 @@ export function SessionFlow() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="flex-1 overflow-y-auto px-6 py-10 space-y-10"
+              className="flex-1 overflow-y-auto px-6 py-8 space-y-8"
             >
+              {/* Rumination Radar — only if saved moments exist */}
+              {radarTopics.length > 0 && (
+                <motion.div
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="border border-border/60 rounded p-4 space-y-2"
+                >
+                  <p className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest">
+                    RUMINATION RADAR
+                  </p>
+                  <p className="font-mono text-xs text-foreground/80">
+                    Today your mind may be looping around:{" "}
+                    <span className="text-primary">
+                      {radarTopics.join(", ")}
+                    </span>
+                  </p>
+
+                  {/* Why Your Brain Is Looping Today */}
+                  {whyInsights.length > 0 && (
+                    <div className="pt-2 space-y-1 border-t border-border/30 mt-3">
+                      <p className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest mb-2">
+                        WHY YOUR BRAIN MAY BE LOOPING TODAY
+                      </p>
+                      {whyInsights.map((insight, i) => (
+                        <p key={i} className="font-mono text-[10px] text-foreground/60">
+                          • {insight}
+                        </p>
+                      ))}
+                    </div>
+                  )}
+                </motion.div>
+              )}
+
               <div className="space-y-2">
                 <h1 className="font-mono text-4xl md:text-5xl text-foreground font-bold leading-tight">
                   What feels tangled<br />right now?
@@ -458,6 +683,38 @@ export function SessionFlow() {
                   Or hold mic to speak
                 </p>
               </form>
+
+              {/* One Tap Untangle */}
+              <div className="space-y-2">
+                <AnimatePresence>
+                  {showQuick ? (
+                    <QuickUntangleCard onClose={() => setShowQuick(false)} />
+                  ) : (
+                    <motion.button
+                      key="quick-btn"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      onClick={() => setShowQuick(true)}
+                      className="w-full text-left px-4 py-3 border border-border/50 border-dashed rounded hover:border-primary/40 hover:bg-primary/5 transition-all group"
+                    >
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <p className="font-mono text-xs text-muted-foreground group-hover:text-foreground transition-colors">
+                            ⚡ One Tap Untangle
+                          </p>
+                          <p className="font-mono text-[10px] text-muted-foreground/50 mt-0.5">
+                            Instant loop detection — no conversation.
+                          </p>
+                        </div>
+                        <span className="font-mono text-[10px] text-muted-foreground group-hover:text-primary transition-colors">
+                          TAP →
+                        </span>
+                      </div>
+                    </motion.button>
+                  )}
+                </AnimatePresence>
+              </div>
             </motion.div>
           )}
 
@@ -537,6 +794,11 @@ export function SessionFlow() {
                       </div>
                     </div>
                   </motion.div>
+                )}
+
+                {/* Anchor phrase — shown when exit message arrives */}
+                {anchorPhrase && exitMessage && (
+                  <AnchorCard phrase={anchorPhrase} />
                 )}
 
                 {/* Pattern Map */}
