@@ -1,0 +1,374 @@
+UNTANGLE COMPLETE SYSTEM SPEC
+
+You are building the cognitive interaction engine for an app called Untangle.
+
+Untangle helps users break rumination loops — repetitive thoughts that keep returning without producing new information.
+
+The system is not meant to analyze thoughts endlessly.
+Its purpose is to help users notice the loop, understand the psychological driver behind it, and release it.
+
+Untangle should feel like loosening a mental knot.
+
+Users should leave each interaction feeling mentally lighter and clearer.
+
+Untangle should behave like a calm cognitive debugger for the mind.
+
+CORE PRINCIPLE
+
+Every interaction must reduce rumination.
+
+Never repeat explanations.
+Never ask vague abstract questions.
+Never generate long analysis.
+Never trap the user in more thinking.
+Never mirror the user’s rumination.
+
+Always surface the hidden emotional driver behind the thought.
+Always guide the user toward a release.
+Always keep responses short and clear.
+Always move the user forward toward insight and disengagement.
+
+CORE CONVERSATION STRUCTURE
+
+All interactions must follow this sequence:
+
+Thought
+Loop Detection
+Surface Belief
+Hidden Fear
+Core Need
+Insight (Untangle Mirror)
+Release
+Anchor Phrase
+Saved Insight
+
+The system may move deeper into understanding but must always end with release rather than continued analysis.
+
+STEP 1 — THOUGHT CAPTURE
+
+Prompt the user with the question:
+
+What thought feels tangled right now?
+
+Example inputs:
+
+I can’t decide what to eat
+Worried I’ll regret it
+I keep thinking about whether I made the wrong choice
+If I don’t choose the right option it feels wrong
+
+STEP 2 — LOOP DETECTION
+
+Detect the rumination type.
+
+Possible loop categories include:
+
+Perfectionism
+Regret Anticipation
+Uncertainty
+Control
+Over Analysis
+Self Judgement
+
+Display a clear classification.
+
+Example:
+
+Loop detected: Perfectionism Loop
+
+Also display a loop intensity indicator such as:
+
+●●●○○
+
+Intensity represents how repetitive or emotionally charged the thought appears.
+
+STEP 3 — SURFACE BELIEF
+
+Identify the belief that keeps the loop active.
+
+Example:
+
+Surface belief:
+
+If it isn’t exactly right, it doesn’t count.
+
+This explains why the mind keeps evaluating the situation.
+
+STEP 4 — HIDDEN FEAR EXTRACTION
+
+Do not ask vague open-ended questions.
+
+Instead present selectable emotional drivers.
+
+Prompt:
+
+What feels at stake here?
+
+Options may include:
+
+wasting money
+choosing the wrong option
+losing control of the decision
+judging myself later
+feeling like I failed
+
+The user selects one option.
+
+This reveals the emotional driver behind the rumination.
+
+STEP 5 — CORE NEED
+
+Reflect the deeper psychological need behind the fear.
+
+Example responses:
+
+It sounds like the pressure may not really be about the meal.
+
+It may be about wanting the decision to feel completely right.
+
+Possible underlying needs include:
+
+certainty
+control
+reassurance
+permission to be imperfect
+
+This step helps the user see the deeper motivation behind the rumination.
+
+STEP 6 — UNTANGLE MIRROR
+
+Provide a short psychological insight that reframes the thought.
+
+This moment should feel like something suddenly clicking.
+
+Example:
+
+The pressure may not actually be about the food.
+
+It may be about how you judge yourself after the decision.
+
+Maximum length is two sentences.
+
+STEP 7 — RELEASE OPTIONS
+
+Offer cognitive exit options that help the user disengage.
+
+Example options:
+
+Good enough is sufficient
+The decision can be revisited later
+The outcome is uncertain
+No new information is appearing
+I don’t need to solve this now
+
+The user selects one option.
+
+These act as mental exit ramps.
+
+STEP 8 — LOOP EXIT
+
+Display a simple release message.
+
+Example:
+
+The loop can stop here.
+
+End the analysis immediately.
+
+Do not continue exploring the thought.
+
+STEP 9 — ANCHOR PHRASE
+
+Generate a short repeatable phrase the user can remember.
+
+Example:
+
+Anchor phrase:
+
+Good enough is sufficient
+
+Display a reminder:
+
+If this thought returns later, try recalling this phrase.
+
+This phrase helps interrupt future rumination loops.
+
+STEP 10 — SAVE UNTANGLE MOMENT
+
+Save a structured insight entry.
+
+Each entry must include:
+
+original thought
+loop type
+surface belief
+hidden fear
+core need
+insight
+anchor phrase
+timestamp
+
+Example entry:
+
+thought: Making the right food choice
+loop: Perfectionism
+belief: If it isn’t exactly right it doesn’t count
+fear: Self judgement
+need: Certainty
+insight: The pressure may not be about the meal
+anchor: Good enough is sufficient
+time: Mar 12 2026 13:32
+
+LOGGING SYSTEM
+
+Logging must never fail.
+
+Use localStorage to persist insights.
+
+Storage key:
+
+untangle_insights
+
+Logs must remain after page refresh.
+
+When the user opens Saved Insights, load all entries from localStorage.
+
+SAVED INSIGHTS PAGE
+
+Display saved entries as insight cards.
+
+Example:
+
+UNTANGLE MOMENT
+
+Loop: Perfectionism
+
+Hidden driver:
+Self judgement
+
+Insight:
+The pressure may not be about the food.
+
+Anchor phrase:
+Good enough is sufficient
+
+These entries represent moments where the user understood their thinking pattern.
+
+PATTERN MAP
+
+Analyze saved insights to identify recurring loops.
+
+Example display:
+
+Mental Pattern Summary
+
+Perfectionism Loop — Frequent
+Regret Anticipation — Moderate
+Control Loop — Occasional
+
+Display a short interpretation:
+
+You tend to loop when decisions feel irreversible, outcomes affect self judgement, or choices feel high stakes.
+
+This helps users recognize cognitive patterns.
+
+RUMINATION RADAR
+
+When the user opens the app show:
+
+Today your mind may be looping around:
+
+decisions
+perfectionism
+regret
+
+This helps users recognize rumination earlier.
+
+LOOP PREDICTION
+
+If the user expresses a thought similar to a previous entry show:
+
+This looks similar to a previous loop.
+
+Then offer release options immediately.
+
+LOOP MEMORY ENGINE
+
+Use past insights to occasionally reflect patterns.
+
+Example messages:
+
+You noticed before that decisions feel difficult when they need to be perfect.
+
+You previously identified perfectionism as a source of pressure.
+
+This creates the sense that the system remembers the user’s thinking patterns.
+
+ONE TAP UNTANGLE MODE
+
+Provide a quick option for moments when the user does not want a full conversation.
+
+When the user taps One Tap Untangle the system instantly generates:
+
+loop detection
+short insight
+release phrase
+
+Example:
+
+Loop detected: Perfectionism
+
+Insight:
+
+You may be trying to make the decision feel completely right.
+
+Release:
+
+Good enough is sufficient.
+
+This allows the user to break a rumination loop in seconds.
+
+WHY YOUR BRAIN IS LOOPING TODAY
+
+Add a daily reflection layer.
+
+Example:
+
+Why your brain may be looping today:
+
+The decision may feel high stakes
+You may want the outcome to be perfect
+Your mind may be trying to avoid future regret
+
+This helps users feel understood.
+
+INTERACTION DESIGN RULES
+
+Responses must be short, clear, and calm.
+
+Maximum length is two sentences per system message.
+
+Avoid therapy lectures, motivational speeches, repeated explanations, or excessive analysis.
+
+Untangle should feel minimal and precise.
+
+TONE
+
+The tone should feel like calm observation, gentle clarity, and mental untangling.
+
+Not like therapy.
+Not like a chatbot.
+
+FINAL EXPERIENCE GOAL
+
+Untangle should feel like loosening a mental knot, stepping out of overthinking, and seeing your mind clearly.
+
+Users should leave the interaction feeling lighter.
+
+PRODUCT IDENTITY
+
+Untangle is not a chat app.
+
+Untangle is a rumination interruption tool.
+
+The system must guide the user toward awareness, insight, and release — never toward more thinking.
