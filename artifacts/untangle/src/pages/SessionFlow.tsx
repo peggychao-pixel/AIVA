@@ -421,7 +421,7 @@ export function SessionFlow() {
                       />
                     ) : (
                       <div
-                        className={`max-w-[85%] px-4 py-3 rounded font-mono text-sm leading-relaxed ${
+                        className={`max-w-[85%] px-4 py-3 rounded font-mono text-sm leading-relaxed whitespace-pre-wrap ${
                           msg.role === "user"
                             ? "bg-primary/10 border border-primary/30 text-foreground"
                             : "bg-card border border-border text-foreground"
