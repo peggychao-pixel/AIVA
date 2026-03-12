@@ -85,6 +85,24 @@ function InsightCard({
 
 function PatternMap({ loopTypes }: { loopTypes: string[] }) {
   if (loopTypes.length === 0) return null;
+
+  const counts = loopTypes.reduce<Record<string, number>>((acc, lt) => {
+    acc[lt] = (acc[lt] ?? 0) + 1;
+    return acc;
+  }, {});
+
+  const unique = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+
+  const label = (count: number) =>
+    count >= 3 ? "FREQUENT" : count >= 2 ? "MODERATE" : "OCCASIONAL";
+
+  const labelColor = (count: number) =>
+    count >= 3
+      ? "text-red-400"
+      : count >= 2
+        ? "text-yellow-400"
+        : "text-primary/70";
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 6 }}
@@ -92,16 +110,18 @@ function PatternMap({ loopTypes }: { loopTypes: string[] }) {
       className="border border-border/60 rounded p-3 space-y-2"
     >
       <p className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest">
-        PATTERN MAP — THIS SESSION
+        MENTAL PATTERN SUMMARY
       </p>
-      <div className="flex flex-wrap gap-2">
-        {loopTypes.map((lt) => (
-          <span
-            key={lt}
-            className="font-mono text-[10px] text-primary border border-primary/30 bg-primary/5 px-2 py-1 rounded uppercase tracking-widest"
-          >
-            {lt}
-          </span>
+      <div className="space-y-1.5">
+        {unique.map(([lt, count]) => (
+          <div key={lt} className="flex items-center justify-between gap-4">
+            <span className="font-mono text-[10px] text-foreground/80 uppercase tracking-widest">
+              {lt}
+            </span>
+            <span className={`font-mono text-[10px] uppercase tracking-widest ${labelColor(count)}`}>
+              {label(count)}
+            </span>
+          </div>
         ))}
       </div>
     </motion.div>
@@ -133,9 +153,7 @@ export function SessionFlow() {
 
   const addPattern = (loopType: string | null | undefined) => {
     if (!loopType) return;
-    setDetectedPatterns((prev) =>
-      prev.includes(loopType) ? prev : [...prev, loopType],
-    );
+    setDetectedPatterns((prev) => [...prev, loopType]);
   };
 
   const doSendMessage = async (
