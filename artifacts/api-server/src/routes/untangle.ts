@@ -91,21 +91,21 @@ router.post("/untangle/ai-response", async (req, res): Promise<void> => {
 
   const completion = await openai.chat.completions.create({
     model: "gpt-4o-mini",
-    max_completion_tokens: 200,
+    max_completion_tokens: 80,
     messages: [
       {
         role: "system",
         content:
-          "You are a calm, supportive wellness companion. Respond in 2-3 short sentences. Do not moralize, mention calories, diets, or weight. Do not use bullet points. Be warm and grounding.",
+          "You are a sharp, intelligent loop-interrupt system. Generate a 1–2 sentence message that abruptly stops post-meal rumination. Sound like mission control or a systems operator — concise, dry, slightly clinical. Never mention breathing, self-compassion, mindfulness, calories, or weight. No therapeutic language. No encouragement. No warmth. Just a clean cognitive interrupt.",
       },
       {
         role: "user",
-        content: `The user has just finished eating and is ${thoughtDescription}. Generate a short, calm response that gently interrupts this rumination loop and helps them move forward.`,
+        content: `The user has just finished eating and is ${thoughtDescription}. Generate a short interruption. Do not be nurturing. Do not suggest breathing. Sound like a system cutting off an unnecessary process.`,
       },
     ],
   });
 
-  const message = completion.choices[0]?.message?.content ?? "Take a breath. You've eaten, and that's okay. Let's redirect your attention to something that feels good.";
+  const message = completion.choices[0]?.message?.content ?? "Loop detected. No further analysis required. The event is closed.";
 
   res.json(GetAiResponseResponse.parse({ message }));
 });

@@ -1,83 +1,87 @@
 export interface Activity {
   id: string;
+  tag: string;
   title: string;
   description: string;
-  instructions: string[];
+  steps: string[];
 }
 
-export const DOPAMINE_ACTIVITIES: Activity[] = [
+export const REDIRECT_ACTIVITIES: Activity[] = [
+  {
+    id: "serial-subtract",
+    tag: "MATH",
+    title: "Serial 7 Subtraction",
+    description: "Count backward from 300 by 7s. Harder than it sounds. Your brain cannot ruminate and do arithmetic at the same time.",
+    steps: [
+      "Start at 300.",
+      "Subtract 7. Say the result aloud or type it.",
+      "Keep going — 293, 286, 279...",
+      "Lose your place? Start over. That's the point."
+    ]
+  },
   {
     id: "focus-sprint",
-    title: "5-minute focus sprint",
-    description: "Channel your energy into one tiny, productive task.",
-    instructions: [
-      "Pick one small task you've been putting off (e.g., replying to an email, tidying your desk).",
-      "Set a separate timer for 5 minutes.",
-      "Work on only that task until the timer goes off.",
-      "When finished, take a deep breath and acknowledge your effort."
+    tag: "TASK",
+    title: "3-Minute Focus Sprint",
+    description: "Pick one thing you've been ignoring. Do only that for 3 minutes. Specificity required.",
+    steps: [
+      "Name one concrete task (not 'work on project' — something like 'reply to the email from Tuesday').",
+      "Set a timer for 3 minutes.",
+      "No tab switching. No checking. Just that one thing.",
+      "Stop when the timer ends. Logged and closed."
     ]
   },
   {
-    id: "breathing-reset",
-    title: "Quick breathing reset (4-7-8)",
-    description: "Calm your nervous system and shift out of the looping state.",
-    instructions: [
-      "Exhale completely through your mouth, making a whoosh sound.",
-      "Close your mouth and inhale quietly through your nose to a mental count of 4.",
-      "Hold your breath for a count of 7.",
-      "Exhale completely through your mouth, to a count of 8.",
-      "Repeat this cycle 4 times."
+    id: "reaction-test",
+    tag: "GAME",
+    title: "Reaction Test",
+    description: "Test your reaction time. Uses the same neural pathways as the loop you're stuck in — but redirected.",
+    steps: [
+      "Click 'Launch Game' below.",
+      "Tap each target before it disappears.",
+      "Beat your previous score.",
+      "Your loop cannot survive this."
     ]
   },
   {
-    id: "math-challenge",
-    title: "Mini math challenge",
-    description: "Engage the logical part of your brain to break emotional loops.",
-    instructions: [
-      "Start with the number 100.",
-      "Subtract 7 to get 93.",
-      "Keep subtracting 7 sequentially (86, 79, 72...).",
-      "If you lose your place, start over from 100.",
-      "Continue until you reach 0 or feel your mind clear."
+    id: "word-chain",
+    tag: "VERBAL",
+    title: "Category Word Chain",
+    description: "Pick a category. Name items until you hit 20. Running out before 20 means starting a harder category.",
+    steps: [
+      "Choose: Countries / Capital Cities / Nobel Prize Winners / Programming Languages / Philosophy Movements.",
+      "Name one every 3 seconds.",
+      "No repeats. Get to 20.",
+      "If you stall, pick a harder category."
     ]
   },
   {
-    id: "word-game",
-    title: "Word association game",
-    description: "A playful distraction to shift your thought patterns.",
-    instructions: [
-      "Look around the room and name one object you see (e.g., 'Lamp').",
-      "Think of a word that starts with the last letter of that word (e.g., 'Piano').",
-      "Continue chaining words together for 2 minutes.",
-      "Try to pick increasingly complex or abstract words."
+    id: "logic-puzzle",
+    tag: "LOGIC",
+    title: "Constraint Logic",
+    description: "Solve a rapid logic constraint. The kind with no emotional content whatsoever.",
+    steps: [
+      "If 5 people each shake hands once with every other person, how many handshakes total?",
+      "Work it out in your head. No calculator.",
+      "Verify your answer. (It's 10.)",
+      "Try next: same problem with 8 people. Then 12."
     ]
   },
   {
-    id: "gratitude",
-    title: "Gratitude moment",
-    description: "Reframe your current mindset by focusing on appreciation.",
-    instructions: [
-      "Think of three specific things you are grateful for right now.",
-      "They can be as small as 'a comfortable chair' or 'a good cup of coffee'.",
-      "Visualize each one clearly in your mind for 15 seconds.",
-      "Notice how your body feels as you focus on gratitude."
-    ]
-  },
-  {
-    id: "body-scan",
-    title: "Body scan check-in",
-    description: "Ground yourself back in your physical presence.",
-    instructions: [
-      "Sit comfortably and close your eyes.",
-      "Bring your attention to your toes, simply noticing any sensations.",
-      "Slowly move your focus upward through your legs, stomach, chest, arms, and head.",
-      "If you notice tension, imagine sending a warm, relaxing breath to that area.",
-      "Take one final deep breath when you reach the top of your head."
+    id: "speed-list",
+    tag: "SPEED",
+    title: "Speed Categorization",
+    description: "30-second rapid-fire naming. No pauses allowed.",
+    steps: [
+      "Pick: mammals, European capitals, US states, or programming languages.",
+      "Name as many as you can in 30 seconds.",
+      "Write them down if it helps.",
+      "Your target: 15 items. Beat it."
     ]
   }
 ];
 
 export function getRandomActivities(count: number): Activity[] {
-  const shuffled = [...DOPAMINE_ACTIVITIES].sort(() => 0.5 - Math.random());
+  const shuffled = [...REDIRECT_ACTIVITIES].sort(() => 0.5 - Math.random());
   return shuffled.slice(0, count);
 }

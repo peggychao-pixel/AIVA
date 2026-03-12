@@ -1,0 +1,218 @@
+Upgrade the Untangle experience dramatically.
+
+This product should NOT feel like a therapy app, a mindfulness app, or a self-care app.
+It should feel sharp, engaging, intelligent, and slightly game-like.
+
+Core product goal:
+Interrupt post-meal food rumination in a way that is actually stimulating enough to compete with boredom, compulsive thinking, and dopamine-seeking behaviors.
+
+Important:
+Do NOT use soft therapeutic language.
+Do NOT use phrases like:
+- take a deep breath
+- be kind to yourself
+- relax
+- calm down
+- you're safe
+- be present
+- give yourself grace
+
+These feel generic, preachy, and low-stimulation.
+
+Instead, redesign the app so it feels like:
+- a brain interrupt tool
+- a mission control dashboard
+- a cognitive redirection system
+- a high-agency intervention experience
+
+New tone requirements:
+- concise
+- clever
+- emotionally neutral
+- slightly futuristic
+- cool, not clinical
+- no moralizing
+- no calorie language
+- no “wellness app” vibe
+
+Examples of acceptable message style:
+- Decision already executed.
+- Rumination loop detected.
+- Nothing to optimize right now.
+- Replay is active. Redirecting.
+- This is a loop, not a problem to solve.
+- Window unstable. Switch tasks now.
+- Analysis has expired.
+- Meal complete. The review process is now closed.
+
+Now redesign the UX with these principles:
+
+1. Replace the current gentle support style with a “mission mode” interface.
+
+After the user presses:
+“I finished eating”
+
+the screen should transition into an active intervention state.
+
+Possible headings:
+- LOOP DETECTED
+- POST-MEAL WINDOW ACTIVE
+- RUMINATION MODE INTERRUPT
+- DECISION LOCKED
+- MEAL COMPLETE / REVIEW CLOSED
+
+2. Replace boring coping suggestions with genuinely engaging micro-interventions.
+
+Do NOT suggest:
+- breathing exercises
+- journaling
+- gratitude
+- drink water
+- positive affirmations
+
+Instead create a “redirect options” module with high-engagement choices like:
+- 60-second reaction challenge
+- pattern memory mini-game
+- focus sprint countdown
+- rapid visual puzzle
+- choose-your-mission mode
+- keyboard tapping challenge
+- fast categorization game
+- short logic challenge
+- speed task: count targets before timer ends
+
+These should feel like a dopamine-competitive redirect, not emotional homework.
+
+3. Add a stronger game/system layer.
+
+The intervention screen should include:
+- a countdown timer for the rumination window (20–40 min)
+- a progress bar
+- a system status label
+- short mission prompts
+- a “redirect now” button
+- a “hold position” mode
+- a “switch channel” mode
+
+Suggested status labels:
+- LOOP ACTIVE
+- REDIRECT IN PROGRESS
+- WINDOW STABILIZING
+- REVIEW CLOSED
+- CRAVING SPIKE DETECTED
+- BOREDOM TRIGGER DETECTED
+
+4. Add multiple response styles for different user states.
+
+If the user selects:
+“I chose the wrong food”
+Use response styles like:
+- Decision locked. No alternate timeline available.
+- The choice is over. Replay will not improve it.
+- This is post-event optimization. Not useful now.
+
+If the user selects:
+“The portion was too big”
+Use response styles like:
+- Portion analysis is now running in circles.
+- The meal is complete. No correction required.
+- Size review detected. Closing loop.
+
+If the user selects:
+“I want to keep eating”
+Use response styles like:
+- Impulse spike detected. Delay before action.
+- Craving is present. No instant response required.
+- Hold for 90 seconds. Then reassess.
+
+If the user selects:
+“I’m bored”
+Use response styles like:
+- Boredom trigger confirmed. Redirect needed.
+- This is an under-stimulated brain, not an emergency.
+- Current objective: replace idle loop.
+
+5. Make the interface visually more interesting.
+
+Design direction:
+- dark or sleek minimal mode
+- bold headers
+- cards with status labels
+- animated progress bar
+- “system alert” style panels
+- mission buttons that feel more like a game UI than a therapy app
+
+Do not make it cute, soft, pastel, or overly comforting.
+It should feel smart, clean, and compelling.
+
+6. Add a “Mode Select” section after meal completion.
+
+Show 3 intervention modes:
+- QUICK INTERRUPT
+- MISSION MODE
+- HOLD TIMER
+
+Definitions:
+QUICK INTERRUPT = short AI message + redirect button
+MISSION MODE = interactive task or mini-game
+HOLD TIMER = countdown with rotating anti-rumination system messages
+
+7. Add rotating “anti-loop” system messages.
+
+Examples:
+- Replay is not progress.
+- The event is over.
+- You are reviewing a closed file.
+- No improved outcome exists inside this loop.
+- This is a boredom window, not a decision window.
+- Optimization attempt rejected.
+- Current task: outlast the loop.
+- Your brain wants stimulation, not more analysis.
+- Reopening the meal will not produce a better ending.
+
+8. Add one simple but actually fun micro-game directly in the prototype.
+
+Implement at least one playable redirect activity inside the app, such as:
+- memory sequence challenge
+- speed matching game
+- quick reaction test
+- tap targets before time runs out
+- shape/order recall game
+
+It should be lightweight but genuinely more engaging than “take a deep breath.”
+
+9. Update the AI prompting logic.
+
+The AI response should be:
+- 1 to 2 sentences max
+- interruption-focused
+- never nurturing or preachy
+- never like a therapist
+- more like a sharp systems operator or game narrator
+
+Use this AI instruction:
+
+“The user has just finished eating and is experiencing post-meal food rumination, boredom, or urge escalation.
+Generate a short, sharp interruption message.
+Do not sound therapeutic, nurturing, or soft.
+Do not mention breathing, self-compassion, mindfulness, or calories.
+Sound like a cool mission-control system interrupting a mental loop.
+Keep it concise, intelligent, and slightly game-like.”
+
+10. Implement this as a cleaner product experience.
+
+I want you to:
+- redesign the UI
+- replace existing boring suggestions
+- add more engaging redirect modules
+- make the copywriting much more interesting
+- include at least one interactive micro-game
+- keep the app MVP-sized, but make it feel 100x more compelling
+
+Output needed:
+1. Updated UX plan
+2. Updated component list
+3. New copywriting examples
+4. Frontend changes
+5. Backend/AI prompt changes
+6. One implemented mini-game

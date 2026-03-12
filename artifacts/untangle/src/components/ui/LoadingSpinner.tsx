@@ -1,27 +1,11 @@
-import { motion } from "framer-motion";
-
-export function LoadingSpinner({ message = "Loading..." }: { message?: string }) {
+export function LoadingSpinner({ message = "Processing..." }: { message?: string }) {
   return (
-    <div className="flex flex-col items-center justify-center space-y-6 py-12">
-      <div className="relative w-16 h-16">
-        <motion.div
-          className="absolute inset-0 rounded-full border-4 border-primary/20"
-          animate={{ scale: [1, 1.1, 1], opacity: [0.5, 1, 0.5] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute inset-0 rounded-full border-4 border-primary border-t-transparent"
-          animate={{ rotate: 360 }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-        />
+    <div className="flex flex-col items-center gap-5 py-10">
+      <div className="relative w-10 h-10">
+        <div className="absolute inset-0 rounded-full border border-primary/20" />
+        <div className="absolute inset-0 rounded-full border border-transparent border-t-primary animate-spin" />
       </div>
-      <motion.p
-        animate={{ opacity: [0.5, 1, 0.5] }}
-        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-        className="text-muted-foreground font-medium"
-      >
-        {message}
-      </motion.p>
+      <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">{message}</p>
     </div>
   );
 }
