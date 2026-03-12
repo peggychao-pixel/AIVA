@@ -1,0 +1,194 @@
+427"}
+Update my app Untangle into a deeper AI reflection tool that supports users before and after meals, focusing on rumination and overthinking.
+
+Untangle is NOT a therapy chatbot.  
+It is a thinking partner that helps users notice mental loops and untangle their thoughts.
+
+-------------------------------------
+
+CORE PROBLEM
+
+Users often experience two types of loops:
+
+1. Before meals
+   - overplanning
+   - worrying about eating “correctly”
+   - trying to optimize food choices
+
+2. After meals
+   - replaying what they ate
+   - evaluating if it was “good enough”
+   - rumination loops
+
+Untangle should support users in both moments.
+
+-------------------------------------
+
+APP FLOW
+
+When the app opens, show:
+
+"What feels tangled right now?"
+
+Options:
+
+• Before eating  
+• After eating  
+• My mind is looping  
+• Something else
+
+Also allow free typing.
+
+-------------------------------------
+
+INPUT SYSTEM
+
+Every message area must support THREE input methods:
+
+1. suggestion buttons (3–4)
+2. text typing
+3. voice input
+
+UI layout:
+
+[ suggestion buttons ]
+
+[ text input field ]
+
+[ 🎤 voice button ]
+
+Voice input should:
+• record speech
+• transcribe to text
+• send as message
+
+-------------------------------------
+
+BEFORE MEAL MODE
+
+Goal: reduce overplanning.
+
+Example conversation:
+
+AI:
+"Are you trying to plan the meal perfectly?"
+
+Options:
+• Yes
+• I'm overthinking it
+• I don't want to make the wrong choice
+• Something else
+
+Follow-up questions should gently challenge optimization thinking.
+
+Example insight:
+
+"Sometimes the pressure comes from trying to make the 'perfect' choice."
+
+-------------------------------------
+
+AFTER MEAL MODE
+
+Goal: detect rumination.
+
+Example conversation:
+
+User:
+"I keep replaying what I ate."
+
+AI:
+"Are you replaying details, or judging if it was right?"
+
+Options:
+• Replaying details
+• Judging if it was good enough
+• Both
+
+AI should detect rumination loops.
+
+Example insight:
+
+✨ Untangle Moment
+
+"Your mind might be trying to 'solve' the meal, even though it's already over."
+
+-------------------------------------
+
+CONVERSATION STYLE
+
+The AI must:
+
+• ask thoughtful questions
+• avoid repeating user input
+• introduce new perspectives
+• be calm and concise
+
+Avoid therapy phrases such as:
+
+"I'm here to listen"
+"That must be difficult"
+
+Keep responses short.
+
+Max length:
+1 sentence except for insight moments.
+
+-------------------------------------
+
+INSIGHT MOMENTS
+
+Occasionally display:
+
+✨ Untangle Moment
+
+Example:
+
+"The pressure may not be the meal itself — but the need to get it exactly right."
+
+Insight rules:
+
+• 1–2 sentences
+• simple
+• reflective
+
+-------------------------------------
+
+VOICE EXPERIENCE
+
+Voice interaction should feel like talking to a thinking partner.
+
+User can:
+• speak thoughts freely
+• mix voice and text
+• continue conversation naturally
+
+The AI may respond with text only (voice output optional).
+
+-------------------------------------
+
+DESIGN GOAL
+
+Users should feel:
+
+"I see the loop now."
+
+Untangle helps people notice mental loops around food, control, and evaluation.
+
+-------------------------------------
+
+KEEP EXISTING UI
+
+Do not change:
+
+• starry night background
+• calm layout
+• bilingual toggle
+• chat bubble interface
+
+Only upgrade the conversation system and add voice input.
+
+-------------------------------------
+
+PRODUCT MISSION
+
+Untangle helps users notice and loosen the mental loops that keep them s

@@ -19,6 +19,7 @@ import type {
 import type {
   AiResponseBody,
   AiResponseResult,
+  ChatHistoryItem,
   CreateOpenaiConversationBody,
   CreateSessionBody,
   ErrorResponse,
@@ -29,6 +30,10 @@ import type {
   OpenaiMessage,
   SendOpenaiMessageBody,
   Session,
+  UntangleChatBody,
+  UntangleChatResponse,
+  UntangleTranscribeBody,
+  UntangleTranscribeResponse,
   UpdateSessionBody,
 } from "./api.schemas";
 
@@ -449,6 +454,170 @@ export const useGetAiResponse = <
   TContext
 > => {
   return useMutation(getGetAiResponseMutationOptions(options));
+};
+
+/**
+ * @summary Send a message and get an AI response
+ */
+export const getUntangleChatUrl = () => {
+  return `/api/untangle/chat`;
+};
+
+export const untangleChat = async (
+  untangleChatBody: UntangleChatBody,
+  options?: RequestInit,
+): Promise<UntangleChatResponse> => {
+  return customFetch<UntangleChatResponse>(getUntangleChatUrl(), {
+    ...options,
+    method: "POST",
+    headers: { "Content-Type": "application/json", ...options?.headers },
+    body: JSON.stringify(untangleChatBody),
+  });
+};
+
+export const getUntangleChatMutationOptions = <
+  TError = ErrorType<unknown>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof untangleChat>>,
+    TError,
+    { data: BodyType<UntangleChatBody> },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof untangleChat>>,
+  TError,
+  { data: BodyType<UntangleChatBody> },
+  TContext
+> => {
+  const mutationKey = ["untangleChat"];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      "mutationKey" in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
+
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof untangleChat>>,
+    { data: BodyType<UntangleChatBody> }
+  > = (props) => {
+    const { data } = props ?? {};
+    return untangleChat(data, requestOptions);
+  };
+
+  return { mutationFn, ...mutationOptions };
+};
+
+export type UntangleChatMutationResult = NonNullable<
+  Awaited<ReturnType<typeof untangleChat>>
+>;
+export type UntangleChatMutationBody = BodyType<UntangleChatBody>;
+export type UntangleChatMutationError = ErrorType<unknown>;
+
+export const useUntangleChat = <
+  TError = ErrorType<unknown>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof untangleChat>>,
+    TError,
+    { data: BodyType<UntangleChatBody> },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationResult<
+  Awaited<ReturnType<typeof untangleChat>>,
+  TError,
+  { data: BodyType<UntangleChatBody> },
+  TContext
+> => {
+  return useMutation(getUntangleChatMutationOptions(options));
+};
+
+/**
+ * @summary Transcribe base64 audio to text
+ */
+export const getUntangleTranscribeUrl = () => {
+  return `/api/untangle/transcribe`;
+};
+
+export const untangleTranscribe = async (
+  untangleTranscribeBody: UntangleTranscribeBody,
+  options?: RequestInit,
+): Promise<UntangleTranscribeResponse> => {
+  return customFetch<UntangleTranscribeResponse>(getUntangleTranscribeUrl(), {
+    ...options,
+    method: "POST",
+    headers: { "Content-Type": "application/json", ...options?.headers },
+    body: JSON.stringify(untangleTranscribeBody),
+  });
+};
+
+export const getUntangleTranscribeMutationOptions = <
+  TError = ErrorType<unknown>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof untangleTranscribe>>,
+    TError,
+    { data: BodyType<UntangleTranscribeBody> },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof untangleTranscribe>>,
+  TError,
+  { data: BodyType<UntangleTranscribeBody> },
+  TContext
+> => {
+  const mutationKey = ["untangleTranscribe"];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      "mutationKey" in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
+
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof untangleTranscribe>>,
+    { data: BodyType<UntangleTranscribeBody> }
+  > = (props) => {
+    const { data } = props ?? {};
+    return untangleTranscribe(data, requestOptions);
+  };
+
+  return { mutationFn, ...mutationOptions };
+};
+
+export type UntangleTranscribeMutationResult = NonNullable<
+  Awaited<ReturnType<typeof untangleTranscribe>>
+>;
+export type UntangleTranscribeMutationBody = BodyType<UntangleTranscribeBody>;
+export type UntangleTranscribeMutationError = ErrorType<unknown>;
+
+export const useUntangleTranscribe = <
+  TError = ErrorType<unknown>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof untangleTranscribe>>,
+    TError,
+    { data: BodyType<UntangleTranscribeBody> },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationResult<
+  Awaited<ReturnType<typeof untangleTranscribe>>,
+  TError,
+  { data: BodyType<UntangleTranscribeBody> },
+  TContext
+> => {
+  return useMutation(getUntangleTranscribeMutationOptions(options));
 };
 
 /**

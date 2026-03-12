@@ -2,7 +2,9 @@
 
 ## Product
 
-Untangle is an AI-assisted post-meal rumination interruption tool. It helps users break out of looping thoughts after eating by capturing the thought, providing a calm AI response, running a 30-minute timer, and offering dopamine-redirect activities.
+Untangle is an AI-powered thinking partner that helps users notice and exit mental loops around food — before and after meals. It is explicitly not a therapy chatbot. The tone is sharp, dry, and direct. No therapy clichés, no self-compassion prompts.
+
+**Core flow**: User selects a context (Before eating / After eating / Mind is looping / Something else) or types freely. A multi-turn AI conversation begins. The AI asks one pointed question per turn and surfaces occasional insights. Users can tap suggestion chips or type replies, with voice input support.
 
 ## Architecture
 
@@ -10,13 +12,32 @@ Untangle is an AI-assisted post-meal rumination interruption tool. It helps user
 - **Backend**: Express 5 API server at `/api` (`artifacts/api-server`)
 - **Database**: PostgreSQL via Drizzle ORM (`lib/db`)
 - **AI**: OpenAI `gpt-4o-mini` via Replit AI Integrations (`lib/integrations-openai-ai-server`)
+- **Audio**: `speechToText` from `@workspace/integrations-openai-ai-server/audio`
 
 ## Key Endpoints
 
-- `POST /api/untangle/sessions` — Create a rumination session
+- `POST /api/untangle/sessions` — Create a session
 - `GET /api/untangle/sessions` — List all past sessions
-- `PATCH /api/untangle/sessions/:id` — Update session (timer complete)
-- `POST /api/untangle/ai-response` — Get AI response for a thought
+- `PATCH /api/untangle/sessions/:id` — Update session
+- `POST /api/untangle/ai-response` — Legacy single-shot AI response
+- `POST /api/untangle/chat` — Multi-turn AI conversation (returns JSON: response, isInsight, suggestions[])
+- `POST /api/untangle/transcribe` — Voice transcription (base64 audio → text)
+
+## Key Components
+
+- `artifacts/untangle/src/pages/SessionFlow.tsx` — Full app (home + conversation UI)
+- `artifacts/untangle/src/pages/History.tsx` — Session log
+- `artifacts/untangle/src/components/VoiceButton.tsx` — Hold-to-record mic button → transcribes via backend
+- `artifacts/untangle/src/components/Timer.tsx`, `ReactionGame.tsx`, `AntiLoopMessages.tsx` — Available but not in main flow
+
+## AI System Design
+
+Four mode-specific system prompts (before/after/loop/other) instruct the model to:
+- Ask 1 question per turn, max 2 sentences
+- Never use therapy language, mindfulness, breathing, or calorie talk
+- Return JSON: `{ response, isInsight, suggestions[] }`
+- Surface insights occasionally with `isInsight: true` (renders as ✦ UNTANGLE MOMENT card)
+- Keep suggestion chips as short, honest user-voice replies (not reflective prompts)
 
 ---
 

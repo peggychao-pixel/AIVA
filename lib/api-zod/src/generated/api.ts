@@ -142,3 +142,29 @@ export const SendOpenaiMessageParams = zod.object({
 export const SendOpenaiMessageBody = zod.object({
   content: zod.string(),
 });
+
+export const UntangleChatHistoryItem = zod.object({
+  role: zod.string(),
+  content: zod.string(),
+});
+
+export const UntangleChatBody = zod.object({
+  message: zod.string().min(1),
+  mode: zod.enum(["before", "after", "loop", "other"]),
+  history: zod.array(UntangleChatHistoryItem).optional(),
+});
+
+export const UntangleChatResponse = zod.object({
+  response: zod.string(),
+  isInsight: zod.boolean(),
+  suggestions: zod.array(zod.string()),
+});
+
+export const UntangleTranscribeBody = zod.object({
+  audio: zod.string().min(1),
+  mimeType: zod.string().min(1),
+});
+
+export const UntangleTranscribeResponse = zod.object({
+  text: zod.string(),
+});

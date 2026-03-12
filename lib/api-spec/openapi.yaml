@@ -92,6 +92,44 @@ paths:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
 
+  /untangle/chat:
+    post:
+      operationId: untangleChat
+      tags: [untangle]
+      summary: Send a message in a rumination conversation and get an AI response
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UntangleChatBody"
+      responses:
+        "200":
+          description: AI response with suggestions
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UntangleChatResponse"
+
+  /untangle/transcribe:
+    post:
+      operationId: untangleTranscribe
+      tags: [untangle]
+      summary: Transcribe base64 audio to text
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UntangleTranscribeBody"
+      responses:
+        "200":
+          description: Transcribed text
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UntangleTranscribeResponse"
+
   /untangle/ai-response:
     post:
       operationId: getAiResponse
@@ -276,6 +314,67 @@ components:
           type: boolean
         aiResponse:
           type: string
+
+    ChatHistoryItem:
+      type: object
+      properties:
+        role:
+          type: string
+        content:
+          type: string
+      required:
+        - role
+        - content
+
+    UntangleChatBody:
+      type: object
+      properties:
+        message:
+          type: string
+        mode:
+          type: string
+        history:
+          type: array
+          items:
+            $ref: "#/components/schemas/ChatHistoryItem"
+      required:
+        - message
+        - mode
+
+    UntangleChatResponse:
+      type: object
+      properties:
+        response:
+          type: string
+        isInsight:
+          type: boolean
+        suggestions:
+          type: array
+          items:
+            type: string
+      required:
+        - response
+        - isInsight
+        - suggestions
+
+    UntangleTranscribeBody:
+      type: object
+      properties:
+        audio:
+          type: string
+        mimeType:
+          type: string
+      required:
+        - audio
+        - mimeType
+
+    UntangleTranscribeResponse:
+      type: object
+      properties:
+        text:
+          type: string
+      required:
+        - text
 
     AiResponseBody:
       type: object

@@ -71,3 +71,29 @@ export interface OpenaiConversationWithMessages {
 export interface OpenaiError {
   error: string;
 }
+
+export interface ChatHistoryItem {
+  role: string;
+  content: string;
+}
+
+export interface UntangleChatBody {
+  message: string;
+  mode: string;
+  history?: ChatHistoryItem[];
+}
+
+export interface UntangleChatResponse {
+  response: string;
+  isInsight: boolean;
+  suggestions: string[];
+}
+
+export interface UntangleTranscribeBody {
+  audio: string;
+  mimeType: string;
+}
+
+export interface UntangleTranscribeResponse {
+  text: string;
+}
