@@ -14,6 +14,8 @@ interface ChatMessage {
   suggestions?: string[];
   loopType?: string | null;
   loopIntensity?: number | null;
+  coreNeed?: string | null;
+  sessionTrigger?: string | null;
 }
 
 const MODE_OPTIONS: { id: Mode; label: string; description: string }[] = [
@@ -83,8 +85,16 @@ function InsightCard({
   );
 }
 
-function PatternMap({ loopTypes }: { loopTypes: string[] }) {
-  if (loopTypes.length === 0) return null;
+function PatternMap({
+  loopTypes,
+  coreNeeds,
+  sessionTriggers,
+}: {
+  loopTypes: string[];
+  coreNeeds: string[];
+  sessionTriggers: string[];
+}) {
+  if (loopTypes.length === 0 && coreNeeds.length === 0) return null;
 
   const counts = loopTypes.reduce<Record<string, number>>((acc, lt) => {
     acc[lt] = (acc[lt] ?? 0) + 1;
@@ -93,37 +103,65 @@ function PatternMap({ loopTypes }: { loopTypes: string[] }) {
 
   const unique = Object.entries(counts).sort((a, b) => b[1] - a[1]);
 
-  const label = (count: number) =>
+  const freqLabel = (count: number) =>
     count >= 3 ? "FREQUENT" : count >= 2 ? "MODERATE" : "OCCASIONAL";
 
-  const labelColor = (count: number) =>
-    count >= 3
-      ? "text-red-400"
-      : count >= 2
-        ? "text-yellow-400"
-        : "text-primary/70";
+  const freqColor = (count: number) =>
+    count >= 3 ? "text-red-400" : count >= 2 ? "text-yellow-400" : "text-primary/70";
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 6 }}
       animate={{ opacity: 1, y: 0 }}
-      className="border border-border/60 rounded p-3 space-y-2"
+      className="border border-border/60 rounded p-3 space-y-3"
     >
-      <p className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest">
-        MENTAL PATTERN SUMMARY
-      </p>
-      <div className="space-y-1.5">
-        {unique.map(([lt, count]) => (
-          <div key={lt} className="flex items-center justify-between gap-4">
-            <span className="font-mono text-[10px] text-foreground/80 uppercase tracking-widest">
-              {lt}
-            </span>
-            <span className={`font-mono text-[10px] uppercase tracking-widest ${labelColor(count)}`}>
-              {label(count)}
-            </span>
+      {unique.length > 0 && (
+        <div className="space-y-1.5">
+          <p className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest">
+            MENTAL PATTERN SUMMARY
+          </p>
+          {unique.map(([lt, count]) => (
+            <div key={lt} className="flex items-center justify-between gap-4">
+              <span className="font-mono text-[10px] text-foreground/80 uppercase tracking-widest">
+                {lt}
+              </span>
+              <span className={`font-mono text-[10px] uppercase tracking-widest ${freqColor(count)}`}>
+                {freqLabel(count)}
+              </span>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {coreNeeds.length > 0 && (
+        <div className="space-y-1.5 border-t border-border/40 pt-2">
+          <p className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest">
+            CORE NEEDS SURFACED
+          </p>
+          <div className="flex flex-wrap gap-1.5">
+            {coreNeeds.map((n) => (
+              <span key={n} className="font-mono text-[10px] text-primary/80 border border-primary/20 bg-primary/5 px-2 py-0.5 rounded uppercase tracking-widest">
+                {n}
+              </span>
+            ))}
           </div>
-        ))}
-      </div>
+        </div>
+      )}
+
+      {sessionTriggers.length > 0 && (
+        <div className="space-y-1.5 border-t border-border/40 pt-2">
+          <p className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest">
+            YOU TEND TO LOOP WHEN
+          </p>
+          <div className="space-y-1">
+            {sessionTriggers.map((t) => (
+              <p key={t} className="font-mono text-[10px] text-foreground/60">
+                • {t}
+              </p>
+            ))}
+          </div>
+        </div>
+      )}
     </motion.div>
   );
 }
@@ -136,6 +174,8 @@ export function SessionFlow() {
   const [input, setInput] = useState("");
   const [isThinking, setIsThinking] = useState(false);
   const [detectedPatterns, setDetectedPatterns] = useState<string[]>([]);
+  const [coreNeeds, setCoreNeeds] = useState<string[]>([]);
+  const [sessionTriggers, setSessionTriggers] = useState<string[]>([]);
   const [savedMomentIds, setSavedMomentIds] = useState<Set<string>>(new Set());
 
   const bottomRef = useRef<HTMLDivElement>(null);
@@ -178,6 +218,8 @@ export function SessionFlow() {
       });
 
       addPattern(res.loopType);
+      if (res.coreNeed) setCoreNeeds((p) => (p.includes(res.coreNeed!) ? p : [...p, res.coreNeed!]));
+      if (res.sessionTrigger) setSessionTriggers((p) => (p.includes(res.sessionTrigger!) ? p : [...p, res.sessionTrigger!]));
 
       const aiMsg: ChatMessage = {
         id: `a-${Date.now()}`,
@@ -187,6 +229,8 @@ export function SessionFlow() {
         suggestions: res.suggestions,
         loopType: res.loopType,
         loopIntensity: res.loopIntensity,
+        coreNeed: res.coreNeed,
+        sessionTrigger: res.sessionTrigger,
       };
       const withAi = [...updatedMessages, aiMsg];
       setMessages(withAi);
@@ -212,6 +256,8 @@ export function SessionFlow() {
     setMode(selectedMode);
     modeRef.current = selectedMode;
     setDetectedPatterns([]);
+    setCoreNeeds([]);
+    setSessionTriggers([]);
     setSavedMomentIds(new Set());
     setStep("chat");
 
@@ -288,6 +334,8 @@ export function SessionFlow() {
     setInput("");
     setIsThinking(false);
     setDetectedPatterns([]);
+    setCoreNeeds([]);
+    setSessionTriggers([]);
     setSavedMomentIds(new Set());
   };
 
@@ -494,7 +542,7 @@ export function SessionFlow() {
                 {/* Pattern Map */}
                 {detectedPatterns.length > 0 && (
                   <div className="pt-2">
-                    <PatternMap loopTypes={detectedPatterns} />
+                    <PatternMap loopTypes={detectedPatterns} coreNeeds={coreNeeds} sessionTriggers={sessionTriggers} />
                   </div>
                 )}
 

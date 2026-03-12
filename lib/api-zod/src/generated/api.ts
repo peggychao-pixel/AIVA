@@ -160,6 +160,8 @@ export const UntangleChatResponse = zod.object({
   suggestions: zod.array(zod.string()),
   loopType: zod.string().optional().nullable(),
   loopIntensity: zod.number().min(1).max(5).optional().nullable(),
+  coreNeed: zod.string().optional().nullable(),
+  sessionTrigger: zod.string().optional().nullable(),
 });
 
 export const UntangleTranscribeBody = zod.object({

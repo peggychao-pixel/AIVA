@@ -89,6 +89,8 @@ export interface UntangleChatResponse {
   suggestions: string[];
   loopType?: string | null;
   loopIntensity?: number | null;
+  coreNeed?: string | null;
+  sessionTrigger?: string | null;
 }
 
 export interface MomentItem {
