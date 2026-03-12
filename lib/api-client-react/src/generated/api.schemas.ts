@@ -8,3 +8,66 @@
 export interface HealthStatus {
   status: string;
 }
+
+export interface Session {
+  id: number;
+  ruminationThought: string;
+  aiResponse?: string;
+  timerCompleted: boolean;
+  createdAt: string;
+}
+
+export interface CreateSessionBody {
+  ruminationThought: string;
+  aiResponse?: string;
+}
+
+export interface UpdateSessionBody {
+  timerCompleted?: boolean;
+  aiResponse?: string;
+}
+
+export interface AiResponseBody {
+  thought: string;
+}
+
+export interface AiResponseResult {
+  message: string;
+}
+
+export interface ErrorResponse {
+  error: string;
+}
+
+export interface OpenaiConversation {
+  id: number;
+  title: string;
+  createdAt: string;
+}
+
+export interface OpenaiMessage {
+  id: number;
+  conversationId: number;
+  role: string;
+  content: string;
+  createdAt: string;
+}
+
+export interface CreateOpenaiConversationBody {
+  title: string;
+}
+
+export interface SendOpenaiMessageBody {
+  content: string;
+}
+
+export interface OpenaiConversationWithMessages {
+  id: number;
+  title: string;
+  createdAt: string;
+  messages: OpenaiMessage[];
+}
+
+export interface OpenaiError {
+  error: string;
+}

@@ -1,0 +1,14 @@
+packages:
+  "framer-motion": "For smooth, calming page transitions and breathing animations"
+  "date-fns": "For formatting history dates nicely"
+  "canvas-confetti": "To celebrate when the 30 minute timer is successfully completed"
+  "@types/canvas-confetti": "Types for canvas-confetti"
+
+images:
+  - path: "artifacts/untangle/public/images/wellness-bg.png"
+    description: "Abstract, very soft and blurred gradient background in warm cream, soft terracotta, and gentle sage green colors. Minimalist, calming wellness aesthetic, no harsh lines, light and airy. High key, low contrast."
+    aspect_ratio: "16:9"
+
+notes:
+  - Using generated React Query hooks from @workspace/api-client-react
+  - Utilizing Wouter for simple, effective client-side routing

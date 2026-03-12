@@ -14,3 +14,131 @@ import * as zod from "zod";
 export const HealthCheckResponse = zod.object({
   status: zod.string(),
 });
+
+/**
+ * @summary Create a new rumination session
+ */
+export const CreateSessionBody = zod.object({
+  ruminationThought: zod.string(),
+  aiResponse: zod.string().optional(),
+});
+
+/**
+ * @summary List all sessions
+ */
+export const ListSessionsResponseItem = zod.object({
+  id: zod.number(),
+  ruminationThought: zod.string(),
+  aiResponse: zod.string().optional(),
+  timerCompleted: zod.boolean(),
+  createdAt: zod.date(),
+});
+export const ListSessionsResponse = zod.array(ListSessionsResponseItem);
+
+/**
+ * @summary Update a session (e.g. mark timer completed)
+ */
+export const UpdateSessionParams = zod.object({
+  id: zod.coerce.number(),
+});
+
+export const UpdateSessionBody = zod.object({
+  timerCompleted: zod.boolean().optional(),
+  aiResponse: zod.string().optional(),
+});
+
+export const UpdateSessionResponse = zod.object({
+  id: zod.number(),
+  ruminationThought: zod.string(),
+  aiResponse: zod.string().optional(),
+  timerCompleted: zod.boolean(),
+  createdAt: zod.date(),
+});
+
+/**
+ * @summary Get an AI response for a rumination thought
+ */
+export const GetAiResponseBody = zod.object({
+  thought: zod.string(),
+});
+
+export const GetAiResponseResponse = zod.object({
+  message: zod.string(),
+});
+
+/**
+ * @summary List all conversations
+ */
+export const ListOpenaiConversationsResponseItem = zod.object({
+  id: zod.number(),
+  title: zod.string(),
+  createdAt: zod.date(),
+});
+export const ListOpenaiConversationsResponse = zod.array(
+  ListOpenaiConversationsResponseItem,
+);
+
+/**
+ * @summary Create a new conversation
+ */
+export const CreateOpenaiConversationBody = zod.object({
+  title: zod.string(),
+});
+
+/**
+ * @summary Get conversation with messages
+ */
+export const GetOpenaiConversationParams = zod.object({
+  id: zod.coerce.number(),
+});
+
+export const GetOpenaiConversationResponse = zod.object({
+  id: zod.number(),
+  title: zod.string(),
+  createdAt: zod.date(),
+  messages: zod.array(
+    zod.object({
+      id: zod.number(),
+      conversationId: zod.number(),
+      role: zod.string(),
+      content: zod.string(),
+      createdAt: zod.date(),
+    }),
+  ),
+});
+
+/**
+ * @summary Delete a conversation
+ */
+export const DeleteOpenaiConversationParams = zod.object({
+  id: zod.coerce.number(),
+});
+
+/**
+ * @summary List messages in a conversation
+ */
+export const ListOpenaiMessagesParams = zod.object({
+  id: zod.coerce.number(),
+});
+
+export const ListOpenaiMessagesResponseItem = zod.object({
+  id: zod.number(),
+  conversationId: zod.number(),
+  role: zod.string(),
+  content: zod.string(),
+  createdAt: zod.date(),
+});
+export const ListOpenaiMessagesResponse = zod.array(
+  ListOpenaiMessagesResponseItem,
+);
+
+/**
+ * @summary Send a text message and receive a streaming text response
+ */
+export const SendOpenaiMessageParams = zod.object({
+  id: zod.coerce.number(),
+});
+
+export const SendOpenaiMessageBody = zod.object({
+  content: zod.string(),
+});

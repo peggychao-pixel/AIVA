@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: 'Manrope', sans-serif;
+  --font-serif: 'Instrument Serif', serif;
+
+  /* Calming Wellness Palette */
+  --color-background: hsl(40 33% 98%); /* Warm sand / cream */
+  --color-foreground: hsl(30 15% 15%); /* Soft dark brown */
+  
+  --color-primary: hsl(24 45% 60%); /* Soft Terracotta */
+  --color-primary-foreground: hsl(0 0% 100%);
+  
+  --color-secondary: hsl(35 25% 90%); /* Warm Beige */
+  --color-secondary-foreground: hsl(30 15% 25%);
+  
+  --color-muted: hsl(35 20% 94%); /* Very light beige for backgrounds */
+  --color-muted-foreground: hsl(30 10% 45%);
+  
+  --color-accent: hsl(95 15% 75%); /* Gentle Sage */
+  --color-accent-foreground: hsl(95 30% 20%);
+  
+  --color-destructive: hsl(0 50% 65%);
+  --color-destructive-foreground: hsl(0 0% 100%);
+  
+  --color-border: hsl(35 20% 88%);
+  --color-ring: hsl(24 45% 60%);
+  
+  --color-card: hsl(0 0% 100% / 0.85); /* Slightly transparent white for glassmorphism */
+  --color-card-foreground: hsl(30 15% 15%);
+  
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+  
+  --shadow-soft: 0 10px 40px -10px rgba(0,0,0,0.04);
+  --shadow-glow: 0 0 40px -10px hsl(24 45% 60% / 0.3);
+}
+
+:root {
+  --background: 40 33% 98%;
+  --foreground: 30 15% 15%;
+  --border: 35 20% 88%;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground antialiased font-sans min-h-screen selection:bg-primary/20;
+    /* Soft fallback gradient if image takes time to load */
+    background: linear-gradient(135deg, hsl(40 33% 98%) 0%, hsl(35 25% 90%) 100%);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tight;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-xl border border-white/50 shadow-soft;
+  }
+  
+  .glass-panel {
+    @apply bg-white/60 backdrop-blur-2xl border border-white/40;
+  }
+}
+
+/* Custom animations */
+@keyframes breathe {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.05); opacity: 1; }
+}
+
+.animate-breathe {
+  animation: breathe 8s ease-in-out infinite;
+}
+
+@keyframes progress {
+  from { width: 100%; }
+  to { width: 0%; }
+}

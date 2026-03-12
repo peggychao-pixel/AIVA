@@ -1,3 +1,25 @@
+# Untangle
+
+## Product
+
+Untangle is an AI-assisted post-meal rumination interruption tool. It helps users break out of looping thoughts after eating by capturing the thought, providing a calm AI response, running a 30-minute timer, and offering dopamine-redirect activities.
+
+## Architecture
+
+- **Frontend**: React + Vite at `/` (`artifacts/untangle`)
+- **Backend**: Express 5 API server at `/api` (`artifacts/api-server`)
+- **Database**: PostgreSQL via Drizzle ORM (`lib/db`)
+- **AI**: OpenAI `gpt-4o-mini` via Replit AI Integrations (`lib/integrations-openai-ai-server`)
+
+## Key Endpoints
+
+- `POST /api/untangle/sessions` — Create a rumination session
+- `GET /api/untangle/sessions` — List all past sessions
+- `PATCH /api/untangle/sessions/:id` — Update session (timer complete)
+- `POST /api/untangle/ai-response` — Get AI response for a thought
+
+---
+
 # Workspace
 
 ## Overview

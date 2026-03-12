@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Untangle"
+version = "1.0.0"
+id = "artifacts/untangle"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+localPort = 25942
+name = "web"
+paths = ["/"]
+
+[services.development]
+run = "pnpm --filter @workspace/untangle run dev"
+
+[services.env]
+PORT = "25942"
+BASE_PATH = "/"
+
+[services.production]
+build = ["pnpm", "--filter", "@workspace/untangle", "run", "build"]
+publicDir = "artifacts/untangle/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"

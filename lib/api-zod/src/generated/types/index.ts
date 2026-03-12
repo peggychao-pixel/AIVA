@@ -6,4 +6,16 @@
  * OpenAPI spec version: 0.1.0
  */
 
+export * from "./aiResponseBody";
+export * from "./aiResponseResult";
+export * from "./createOpenaiConversationBody";
+export * from "./createSessionBody";
+export * from "./errorResponse";
 export * from "./healthStatus";
+export * from "./openaiConversation";
+export * from "./openaiConversationWithMessages";
+export * from "./openaiError";
+export * from "./openaiMessage";
+export * from "./sendOpenaiMessageBody";
+export * from "./session";
+export * from "./updateSessionBody";

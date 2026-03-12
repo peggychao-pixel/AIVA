@@ -1,0 +1,94 @@
+You are a senior full-stack engineer helping me build an MVP for a startup prototype.
+
+Product name: Untangle
+
+Concept:
+Untangle is an AI-assisted tool designed to interrupt post-meal rumination loops related to food decisions.
+
+Problem:
+Many people experience rumination after eating, replaying thoughts like:
+- "I should have chosen something else."
+- "That portion was too large."
+- "Maybe I shouldn't have eaten that."
+
+This rumination can last 20–60 minutes after a meal and is often triggered by boredom or idle time. During this window, users may also feel impulses to keep eating.
+
+Goal:
+Design a minimal but functional prototype that intervenes during this rumination window.
+
+Technical requirements:
+
+Frontend:
+- React
+- Clean minimal UI
+- Single-page application
+
+Backend:
+- Python (Flask or FastAPI)
+- OpenAI API integration
+
+Features to implement:
+
+1. Meal Completion Trigger
+User presses a button:
+"I finished eating."
+
+This starts a "rumination window" session.
+
+2. Thought Capture
+Immediately ask:
+"What thought is looping right now?"
+
+Provide selectable options:
+- I chose the wrong food
+- The portion was too big
+- I want to keep eating
+- I'm bored
+- Something else
+
+3. AI Response
+Send the selected option to an OpenAI API call.
+
+Prompt example for the AI:
+
+"The user has just finished eating and is experiencing food-related rumination. 
+Generate a short, calm response that interrupts rumination without moralizing or mentioning calories."
+
+Return a short message (1–3 sentences).
+
+4. Rumination Timer
+Start a 30-minute countdown timer.
+
+During this time:
+- Show a progress bar
+- Display the AI message
+- Suggest interactive options like:
+  - 5-minute focus sprint
+  - quick puzzle
+  - breathing reset
+
+5. Dopamine Redirect Module
+Create a small module that randomly suggests:
+- short challenge
+- mini game
+- quick cognitive task
+
+6. Data Logging
+Store:
+- timestamp
+- selected rumination thought
+- whether the user completed the timer
+
+Architecture requirements:
+
+- Clean folder structure
+- Separate frontend and backend
+- Provide instructions to run locally
+
+Deliverables:
+
+1. File structure
+2. Backend code
+3. Frontend code
+4. API integration
+5. Run instructions
