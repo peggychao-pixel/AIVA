@@ -83,9 +83,22 @@ Never mention: breathing, mindfulness, calories, weight, journaling, gratitude, 
 CONVERSATION FLOW — determine turn from history:
 
 TURN 1 — FIRST RESPONSE (no prior AI messages in history):
-Detect loop. State surface belief. Show intensity. Ask the hidden fear question. No suggestions.
+Detect loop. State surface belief. Show intensity. Ask the hidden fear question.
+Then provide exactly 4 emotional driver options as the suggestions array.
+These are selectable answers to the hidden fear question — short "fear of..." phrases the user can tap instead of typing.
+They must feel specific and honest, not generic. Tailor them to what's actually at stake in this situation.
 
-Response format:
+Emotional driver options per loop type (use as starting point, adapt to the user's specific thought):
+- regret anticipation → "fear of carrying regret", "fear of missing a better option", "fear of looking back with shame", "fear of having chosen wrong"
+- uncertainty loop → "fear of an outcome I can't predict", "fear of making a mistake I can't fix", "fear of deciding without enough information", "fear of losing control of the outcome"
+- control loop → "fear of things going wrong without me", "fear of being helpless", "fear of a bad outcome I didn't prevent", "fear of losing control completely"
+- over-analysis loop → "fear of deciding too soon", "fear of missing something important", "fear of being wrong", "fear of regretting the choice later"
+- self-judgment loop → "fear this means something bad about me", "fear of having caused real damage", "fear of not being good enough", "fear of judging myself later"
+- perfectionism loop → "fear of wasting money", "fear of making the wrong choice", "fear of judging myself later", "fear of setting a bad pattern"
+
+Always adapt the options to the user's specific situation. Use "fear of..." phrasing. Keep each option under 7 words.
+
+The "response" field must contain ONLY this text (nothing else, no JSON notation):
 Loop detected: [Loop Type]
 Loop intensity: [●●●○○]
 
@@ -93,7 +106,9 @@ Surface belief: "[the compressed if-then rule]"
 
 "[Hidden fear question]"
 
-→ suggestions: [], isInsight: false, coreNeed: null, sessionTrigger: null
+The "suggestions" JSON field must be a JSON array of 4 plain strings (not objects). Example: ["fear of making the wrong choice","fear of judging myself later","fear of wasting money","fear of setting a bad pattern"]
+The "isInsight" JSON field must be false.
+The "coreNeed" and "sessionTrigger" JSON fields must be null.
 
 TURN 2 — DEPTH RESPONSE (1 prior AI message, user answered the hidden fear):
 This is the most important turn. Reveal what is REALLY driving the thought.
@@ -109,12 +124,12 @@ The deeper need may be: [core need]
 
 Which of these feels lighter right now?
 
-→ suggestions: ["...","...","..."], isInsight: true, coreNeed: "[word or phrase]", sessionTrigger: "[3–6 word trigger]"
+JSON fields for TURN 2: "suggestions" must be a JSON array of 3–4 plain strings (release options, not objects). "isInsight" must be true. "coreNeed" must be a plain string (single word or short phrase). "sessionTrigger" must be a plain string (3–6 words).
 
 TURN 3 — EXIT (2+ prior AI messages, user selected a release option):
-One line. No analysis. No questions. The loop ends here.
+One line only in the "response" field. No analysis. No questions. The loop ends here.
 Examples: "The loop can stop here." / "No new information is appearing. The loop ends here."
-→ suggestions: [], isInsight: false, coreNeed: null, sessionTrigger: null
+JSON fields for TURN 3: suggestions is empty array, isInsight is false, coreNeed is null, sessionTrigger is null.
 
 FORCE CLOSE: 4+ AI messages in history → jump to TURN 3.
 
@@ -314,12 +329,28 @@ router.post("/untangle/chat", async (req, res): Promise<void> => {
       loopType = LOOP_TYPE_STRINGS.find((lt) => lower.includes(lt)) ?? null;
     }
 
-    // Strip "PATTERN NAME: " prefixes from suggestions if AI included them
-    const rawSuggestions: string[] = Array.isArray(parsed_response.suggestions)
+    // Normalise suggestions — AI sometimes returns objects instead of strings
+    const rawSuggestions: unknown[] = Array.isArray(parsed_response.suggestions)
       ? parsed_response.suggestions
       : ["no new information is appearing", "good enough is sufficient", "this can be revisited later"];
+
+    const coerceToString = (s: unknown): string => {
+      if (typeof s === "string") return s;
+      if (s && typeof s === "object") {
+        // common keys the AI uses: text, label, value, option, description
+        for (const key of ["text", "label", "value", "option", "description", "fear", "driver"]) {
+          const v = (s as Record<string, unknown>)[key];
+          if (typeof v === "string") return v;
+        }
+        // last resort: first string value found
+        const firstStr = Object.values(s as Record<string, unknown>).find((v) => typeof v === "string");
+        if (typeof firstStr === "string") return firstStr;
+      }
+      return String(s);
+    };
+
     const suggestions = rawSuggestions.map((s) =>
-      typeof s === "string" ? s.replace(/^[A-Z][A-Z\s]+:\s*/, "") : s,
+      coerceToString(s).replace(/^[A-Z][A-Z\s]+:\s*/, ""),
     );
 
     const coreNeed = typeof parsed_response.coreNeed === "string" ? parsed_response.coreNeed : null;
