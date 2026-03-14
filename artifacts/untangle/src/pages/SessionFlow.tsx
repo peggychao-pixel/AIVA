@@ -56,6 +56,8 @@ const LOOP_SHORT_LABELS: Record<string, string> = {
   "over-analysis loop": "analysis",
   "self-judgment loop": "self-judgment",
   "perfectionism loop": "perfectionism",
+  "scarcity loop": "scarcity",
+  "reassurance loop": "reassurance",
 };
 
 const WHY_INSIGHTS: Record<string, string> = {
@@ -65,6 +67,8 @@ const WHY_INSIGHTS: Record<string, string> = {
   "over-analysis loop":  "More information is being searched for than exists.",
   "self-judgment loop":  "The mind is treating a moment as evidence about character.",
   "perfectionism loop":  "The standard being applied may be impossible to meet.",
+  "scarcity loop":       "A real constraint is present — and the mind is looping around it.",
+  "reassurance loop":    "The decision is waiting for approval that may not come.",
 };
 
 function intensityDots(n: number | null | undefined): string {
