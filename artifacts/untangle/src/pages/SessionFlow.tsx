@@ -58,6 +58,7 @@ const LOOP_SHORT_LABELS: Record<string, string> = {
   "perfectionism loop": "perfectionism",
   "scarcity loop": "scarcity",
   "reassurance loop": "reassurance",
+  "self-worth loop": "self-worth",
 };
 
 const WHY_INSIGHTS: Record<string, string> = {
@@ -69,6 +70,7 @@ const WHY_INSIGHTS: Record<string, string> = {
   "perfectionism loop":  "The standard being applied may be impossible to meet.",
   "scarcity loop":       "A real constraint is present — and the mind is looping around it.",
   "reassurance loop":    "The decision is waiting for approval that may not come.",
+  "self-worth loop":     "The decision has quietly become a test of personal value.",
 };
 
 function intensityDots(n: number | null | undefined): string {
