@@ -61,6 +61,12 @@ const LOOP_SHORT_LABELS: Record<string, string> = {
   "self-worth loop": "self-worth",
   "justification loop": "justification",
   "decision loop": "decision",
+  "comparison loop": "comparison",
+  "optimization loop": "optimization",
+  "future-fear loop": "future-fear",
+  "safety loop": "safety",
+  "guilt loop": "guilt",
+  "over-responsibility loop": "responsibility",
 };
 
 const WHY_INSIGHTS: Record<string, string> = {
@@ -75,6 +81,12 @@ const WHY_INSIGHTS: Record<string, string> = {
   "self-worth loop":     "The decision has quietly become a test of personal value.",
   "justification loop":  "The choice must prove it was worth it before the mind can rest.",
   "decision loop":       "The act of deciding itself has become the source of the loop.",
+  "comparison loop":     "The choice is being measured against others or an imagined better version.",
+  "optimization loop":   "The mind believes a better option is still out there to be found.",
+  "future-fear loop":    "The consequences of this decision feel larger than the present moment.",
+  "safety loop":         "The need to avoid risk is making any choice feel dangerous.",
+  "guilt loop":          "Wanting or choosing this has started to feel like something that needs justifying.",
+  "over-responsibility loop": "The weight of this decision feels like it rests entirely on one person.",
 };
 
 function intensityDots(n: number | null | undefined): string {
