@@ -59,6 +59,8 @@ const LOOP_SHORT_LABELS: Record<string, string> = {
   "scarcity loop": "scarcity",
   "reassurance loop": "reassurance",
   "self-worth loop": "self-worth",
+  "justification loop": "justification",
+  "decision loop": "decision",
 };
 
 const WHY_INSIGHTS: Record<string, string> = {
@@ -71,6 +73,8 @@ const WHY_INSIGHTS: Record<string, string> = {
   "scarcity loop":       "A real constraint is present — and the mind is looping around it.",
   "reassurance loop":    "The decision is waiting for approval that may not come.",
   "self-worth loop":     "The decision has quietly become a test of personal value.",
+  "justification loop":  "The choice must prove it was worth it before the mind can rest.",
+  "decision loop":       "The act of deciding itself has become the source of the loop.",
 };
 
 function intensityDots(n: number | null | undefined): string {
