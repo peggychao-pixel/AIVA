@@ -1,0 +1,152 @@
+REPLIT UPDATE INSTRUCTIONS — UNTANGLE UX FIX
+
+We need to modify the Untangle interaction flow to reduce cognitive overload and stop rumination more effectively.
+
+Currently the UI shifts into a system analysis mode, which breaks emotional immersion.
+
+Example of current output:
+
+Loop detected
+Surface belief: unclear
+What feels at stake here?
+
+This feels like a diagnostic console instead of a human insight.
+
+We need to change the design so the system speaks to the user directly, not about the system state.
+
+⸻
+
+CORE UX CHANGE
+
+The response structure should become:
+
+HIT → PATTERN → STOP
+
+Not:
+
+analysis → meta explanation → questions
+
+The system should interrupt rumination, not encourage more thinking.
+
+⸻
+
+REMOVE SYSTEM LANGUAGE
+
+Remove or hide all internal diagnostic language such as:
+
+Loop detected
+Surface belief
+analysis state
+system reasoning
+
+These should never appear in the user interface.
+
+They can exist internally but must not be shown.
+
+⸻
+
+NEW RESPONSE FORMAT
+
+Each response should have three short blocks.
+
+HIT
+
+A precise insight that makes the user feel understood.
+
+Example:
+
+You’re not replaying the meal.
+You’re replaying whether you chose right.
+
+⸻
+
+PATTERN
+
+Reveal the mental loop.
+
+Example:
+
+Somehow the meal turned into a test
+of whether you make good decisions.
+
+⸻
+
+STOP LINE
+
+A short line that lets the mind stop.
+
+Example:
+
+The decision already happened.
+Nothing left to solve.
+
+Maximum total length: 4–6 lines.
+
+⸻
+
+BUTTON REDESIGN
+
+Replace the current buttons:
+
+no new information is appearing
+good enough is sufficient
+this can be revisited later
+
+These feel abstract and cognitive.
+
+Replace them with simpler actions:
+
+Close this loop
+I’m still thinking about it
+Show me the pattern
+
+⸻
+
+INTERACTION GOAL
+
+The goal is not reflection.
+
+The goal is recognition and closure.
+
+Users should feel:
+	1.	Wow, that’s exactly what’s happening.
+	2.	Yes, that’s the pattern.
+	3.	Okay, I can stop now.
+
+⸻
+
+VISUAL SIMPLIFICATION
+
+Reduce UI noise.
+
+Remove unnecessary labels such as:
+
+loop detected
+surface belief
+mental pattern summary
+
+The interface should show only the insight.
+
+Think of the experience as a moment of clarity, not a diagnostic report.
+
+⸻
+
+DESIGN PRINCIPLE
+
+Untangle is not a psychology analyzer.
+
+Untangle is a rumination breaker.
+
+The product should feel like a perceptive friend who instantly understands the user’s mental loop and gives them a clear moment of closure.
+
+⸻
+
+FINAL GOAL
+
+When users read the response they should feel:
+
+Wow. That’s exactly it.
+
+And then:
+
+I don’t need to keep thinking about this.

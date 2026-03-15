@@ -96,10 +96,10 @@ function AnchorCard({ phrase }: { phrase: string }) {
       transition={{ duration: 0.4 }}
       className="w-full rounded-xl border border-border bg-card p-6 space-y-2"
     >
-      <p className="text-xs text-muted-foreground font-medium">Anchor phrase</p>
+      <p className="text-xs text-muted-foreground font-medium">Keep this</p>
       <p className="text-lg text-foreground font-medium leading-snug">"{phrase}"</p>
       <p className="text-xs text-muted-foreground/60">
-        If this thought returns, try recalling this.
+        When this thought returns, come back to this line.
       </p>
     </motion.div>
   );
@@ -151,15 +151,10 @@ function QuickUntangleCard({
         </form>
       ) : (
         <div className="space-y-4">
-          {result.loopType && (
-            <p className="text-xs text-muted-foreground">
-              {result.loopType} · {intensityDots(result.loopIntensity)}
-            </p>
-          )}
-          <p className="text-sm text-foreground leading-relaxed">{result.insight}</p>
+          <p className="text-sm text-foreground leading-relaxed whitespace-pre-wrap">{result.insight}</p>
           {result.anchorPhrase && (
             <div className="border-t border-border/50 pt-3 space-y-1">
-              <p className="text-xs text-muted-foreground">Anchor phrase</p>
+              <p className="text-xs text-muted-foreground">Keep this</p>
               <p className="text-sm text-primary">"{result.anchorPhrase}"</p>
             </div>
           )}
@@ -195,6 +190,8 @@ export function SessionFlow() {
   const [hiddenFear, setHiddenFear] = useState<string | null>(null);
   const [anchorPhrase, setAnchorPhrase] = useState<string | null>(null);
   const [coreNeeds, setCoreNeeds] = useState<string[]>([]);
+  const [showPattern, setShowPattern] = useState(false);
+  const [loopDismissed, setLoopDismissed] = useState(false);
 
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -287,6 +284,8 @@ export function SessionFlow() {
     setHiddenFear(null);
     setAnchorPhrase(null);
     setCoreNeeds([]);
+    setShowPattern(false);
+    setLoopDismissed(false);
     setStep("chat");
 
     const opener: ChatMessage = {
@@ -372,6 +371,8 @@ export function SessionFlow() {
     setHiddenFear(null);
     setAnchorPhrase(null);
     setCoreNeeds([]);
+    setShowPattern(false);
+    setLoopDismissed(false);
   };
 
   const handleFreeSubmit = (e: React.FormEvent) => {
@@ -613,6 +614,67 @@ export function SessionFlow() {
                 {/* Anchor phrase */}
                 {anchorPhrase && exitMessage && (
                   <AnchorCard phrase={anchorPhrase} />
+                )}
+
+                {/* Post-insight closure actions */}
+                {exitMessage && !loopDismissed && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.35, delay: 0.2 }}
+                    className="space-y-3"
+                  >
+                    <div className="flex flex-col gap-2">
+                      <button
+                        onClick={reset}
+                        className="w-full px-5 py-3.5 bg-primary text-primary-foreground text-sm rounded-xl hover:opacity-90 transition-opacity"
+                      >
+                        Close this loop
+                      </button>
+                      <button
+                        onClick={() => setLoopDismissed(true)}
+                        className="w-full px-5 py-3.5 border border-border/60 bg-card/60 text-sm text-muted-foreground hover:text-foreground hover:border-border rounded-xl transition-all"
+                      >
+                        I'm still thinking about it
+                      </button>
+                      {!showPattern && (
+                        <button
+                          onClick={() => setShowPattern(true)}
+                          className="w-full px-5 py-3.5 border border-border/40 bg-transparent text-sm text-muted-foreground/70 hover:text-muted-foreground hover:border-border/60 rounded-xl transition-all"
+                        >
+                          Show me the pattern
+                        </button>
+                      )}
+                    </div>
+
+                    {showPattern && exitMessage && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 6 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="rounded-xl border border-border/50 bg-card/60 p-5 space-y-3"
+                      >
+                        {exitMessage.loopType && (
+                          <div className="space-y-0.5">
+                            <p className="text-xs text-muted-foreground">What's looping</p>
+                            <p className="text-sm text-foreground capitalize">{exitMessage.loopType.replace(/_/g, " ")}</p>
+                          </div>
+                        )}
+                        {exitMessage.coreNeed && (
+                          <div className="space-y-0.5">
+                            <p className="text-xs text-muted-foreground">What you actually need</p>
+                            <p className="text-sm text-foreground">{exitMessage.coreNeed}</p>
+                          </div>
+                        )}
+                        {anchorPhrase && (
+                          <div className="space-y-0.5">
+                            <p className="text-xs text-muted-foreground">Your stopping line</p>
+                            <p className="text-sm text-foreground">"{anchorPhrase}"</p>
+                          </div>
+                        )}
+                      </motion.div>
+                    )}
+                  </motion.div>
                 )}
 
                 <div ref={bottomRef} />
