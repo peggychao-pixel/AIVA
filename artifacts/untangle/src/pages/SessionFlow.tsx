@@ -34,11 +34,11 @@ const MODE_OPTIONS: { id: Mode; label: string; description: string }[] = [
 ];
 
 const OPENING_QUESTIONS: Record<Mode, string> = {
-  before:   "What keeps reopening in your mind right now?",
-  after:    "What part keeps replaying?",
-  loop:     "What's the thought that keeps coming back?",
-  pressure: "What feels like it needs to be exactly right?",
-  other:    "What's tangled?",
+  before:   "What part feels wrong before you even start?",
+  after:    "What part feels like a mistake?",
+  loop:     "What thought keeps returning?",
+  pressure: "What part feels heavy?",
+  other:    "What thought keeps returning?",
 };
 
 const OPENING_SUGGESTIONS: Record<Mode, string[]> = {

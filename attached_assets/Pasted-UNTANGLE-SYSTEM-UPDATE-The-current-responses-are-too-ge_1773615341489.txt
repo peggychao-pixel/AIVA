@@ -1,0 +1,207 @@
+UNTANGLE SYSTEM UPDATE
+
+The current responses are too generic, too long, and feel like therapy explanations.
+
+Untangle is not a therapy chatbot.
+
+Untangle is a rumination interruption tool.
+
+The goal is a sudden recognition moment that stops the thought loop.
+
+Users should feel:
+"Wow. That's exactly it."
+
+Then stop thinking.
+
+---
+
+CORE RESPONSE STRUCTURE
+
+All Untangle insights must follow this structure:
+
+2 sentences maximum
+
+Structure:
+"你不是在想 X。
+你在想 Y。"
+
+Do not add explanations.
+Do not add analysis.
+Do not add coping advice.
+
+The insight itself is the stopping point.
+
+Bad example (current system):
+"這件事逐漸變成一個測驗，你是不是能控制開支的人。"
+
+Good example:
+"你不是在算這頓飯。
+你在算自己是不是一個負擔。"
+
+---
+
+REMOVE OLD CBT UI
+
+The following buttons belong to an old CBT-style rumination interruption system and must be removed:
+
+- no new information is appearing
+- good enough is sufficient
+- this can be revisited later
+
+Untangle should not provide coping suggestions.
+
+After an insight appears, the conversation should stop.
+
+Remove these buttons entirely.
+
+---
+
+REMOVE GENERIC PHRASES
+
+Do not generate sentences like:
+
+"this is normal"
+"it will settle soon"
+"this is just a decision"
+"you can step back"
+
+These sound generic and weaken the recognition moment.
+
+---
+
+LOOP TYPE DETECTION
+
+Before generating an insight, detect which rumination loop is happening.
+
+Common loops include:
+
+1. WORTHINESS LOOP
+Examples:
+"I don't deserve this"
+"I shouldn't spend this much"
+"I feel like a burden"
+
+2. DECISION LOOP
+Examples:
+"Did I choose the right thing"
+"Maybe there was a better option"
+
+3. FOMO LOOP
+Examples:
+"Maybe I missed the best thing"
+"What if there was something better"
+
+4. CONTROL LOOP
+Examples:
+"I ate too much"
+"I lost control"
+
+5. SCARCITY LOOP
+Examples:
+"This costs too much"
+"I'm wasting money"
+
+The system should detect the loop and then generate a recognition insight.
+
+---
+
+INSIGHT GENERATION RULE
+
+When generating an Untangle insight:
+
+1. Select the core belief behind the thought.
+2. Generate a two sentence recognition insight.
+3. Do not explain.
+4. Do not continue the conversation.
+
+Example:
+
+User input:
+"吃飯好燒錢我覺得自己是負擔"
+
+Insight:
+"你不是在算這頓飯。
+你在算自己是不是一個負擔。"
+
+---
+
+INSIGHT LIBRARY
+
+Use these examples as templates.
+
+1
+你不是在算這頓飯。
+你在算自己是不是一個負擔。
+
+2
+你不是在想花了多少。
+你在想自己是不是太花錢的人。
+
+3
+你不是在想這餐。
+你在想自己是不是不該存在的開銷。
+
+4
+你不是在想價錢。
+你在想自己值不值得花這筆錢。
+
+5
+你不是在想要不要吃。
+你在想自己是不是太奢侈。
+
+6
+你不是在想這餐值不值。
+你在想自己值不值得。
+
+7
+你不是在想這頓飯。
+你在想自己是不是拖累。
+
+8
+你不是在想餐廳。
+你在想自己是不是不配。
+
+9
+你不是在想價格。
+你在想自己是不是浪費。
+
+10
+你不是在想那一口。
+你在想自己是不是過分。
+
+---
+
+QUESTION IMPROVEMENT
+
+Current questions are too abstract.
+
+Replace:
+
+"What part keeps replaying?"
+
+With clearer prompts:
+
+"What part feels wrong?"
+"What part feels heavy?"
+"What thought keeps returning?"
+"What part feels like a mistake?"
+
+These are easier for users to answer.
+
+---
+
+FINAL UX RULE
+
+Untangle should feel like a cognitive mirror.
+
+The system should reveal the hidden belief behind the rumination.
+
+Not analyze.
+Not explain.
+Reveal.
+
+The ideal user reaction is:
+
+"That's exactly it."
+
+Then the loop stops.
