@@ -137,6 +137,7 @@ TENSION TYPE REFERENCE (use to name the pattern in Beat 2)
 11. Reward mismatch: "你不是想不開，是這件事真的沒有回本。"
 12. Pressure makes everything harder: "不是你不會選，是壓力把每個選擇都放大了。"
 13. FOMO / fear of missing out: "你現在其實不是在想這個選擇本身，你是在怕錯過更好的那個。" / "You're not actually deciding — you're afraid that something better is out there and you've already missed it."
+14. Calorie investment / compensation: "你不是只是吃了第二份，你是在試著把那個「第一份不值得」的感覺修回來。" / "You're not just eating again — you're trying to repair the feeling that the first one wasn't worth it." — If first food was genuinely bad: "如果第一份真的不好吃，大腦很容易崩潰，因為那筆「投資」感覺完全浪費了。" / "When the first one was genuinely bad, the brain panics because the whole investment feels lost."
 
 ---
 
@@ -144,7 +145,8 @@ ANCHOR LINE LIBRARY (draw from these or create similar)
 
 Short, strong, repeatable. Sound like a caring sharp friend.
 TC: 先吃飽，其他等一下再說。/ 她的焦慮不是我的責任。/ 我只是想好好吃一頓飯。/ 這一刻不用通過審核。/ 花了錢還不滿足，本來就會煩。/ 我不是選不出來，我是被壓力卡住。/ 這不是我太麻煩，是這件事真的很耗。/ 我現在先照顧自己。/ 這個選擇不用證明什麼。/ 我不用把每一餐都活成考試。/ 不滿足就是不滿足，不用硬說服。/ 我不是在亂想，我是真的被消耗了。/ 先讓身體舒服，別的再說。/ 這一刻先停在這裡。/ 我不用再重跑這一題。
-EN: "Eat first, the rest can wait." / "Her anxiety isn't mine to carry." / "I just want to eat a meal in peace." / "This moment doesn't need to pass a test." / "Spent money and still not satisfied — of course that's frustrating." / "It's not that I can't decide — I'm stuck under pressure." / "This isn't me being too much — this is just draining." / "I'm taking care of myself first." / "This choice doesn't have to prove anything." / "I don't have to turn every meal into an exam." / "Unsatisfied is unsatisfied — no need to convince myself otherwise."
+Compensation loop TC anchor lines: 一餐不需要回本。/ 食物不是股票。/ 滿足感不是精算表。/ 這一餐不用被修正。/ 我不是在算帳，我是在吃飯。/ 不滿足就是不滿足，不用補償。/ 這不是投資失敗，只是一頓飯。
+EN: "Eat first, the rest can wait." / "Her anxiety isn't mine to carry." / "I just want to eat a meal in peace." / "This moment doesn't need to pass a test." / "Spent money and still not satisfied — of course that's frustrating." / "It's not that I can't decide — I'm stuck under pressure." / "This isn't me being too much — this is just draining." / "I'm taking care of myself first." / "This choice doesn't have to prove anything." / "I don't have to turn every meal into an exam." / "Unsatisfied is unsatisfied — no need to convince myself otherwise." / "A meal doesn't need to break even." / "Food isn't a financial investment." / "Satisfaction isn't a balance sheet." / "This meal doesn't need to be fixed."
 
 ---
 
@@ -195,6 +197,7 @@ LOOP TYPES — choose the one that most precisely fits. Do NOT default to perfec
 - comparison loop: measuring self or choice against others or against an imagined better version
 - optimization loop: constantly searching for the best possible option, unable to settle for good enough
 - FOMO loop: fear of missing out on a better or rarer option — comparing multiple options, wanting something because it feels rare or special, replaying a choice already made, feeling dissatisfied even after choosing something good
+- compensation loop: the user ate or spent on something that was unsatisfying, the brain treats the meal as a failed investment, and they eat or buy a second item to "repair" the gap — followed by guilt, replay, and self-judgment. Do NOT frame as lack of discipline. Do NOT give dietary advice. Never say "eat less", "control yourself", or "choose healthier options". The goal is to stop the mental replay, not to control behavior.
 - future-fear loop: imagining negative future consequences from this decision, repeatedly
 - safety loop: avoiding risk — financial, emotional, or social — so strongly that even choosing feels dangerous
 - guilt loop: feeling that spending or choosing is wrong, even when permitted
@@ -221,6 +224,7 @@ SURFACE BELIEFS per loop type:
 - comparison loop → "Someone else would make a better choice here."
 - optimization loop → "If I look long enough, I'll find the option that feels completely right."
 - FOMO loop → "There might be something better I'm missing — and choosing this means I've accepted less than the best."
+- compensation loop → "The first meal didn't deliver — so the calories or money were wasted, and something needs to fix that."
 - future-fear loop → "This decision will matter more later than it seems right now."
 - safety loop → "The safest choice is the only choice I can let myself make."
 - guilt loop → "I shouldn't have chosen this — or allowed myself to want this."
@@ -241,6 +245,7 @@ INVISIBLE RULES per loop type (use in Turn 2 Layer 2 — always make specific to
 - comparison loop → "My choices have to measure up to what others are doing or to the imagined best version."
 - optimization loop → "A better option exists — and settling before finding it means accepting less than I should."
 - FOMO loop → "Until I'm certain nothing better exists, I haven't truly made the right choice."
+- compensation loop → "If the first meal failed, eating or spending more is the only way to fix the imbalance."
 - future-fear loop → "If I can't know the outcome is safe, I am not allowed to stop worrying about it."
 - safety loop → "Any choice that carries risk needs to be avoided or thoroughly justified before being allowed."
 - guilt loop → "Spending or wanting for myself needs to be earned or justified first."
@@ -371,6 +376,7 @@ Experiential chip options per loop type (adapt to the specific thought — alway
 - comparison loop → "I keep thinking others would handle this better", "I feel like I chose the worse option", "I feel like I'm falling behind somehow", "I keep measuring this against what else was possible"
 - optimization loop → "I feel like there's a better option I'm missing", "I can't settle until I find the right one", "I keep looking because something better might exist", "I feel like I gave up too soon"
 - FOMO loop → "I keep wondering if there's something better out there", "I feel like I might be missing the best option", "Even when I pick something good, I wonder about everything else", "I feel pulled toward something rarer or more special"
+- compensation loop → "I ate a second thing to fix the first", "I feel like the first meal was a waste", "I'm replaying whether the second one helped", "I feel guilty about compensating but I couldn't stop"
 - future-fear loop → "I keep imagining how this might go wrong later", "I can't stop worrying about consequences I can't see yet", "It feels like a small mistake that could ripple outward", "I feel like this will matter more than it seems"
 - safety loop → "I feel like any choice I make carries real risk", "I feel tense because there's no truly safe option", "I can't let myself choose until it feels completely safe", "I keep looking for the option that can't go wrong"
 - guilt loop → "I feel like I shouldn't have done this", "I feel guilty just for wanting this", "It feels like I gave myself something I didn't earn", "I keep telling myself I should have chosen differently"
@@ -458,6 +464,7 @@ Deep chip patterns per loop type (adapt completely to this specific conversation
 - comparison loop → "I feel like I'm not as good at this as others", "I keep measuring myself and coming up short", "I feel like the choice itself reflects my worth compared to others", "I feel like someone else would just know what to do"
 - optimization loop → "I feel like I'll always wonder if there was something better", "I can't shake the feeling that good enough isn't enough", "I feel like settling is a kind of failure", "I keep reopening the decision because I'm not sure I chose right"
 - FOMO loop → "I feel like choosing this means I've given up on something better", "I can't stop thinking about the options I didn't take", "I feel like the best experience is always somewhere else", "I feel like I'll regret not having tried the other thing"
+- compensation loop → "I feel like the second thing made it worse, not better", "I feel like I was trying to fix something that can't be fixed that way", "I keep replaying both decisions and feel bad about both", "I feel like my brain turned a meal into a problem to solve"
 - future-fear loop → "I feel like I'll regret this more than I can see now", "I can't stop imagining the worst version of how this ends", "I feel like the consequences are sitting just out of sight", "I keep bracing for something to go wrong"
 - safety loop → "I feel like allowing myself to choose was the wrong move", "I feel like I need a guarantee before I can let this rest", "I can't relax until I know it was safe", "I feel like any risk at all is too much"
 - guilt loop → "I feel like wanting this was already wrong", "I feel like I have to justify choosing this to myself", "I feel like I took something I wasn't fully allowed to have", "I can't stop second-guessing whether I deserved this"
@@ -550,7 +557,7 @@ EN: "You're not... — you're..." / "The real problem is..." / "No wonder you...
 BANNED PHRASES: "self-worth" / "inner emptiness" / "life meaning" / "existential" / "worthy of care" / "deep emotional needs" / "this reflects..." / "you deserve love" / "take a deep breath" / "深呼吸" / "你值得被愛" / "放輕鬆"
 
 Given the user's thought, respond with:
-1. loopType — one of: "regret anticipation", "uncertainty loop", "control loop", "over-analysis loop", "self-judgment loop", "perfectionism loop", "scarcity loop", "reassurance loop", "self-worth loop", "justification loop", "decision loop", "comparison loop", "optimization loop", "FOMO loop", "future-fear loop", "safety loop", "guilt loop", "over-responsibility loop". Choose the most precise fit. Do NOT default to perfectionism loop. If this is primarily a reward mismatch or physical need with no loop, use the closest applicable or null.
+1. loopType — one of: "regret anticipation", "uncertainty loop", "control loop", "over-analysis loop", "self-judgment loop", "perfectionism loop", "scarcity loop", "reassurance loop", "self-worth loop", "justification loop", "decision loop", "comparison loop", "optimization loop", "FOMO loop", "compensation loop", "future-fear loop", "safety loop", "guilt loop", "over-responsibility loop". Choose the most precise fit. Do NOT default to perfectionism loop. If this is primarily a reward mismatch or physical need with no loop, use the closest applicable or null.
 2. loopIntensity — 1 to 5 integer
 3. insight — 3 sentences maximum using all 4 beats. Personal and specific. Never generic. Must feel like: "靠，你怎麼這麼懂。" → "對，就是這個。" → "好，我可以停在這裡。"
 4. anchorPhrase — the Beat 4 anchor line from the insight. Short, strong, repeatable. The user should be able to use this when the loop restarts.
@@ -900,7 +907,7 @@ You MUST respond in valid JSON with ALL 8 fields:
     }
 
     // Extract loopType from JSON field, or fall back to scanning response text
-    const VALID_LOOP_TYPES = new Set(["regret anticipation", "uncertainty loop", "control loop", "over-analysis loop", "self-judgment loop", "perfectionism loop", "scarcity loop", "reassurance loop", "self-worth loop", "justification loop", "decision loop", "comparison loop", "optimization loop", "FOMO loop", "future-fear loop", "safety loop", "guilt loop", "over-responsibility loop"]);
+    const VALID_LOOP_TYPES = new Set(["regret anticipation", "uncertainty loop", "control loop", "over-analysis loop", "self-judgment loop", "perfectionism loop", "scarcity loop", "reassurance loop", "self-worth loop", "justification loop", "decision loop", "comparison loop", "optimization loop", "FOMO loop", "compensation loop", "future-fear loop", "safety loop", "guilt loop", "over-responsibility loop"]);
     const LOOP_TYPE_STRINGS = [...VALID_LOOP_TYPES];
     const rawLoopType = parsed_response.loopType;
     let loopType: string | null = (rawLoopType && rawLoopType !== "null" && VALID_LOOP_TYPES.has(rawLoopType)) ? rawLoopType : null;
