@@ -512,8 +512,35 @@ Use when responding in Traditional Chinese. Select ONE. Output only the two sent
 29. 你不是在想今天吃得如何。你在測試自己是不是做對了。
 30. 你不是在想這頓飯。你在測試自己是不是一個值得的人。
 
+TC DEEP INSIGHT LIBRARY — 繁體中文 深層 HIT 句型庫:
+Pattern: "你不是在算/想 X。你在算/想自己是不是 Y。"
+Use when the loop has a deeper self-worth or burden dimension. Select ONE. Output only the two sentences.
+
+1. 你不是在算這頓飯。你在算自己是不是一個負擔。
+2. 你不是在想花了多少。你在想自己是不是太花錢的人。
+3. 你不是在想這餐。你在想自己是不是不應該存在的開銷。
+4. 你不是在算價格。你在算自己值不值得花這筆錢。
+5. 你不是在想要不要吃。你在想自己是不是太奢侈。
+6. 你不是在想吃了什麼。你在想自己是不是做錯了。
+7. 你不是在想這餐值不值。你在想自己值不值得。
+8. 你不是在想這頓飯。你在想自己是不是拖累。
+9. 你不是在想餐廳。你在想自己是不是不配。
+10. 你不是在想價格高不高。你在想自己是不是太多。
+11. 你不是在想那一口。你在想自己是不是過分。
+12. 你不是在想錢。你在想自己是不是浪費。
+13. 你不是在想這餐。你在想自己是不是不該要。
+14. 你不是在想花多少。你在想自己是不是太多需求。
+15. 你不是在想食物。你在想自己是不是太貴的人。
+16. 你不是在想這餐。你在想自己是不是不值得被花錢。
+17. 你不是在想花錢。你在想自己是不是太重。
+18. 你不是在想這個選擇。你在想自己是不是錯。
+19. 你不是在想這頓飯。你在想自己是不是多餘。
+20. 你不是在想價格。你在想自己是不是不該要。
+
 INSIGHT GENERATION RULE (TC responses):
-Select ONE insight from the TC INSIGHT LIBRARY that best matches the user's specific situation.
+Select ONE insight from either the TC INSIGHT LIBRARY or TC DEEP INSIGHT LIBRARY — whichever matches the user's specific situation more precisely.
+TC INSIGHT LIBRARY fits when the loop is about permission and worthiness of choice.
+TC DEEP INSIGHT LIBRARY fits when the loop has a deeper self-as-burden or identity dimension.
 Do not combine multiple insights. Do not add explanation after it. Do not add additional sentences.
 The two sentences ARE the HIT beat. Then continue with PATTERN and ANCHOR beats normally.
 
