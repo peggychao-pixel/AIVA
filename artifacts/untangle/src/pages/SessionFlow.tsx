@@ -49,46 +49,6 @@ const OPENING_SUGGESTIONS: Record<Mode, string[]> = {
   other:    ["Something about food", "A feeling I can't name", "Let me type it out"],
 };
 
-const LOOP_SHORT_LABELS: Record<string, string> = {
-  "regret anticipation": "regret",
-  "uncertainty loop": "uncertainty",
-  "control loop": "control",
-  "over-analysis loop": "analysis",
-  "self-judgment loop": "self-judgment",
-  "perfectionism loop": "perfectionism",
-  "scarcity loop": "scarcity",
-  "reassurance loop": "reassurance",
-  "self-worth loop": "self-worth",
-  "justification loop": "justification",
-  "decision loop": "decision",
-  "comparison loop": "comparison",
-  "optimization loop": "optimization",
-  "future-fear loop": "future-fear",
-  "safety loop": "safety",
-  "guilt loop": "guilt",
-  "over-responsibility loop": "responsibility",
-};
-
-const WHY_INSIGHTS: Record<string, string> = {
-  "regret anticipation": "Choices feel irreversible before they are made.",
-  "uncertainty loop":    "The outcome cannot be fully predicted from here.",
-  "control loop":        "The mind is trying to manage what isn't in its hands.",
-  "over-analysis loop":  "More information is being searched for than exists.",
-  "self-judgment loop":  "The mind is treating a moment as evidence about character.",
-  "perfectionism loop":  "The standard being applied may be impossible to meet.",
-  "scarcity loop":       "A real constraint is present — and the mind is looping around it.",
-  "reassurance loop":    "The decision is waiting for approval that may not come.",
-  "self-worth loop":     "The decision has quietly become a test of personal value.",
-  "justification loop":  "The choice must prove it was worth it before the mind can rest.",
-  "decision loop":       "The act of deciding itself has become the source of the loop.",
-  "comparison loop":     "The choice is being measured against others or an imagined better version.",
-  "optimization loop":   "The mind believes a better option is still out there to be found.",
-  "future-fear loop":    "The consequences of this decision feel larger than the present moment.",
-  "safety loop":         "The need to avoid risk is making any choice feel dangerous.",
-  "guilt loop":          "Wanting or choosing this has started to feel like something that needs justifying.",
-  "over-responsibility loop": "The weight of this decision feels like it rests entirely on one person.",
-};
-
 function intensityDots(n: number | null | undefined): string {
   if (!n) return "";
   return "●".repeat(n) + "○".repeat(5 - n);
@@ -96,7 +56,6 @@ function intensityDots(n: number | null | undefined): string {
 
 function InsightCard({
   content,
-  loopType,
   onSave,
   saved,
 }: {
@@ -109,29 +68,21 @@ function InsightCard({
     <motion.div
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
-      className="w-full border border-primary/40 bg-primary/5 rounded p-4 space-y-3"
+      transition={{ duration: 0.4 }}
+      className="w-full rounded-xl bg-primary/8 border border-primary/20 p-6 space-y-4"
     >
-      <div className="flex items-center justify-between gap-3">
-        <span className="font-mono text-[10px] text-primary uppercase tracking-[0.2em]">
-          ✦ UNTANGLE MOMENT
-        </span>
-        {loopType && (
-          <span className="font-mono text-[9px] text-muted-foreground border border-border/60 px-1.5 py-0.5 rounded uppercase tracking-widest flex-shrink-0">
-            {loopType}
-          </span>
-        )}
-      </div>
-      <p className="font-mono text-sm text-foreground leading-relaxed">{content}</p>
+      <p className="text-xs text-primary/70 font-medium tracking-wide">Untangle moment</p>
+      <p className="text-base text-foreground leading-relaxed">{content}</p>
       <button
         onClick={onSave}
         disabled={saved}
-        className={`font-mono text-[10px] uppercase tracking-widest px-3 py-1.5 rounded border transition-all ${
+        className={`text-xs px-4 py-2 rounded-full border transition-all ${
           saved
-            ? "border-primary/40 text-primary cursor-default"
+            ? "border-primary/30 text-primary/60 cursor-default"
             : "border-border text-muted-foreground hover:border-primary/40 hover:text-primary"
         }`}
       >
-        {saved ? "✓ SAVED" : "SAVE MOMENT"}
+        {saved ? "Saved" : "Save this moment"}
       </button>
     </motion.div>
   );
@@ -142,96 +93,14 @@ function AnchorCard({ phrase }: { phrase: string }) {
     <motion.div
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
-      className="w-full border border-border/60 rounded p-4 space-y-2 bg-card"
+      transition={{ duration: 0.4 }}
+      className="w-full rounded-xl border border-border bg-card p-6 space-y-2"
     >
-      <p className="font-mono text-[10px] text-muted-foreground uppercase tracking-[0.2em]">
-        ANCHOR PHRASE
+      <p className="text-xs text-muted-foreground font-medium">Anchor phrase</p>
+      <p className="text-lg text-foreground font-medium leading-snug">"{phrase}"</p>
+      <p className="text-xs text-muted-foreground/60">
+        If this thought returns, try recalling this.
       </p>
-      <p className="font-mono text-base text-foreground font-medium">"{phrase}"</p>
-      <p className="font-mono text-[10px] text-muted-foreground/60">
-        If this thought returns, try recalling this phrase.
-      </p>
-    </motion.div>
-  );
-}
-
-function PatternMap({
-  loopTypes,
-  coreNeeds,
-  sessionTriggers,
-}: {
-  loopTypes: string[];
-  coreNeeds: string[];
-  sessionTriggers: string[];
-}) {
-  if (loopTypes.length === 0 && coreNeeds.length === 0) return null;
-
-  const counts = loopTypes.reduce<Record<string, number>>((acc, lt) => {
-    acc[lt] = (acc[lt] ?? 0) + 1;
-    return acc;
-  }, {});
-
-  const unique = Object.entries(counts).sort((a, b) => b[1] - a[1]);
-
-  const freqLabel = (count: number) =>
-    count >= 3 ? "FREQUENT" : count >= 2 ? "MODERATE" : "OCCASIONAL";
-
-  const freqColor = (count: number) =>
-    count >= 3 ? "text-red-400" : count >= 2 ? "text-yellow-400" : "text-primary/70";
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 6 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="border border-border/60 rounded p-3 space-y-3"
-    >
-      {unique.length > 0 && (
-        <div className="space-y-1.5">
-          <p className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest">
-            MENTAL PATTERN SUMMARY
-          </p>
-          {unique.map(([lt, count]) => (
-            <div key={lt} className="flex items-center justify-between gap-4">
-              <span className="font-mono text-[10px] text-foreground/80 uppercase tracking-widest">
-                {lt}
-              </span>
-              <span className={`font-mono text-[10px] uppercase tracking-widest ${freqColor(count)}`}>
-                {freqLabel(count)}
-              </span>
-            </div>
-          ))}
-        </div>
-      )}
-
-      {coreNeeds.length > 0 && (
-        <div className="space-y-1.5 border-t border-border/40 pt-2">
-          <p className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest">
-            CORE NEEDS SURFACED
-          </p>
-          <div className="flex flex-wrap gap-1.5">
-            {coreNeeds.map((n) => (
-              <span key={n} className="font-mono text-[10px] text-primary/80 border border-primary/20 bg-primary/5 px-2 py-0.5 rounded uppercase tracking-widest">
-                {n}
-              </span>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {sessionTriggers.length > 0 && (
-        <div className="space-y-1.5 border-t border-border/40 pt-2">
-          <p className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest">
-            YOU TEND TO LOOP WHEN
-          </p>
-          <div className="space-y-1">
-            {sessionTriggers.map((t) => (
-              <p key={t} className="font-mono text-[10px] text-foreground/60">
-                • {t}
-              </p>
-            ))}
-          </div>
-        </div>
-      )}
     </motion.div>
   );
 }
@@ -255,11 +124,11 @@ function QuickUntangleCard({
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 4 }}
-      className="border border-border bg-card rounded p-4 space-y-4"
+      className="border border-border bg-card rounded-xl p-5 space-y-4"
     >
       <div className="flex items-center justify-between">
-        <p className="font-mono text-[10px] text-primary uppercase tracking-[0.2em]">⚡ ONE TAP UNTANGLE</p>
-        <button onClick={onClose} className="font-mono text-[10px] text-muted-foreground hover:text-foreground">✕</button>
+        <p className="text-sm text-foreground font-medium">Quick untangle</p>
+        <button onClick={onClose} className="text-muted-foreground hover:text-foreground text-lg leading-none">×</button>
       </div>
 
       {!result ? (
@@ -267,42 +136,43 @@ function QuickUntangleCard({
           <textarea
             value={thought}
             onChange={(e) => setThought(e.target.value)}
-            placeholder="Type the thought that's looping..."
+            placeholder="What thought is looping..."
             rows={2}
             disabled={isPending}
-            className="w-full bg-background border border-border rounded px-3 py-2 font-mono text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 transition-colors resize-none"
+            className="w-full bg-background border border-border rounded-lg px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 transition-colors resize-none"
           />
           <button
             type="submit"
             disabled={!thought.trim() || isPending}
-            className="w-full py-2 bg-primary text-primary-foreground font-mono text-xs rounded hover:opacity-90 transition-opacity disabled:opacity-40 disabled:cursor-not-allowed"
+            className="w-full py-2.5 bg-primary text-primary-foreground text-sm rounded-lg hover:opacity-90 transition-opacity disabled:opacity-40 disabled:cursor-not-allowed"
           >
-            {isPending ? "ANALYZING..." : "UNTANGLE NOW →"}
+            {isPending ? "Looking..." : "Untangle →"}
           </button>
         </form>
       ) : (
-        <div className="space-y-3">
-          <div className="flex items-center gap-3">
-            <span className="font-mono text-[10px] text-muted-foreground border border-border px-2 py-0.5 rounded uppercase tracking-widest">
-              {result.loopType}
-            </span>
-            <span className="font-mono text-[10px] text-muted-foreground">
-              {intensityDots(result.loopIntensity)}
-            </span>
-          </div>
-          <p className="font-mono text-sm text-foreground leading-relaxed">{result.insight}</p>
-          <div className="border-t border-border/40 pt-3 space-y-1">
-            <p className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest">ANCHOR PHRASE</p>
-            <p className="font-mono text-sm text-primary">"{result.anchorPhrase}"</p>
-          </div>
-          <p className="font-mono text-[10px] text-foreground/60 border border-border/40 rounded px-3 py-2">
-            {result.suggestion}
-          </p>
+        <div className="space-y-4">
+          {result.loopType && (
+            <p className="text-xs text-muted-foreground">
+              {result.loopType} · {intensityDots(result.loopIntensity)}
+            </p>
+          )}
+          <p className="text-sm text-foreground leading-relaxed">{result.insight}</p>
+          {result.anchorPhrase && (
+            <div className="border-t border-border/50 pt-3 space-y-1">
+              <p className="text-xs text-muted-foreground">Anchor phrase</p>
+              <p className="text-sm text-primary">"{result.anchorPhrase}"</p>
+            </div>
+          )}
+          {result.suggestion && (
+            <p className="text-xs text-foreground/60 bg-muted/50 rounded-lg px-4 py-3 leading-relaxed">
+              {result.suggestion}
+            </p>
+          )}
           <button
             onClick={() => { setThought(""); onClose(); }}
-            className="font-mono text-[10px] text-muted-foreground hover:text-foreground uppercase tracking-widest"
+            className="text-xs text-muted-foreground hover:text-foreground"
           >
-            ← CLOSE
+            ← Close
           </button>
         </div>
       )}
@@ -317,17 +187,14 @@ export function SessionFlow() {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState("");
   const [isThinking, setIsThinking] = useState(false);
-  const [detectedPatterns, setDetectedPatterns] = useState<string[]>([]);
-  const [coreNeeds, setCoreNeeds] = useState<string[]>([]);
-  const [sessionTriggers, setSessionTriggers] = useState<string[]>([]);
   const [savedMomentIds, setSavedMomentIds] = useState<Set<string>>(new Set());
   const [showQuick, setShowQuick] = useState(false);
 
-  // Session structured data for saving
   const [originalThought, setOriginalThought] = useState<string | null>(null);
   const [surfaceBelief, setSurfaceBelief] = useState<string | null>(null);
   const [hiddenFear, setHiddenFear] = useState<string | null>(null);
   const [anchorPhrase, setAnchorPhrase] = useState<string | null>(null);
+  const [coreNeeds, setCoreNeeds] = useState<string[]>([]);
 
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -343,37 +210,7 @@ export function SessionFlow() {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isThinking]);
 
-  // Rumination Radar — derive top patterns from saved moments
-  const radarTopics = useMemo(() => {
-    if (!savedMoments || savedMoments.length === 0) return [];
-    const counts = savedMoments.reduce<Record<string, number>>((acc, m) => {
-      if (m.loopType) acc[m.loopType] = (acc[m.loopType] ?? 0) + 1;
-      return acc;
-    }, {});
-    return Object.entries(counts)
-      .sort((a, b) => b[1] - a[1])
-      .slice(0, 3)
-      .map(([lt]) => LOOP_SHORT_LABELS[lt] ?? lt.replace(" loop", "").replace(" anticipation", ""));
-  }, [savedMoments]);
-
-  // Why Your Brain Is Looping Today — top 3 loop types from saved moments
-  const whyInsights = useMemo(() => {
-    if (!savedMoments || savedMoments.length < 2) return [];
-    const counts = savedMoments.reduce<Record<string, number>>((acc, m) => {
-      if (m.loopType) acc[m.loopType] = (acc[m.loopType] ?? 0) + 1;
-      return acc;
-    }, {});
-    return Object.entries(counts)
-      .sort((a, b) => b[1] - a[1])
-      .slice(0, 3)
-      .map(([lt]) => WHY_INSIGHTS[lt])
-      .filter(Boolean) as string[];
-  }, [savedMoments]);
-
-  const addPattern = (loopType: string | null | undefined) => {
-    if (!loopType) return;
-    setDetectedPatterns((prev) => [...prev, loopType]);
-  };
+  const recentMomentCount = useMemo(() => savedMoments?.length ?? 0, [savedMoments]);
 
   const doSendMessage = async (
     text: string,
@@ -392,7 +229,6 @@ export function SessionFlow() {
     messagesRef.current = updatedMessages;
     setIsThinking(true);
 
-    // Capture structured session data
     if (aiResponseCount === 0) setOriginalThought(text.trim());
     if (aiResponseCount === 1) setHiddenFear(text.trim());
 
@@ -402,12 +238,9 @@ export function SessionFlow() {
         data: { message: text.trim(), mode: currentMode, history },
       });
 
-      addPattern(res.loopType);
       if (res.coreNeed) setCoreNeeds((p) => (p.includes(res.coreNeed!) ? p : [...p, res.coreNeed!]));
-      if (res.sessionTrigger) setSessionTriggers((p) => (p.includes(res.sessionTrigger!) ? p : [...p, res.sessionTrigger!]));
       if (res.anchorPhrase) setAnchorPhrase(res.anchorPhrase);
 
-      // Extract surface belief from Turn 1 response text
       if (aiResponseCount === 0) {
         const match = res.response.match(/Surface belief:\s*"([^"]+)"/);
         if (match) setSurfaceBelief(match[1]);
@@ -448,14 +281,12 @@ export function SessionFlow() {
   const startConversation = async (selectedMode: Mode, initialText?: string) => {
     setMode(selectedMode);
     modeRef.current = selectedMode;
-    setDetectedPatterns([]);
-    setCoreNeeds([]);
-    setSessionTriggers([]);
     setSavedMomentIds(new Set());
     setOriginalThought(null);
     setSurfaceBelief(null);
     setHiddenFear(null);
     setAnchorPhrase(null);
+    setCoreNeeds([]);
     setStep("chat");
 
     const opener: ChatMessage = {
@@ -535,14 +366,12 @@ export function SessionFlow() {
     messagesRef.current = [];
     setInput("");
     setIsThinking(false);
-    setDetectedPatterns([]);
-    setCoreNeeds([]);
-    setSessionTriggers([]);
     setSavedMomentIds(new Set());
     setOriginalThought(null);
     setSurfaceBelief(null);
     setHiddenFear(null);
     setAnchorPhrase(null);
+    setCoreNeeds([]);
   };
 
   const handleFreeSubmit = (e: React.FormEvent) => {
@@ -553,7 +382,6 @@ export function SessionFlow() {
     startConversation("other", text);
   };
 
-  // Find the last AI message that has an anchor phrase (exit message)
   const exitMessage = useMemo(() => {
     for (let i = messages.length - 1; i >= 0; i--) {
       if (messages[i].role === "assistant" && messages[i].anchorPhrase) return messages[i];
@@ -570,39 +398,39 @@ export function SessionFlow() {
 
   return (
     <div className="min-h-screen bg-background flex flex-col items-center">
-      <main className="w-full max-w-xl flex flex-col h-screen">
+      <main className="w-full max-w-lg flex flex-col h-screen">
 
         {/* Header */}
-        <header className="flex items-center justify-between px-6 py-5 flex-shrink-0 border-b border-border/40">
+        <header className="flex items-center justify-between px-6 py-5 flex-shrink-0 border-b border-border/50">
           {step === "chat" ? (
             <button
               onClick={reset}
-              className="font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
-              ← RESET
+              ← Back
             </button>
           ) : (
-            <span className="font-mono text-xs text-primary uppercase tracking-[0.2em]">UNTANGLE</span>
+            <span className="text-sm font-medium text-foreground/70 tracking-wide">Untangle</span>
           )}
 
           {step === "chat" && (
-            <span className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest border border-border px-2 py-0.5 rounded">
+            <span className="text-xs text-muted-foreground border border-border/60 px-3 py-1 rounded-full">
               {MODE_OPTIONS.find((m) => m.id === mode)?.label ?? mode}
             </span>
           )}
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-5">
             <Link
               href="/moments"
-              className="font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors"
+              className="text-sm text-muted-foreground hover:text-primary transition-colors"
             >
-              ✦
+              {recentMomentCount > 0 ? `${recentMomentCount} saved` : "Moments"}
             </Link>
             <Link
               href="/history"
-              className="font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors"
+              className="text-sm text-muted-foreground hover:text-primary transition-colors"
             >
-              LOG
+              History
             </Link>
           </div>
         </header>
@@ -616,47 +444,14 @@ export function SessionFlow() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="flex-1 overflow-y-auto px-6 py-8 space-y-8"
+              className="flex-1 overflow-y-auto px-6 py-10 space-y-8"
             >
-              {/* Rumination Radar — only if saved moments exist */}
-              {radarTopics.length > 0 && (
-                <motion.div
-                  initial={{ opacity: 0, y: 6 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="border border-border/60 rounded p-4 space-y-2"
-                >
-                  <p className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest">
-                    RUMINATION RADAR
-                  </p>
-                  <p className="font-mono text-xs text-foreground/80">
-                    Today your mind may be looping around:{" "}
-                    <span className="text-primary">
-                      {radarTopics.join(", ")}
-                    </span>
-                  </p>
-
-                  {/* Why Your Brain Is Looping Today */}
-                  {whyInsights.length > 0 && (
-                    <div className="pt-2 space-y-1 border-t border-border/30 mt-3">
-                      <p className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest mb-2">
-                        WHY YOUR BRAIN MAY BE LOOPING TODAY
-                      </p>
-                      {whyInsights.map((insight, i) => (
-                        <p key={i} className="font-mono text-[10px] text-foreground/60">
-                          • {insight}
-                        </p>
-                      ))}
-                    </div>
-                  )}
-                </motion.div>
-              )}
-
               <div className="space-y-2">
-                <h1 className="font-mono text-4xl md:text-5xl text-foreground font-bold leading-tight">
+                <h1 className="text-3xl text-foreground font-medium leading-snug">
                   What feels tangled<br />right now?
                 </h1>
-                <p className="font-mono text-sm text-muted-foreground">
-                  Select a context or type it out.
+                <p className="text-sm text-muted-foreground">
+                  Select a moment, or write it out.
                 </p>
               </div>
 
@@ -665,18 +460,18 @@ export function SessionFlow() {
                   <button
                     key={opt.id}
                     onClick={() => startConversation(opt.id)}
-                    className="w-full text-left px-4 py-4 border border-border bg-card/60 hover:border-primary/40 hover:bg-primary/5 rounded transition-all duration-150 group"
+                    className="w-full text-left px-5 py-4 border border-border/60 bg-card/50 hover:border-primary/30 hover:bg-primary/5 rounded-xl transition-all duration-150 group"
                   >
                     <div className="flex items-center justify-between gap-4">
                       <div>
-                        <p className="font-mono text-sm font-medium text-foreground">
+                        <p className="text-sm font-medium text-foreground">
                           {opt.label}
                         </p>
-                        <p className="font-mono text-xs text-muted-foreground mt-0.5">
+                        <p className="text-xs text-muted-foreground mt-0.5">
                           {opt.description}
                         </p>
                       </div>
-                      <span className="font-mono text-muted-foreground group-hover:text-primary transition-colors text-xs">
+                      <span className="text-muted-foreground/50 group-hover:text-primary transition-colors text-base">
                         →
                       </span>
                     </div>
@@ -690,23 +485,20 @@ export function SessionFlow() {
                     type="text"
                     value={freeInput}
                     onChange={(e) => setFreeInput(e.target.value)}
-                    placeholder="Or type it here..."
-                    className="flex-1 bg-card border border-border rounded px-4 py-3 font-mono text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 transition-colors"
+                    placeholder="Or write it here..."
+                    className="flex-1 bg-card/60 border border-border/60 rounded-xl px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/40 transition-colors"
                   />
                   <button
                     type="submit"
                     disabled={!freeInput.trim()}
-                    className="px-5 py-3 bg-primary text-primary-foreground font-mono text-xs rounded hover:opacity-90 transition-opacity disabled:opacity-40 disabled:cursor-not-allowed"
+                    className="px-5 py-3 bg-primary text-primary-foreground text-sm rounded-xl hover:opacity-90 transition-opacity disabled:opacity-40 disabled:cursor-not-allowed"
                   >
                     →
                   </button>
                 </div>
-                <p className="font-mono text-[10px] text-muted-foreground/40 uppercase tracking-widest">
-                  Or hold mic to speak
-                </p>
               </form>
 
-              {/* One Tap Untangle */}
+              {/* Quick Untangle */}
               <div className="space-y-2">
                 <AnimatePresence>
                   {showQuick ? (
@@ -718,19 +510,19 @@ export function SessionFlow() {
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
                       onClick={() => setShowQuick(true)}
-                      className="w-full text-left px-4 py-3 border border-border/50 border-dashed rounded hover:border-primary/40 hover:bg-primary/5 transition-all group"
+                      className="w-full text-left px-5 py-4 border border-border/40 border-dashed rounded-xl hover:border-primary/30 hover:bg-primary/5 transition-all group"
                     >
                       <div className="flex items-center justify-between">
                         <div>
-                          <p className="font-mono text-xs text-muted-foreground group-hover:text-foreground transition-colors">
-                            ⚡ One Tap Untangle
+                          <p className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">
+                            Quick untangle
                           </p>
-                          <p className="font-mono text-[10px] text-muted-foreground/50 mt-0.5">
-                            Instant loop detection — no conversation.
+                          <p className="text-xs text-muted-foreground/50 mt-0.5">
+                            Instant — no conversation needed.
                           </p>
                         </div>
-                        <span className="font-mono text-[10px] text-muted-foreground group-hover:text-primary transition-colors">
-                          TAP →
+                        <span className="text-xs text-muted-foreground/50 group-hover:text-primary transition-colors">
+                          →
                         </span>
                       </div>
                     </motion.button>
@@ -750,14 +542,14 @@ export function SessionFlow() {
               className="flex-1 flex flex-col overflow-hidden"
             >
               {/* Messages */}
-              <div className="flex-1 overflow-y-auto px-6 py-6 space-y-4">
+              <div className="flex-1 overflow-y-auto px-6 py-6 space-y-5">
                 {messages.map((msg, i) => (
                   <motion.div
                     key={msg.id}
-                    initial={{ opacity: 0, y: 10 }}
+                    initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.2 }}
-                    className={`flex flex-col ${msg.role === "user" ? "items-end" : "items-start"} gap-2`}
+                    transition={{ duration: 0.25 }}
+                    className={`flex flex-col ${msg.role === "user" ? "items-end" : "items-start"} gap-2.5`}
                   >
                     {msg.role === "assistant" && msg.isInsight ? (
                       <InsightCard
@@ -768,10 +560,10 @@ export function SessionFlow() {
                       />
                     ) : (
                       <div
-                        className={`max-w-[85%] px-4 py-3 rounded font-mono text-sm leading-relaxed whitespace-pre-wrap ${
+                        className={`max-w-[88%] px-4 py-3 rounded-2xl text-sm leading-relaxed whitespace-pre-wrap ${
                           msg.role === "user"
-                            ? "bg-primary/10 border border-primary/30 text-foreground"
-                            : "bg-card border border-border text-foreground"
+                            ? "bg-primary/12 text-foreground rounded-br-sm"
+                            : "bg-card border border-border/50 text-foreground rounded-bl-sm"
                         }`}
                       >
                         {msg.content}
@@ -788,7 +580,7 @@ export function SessionFlow() {
                               key={si}
                               onClick={() => handleSuggestion(s)}
                               disabled={isThinking}
-                              className="font-mono text-xs px-3 py-1.5 border border-border rounded hover:border-primary/50 hover:bg-primary/5 text-muted-foreground hover:text-foreground transition-all disabled:opacity-40 disabled:cursor-not-allowed"
+                              className="text-xs px-3.5 py-2 border border-border/60 rounded-full bg-card/60 hover:border-primary/40 hover:bg-primary/5 text-muted-foreground hover:text-foreground transition-all disabled:opacity-40 disabled:cursor-not-allowed"
                             >
                               {s}
                             </button>
@@ -804,13 +596,13 @@ export function SessionFlow() {
                     animate={{ opacity: 1 }}
                     className="flex items-start"
                   >
-                    <div className="bg-card border border-border rounded px-4 py-3">
+                    <div className="bg-card border border-border/50 rounded-2xl rounded-bl-sm px-4 py-3">
                       <div className="flex gap-1.5 items-center h-4">
                         {[0, 1, 2].map((i) => (
                           <span
                             key={i}
-                            className="w-1 h-1 rounded-full bg-primary/60 animate-bounce"
-                            style={{ animationDelay: `${i * 0.15}s` }}
+                            className="w-1.5 h-1.5 rounded-full bg-muted-foreground/40 soft-pulse"
+                            style={{ animationDelay: `${i * 0.2}s` }}
                           />
                         ))}
                       </div>
@@ -818,16 +610,9 @@ export function SessionFlow() {
                   </motion.div>
                 )}
 
-                {/* Anchor phrase — shown when exit message arrives */}
+                {/* Anchor phrase */}
                 {anchorPhrase && exitMessage && (
                   <AnchorCard phrase={anchorPhrase} />
-                )}
-
-                {/* Pattern Map */}
-                {detectedPatterns.length > 0 && (
-                  <div className="pt-2">
-                    <PatternMap loopTypes={detectedPatterns} coreNeeds={coreNeeds} sessionTriggers={sessionTriggers} />
-                  </div>
                 )}
 
                 <div ref={bottomRef} />
@@ -846,9 +631,9 @@ export function SessionFlow() {
                     }}
                     onKeyDown={handleKeyDown}
                     rows={1}
-                    placeholder="Type or hold mic to speak..."
+                    placeholder="Write or hold mic to speak..."
                     disabled={isThinking}
-                    className="flex-1 bg-card border border-border rounded px-4 py-3 font-mono text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 transition-colors resize-none overflow-hidden disabled:opacity-60"
+                    className="flex-1 bg-card/60 border border-border/60 rounded-xl px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/40 focus:outline-none focus:border-primary/40 transition-colors resize-none overflow-hidden disabled:opacity-60"
                     style={{ minHeight: "44px", maxHeight: "120px" }}
                   />
 
@@ -857,7 +642,7 @@ export function SessionFlow() {
                   <button
                     onClick={handleSend}
                     disabled={!input.trim() || isThinking}
-                    className="w-10 h-10 flex items-center justify-center bg-primary text-primary-foreground rounded hover:opacity-90 transition-opacity disabled:opacity-40 disabled:cursor-not-allowed flex-shrink-0"
+                    className="w-10 h-10 flex items-center justify-center bg-primary text-primary-foreground rounded-xl hover:opacity-90 transition-opacity disabled:opacity-40 disabled:cursor-not-allowed flex-shrink-0"
                   >
                     <svg
                       className="w-4 h-4"
@@ -870,10 +655,6 @@ export function SessionFlow() {
                     </svg>
                   </button>
                 </div>
-
-                <p className="font-mono text-[10px] text-muted-foreground/40 mt-2 text-center uppercase tracking-widest">
-                  Enter to send · Hold mic to speak
-                </p>
               </div>
             </motion.div>
           )}

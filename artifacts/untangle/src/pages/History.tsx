@@ -9,84 +9,83 @@ export function History() {
 
   return (
     <div className="min-h-screen bg-background flex flex-col items-center">
-      <main className="w-full max-w-xl px-6 py-10">
+      <main className="w-full max-w-lg px-6 py-10">
 
         <header className="flex items-center justify-between mb-12">
           <Link
             href="/"
-            className="font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors"
+            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
-            ← BACK
+            ← Back
           </Link>
-          <span className="font-mono text-xs text-muted-foreground uppercase tracking-widest">
-            SESSION LOG
-          </span>
+          <span className="text-sm text-muted-foreground">History</span>
         </header>
 
         <div className="space-y-2 mb-10">
-          <p className="font-mono text-xs text-primary uppercase tracking-[0.25em]">UNTANGLE / LOG</p>
-          <h1 className="font-mono text-3xl text-foreground font-bold">Interrupt history.</h1>
-          <p className="font-mono text-xs text-muted-foreground">
-            Every session logged. Loop frequency is the metric that matters.
+          <h1 className="text-2xl text-foreground font-medium">Session history</h1>
+          <p className="text-sm text-muted-foreground">
+            Every conversation, logged.
           </p>
         </div>
 
         {isLoading ? (
           <div className="py-20">
-            <LoadingSpinner message="LOADING LOG..." />
+            <LoadingSpinner message="Loading..." />
           </div>
         ) : isError ? (
-          <div className="border border-destructive/40 rounded p-6 text-center">
-            <p className="font-mono text-xs text-destructive uppercase tracking-widest">ERROR: FAILED TO RETRIEVE LOG</p>
+          <div className="border border-destructive/30 rounded-xl p-6 text-center">
+            <p className="text-sm text-destructive/80">
+              Something went wrong loading your history.
+            </p>
           </div>
         ) : !sessions || sessions.length === 0 ? (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="border border-border rounded p-12 text-center"
+            className="border border-border/50 rounded-xl p-12 text-center"
           >
-            <p className="font-mono text-xs text-muted-foreground uppercase tracking-widest">NO ENTRIES</p>
-            <p className="font-mono text-xs text-muted-foreground mt-2">
-              Complete a session. It will appear here.
+            <p className="text-sm text-muted-foreground font-medium">No sessions yet</p>
+            <p className="text-xs text-muted-foreground/60 mt-2">
+              Start a conversation. It will appear here.
             </p>
           </motion.div>
         ) : (
-          <div className="space-y-2">
+          <div className="space-y-2.5">
             {[...sessions].reverse().map((session, index) => (
               <motion.div
                 key={session.id}
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.04 }}
-                className="border border-border rounded p-4 bg-card/60 space-y-3"
+                className="border border-border/50 rounded-xl p-5 bg-card/60 space-y-3"
               >
                 <div className="flex items-start justify-between gap-4">
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2.5">
                     <span
-                      className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${
-                        session.timerCompleted ? "bg-primary" : "bg-muted-foreground/40"
+                      className={`w-1.5 h-1.5 rounded-full flex-shrink-0 mt-0.5 ${
+                        session.timerCompleted ? "bg-primary" : "bg-muted-foreground/30"
                       }`}
                     />
-                    <span className="font-mono text-sm text-foreground">{session.ruminationThought}</span>
+                    <span className="text-sm text-foreground leading-snug">{session.ruminationThought}</span>
                   </div>
                   <span
-                    className={`font-mono text-[10px] uppercase tracking-widest border px-1.5 py-0.5 rounded flex-shrink-0 ${
+                    className={`text-xs border px-2.5 py-1 rounded-full flex-shrink-0 ${
                       session.timerCompleted
-                        ? "border-primary/40 text-primary"
-                        : "border-border text-muted-foreground"
+                        ? "border-primary/30 text-primary/70"
+                        : "border-border/60 text-muted-foreground"
                     }`}
                   >
-                    {session.timerCompleted ? "COMPLETED" : "PARTIAL"}
+                    {session.timerCompleted ? "Complete" : "Partial"}
                   </span>
                 </div>
 
                 {session.aiResponse && (
-                  <p className="font-mono text-xs text-muted-foreground pl-3.5 border-l border-border line-clamp-2">
+                  <p className="text-xs text-muted-foreground pl-4 border-l border-border/40 leading-relaxed line-clamp-2">
                     {session.aiResponse}
                   </p>
                 )}
 
-                <p className="font-mono text-[10px] text-muted-foreground/60 uppercase tracking-widest">
+                <p className="text-xs text-muted-foreground/40">
                   {format(parseISO(session.createdAt), "MMM d, yyyy · HH:mm")}
                 </p>
               </motion.div>
