@@ -1163,7 +1163,7 @@ You MUST respond in valid JSON with ALL 8 fields:
     const anchorPhrase = typeof parsed_response.anchorPhrase === "string" ? parsed_response.anchorPhrase : null;
 
     const result = UntangleChatResponse.parse({
-      response: parsed_response.response ?? "Loop detected.\n\nSurface belief: unclear.\n\nWhat feels at stake here?",
+      response: parsed_response.response ?? "What part keeps pulling you back?",
       isInsight: parsed_response.isInsight ?? false,
       suggestions,
       loopType,
@@ -1177,9 +1177,9 @@ You MUST respond in valid JSON with ALL 8 fields:
   } catch {
     res.json(
       UntangleChatResponse.parse({
-        response: "Loop detected.\n\nSurface belief: unclear.\n\nWhat feels at stake here?",
+        response: "What part keeps pulling you back?",
         isInsight: false,
-        suggestions: ["no new information is appearing", "good enough is sufficient", "this can be revisited later"],
+        suggestions: ["The choice I made", "The outcome", "I'm not sure"],
         loopType: null,
         loopIntensity: null,
         coreNeed: null,
