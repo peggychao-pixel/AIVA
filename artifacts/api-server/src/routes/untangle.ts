@@ -136,6 +136,7 @@ TENSION TYPE REFERENCE (use to name the pattern in Beat 2)
 10. Criticism becomes internal voice: "現在最煩的不是她真的在講，是她的聲音已經跑進你腦子裡了。"
 11. Reward mismatch: "你不是想不開，是這件事真的沒有回本。"
 12. Pressure makes everything harder: "不是你不會選，是壓力把每個選擇都放大了。"
+13. FOMO / fear of missing out: "你現在其實不是在想這個選擇本身，你是在怕錯過更好的那個。" / "You're not actually deciding — you're afraid that something better is out there and you've already missed it."
 
 ---
 
@@ -193,6 +194,7 @@ LOOP TYPES — choose the one that most precisely fits. Do NOT default to perfec
 - decision loop: spinning around the act of deciding itself, unable to commit regardless of information
 - comparison loop: measuring self or choice against others or against an imagined better version
 - optimization loop: constantly searching for the best possible option, unable to settle for good enough
+- FOMO loop: fear of missing out on a better or rarer option — comparing multiple options, wanting something because it feels rare or special, replaying a choice already made, feeling dissatisfied even after choosing something good
 - future-fear loop: imagining negative future consequences from this decision, repeatedly
 - safety loop: avoiding risk — financial, emotional, or social — so strongly that even choosing feels dangerous
 - guilt loop: feeling that spending or choosing is wrong, even when permitted
@@ -218,6 +220,7 @@ SURFACE BELIEFS per loop type:
 - decision loop → "If I can't feel certain before choosing, the choice itself becomes dangerous."
 - comparison loop → "Someone else would make a better choice here."
 - optimization loop → "If I look long enough, I'll find the option that feels completely right."
+- FOMO loop → "There might be something better I'm missing — and choosing this means I've accepted less than the best."
 - future-fear loop → "This decision will matter more later than it seems right now."
 - safety loop → "The safest choice is the only choice I can let myself make."
 - guilt loop → "I shouldn't have chosen this — or allowed myself to want this."
@@ -237,6 +240,7 @@ INVISIBLE RULES per loop type (use in Turn 2 Layer 2 — always make specific to
 - decision loop → "Choosing without certainty is the same as choosing wrongly."
 - comparison loop → "My choices have to measure up to what others are doing or to the imagined best version."
 - optimization loop → "A better option exists — and settling before finding it means accepting less than I should."
+- FOMO loop → "Until I'm certain nothing better exists, I haven't truly made the right choice."
 - future-fear loop → "If I can't know the outcome is safe, I am not allowed to stop worrying about it."
 - safety loop → "Any choice that carries risk needs to be avoided or thoroughly justified before being allowed."
 - guilt loop → "Spending or wanting for myself needs to be earned or justified first."
@@ -366,6 +370,7 @@ Experiential chip options per loop type (adapt to the specific thought — alway
 - decision loop → "I feel tired of thinking about it", "I just can't commit", "I keep going back and forth", "I feel paralyzed by choosing"
 - comparison loop → "I keep thinking others would handle this better", "I feel like I chose the worse option", "I feel like I'm falling behind somehow", "I keep measuring this against what else was possible"
 - optimization loop → "I feel like there's a better option I'm missing", "I can't settle until I find the right one", "I keep looking because something better might exist", "I feel like I gave up too soon"
+- FOMO loop → "I keep wondering if there's something better out there", "I feel like I might be missing the best option", "Even when I pick something good, I wonder about everything else", "I feel pulled toward something rarer or more special"
 - future-fear loop → "I keep imagining how this might go wrong later", "I can't stop worrying about consequences I can't see yet", "It feels like a small mistake that could ripple outward", "I feel like this will matter more than it seems"
 - safety loop → "I feel like any choice I make carries real risk", "I feel tense because there's no truly safe option", "I can't let myself choose until it feels completely safe", "I keep looking for the option that can't go wrong"
 - guilt loop → "I feel like I shouldn't have done this", "I feel guilty just for wanting this", "It feels like I gave myself something I didn't earn", "I keep telling myself I should have chosen differently"
@@ -452,6 +457,7 @@ Deep chip patterns per loop type (adapt completely to this specific conversation
 - decision loop → "I feel like every choice is permanently closing a door", "I feel like committing is dangerous", "I keep stalling because choosing feels final", "I feel like I can't trust what I want"
 - comparison loop → "I feel like I'm not as good at this as others", "I keep measuring myself and coming up short", "I feel like the choice itself reflects my worth compared to others", "I feel like someone else would just know what to do"
 - optimization loop → "I feel like I'll always wonder if there was something better", "I can't shake the feeling that good enough isn't enough", "I feel like settling is a kind of failure", "I keep reopening the decision because I'm not sure I chose right"
+- FOMO loop → "I feel like choosing this means I've given up on something better", "I can't stop thinking about the options I didn't take", "I feel like the best experience is always somewhere else", "I feel like I'll regret not having tried the other thing"
 - future-fear loop → "I feel like I'll regret this more than I can see now", "I can't stop imagining the worst version of how this ends", "I feel like the consequences are sitting just out of sight", "I keep bracing for something to go wrong"
 - safety loop → "I feel like allowing myself to choose was the wrong move", "I feel like I need a guarantee before I can let this rest", "I can't relax until I know it was safe", "I feel like any risk at all is too much"
 - guilt loop → "I feel like wanting this was already wrong", "I feel like I have to justify choosing this to myself", "I feel like I took something I wasn't fully allowed to have", "I can't stop second-guessing whether I deserved this"
@@ -544,7 +550,7 @@ EN: "You're not... — you're..." / "The real problem is..." / "No wonder you...
 BANNED PHRASES: "self-worth" / "inner emptiness" / "life meaning" / "existential" / "worthy of care" / "deep emotional needs" / "this reflects..." / "you deserve love" / "take a deep breath" / "深呼吸" / "你值得被愛" / "放輕鬆"
 
 Given the user's thought, respond with:
-1. loopType — one of: "regret anticipation", "uncertainty loop", "control loop", "over-analysis loop", "self-judgment loop", "perfectionism loop", "scarcity loop", "reassurance loop", "self-worth loop", "justification loop", "decision loop", "comparison loop", "optimization loop", "future-fear loop", "safety loop", "guilt loop", "over-responsibility loop". Choose the most precise fit. Do NOT default to perfectionism loop. If this is primarily a reward mismatch or physical need with no loop, use the closest applicable or null.
+1. loopType — one of: "regret anticipation", "uncertainty loop", "control loop", "over-analysis loop", "self-judgment loop", "perfectionism loop", "scarcity loop", "reassurance loop", "self-worth loop", "justification loop", "decision loop", "comparison loop", "optimization loop", "FOMO loop", "future-fear loop", "safety loop", "guilt loop", "over-responsibility loop". Choose the most precise fit. Do NOT default to perfectionism loop. If this is primarily a reward mismatch or physical need with no loop, use the closest applicable or null.
 2. loopIntensity — 1 to 5 integer
 3. insight — 3 sentences maximum using all 4 beats. Personal and specific. Never generic. Must feel like: "靠，你怎麼這麼懂。" → "對，就是這個。" → "好，我可以停在這裡。"
 4. anchorPhrase — the Beat 4 anchor line from the insight. Short, strong, repeatable. The user should be able to use this when the loop restarts.
@@ -894,7 +900,7 @@ You MUST respond in valid JSON with ALL 8 fields:
     }
 
     // Extract loopType from JSON field, or fall back to scanning response text
-    const VALID_LOOP_TYPES = new Set(["regret anticipation", "uncertainty loop", "control loop", "over-analysis loop", "self-judgment loop", "perfectionism loop", "scarcity loop", "reassurance loop", "self-worth loop", "justification loop", "decision loop", "comparison loop", "optimization loop", "future-fear loop", "safety loop", "guilt loop", "over-responsibility loop"]);
+    const VALID_LOOP_TYPES = new Set(["regret anticipation", "uncertainty loop", "control loop", "over-analysis loop", "self-judgment loop", "perfectionism loop", "scarcity loop", "reassurance loop", "self-worth loop", "justification loop", "decision loop", "comparison loop", "optimization loop", "FOMO loop", "future-fear loop", "safety loop", "guilt loop", "over-responsibility loop"]);
     const LOOP_TYPE_STRINGS = [...VALID_LOOP_TYPES];
     const rawLoopType = parsed_response.loopType;
     let loopType: string | null = (rawLoopType && rawLoopType !== "null" && VALID_LOOP_TYPES.has(rawLoopType)) ? rawLoopType : null;
