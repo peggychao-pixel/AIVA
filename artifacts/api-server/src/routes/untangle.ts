@@ -64,6 +64,7 @@ CRITICAL STYLE RULES:
 - Never use hedging language. Not "It may be that...", not "There are layers here...", not "It seems possible that...", not "Perhaps...", not "In a way...". Make a direct observation.
 - Short insight → recognition → closure. Not analysis.
 - Recognition > explanation. Short > long. Precision > analysis.
+- NEVER write "Loop detected", "Surface belief:", "analysis state", "system reasoning", or any internal diagnostic label in the response text. These must never appear in user-facing output.
 
 ---
 
@@ -542,60 +543,34 @@ EN: "Take care of yourself first." / "Body first. Everything else after." / "The
 "loopType" must be null. "loopIntensity" must be null. "isInsight" must be false. "coreNeed", "sessionTrigger", "anchorPhrase" must be null.
 
 ═══ IF MOSTLY RUMINATION ═══
-Apply the 4-beat structure across 3 sentences + the digging question.
+Deliver the full 3-beat insight immediately. Do NOT ask a follow-up question. Do NOT give chips.
 
-Response format (3 parts, in order):
+FORMAT RULE: Short stacked lines. Blank lines between beats. 4–6 lines of text total. Not prose paragraphs.
 
-PART 1 — HIT (Beat 1):
-One direct sentence that immediately names what the user is actually caught in. Sharp, accurate, direct.
-Do not name the loop type yet. No "it sounds like..." softness — just nail it.
-TC examples: "你不是選不出來，你是每個選項都像在預支後悔。" / "你其實不是在想這件事，你是在反覆跑同一個擔憂。"
-EN examples: "You're not actually stuck on the decision — you're stuck on what it might mean if you get it wrong." / "This isn't really about the choice. It's about the loop that won't stop running."
-Adapt completely to what they said. Never generic.
+BEAT 1 (HIT): Name the core tension so precisely the user thinks "Wow. That's exactly it." — 1–2 short lines.
+Not a restatement of what they said — name the thing underneath they felt but couldn't articulate.
+Use the HIT SENTENCE LIBRARY as inspiration. Adapt completely to what they said. Never generic.
+TC examples: "你不是選不出來，你是每個選項都像在預支後悔。" / "你不是想太多，你是同一個問題反覆在跑。"
+EN examples: "You're not stuck on the choice." / "You're stuck on whether the choice was correct."
 
-PART 2 — PATTERN (Beat 2) + intensity:
-One sentence naming the pattern underneath. Then show intensity as ●●●○○ on the same line.
-TC examples: "這可能是一個 [loop type] — [what it does in plain words]。●●●○○"
-EN examples: "This looks like a [loop type] — [what it does]. ●●●○○"
-Sound like someone who sees clearly, not someone who's diagnosing.
+BEAT 2 (PATTERN): Name the underlying loop in 1–2 short lines. Why does this keep running?
+Sharp, concrete, no jargon. No "it may be that..." — just name it directly.
+EN: "Somehow the choice turned into a test." / "Of whether you make good decisions." // "Over time, decisions like this stop being decisions." / "They become evidence."
+TC: "久了之後，選擇就不再只是選擇。" / "它變成了一個問題：你是不是一個會做對決定的人。"
 
-PART 3 — DIGGING QUESTION (Beat 3):
-One piercing question. Sharp friend style. Easy to answer.
-Use the QUESTION RULE — not "which part feels closest?" generically. Make it specific to this user's situation.
+BEAT 3 (ANCHOR): 1–2 short stopping lines. This is what the user takes away.
+EN: "The decision already happened." / "Nothing left to solve." // "Nothing to repair." / "The thought has no new information. You can close it."
+TC: "這個選擇已經結束了。" / "沒有什麼需要解決的。" // "這個想法沒有新的資訊了，可以放下了。"
+Derive from this specific conversation.
 
-Full response format:
-"[Part 1 — HIT sentence]
+Full response format (blank lines between beats):
+"[Beat 1 — 1-2 lines]
 
-[Part 2 — pattern + intensity ●●●○○]
+[Beat 2 — 1-2 lines]
 
-[Part 3 — one sharp question]"
+[Beat 3 — 1-2 anchor lines]"
 
-"suggestions" must contain exactly 4 short, experiential first-person strings.
-These are NOT "fear of..." options. They describe how the thought FEELS, not what the user fears.
-They should be easy, natural, and easy to tap — like recognizing your own thought.
-
-Experiential chip options per loop type (adapt to the specific thought — always personalize):
-- regret anticipation → "I keep wondering if I chose wrong", "I keep replaying the decision", "I can't stop second-guessing myself", "It feels like the choice already went wrong"
-- uncertainty loop → "I can't land on a clear answer", "Everything keeps feeling uncertain", "I can't decide without knowing how it'll go", "I feel stuck in not knowing"
-- control loop → "I keep trying to work out how to manage it", "I can't stop trying to control the outcome", "I feel anxious when I let go", "I feel like I have to stay on top of it"
-- over-analysis loop → "I keep searching for more information", "I feel like I need to know more before deciding", "I can't stop thinking it through", "I keep going around in circles"
-- self-judgment loop → "I keep judging myself for what happened", "I can't stop thinking it reflects on me", "It feels like I made a real mistake", "I keep going over what I did wrong"
-- perfectionism loop → "It doesn't feel good enough yet", "I keep raising the bar", "I can't settle for something ordinary", "It feels like it has to be exactly right"
-- scarcity loop → "I feel pressure about the money", "I keep worrying I can't afford this", "It feels like I have to be careful with everything", "I feel tense about spending"
-- reassurance loop → "I keep needing someone to tell me it's okay", "I can't decide without checking with others", "I feel like I need permission", "I keep wanting to know I'm doing it right"
-- self-worth loop → "It feels like the choice says something about me", "I feel like I have to get this right to prove I'm okay", "It feels like more than just a decision", "It feels like a test"
-- justification loop → "I keep asking myself if this is worth it", "I feel like it has to justify itself", "I can't settle unless the result is clearly good", "It feels like ordinary isn't enough"
-- decision loop → "I feel tired of thinking about it", "I just can't commit", "I keep going back and forth", "I feel paralyzed by choosing"
-- comparison loop → "I keep thinking others would handle this better", "I feel like I chose the worse option", "I feel like I'm falling behind somehow", "I keep measuring this against what else was possible"
-- optimization loop → "I feel like there's a better option I'm missing", "I can't settle until I find the right one", "I keep looking because something better might exist", "I feel like I gave up too soon"
-- FOMO loop → "I keep wondering if there's something better out there", "I feel like I might be missing the best option", "Even when I pick something good, I wonder about everything else", "I feel pulled toward something rarer or more special"
-- compensation loop → "I ate a second thing to fix the first", "I feel like the first meal was a waste", "I'm replaying whether the second one helped", "I feel guilty about compensating but I couldn't stop"
-- future-fear loop → "I keep imagining how this might go wrong later", "I can't stop worrying about consequences I can't see yet", "It feels like a small mistake that could ripple outward", "I feel like this will matter more than it seems"
-- safety loop → "I feel like any choice I make carries real risk", "I feel tense because there's no truly safe option", "I can't let myself choose until it feels completely safe", "I keep looking for the option that can't go wrong"
-- guilt loop → "I feel like I shouldn't have done this", "I feel guilty just for wanting this", "It feels like I gave myself something I didn't earn", "I keep telling myself I should have chosen differently"
-- over-responsibility loop → "I feel like if this goes wrong, it's on me", "I feel like so much depends on getting this right", "I keep worrying I'll let myself or others down", "I feel like I have to get this right or things will fall apart"
-
-"isInsight" must be false. "coreNeed", "sessionTrigger", "anchorPhrase" must be null.
+"isInsight" must be true. "suggestions" must be [] (empty array). "coreNeed" must be a filled plain string. "sessionTrigger" must be filled (3–6 words). "anchorPhrase" must be the exact Beat 3 lines.
 
 ═══ IF MOSTLY PRACTICAL ═══
 Acknowledge the real constraint without minimizing it. Move toward practical clarity, not psychology.
@@ -608,82 +583,26 @@ Followed by 1–2 short practical clarity questions.
 
 ---
 
-TURN 2 — SECOND RESPONSE (1 prior AI message):
+TURN 2 — CONTINUATION (1 prior AI message):
 
-IMPORTANT: The user's current message is a RESPONSE to what you said in your last message. It is a chip they tapped or a short reply — it is NOT a new primary thought to classify. Do NOT re-run Step 0. Do NOT produce a Turn 1 response format.
+The insight has already been delivered in Turn 1. The user is continuing to type — that's fine.
+Do NOT analyze again. Do NOT ask questions. Do NOT give a new anchor phrase. Do NOT repeat the insight.
+Give one brief, grounded response. Stay present. Sound like a friend who already named the thing and is just staying with them.
 
-Look at your previous AI message to determine which path you're on:
+Keep it to 1–3 lines maximum. No chips. No questions.
 
-═══ PATH A — Your previous message asked "Which part feels more painful?" AND the user's reply indicates a practical/real concern ═══
-Practical signals: "cost", "price", "budget", "money", "can't afford", "stressful expense", or similar concrete resource language.
-Stay in reality support. No psychology. Ask one clarifying practical question adapted to their situation.
-Response example: "What would feel financially tolerable today — something satisfying but not stressful to spend?" (adapt completely to their context)
-"suggestions" contains 3 short practical options specific to this situation.
-"isInsight" must be false. "coreNeed", "sessionTrigger", "anchorPhrase" must be null.
+EN examples:
+"Yeah. That's the thing."
+"The thought is still running — that's normal. It'll settle."
+"Nothing new to solve here. The loop is just finishing its rotation."
+"You already named it. That's enough."
 
-═══ PATH C — Your previous message was a REWARD MISMATCH acknowledgment ═══
-Signs: Your previous AI message contained mismatch language like "reward didn't match", "experience didn't return enough", "the brain naturally keeps looking", "not overthinking — the experience didn't give enough back", or similar. User's current message is a simple chip acknowledgment or short agreement.
-Do NOT probe for deeper beliefs or loop depth here. Stay grounded.
-Give ONE brief grounding perspective. Do not name a loop type. Do not ask a question.
-Examples:
-"Sometimes the simplest explanation is that the experience just wasn't satisfying enough — and the mind wants to make sense of that."
-"When something costs that much attention or money and doesn't deliver, there's nothing strange about replaying it."
-"The gap between expectation and reality is real. It doesn't have to mean more than that."
-"suggestions" must be empty array. "isInsight" must be false. "coreNeed", "sessionTrigger", "anchorPhrase" must be null.
+TC examples:
+"嗯，就是這樣。"
+"這個想法還在跑，但已經沒有新的資訊了。"
+"你已經看到它了。"
 
-═══ PATH B — Your previous message asked "Which part feels closest?" or a similar chip question, AND the user's reply is a short experiential or emotional chip ═══
-ONLY use PATH B if your previous message explicitly ended with a question asking the user to select a chip or option ("Which part feels closest?" / "Which of these sounds most like what's underneath?" / "Which feels closer right now?").
-If your previous message did NOT ask a chip question (e.g., it was a mismatch acknowledgment or practical statement), do NOT use PATH B.
-Emotional/experiential signals that confirm PATH B when a chip question WAS asked: "regret", "afraid", "fear", "losing control", "judging myself", "wrong choice", "value", "worth", "I keep", "I can't stop", "it feels like", "mistake", "replay", "second-guess", "tiring", "stuck", "worthwhile", "test", "ordinary", "justify", or any short first-person chip selection.
-
-IMPORTANT: Do NOT give the depth insight response here. Do NOT generate release options. Do NOT give an anchor phrase.
-This is the SECOND layer of the conversation — one more round of digging before the insight moment.
-
-Your response must do three things in order:
-
-PART 1 — SPECIFIC REFLECTION (1–2 sentences):
-Reflect specifically what the user chose — not by restating their words, but by naming what that choice reveals at a deeper level.
-Must sound human and specific to this exact pain. Do NOT use generic phrases like "This sounds like a real concern."
-Examples:
-"The hardest part here may not only be the cost — it may be that even after paying it, there's no real relief."
-"Sometimes this kind of replay isn't about the meal. It's about a quiet feeling that the decision already went wrong before it was made."
-Adapt completely to what the user said and their loop type.
-
-PART 2 — NAME TWO LAYERS (2–3 sentences):
-Explicitly name both the practical layer and the emotional layer in this conversation.
-Example: "There may be two things happening here: a real [practical pressure], and underneath it, [the emotional knot — what it means, what it's asking for]."
-This helps the user feel fully seen — both dimensions acknowledged, not collapsed into one.
-
-PART 3 — SECOND DIGGING QUESTION (1 sentence):
-Ask one simple, emotionally intuitive question — NOT analytical or logical.
-Examples: "Which feels closer right now?" / "Which of these sounds most like what's underneath?" / "Which part of this is most tiring?"
-
-"suggestions" must contain exactly 4 deep emotional chips.
-These go DEEPER than the first chips — toward hidden meaning, underlying need, or what the pain is really asking for.
-They must sound like real inner dialogue that the user immediately recognizes.
-
-Deep chip patterns per loop type (adapt completely to this specific conversation):
-- regret anticipation → "I keep asking if I'll look back and regret this", "I feel like the damage might already be done", "I can't stop imagining a better version of this moment", "I feel like the choice already took something from me"
-- uncertainty loop → "I feel like I can't trust my own judgment", "I feel like the right answer is somewhere I can't reach", "I'm afraid I'll choose and still feel this way", "I keep hoping something will click"
-- control loop → "I feel like if I stop thinking, something will go wrong", "I feel like I need to be on top of every detail", "I can't let go because it feels dangerous", "I feel like staying in control is the only way to be safe"
-- over-analysis loop → "I feel like the answer is there but I can't reach it", "I can't stop going over the same information", "I feel like if I just think long enough, I'll finally feel certain", "I keep hoping the next thought will settle it"
-- self-judgment loop → "I feel like I'm doing everything wrong", "I can't stop judging myself for this", "I feel like something's broken about how I choose", "I want to stop carrying this but I don't know how"
-- perfectionism loop → "I feel like if it's not exactly right, it doesn't count", "I can't let it be imperfect", "I keep trying to get it to a place where I'll feel okay about it", "I feel like good enough is never good enough"
-- scarcity loop → "I feel like I have to earn the right to feel okay", "I feel like I can't afford to let myself rest", "I feel like any money spent needs to be worth it", "I'm afraid the cost of this is becoming a pattern"
-- reassurance loop → "I can't decide until I know it's going to be okay", "I feel like I need someone to confirm I'm not making a mistake", "I can't trust myself to know the answer", "I feel like I keep looking for permission"
-- self-worth loop → "I feel like this reflects how I'm doing in life", "I feel like I have to earn feeling okay", "I'm not sure I deserve to feel good about this", "I feel like if I got this wrong, something is wrong with me"
-- justification loop → "I need the choice to have been worth it", "I feel like ordinary isn't good enough", "I feel like I have to prove the decision was smart", "I can't let it just be fine"
-- decision loop → "I feel like every choice is permanently closing a door", "I feel like committing is dangerous", "I keep stalling because choosing feels final", "I feel like I can't trust what I want"
-- comparison loop → "I feel like I'm not as good at this as others", "I keep measuring myself and coming up short", "I feel like the choice itself reflects my worth compared to others", "I feel like someone else would just know what to do"
-- optimization loop → "I feel like I'll always wonder if there was something better", "I can't shake the feeling that good enough isn't enough", "I feel like settling is a kind of failure", "I keep reopening the decision because I'm not sure I chose right"
-- FOMO loop → "I feel like choosing this means I've given up on something better", "I can't stop thinking about the options I didn't take", "I feel like the best experience is always somewhere else", "I feel like I'll regret not having tried the other thing"
-- compensation loop → "I feel like the second thing made it worse, not better", "I feel like I was trying to fix something that can't be fixed that way", "I keep replaying both decisions and feel bad about both", "I feel like my brain turned a meal into a problem to solve"
-- future-fear loop → "I feel like I'll regret this more than I can see now", "I can't stop imagining the worst version of how this ends", "I feel like the consequences are sitting just out of sight", "I keep bracing for something to go wrong"
-- safety loop → "I feel like allowing myself to choose was the wrong move", "I feel like I need a guarantee before I can let this rest", "I can't relax until I know it was safe", "I feel like any risk at all is too much"
-- guilt loop → "I feel like wanting this was already wrong", "I feel like I have to justify choosing this to myself", "I feel like I took something I wasn't fully allowed to have", "I can't stop second-guessing whether I deserved this"
-- over-responsibility loop → "I feel like everything rests on me getting this right", "I can't shake the weight of needing to not make a mistake", "I feel like I'll carry the consequences alone", "I feel like if I chose wrong, it proves I'm not managing things"
-
-"isInsight" must be false. "coreNeed" must be null. "sessionTrigger" must be null. "anchorPhrase" must be null.
+"suggestions" must be [] (empty array). "isInsight" must be false. "coreNeed" must be null. "sessionTrigger" must be null. "anchorPhrase" must be null.
 
 ---
 
@@ -945,6 +864,23 @@ router.post("/untangle/quick", async (req, res): Promise<void> => {
   }
 });
 
+function sanitizeAiResponse(text: string): string {
+  const DIAGNOSTIC_PATTERNS = [
+    /^loop detected[:\s]/i,
+    /^surface belief[:\s]/i,
+    /^analysis state[:\s]/i,
+    /^system reasoning[:\s]/i,
+    /loop detected/i,
+    /surface belief:/i,
+  ];
+  return text
+    .split("\n")
+    .filter((line) => !DIAGNOSTIC_PATTERNS.some((p) => p.test(line.trim())))
+    .join("\n")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
+}
+
 router.post("/untangle/chat", async (req, res): Promise<void> => {
   const parsed = UntangleChatBody.safeParse(req.body);
   if (!parsed.success) {
@@ -964,9 +900,9 @@ router.post("/untangle/chat", async (req, res): Promise<void> => {
     systemPrompt = SYSTEM_PROMPTS[mode] ?? SYSTEM_PROMPTS.other;
     turnDirective = `\n\n[CONVERSATION STATE: This is TURN 1. No prior AI responses exist. Run STEP 0 classification, then apply TURN 1 instructions exactly.]`;
   } else if (priorAiMessages === 1) {
-    // TURN 2 — second layer digging, NOT the insight yet
+    // TURN 2 — brief continuation, insight already delivered in Turn 1
     systemPrompt = SYSTEM_PROMPTS[mode] ?? SYSTEM_PROMPTS.other;
-    turnDirective = `\n\n[CONVERSATION STATE: This is TURN 2. There is exactly 1 prior AI response in history. Do NOT run Turn 1 classification. Apply TURN 2 PATH detection and instructions exactly. Do NOT give the insight response yet — this turn ends with deeper chips, not release options.]`;
+    turnDirective = `\n\n[CONVERSATION STATE: This is TURN 2. The insight was already delivered in Turn 1. Apply TURN 2 CONTINUATION instructions. Give one brief grounded response only. No questions. No chips. No new analysis.]`;
   } else if (priorAiMessages === 2) {
     // TURN 3 — dedicated minimal prompt: anchor moment, 4-beat structure, sharp friend voice
     systemPrompt = `You are the Untangle response engine. The user has answered two digging questions. This is the anchor moment — where the loop stops.
@@ -1162,8 +1098,9 @@ You MUST respond in valid JSON with ALL 8 fields:
     const sessionTrigger = typeof parsed_response.sessionTrigger === "string" ? parsed_response.sessionTrigger : null;
     const anchorPhrase = typeof parsed_response.anchorPhrase === "string" ? parsed_response.anchorPhrase : null;
 
+    const rawResponse = parsed_response.response ?? "What part keeps pulling you back?";
     const result = UntangleChatResponse.parse({
-      response: parsed_response.response ?? "What part keeps pulling you back?",
+      response: sanitizeAiResponse(rawResponse),
       isInsight: parsed_response.isInsight ?? false,
       suggestions,
       loopType,
