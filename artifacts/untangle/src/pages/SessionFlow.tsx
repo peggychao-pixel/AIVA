@@ -390,13 +390,6 @@ export function SessionFlow() {
     return null;
   }, [messages]);
 
-  const lastAssistantIndex = (() => {
-    for (let i = messages.length - 1; i >= 0; i--) {
-      if (messages[i].role === "assistant") return i;
-    }
-    return -1;
-  })();
-
   return (
     <div className="min-h-screen bg-background flex flex-col items-center">
       <main className="w-full max-w-lg flex flex-col h-screen">
@@ -572,9 +565,9 @@ export function SessionFlow() {
                     )}
 
                     {msg.role === "assistant" &&
+                      msg.id === "opener" &&
                       msg.suggestions &&
-                      msg.suggestions.length > 0 &&
-                      i === lastAssistantIndex && (
+                      msg.suggestions.length > 0 && (
                         <div className="flex flex-wrap gap-2 max-w-full">
                           {msg.suggestions.map((s, si) => (
                             <button
