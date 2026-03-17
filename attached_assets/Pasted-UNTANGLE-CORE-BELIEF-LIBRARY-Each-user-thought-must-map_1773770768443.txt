@@ -1,0 +1,198 @@
+UNTANGLE CORE BELIEF LIBRARY
+
+Each user thought must map to ONE of the following loops.
+Do NOT invent new categories.
+
+---
+
+1. WRONG CHOICE LOOP
+User fears making the wrong decision.
+
+Belief:
+"If I choose wrong, it means something is wrong with me."
+
+Examples:
+- trying to pick the right option
+- comparing menus
+- can't decide what to eat
+
+Insight:
+"You’re not choosing a meal.
+You’re trying not to choose wrong."
+
+---
+
+2. REGRET LOOP
+User fears future regret.
+
+Belief:
+"If I regret this, it means I failed."
+
+Examples:
+- worried I'll regret it
+- what if there's something better
+
+Insight:
+"You’re not choosing food.
+You’re trying to avoid regret."
+
+---
+
+3. WORTHINESS LOOP ⭐（你這題就是這個）
+User questions if they deserve the experience.
+
+Belief:
+"I have to earn the right to enjoy things."
+
+Examples:
+- I shouldn't spend money
+- I don't deserve this
+- it's too expensive for me
+
+Insight:
+"You’re not thinking about the food.
+You’re questioning whether you deserve it."
+
+---
+
+4. BURDEN LOOP ⭐（你這題也有）
+User feels they are a burden to others.
+
+Belief:
+"If I cost money, I become a burden."
+
+Examples:
+- I feel bad spending my parents' money
+- I shouldn't make them pay
+- I feel like a burden
+
+Insight:
+"You’re not thinking about the meal.
+You’re afraid of being a burden."
+
+---
+
+5. CONTROL LOOP
+User fears losing control.
+
+Belief:
+"If I lose control, everything falls apart."
+
+Examples:
+- if I start eating I can't stop
+- I need to control intake
+
+Insight:
+"You’re not thinking about food.
+You’re trying to stay in control."
+
+---
+
+6. SCARCITY LOOP
+User fears wasting resources.
+
+Belief:
+"Resources are limited, I must not waste them."
+
+Examples:
+- food is too expensive
+- not worth the price
+
+Insight:
+"You’re not thinking about the price.
+You’re afraid of wasting resources."
+
+---
+
+7. PERFECTION LOOP
+User wants the optimal choice.
+
+Belief:
+"There is a perfect choice, and I must find it."
+
+Examples:
+- best option
+- optimal choice
+
+Insight:
+"You’re not choosing a meal.
+You’re trying to find the perfect one."
+
+---
+
+8. COMPARISON LOOP
+User compares options endlessly.
+
+Belief:
+"If I don't compare everything, I'll miss something better."
+
+Examples:
+- comparing dishes
+- menu scanning
+
+Insight:
+"You’re not choosing.
+You’re stuck comparing."
+
+---
+
+9. FOMO LOOP
+User fears missing out.
+
+Belief:
+"If I miss something better, I lose."
+
+Examples:
+- what if something else is better
+
+Insight:
+"You’re not choosing food.
+You’re afraid of missing out."
+
+---
+
+10. VALIDATION LOOP
+User wants confirmation they are correct.
+
+Belief:
+"I need to know I made the right decision."
+
+Examples:
+- was that the right choice
+- replaying decision
+
+Insight:
+"You’re not thinking about the meal.
+You’re checking if you were right."
+
+---
+
+11. SAFETY LOOP ⭐（你這題有）
+User feels unsafe or unstable.
+
+Belief:
+"If I'm not safe, I must restrict or control."
+
+Examples:
+- I feel unsafe alone
+- anxiety around eating alone
+
+Insight:
+"You’re not thinking about the food.
+You’re trying to feel safe."
+
+---
+
+12. SELF-WORTH LOOP
+User ties behavior to identity.
+
+Belief:
+"My choices define my value."
+
+Examples:
+- I'm bad for eating this
+- I shouldn't have done that
+
+Insight:
+"You’re not thinking about the action.
+You’re judging yourself."
