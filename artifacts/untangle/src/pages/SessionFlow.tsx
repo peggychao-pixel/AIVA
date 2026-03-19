@@ -88,6 +88,61 @@ function InsightCard({
   );
 }
 
+type SatietyKey = "full+satisfied" | "full+unsatisfied" | "notfull+satisfied" | "notfull+unsatisfied";
+
+const SATIETY_OPTIONS: { key: SatietyKey; en: string; tc: string }[] = [
+  { key: "full+satisfied",    en: "I'm full and satisfied",       tc: "我很飽也很滿足" },
+  { key: "full+unsatisfied",  en: "I'm full but not satisfied",   tc: "我很飽但不滿足" },
+  { key: "notfull+satisfied", en: "I'm not full but satisfied",   tc: "我不飽但滿足" },
+  { key: "notfull+unsatisfied", en: "I'm not full and not satisfied", tc: "我不飽也不滿足" },
+];
+
+const SATIETY_RESPONSES: Record<SatietyKey, { en: string; tc: string }> = {
+  "full+satisfied":    { en: "Nothing more is needed.",                                                   tc: "不需要再做什麼了。" },
+  "full+unsatisfied":  { en: "Your body is done.\nSomething else is still missing.",                      tc: "身體已經夠了。\n但有別的東西還沒被滿足。" },
+  "notfull+satisfied": { en: "Your body may still need food.\nThe experience itself feels complete.",     tc: "身體可能還需要食物。\n但這次體驗本身是完整的。" },
+  "notfull+unsatisfied": { en: "Neither your body nor the experience is complete.",                       tc: "身體和體驗都還沒完成。" },
+};
+
+function SatietyCheck({ isTc, answer, onAnswer }: { isTc: boolean; answer: SatietyKey | null; onAnswer: (k: SatietyKey) => void }) {
+  const response = answer ? SATIETY_RESPONSES[answer] : null;
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 8 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, delay: 0.15 }}
+      className="w-full rounded-xl border border-border/50 bg-card/40 p-5 space-y-4"
+    >
+      <p className="text-xs text-muted-foreground font-medium">
+        {isTc ? "現在比較接近哪個？" : "Right now — which one feels true?"}
+      </p>
+      {!answer && (
+        <div className="flex flex-col gap-2">
+          {SATIETY_OPTIONS.map((opt) => (
+            <button
+              key={opt.key}
+              onClick={() => onAnswer(opt.key)}
+              className="w-full text-left px-4 py-3 text-sm text-muted-foreground border border-border/50 rounded-lg hover:border-border hover:text-foreground transition-all bg-transparent"
+            >
+              {isTc ? opt.tc : opt.en}
+            </button>
+          ))}
+        </div>
+      )}
+      {answer && response && (
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.3 }}
+          className="text-sm text-foreground leading-relaxed whitespace-pre-wrap"
+        >
+          {isTc ? response.tc : response.en}
+        </motion.p>
+      )}
+    </motion.div>
+  );
+}
+
 function AnchorCard({ phrase }: { phrase: string }) {
   return (
     <motion.div
@@ -192,6 +247,7 @@ export function SessionFlow() {
   const [coreNeeds, setCoreNeeds] = useState<string[]>([]);
   const [showPattern, setShowPattern] = useState(false);
   const [loopDismissed, setLoopDismissed] = useState(false);
+  const [satietyAnswer, setSatietyAnswer] = useState<SatietyKey | null>(null);
 
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -286,6 +342,7 @@ export function SessionFlow() {
     setCoreNeeds([]);
     setShowPattern(false);
     setLoopDismissed(false);
+    setSatietyAnswer(null);
     setStep("chat");
 
     const opener: ChatMessage = {
@@ -373,6 +430,7 @@ export function SessionFlow() {
     setCoreNeeds([]);
     setShowPattern(false);
     setLoopDismissed(false);
+    setSatietyAnswer(null);
   };
 
   const handleFreeSubmit = (e: React.FormEvent) => {
@@ -388,6 +446,11 @@ export function SessionFlow() {
       if (messages[i].role === "assistant" && messages[i].anchorPhrase) return messages[i];
     }
     return null;
+  }, [messages]);
+
+  const isTc = useMemo(() => {
+    const userTexts = messages.filter((m) => m.role === "user").map((m) => m.content).join("");
+    return /[\u4e00-\u9fff\u3400-\u4dbf]/.test(userTexts);
   }, [messages]);
 
   return (
@@ -607,6 +670,15 @@ export function SessionFlow() {
                 {/* Anchor phrase */}
                 {anchorPhrase && exitMessage && (
                   <AnchorCard phrase={anchorPhrase} />
+                )}
+
+                {/* Satiety check module — appears after insight */}
+                {exitMessage && !loopDismissed && (
+                  <SatietyCheck
+                    isTc={isTc}
+                    answer={satietyAnswer}
+                    onAnswer={setSatietyAnswer}
+                  />
                 )}
 
                 {/* Post-insight closure actions */}
