@@ -1,0 +1,196 @@
+HOMEPAGE IA / FLOW REDESIGN
+
+The current homepage is cleaner than before, but the logic is still mixed.
+
+Right now the cards combine:
+	•	time/state context
+	•	emotional state
+	•	product mode
+
+This forces the user to think:
+“Which one am I supposed to choose?”
+
+Untangle should reduce thinking, not create another decision.
+
+⸻
+
+CORE PRINCIPLE
+
+Homepage options must be:
+	1.	mutually clear
+	2.	easy to choose quickly
+	3.	based on real user moments
+	4.	not overlapping
+
+Do not mix:
+	•	context
+	•	feeling
+	•	interaction mode
+
+These should be separate layers.
+
+⸻
+
+NEW HOMEPAGE STRUCTURE
+
+Use this structure:
+
+HEADER
+What feels tangled right now?
+
+SUBTEXT
+Start where the loop is happening.
+
+PRIMARY MOMENT CARDS
+	1.	Before eating
+Subtext:
+Choosing, comparing, trying to get it right.
+	2.	After eating
+Subtext:
+Replaying, judging, checking if it was the right choice.
+	3.	It’s bigger than the food
+Subtext:
+The food is part of it, but something deeper is pulling at me.
+	4.	My mind won’t let it go
+Subtext:
+The thought keeps reopening, even when I want to move on.
+
+TEXT INPUT AREA
+Placeholder:
+Or type what’s tangled.
+
+SECONDARY MODE SWITCH
+Quick untangle
+Subtext:
+Skip the conversation. Get one sharp insight.
+
+⸻
+
+REMOVE THIS CARD
+
+Remove:
+I feel pressure
+
+Reason:
+Pressure overlaps with before eating, after eating, and looping.
+It is not a primary entry point.
+It should be detected inside the conversation, not shown as a homepage category.
+
+⸻
+
+RENAME THIS CARD
+
+Rename:
+My mind keeps looping
+
+To:
+My mind won’t let it go
+
+Reason:
+This feels more human, less clinical, and more emotionally precise.
+
+⸻
+
+RENAME THIS CARD
+
+Rename:
+Something else
+
+To:
+It’s bigger than the food
+
+Reason:
+“Something else” is too vague and becomes a catch-all.
+Users choose it when they are unsure.
+The new wording helps users recognize:
+“This isn’t just about the meal.”
+
+⸻
+
+MOVE QUICK UNTANGLE
+
+Quick untangle should not appear as a normal card alongside the main moment cards.
+
+It is a mode, not a situation.
+
+Place it as:
+	•	a smaller secondary option below the cards
+or
+	•	a toggle near the input box
+
+Example:
+Talk it through / Quick untangle
+
+Reason:
+Quick untangle is an interaction style, not a category of problem.
+
+⸻
+
+DECISION LOGIC
+
+Homepage flow should be:
+
+Step 1:
+User chooses the moment the loop is happening in.
+
+Step 2:
+Inside that flow, the system detects:
+	•	pressure
+	•	guilt
+	•	fear
+	•	burden
+	•	wrong choice
+	•	safety
+	•	etc.
+
+Do not ask the user to classify pressure on the homepage.
+That classification belongs to the system.
+
+⸻
+
+CARD COPY
+
+Use these exact card labels and descriptions:
+
+Before eating
+Choosing, comparing, trying to get it right.
+
+After eating
+Replaying, judging, checking if it was the right choice.
+
+It’s bigger than the food
+The food is part of it, but something deeper is pulling at me.
+
+My mind won’t let it go
+The thought keeps reopening, even when I want to move on.
+
+Quick untangle
+Skip the conversation. Get one sharp insight.
+
+Input placeholder:
+Or type what’s tangled.
+
+⸻
+
+UX GOAL
+
+The homepage should feel like:
+“I know where to start.”
+
+Not:
+“Which category fits me?”
+
+Users should be able to choose in under 2 seconds.
+
+If the user has to pause and think which card applies, the IA is still too complex.
+
+⸻
+
+DESIGN PRINCIPLE
+
+Untangle is not a menu of emotions.
+Untangle is an entry into a loop-breaking experience.
+
+The homepage should organize by moment, not by abstract mental state.
+
+END

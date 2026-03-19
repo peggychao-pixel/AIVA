@@ -10,7 +10,7 @@ import {
 } from "@workspace/api-client-react";
 import { VoiceButton } from "../components/VoiceButton";
 
-type Mode = "before" | "after" | "loop" | "pressure" | "other";
+type Mode = "before" | "after" | "loop" | "other";
 
 interface ChatMessage {
   id: string;
@@ -26,27 +26,24 @@ interface ChatMessage {
 }
 
 const MODE_OPTIONS: { id: Mode; label: string; description: string }[] = [
-  { id: "before",   label: "Before eating",        description: "Planning, overthinking the choice." },
-  { id: "after",    label: "After eating",          description: "Replaying, evaluating, judging." },
-  { id: "loop",     label: "My mind keeps looping", description: "Stuck on something, can't stop returning." },
-  { id: "pressure", label: "I feel pressure",       description: "To get it right, to control the outcome." },
-  { id: "other",    label: "Something else",        description: "Type it out below." },
+  { id: "before", label: "Before eating",          description: "Choosing, comparing, trying to get it right." },
+  { id: "after",  label: "After eating",           description: "Replaying, judging, checking if it was the right choice." },
+  { id: "other",  label: "It's bigger than the food", description: "The food is part of it, but something deeper is pulling at me." },
+  { id: "loop",   label: "My mind won't let it go", description: "The thought keeps reopening, even when I want to move on." },
 ];
 
 const OPENING_QUESTIONS: Record<Mode, string> = {
-  before:   "What part feels wrong before you even start?",
-  after:    "What part feels like a mistake?",
-  loop:     "What thought keeps returning?",
-  pressure: "What part feels heavy?",
-  other:    "What thought keeps returning?",
+  before: "What part feels wrong before you even start?",
+  after:  "What part feels like a mistake?",
+  loop:   "What thought keeps reopening?",
+  other:  "What's pulling at you underneath?",
 };
 
 const OPENING_SUGGESTIONS: Record<Mode, string[]> = {
-  before:   ["Trying to pick the right option", "Worried I'll regret it", "Can't stop comparing"],
-  after:    ["Replaying what I ate", "Judging if it was right", "Still want to eat more"],
-  loop:     ["Same thought keeps returning", "Something I can't resolve", "I don't know what triggered it"],
-  pressure: ["Making the right food choice", "Controlling what I eat", "Getting it exactly right"],
-  other:    ["Something about food", "A feeling I can't name", "Let me type it out"],
+  before: ["Trying to pick the right option", "Worried I'll regret it", "Can't stop comparing"],
+  after:  ["Replaying what I ate", "Judging if it was right", "Still want to eat more"],
+  loop:   ["Same thought keeps returning", "Something I can't resolve", "It opens again when I try to close it"],
+  other:  ["Something about food", "A feeling I can't name", "It's more than just the meal"],
 };
 
 function intensityDots(n: number | null | undefined): string {
@@ -508,7 +505,7 @@ export function SessionFlow() {
                   What feels tangled<br />right now?
                 </h1>
                 <p className="text-sm text-muted-foreground">
-                  Select a moment, or write it out.
+                  Start where the loop is happening.
                 </p>
               </div>
 
@@ -542,7 +539,7 @@ export function SessionFlow() {
                     type="text"
                     value={freeInput}
                     onChange={(e) => setFreeInput(e.target.value)}
-                    placeholder="Or write it here..."
+                    placeholder="Or type what's tangled."
                     className="flex-1 bg-card/60 border border-border/60 rounded-xl px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/40 transition-colors"
                   />
                   <button
@@ -575,7 +572,7 @@ export function SessionFlow() {
                             Quick untangle
                           </p>
                           <p className="text-xs text-muted-foreground/50 mt-0.5">
-                            Instant — no conversation needed.
+                            Skip the conversation. Get one sharp insight.
                           </p>
                         </div>
                         <span className="text-xs text-muted-foreground/50 group-hover:text-primary transition-colors">
