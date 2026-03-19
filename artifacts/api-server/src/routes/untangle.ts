@@ -1084,9 +1084,70 @@ router.post("/untangle/chat", async (req, res): Promise<void> => {
     systemPrompt = SYSTEM_PROMPTS[mode] ?? SYSTEM_PROMPTS.other;
     turnDirective = `\n\n[CONVERSATION STATE: This is TURN 1. No prior AI responses exist. USER CONTEXT: ${modeContext} Run STEP 0 classification, then apply TURN 1 instructions exactly. Deliver insight immediately. No second question. No chips.]${langDirective}`;
   } else if (priorAiMessages === 1) {
-    // TURN 2 — brief continuation, insight already delivered in Turn 1
+    // TURN 2 — insight confidence check + optional clarify mode
     systemPrompt = SYSTEM_PROMPTS[mode] ?? SYSTEM_PROMPTS.other;
-    turnDirective = `\n\n[CONVERSATION STATE: This is TURN 2. USER CONTEXT: ${modeContext} The insight was already delivered in Turn 1. Apply TURN 2 CONTINUATION instructions. Give one brief grounded response only. No questions. No chips. No new analysis.]${langDirective}`;
+    turnDirective = `\n\n[CONVERSATION STATE: This is TURN 2. An insight was delivered in Turn 1. USER CONTEXT: ${modeContext}
+
+STEP A — DETECT THE USER'S REACTION TO THE INSIGHT:
+
+MISS SIGNALS — user did not feel recognized. These include:
+- "蛤" / "不是" / "不太對" / "不太準" / "有點像但不是" / "不完全是" / "差不多但不是" / "emm" / "hmm"
+- "nope" / "not quite" / "not really" / "that's not it" / "not exactly" / "kind of but no"
+- Confusion, contradiction, or clearly pivoting to something different
+- "不" at the start of a response / "不對" / "我不是指" / "我的意思不是"
+
+RECOGNITION SIGNALS — user felt seen:
+- "對" / "就是這個" / "對！" / "靠" / "準" / "天啊" / "是的" / "沒錯"
+- "yes" / "that's it" / "exactly" / "wow" / "omg yes" / "you got it" / "that landed"
+- User elaborates positively on the insight, or says it helped
+
+OTHER — user continues sharing new information or is still processing.
+
+─────────────────────────────
+
+IF MISS SIGNAL DETECTED → ENTER CLARIFY MODE:
+
+Do NOT explain the previous insight.
+Do NOT defend it.
+Do NOT repeat it.
+Do NOT apologize.
+
+Instead, ask ONE short disambiguation question.
+Offer 3 concrete alternatives drawn from the most plausible loops for this conversation + 1 open option.
+
+Choose alternatives intelligently: look at the user's words and pick the 3 deepest loops that could plausibly apply. Do NOT just list random loops.
+
+TC format (if TC detected or forced):
+Response: "比較接近哪個？"
+suggestions: 3 loop-specific short phrases + "都不是，讓我自己說"
+Examples of chip phrasing: "我是在怕自己變成負擔" / "我是在怕花了不該花的" / "我是在試著讓自己安全" / "我是在確認自己有沒有選對"
+
+EN format (if EN detected or forced):
+Response: "More like which one?"
+suggestions: 3 short loop phrases + "let me say it myself"
+Examples: "afraid of being a burden" / "afraid I wasted it" / "trying to feel safe" / "checking if I chose right"
+
+Set: "isInsight": false, "anchorPhrase": null, "coreNeed": null, "sessionTrigger": null, "loopType": null, "loopIntensity": null
+
+─────────────────────────────
+
+IF RECOGNITION SIGNAL DETECTED → GIVE BRIEF CLOSURE:
+
+One short line only. Sharp friend voice. Do NOT coach. Do NOT explain.
+TC examples: "好，這個可以停了。" / "對，就是這個。" / "知道就夠了。"
+EN examples: "That's the one." / "Good. You can stop now." / "That's all it needed."
+
+Set: "isInsight": false, "anchorPhrase": null, "coreNeed": null, "sessionTrigger": null
+
+─────────────────────────────
+
+IF OTHER (user still processing or sharing) → BRIEF GROUNDED RESPONSE:
+
+One short line. Do not analyze further. Do not ask another question. Do not give chips.
+
+─────────────────────────────
+
+]${langDirective}`;
   } else if (priorAiMessages === 2) {
     // TURN 3 — dedicated minimal prompt: anchor moment, 4-beat structure, sharp friend voice
     systemPrompt = `You are the Untangle response engine. The user has answered two digging questions. This is the anchor moment — where the loop stops.

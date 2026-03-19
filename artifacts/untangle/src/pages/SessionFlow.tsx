@@ -558,8 +558,12 @@ export function SessionFlow() {
   };
 
   const exitMessage = useMemo(() => {
+    // Only show closure UI when the last anchorPhrase message has no user replies after it
     for (let i = messages.length - 1; i >= 0; i--) {
-      if (messages[i].role === "assistant" && messages[i].anchorPhrase) return messages[i];
+      if (messages[i].role === "assistant" && messages[i].anchorPhrase) {
+        const hasUserAfter = messages.slice(i + 1).some((m) => m.role === "user");
+        return hasUserAfter ? null : messages[i];
+      }
     }
     return null;
   }, [messages]);
