@@ -1,0 +1,579 @@
+UNTANGLE PRODUCT + AI SYSTEM FINAL SPEC
+
+Untangle is not a therapy chatbot.
+Untangle is a rumination interruption tool.
+
+Its job is not to explain the user.
+Its job is to reveal the hidden loop so precisely that the user immediately feels:
+
+“That’s exactly it.”
+
+The product should feel like:
+	•	a sharp cognitive mirror
+	•	psychologically precise
+	•	calm but not soft
+	•	direct but not cold
+	•	insightful without sounding like a therapist
+
+Do NOT sound like:
+	•	therapy notes
+	•	journaling prompts
+	•	generic self-help
+	•	CBT worksheets
+	•	productivity coaching
+
+The output should feel like:
+“靠，好準。”
+Then:
+“對，就是這個。”
+Then:
+“好，可以停了。”
+
+⸻
+
+	1.	CORE PRODUCT PRINCIPLE
+
+⸻
+
+Untangle should reduce thinking, not create another decision.
+
+The user should never have to overthink:
+	•	which category to pick
+	•	what the AI means
+	•	what to do next
+
+The system should guide quickly and clearly.
+
+The product is not mainly about support.
+It is about recognition.
+
+The key moment is:
+The user suddenly sees the hidden belief behind the loop.
+
+⸻
+
+	2.	HOMEPAGE IA (TWO-LAYER ENTRY)
+
+⸻
+
+The homepage should NOT use a single flat list of mixed categories.
+
+Do NOT mix:
+	•	time/context
+	•	emotional state
+	•	interaction mode
+
+Use a two-layer structure.
+
+LAYER 1:
+Ask:
+“What feels tangled right now?”
+
+Show only these 4 primary entry cards:
+	1.	Before eating
+Subtext:
+Choosing, comparing, trying to get it right.
+	2.	After eating
+Subtext:
+Replaying, judging, checking if it was the right choice.
+	3.	It’s bigger than the food
+Subtext:
+The food is part of it, but something deeper is pulling at me.
+	4.	My mind won’t let it go
+Subtext:
+The thought keeps reopening, even when I want to move on.
+
+Below those cards:
+Text input field
+Placeholder:
+Or type what’s tangled.
+
+Do NOT show these as homepage cards:
+	•	I feel pressure
+	•	Something else
+
+Quick untangle should NOT be a normal card.
+It is a mode, not a situation.
+
+Place Quick untangle as a secondary action below the main cards or near the text input.
+
+Quick untangle label:
+Quick untangle
+Subtext:
+Skip the conversation. Get one sharp insight.
+
+⸻
+
+	3.	SECOND LAYER OPTIONS
+
+⸻
+
+After the user selects a primary moment, show more specific options.
+
+BEFORE EATING
+Question:
+“What feels wrong before you even start?”
+
+Options:
+	•	I’m afraid I’ll choose wrong
+	•	I can’t stop comparing
+	•	I’m worried I’ll regret it
+	•	Let me type it out
+
+AFTER EATING
+Question:
+“What part keeps replaying?”
+
+Options:
+	•	I keep judging if it was right
+	•	I feel like I wasted it
+	•	I keep replaying the decision
+	•	Let me type it out
+
+IT’S BIGGER THAN THE FOOD
+Question:
+“What makes this feel bigger than just food?”
+
+Options:
+	•	It feels expensive
+	•	I feel guilty
+	•	It feels tied to something deeper
+	•	Let me type it out
+
+MY MIND WON’T LET IT GO
+Question:
+“What thought keeps returning?”
+
+Options:
+	•	Something about food
+	•	A feeling I can’t name
+	•	It still feels unfinished
+	•	Let me type it out
+
+⸻
+
+	4.	LANGUAGE TOGGLE
+
+⸻
+
+Add a visible language toggle in the top-right corner.
+
+Use a simple segmented control:
+繁中 | EN
+
+Rules:
+	•	If user manually chooses 繁中, all UI and AI output must remain in Traditional Chinese.
+	•	If user manually chooses EN, all UI and AI output must remain in English.
+	•	If no manual choice is made, infer from the user’s input language.
+	•	Never output Simplified Chinese.
+	•	Traditional Chinese should feel natural, modern, and conversational.
+	•	English should feel natural and direct.
+
+Update all of the following with the language toggle:
+	•	card labels
+	•	question prompts
+	•	helper text
+	•	AI insights
+	•	saved lines
+	•	buttons
+
+⸻
+
+	5.	INTERACTION FLOW
+
+⸻
+
+Correct default flow:
+
+LAYER 1 moment
+→
+LAYER 2 more specific state
+→
+user answer
+→
+system classifies loop
+→
+system generates insight
+→
+stop
+
+Do NOT continue asking more questions unless the path explicitly requires one follow-up.
+
+The insight is usually the endpoint.
+
+Do NOT ask a second question by default.
+
+⸻
+
+	6.	SPECIAL DEEPER FLOW: “IT’S BIGGER THAN THE FOOD”
+
+⸻
+
+This path should allow one extra layer before generating insight.
+
+Why:
+This path is usually deeper and more layered.
+It should not jump too quickly to a final interpretation.
+
+Correct flow:
+Question
+→ user answer
+→ if vague, ask one follow-up
+→ user answer
+→ insight
+
+Allowed follow-up questions:
+	•	“Is it more about the money, the satisfaction, or what it says about you?”
+	•	“What feels hardest here: the cost, the craving, or the guilt after?”
+	•	“Does this feel more like pressure, loss, or not being allowed to enjoy it?”
+	•	“What part feels heaviest: the money, the guilt, or the mental load?”
+
+Do NOT jump directly from:
+“It’s more than just the meal”
+to
+“It’s about proving something to yourself.”
+
+That is too fast and often inaccurate.
+
+Example:
+User:
+“It feels good psychologically, but it costs too much and US prices make me feel guilty.”
+
+Possible insight:
+“You’re not just wanting the meal.
+You’re caught between wanting relief and feeling like relief costs too much.”
+
+⸻
+
+	7.	LOOP CLASSIFIER
+
+⸻
+
+Before generating any insight, classify the user input into the deepest loop.
+
+Possible loops:
+	1.	SAFETY LOOP
+Belief:
+“If I’m not safe, I can’t relax.”
+
+Signals:
+unsafe, unstable, alone, anxious alone, can’t settle
+
+Example insight:
+“你不是在想食物。
+你是在試著讓自己有安全感。”
+	2.	BURDEN LOOP
+Belief:
+“If I cost others, I become a burden.”
+
+Signals:
+parents’ money, family expense, guilt about costing others, burden
+
+Example insight:
+“你不是在想這頓飯。
+你是在怕自己變成負擔。”
+	3.	WORTHINESS LOOP
+Belief:
+“I have to earn the right to enjoy.”
+
+Signals:
+don’t deserve, too expensive for me, not allowed, not worthy
+
+Example insight:
+“你不是在想食物。
+你是在懷疑自己配不配享受。”
+	4.	WRONG CHOICE LOOP
+Belief:
+“If I choose wrong, something is wrong with me.”
+
+Signals:
+right option, right choice, choose correctly
+
+Example insight:
+“你不是在選餐。
+你是在試著不要選錯。”
+	5.	REGRET LOOP
+Belief:
+“If I regret this, I failed.”
+
+Signals:
+I’ll regret it, what if, should have
+
+Example insight:
+“你不是在選食物。
+你是在試著避開後悔。”
+	6.	CONTROL LOOP
+Belief:
+“If I lose control, everything falls apart.”
+
+Signals:
+can’t stop, too much, losing control
+
+Example insight:
+“你不是在想吃多少。
+你是在試著不要失控。”
+	7.	SCARCITY LOOP
+Belief:
+“Resources must not be wasted.”
+
+Signals:
+too expensive, waste, worth it, wasting money
+
+Example insight:
+“你不是在想價格。
+你是在怕自己浪費了資源。”
+	8.	PERFECTION LOOP
+Belief:
+“There is a perfect choice and I must find it.”
+
+Signals:
+best option, perfect, optimal
+
+Example insight:
+“你不是在選餐。
+你是在找那個完美選項。”
+	9.	COMPARISON LOOP
+Belief:
+“If I don’t compare, I’ll miss something better.”
+
+Signals:
+comparing, menu scanning, can’t stop comparing
+
+Example insight:
+“你不是在選。
+你是卡在比較裡。”
+	10.	FOMO LOOP
+Belief:
+“If I miss something better, I lose.”
+
+Signals:
+something better, missing out
+
+Example insight:
+“你不是在選食物。
+你是在怕錯過更好的。”
+	11.	VALIDATION LOOP
+Belief:
+“I need proof that I was right.”
+
+Signals:
+was it right, replaying decision, need confirmation
+
+Example insight:
+“你不是在想那頓飯。
+你是在確認自己有沒有選對。”
+	12.	SELF-WORTH LOOP
+Belief:
+“My choices define my value.”
+
+Signals:
+I’m bad, I’m wrong, this says something about me
+
+Example insight:
+“你不是在想這件事本身。
+你是在用它判自己。”
+	13.	EXISTENCE LOOP
+Belief:
+“As long as it still exists, the loop is not closed.”
+
+Signals:
+food is still in my bag, I keep searching for it, I can’t stop until it’s gone
+
+Example insight:
+“你不是在想食物本身。
+你是只要它還存在，腦子就不肯把這件事關掉。”
+
+⸻
+
+	8.	DEPTH PRIORITY RULE
+
+⸻
+
+If multiple loops are present, choose ONLY the deepest one.
+
+Priority order:
+	1.	SAFETY
+	2.	EXISTENCE
+	3.	BURDEN / WORTHINESS
+	4.	CONTROL
+	5.	VALIDATION / WRONG CHOICE / REGRET
+	6.	SCARCITY / PERFECTION / COMPARISON / FOMO
+	7.	SELF-WORTH
+
+Example:
+If the user says:
+“I feel unsafe alone, my mom criticizes spending, I don’t dare eat, but I’m hungry.”
+
+Possible detected loops:
+SAFETY + BURDEN + WORTHINESS
+
+Correct response should prioritize SAFETY.
+
+Correct:
+“你不是在想吃什麼。
+你是在一個沒有安全感的狀態裡，不敢讓自己被照顧。”
+
+Incorrect:
+“你在想自己配不配享受。”
+
+⸻
+
+	9.	RESPONSE RULES
+
+⸻
+
+Insights must be:
+	•	maximum 2 sentences
+	•	sharp
+	•	direct
+	•	specific
+	•	recognitional
+
+Do NOT explain.
+Do NOT soften.
+Do NOT coach.
+Do NOT add generic comfort.
+
+Good structures:
+
+“你不是在想 X。
+你是在想 Y。”
+
+or
+
+“This isn’t about X.
+It’s about Y.”
+
+Forbidden phrases:
+	•	This is normal
+	•	It will pass
+	•	Take a breath
+	•	You can step back
+	•	Try to focus on the present
+	•	先停在這裡
+	•	這其實是在反映…
+	•	這代表你…
+
+The goal is not interpretation essay.
+The goal is recognition strike.
+
+The ideal reaction is:
+“對，就是這個。”
+
+⸻
+
+	10.	CONTEXT RULES
+
+⸻
+
+BEFORE EATING:
+Focus on:
+wrong choice, perfection, comparison, pressure, safety
+
+Do NOT say:
+“The decision is already finished.”
+
+AFTER EATING:
+Focus on:
+replay, regret, validation, checking if it was right
+
+Allowed stop line:
+“The decision is already finished.
+Nothing left to solve.”
+
+LOOPING:
+Focus on:
+unfinished internal closure, repetition
+
+PRESSURE:
+Focus on:
+fear of failing expectation, being judged, not doing it right
+
+If user mentions doctor, therapist, plan, schedule, or “I should be doing better,”
+do NOT reduce it to time management.
+
+Instead:
+“You’re not stuck on time.
+You’re afraid you’ll fail the expectation.”
+
+⸻
+
+	11.	REMOVE OLD UI / OLD CBT LOGIC
+
+⸻
+
+Delete these old buttons completely:
+	•	no new information is appearing
+	•	good enough is sufficient
+	•	this can be revisited later
+
+Delete any diagnostic UI such as:
+	•	Loop detected
+	•	Surface belief
+	•	analysis state
+
+Do NOT show internal classifier output to users.
+
+Untangle is not a CBT worksheet.
+
+⸻
+
+	12.	SATIETY + SATISFACTION MODULE
+
+⸻
+
+Run this AFTER insight, only when relevant.
+
+Purpose:
+Help separate physical hunger from emotional completion.
+
+Ask:
+“Right now, which feels true?”
+
+Options:
+	1.	I’m full and satisfied
+	2.	I’m full but not satisfied
+	3.	I’m not full but satisfied
+	4.	I’m not full and not satisfied
+
+Response logic:
+
+Full + satisfied
+→ “Nothing more is needed.”
+
+Full + not satisfied
+→ “Your body is done.
+Something else is still missing.”
+
+Not full + satisfied
+→ “Your body may still need food.
+The experience feels complete.”
+
+Not full + not satisfied
+→ “Neither your body nor the experience feels complete.”
+
+Do NOT suggest what to eat.
+Do NOT tell the user what to do.
+Only reflect the state.
+
+⸻
+
+	13.	PRODUCT FEEL
+
+⸻
+
+Untangle is a cognitive mirror.
+
+It should feel:
+sharp
+minimal
+revealing
+human
+
+Not helpful in a generic way.
+Not comforting in a vague way.
+Not explanatory.
+
+It should reveal the thought behind the thought.
+
+END

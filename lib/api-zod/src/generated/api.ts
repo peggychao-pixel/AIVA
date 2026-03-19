@@ -79,6 +79,7 @@ export const UntangleChatBody = zod.object({
   message: zod.string().min(1),
   mode: zod.enum(["before", "after", "loop", "pressure", "other"]),
   history: zod.array(UntangleChatHistoryItem).optional(),
+  language: zod.enum(["auto", "tc", "en"]).optional(),
 });
 
 export const UntangleChatResponse = zod.object({

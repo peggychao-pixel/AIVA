@@ -11,6 +11,7 @@ import {
 import { VoiceButton } from "../components/VoiceButton";
 
 type Mode = "before" | "after" | "loop" | "other";
+type UiLang = "auto" | "tc" | "en";
 
 interface ChatMessage {
   id: string;
@@ -25,26 +26,110 @@ interface ChatMessage {
   anchorPhrase?: string | null;
 }
 
-const MODE_OPTIONS: { id: Mode; label: string; description: string }[] = [
-  { id: "before", label: "Before eating",          description: "Choosing, comparing, trying to get it right." },
-  { id: "after",  label: "After eating",           description: "Replaying, judging, checking if it was the right choice." },
-  { id: "other",  label: "It's bigger than the food", description: "The food is part of it, but something deeper is pulling at me." },
-  { id: "loop",   label: "My mind won't let it go", description: "The thought keeps reopening, even when I want to move on." },
-];
-
-const OPENING_QUESTIONS: Record<Mode, string> = {
-  before: "What part feels wrong before you even start?",
-  after:  "What part feels like a mistake?",
-  loop:   "What thought keeps reopening?",
-  other:  "What's pulling at you underneath?",
+const MODE_OPTIONS_DATA: Record<"en" | "tc", { id: Mode; label: string; description: string }[]> = {
+  en: [
+    { id: "before", label: "Before eating",           description: "Choosing, comparing, trying to get it right." },
+    { id: "after",  label: "After eating",            description: "Replaying, judging, checking if it was the right choice." },
+    { id: "other",  label: "It's bigger than the food", description: "The food is part of it, but something deeper is pulling at me." },
+    { id: "loop",   label: "My mind won't let it go", description: "The thought keeps reopening, even when I want to move on." },
+  ],
+  tc: [
+    { id: "before", label: "飯前",              description: "在選擇、比較、想做對。" },
+    { id: "after",  label: "飯後",              description: "在重播、評斷、確認選對了沒。" },
+    { id: "other",  label: "不只是食物那麼簡單", description: "食物是一部分，但有更深的東西在拉著我。" },
+    { id: "loop",   label: "腦子停不下來",       description: "那個念頭一直重新打開，就算我想停也停不了。" },
+  ],
 };
 
-const OPENING_SUGGESTIONS: Record<Mode, string[]> = {
-  before: ["Trying to pick the right option", "Worried I'll regret it", "Can't stop comparing"],
-  after:  ["Replaying what I ate", "Judging if it was right", "Still want to eat more"],
-  loop:   ["Same thought keeps returning", "Something I can't resolve", "It opens again when I try to close it"],
-  other:  ["Something about food", "A feeling I can't name", "It's more than just the meal"],
+const LAYER2_DATA: Record<"en" | "tc", Record<Mode, { question: string; chips: string[] }>> = {
+  en: {
+    before: {
+      question: "What feels wrong before you even start?",
+      chips: ["I'm afraid I'll choose wrong", "I can't stop comparing", "I'm worried I'll regret it", "Let me type it out"],
+    },
+    after: {
+      question: "What part keeps replaying?",
+      chips: ["I keep judging if it was right", "I feel like I wasted it", "I keep replaying the decision", "Let me type it out"],
+    },
+    other: {
+      question: "What makes this feel bigger than just food?",
+      chips: ["It feels expensive", "I feel guilty", "It feels tied to something deeper", "Let me type it out"],
+    },
+    loop: {
+      question: "What thought keeps returning?",
+      chips: ["Something about food", "A feeling I can't name", "It still feels unfinished", "Let me type it out"],
+    },
+  },
+  tc: {
+    before: {
+      question: "開始之前，什麼感覺不對？",
+      chips: ["我怕選錯", "我停不下來比較", "我怕自己會後悔", "讓我自己打"],
+    },
+    after: {
+      question: "什麼一直在重播？",
+      chips: ["我一直在評斷到底對不對", "我覺得我浪費了", "我一直在重播那個決定", "讓我自己打"],
+    },
+    other: {
+      question: "什麼讓這個感覺不只是食物那麼簡單？",
+      chips: ["感覺太貴了", "我有罪惡感", "感覺跟某件更深的事有關", "讓我自己打"],
+    },
+    loop: {
+      question: "什麼念頭一直回來？",
+      chips: ["跟食物有關", "一種說不出來的感覺", "感覺還沒結束", "讓我自己打"],
+    },
+  },
 };
+
+const UI_TEXT = {
+  en: {
+    brand: "Untangle",
+    back: "← Back",
+    moments: (n: number) => n > 0 ? `${n} saved` : "Moments",
+    history: "History",
+    headline: "What feels tangled\nright now?",
+    subtext: "Start where the loop is happening.",
+    inputPlaceholder: "Or type what's tangled.",
+    quickLabel: "Quick untangle",
+    quickSub: "Skip the conversation. Get one sharp insight.",
+    layer2TypePlaceholder: "Write it here...",
+    chatPlaceholder: "Write or hold mic to speak...",
+    untangleMoment: "Untangle moment",
+    saveThis: "Save this moment",
+    saved: "Saved",
+    keepThis: "Keep this",
+    whenReturns: "When this thought returns, come back to this line.",
+    closeLoop: "Close this loop",
+    stillThinking: "I'm still thinking about it",
+    showPattern: "Show me the pattern",
+    whatsLooping: "What's looping",
+    whatYouNeed: "What you actually need",
+    stoppingLine: "Your stopping line",
+  },
+  tc: {
+    brand: "Untangle",
+    back: "← 返回",
+    moments: (n: number) => n > 0 ? `${n} 已儲存` : "紀錄",
+    history: "歷史",
+    headline: "現在什麼\n感覺糾結？",
+    subtext: "從迴圈發生的地方開始。",
+    inputPlaceholder: "或者直接打出來。",
+    quickLabel: "快速解開",
+    quickSub: "跳過對話，直接得到一個精準洞察。",
+    layer2TypePlaceholder: "在這裡打...",
+    chatPlaceholder: "打字，或按麥克風說...",
+    untangleMoment: "Untangle 時刻",
+    saveThis: "儲存這個時刻",
+    saved: "已儲存",
+    keepThis: "留著這句話",
+    whenReturns: "當這個念頭回來，回到這句話。",
+    closeLoop: "關掉這個迴圈",
+    stillThinking: "我還在想",
+    showPattern: "讓我看看這個模式",
+    whatsLooping: "什麼在迴圈",
+    whatYouNeed: "你真正需要的",
+    stoppingLine: "你的停止句",
+  },
+} as const;
 
 function intensityDots(n: number | null | undefined): string {
   if (!n) return "";
@@ -55,12 +140,15 @@ function InsightCard({
   content,
   onSave,
   saved,
+  isTc,
 }: {
   content: string;
   loopType?: string | null;
   onSave: () => void;
   saved: boolean;
+  isTc: boolean;
 }) {
+  const t = isTc ? UI_TEXT.tc : UI_TEXT.en;
   return (
     <motion.div
       initial={{ opacity: 0, y: 8 }}
@@ -68,7 +156,7 @@ function InsightCard({
       transition={{ duration: 0.4 }}
       className="w-full rounded-xl bg-primary/8 border border-primary/20 p-6 space-y-4"
     >
-      <p className="text-xs text-primary/70 font-medium tracking-wide">Untangle moment</p>
+      <p className="text-xs text-primary/70 font-medium tracking-wide">{t.untangleMoment}</p>
       <p className="text-base text-foreground leading-relaxed">{content}</p>
       <button
         onClick={onSave}
@@ -79,7 +167,7 @@ function InsightCard({
             : "border-border text-muted-foreground hover:border-primary/40 hover:text-primary"
         }`}
       >
-        {saved ? "Saved" : "Save this moment"}
+        {saved ? t.saved : t.saveThis}
       </button>
     </motion.div>
   );
@@ -88,17 +176,17 @@ function InsightCard({
 type SatietyKey = "full+satisfied" | "full+unsatisfied" | "notfull+satisfied" | "notfull+unsatisfied";
 
 const SATIETY_OPTIONS: { key: SatietyKey; en: string; tc: string }[] = [
-  { key: "full+satisfied",    en: "I'm full and satisfied",       tc: "我很飽也很滿足" },
-  { key: "full+unsatisfied",  en: "I'm full but not satisfied",   tc: "我很飽但不滿足" },
-  { key: "notfull+satisfied", en: "I'm not full but satisfied",   tc: "我不飽但滿足" },
-  { key: "notfull+unsatisfied", en: "I'm not full and not satisfied", tc: "我不飽也不滿足" },
+  { key: "full+satisfied",      en: "I'm full and satisfied",            tc: "我很飽也很滿足" },
+  { key: "full+unsatisfied",    en: "I'm full but not satisfied",        tc: "我很飽但不滿足" },
+  { key: "notfull+satisfied",   en: "I'm not full but satisfied",        tc: "我不飽但滿足" },
+  { key: "notfull+unsatisfied", en: "I'm not full and not satisfied",    tc: "我不飽也不滿足" },
 ];
 
 const SATIETY_RESPONSES: Record<SatietyKey, { en: string; tc: string }> = {
-  "full+satisfied":    { en: "Nothing more is needed.",                                                   tc: "不需要再做什麼了。" },
-  "full+unsatisfied":  { en: "Your body is done.\nSomething else is still missing.",                      tc: "身體已經夠了。\n但有別的東西還沒被滿足。" },
-  "notfull+satisfied": { en: "Your body may still need food.\nThe experience itself feels complete.",     tc: "身體可能還需要食物。\n但這次體驗本身是完整的。" },
-  "notfull+unsatisfied": { en: "Neither your body nor the experience is complete.",                       tc: "身體和體驗都還沒完成。" },
+  "full+satisfied":      { en: "Nothing more is needed.",                                               tc: "不需要再做什麼了。" },
+  "full+unsatisfied":    { en: "Your body is done.\nSomething else is still missing.",                   tc: "身體已經夠了。\n但有別的東西還沒被滿足。" },
+  "notfull+satisfied":   { en: "Your body may still need food.\nThe experience itself feels complete.",  tc: "身體可能還需要食物。\n但這次體驗本身是完整的。" },
+  "notfull+unsatisfied": { en: "Neither your body nor the experience is complete.",                      tc: "身體和體驗都還沒完成。" },
 };
 
 function SatietyCheck({ isTc, answer, onAnswer }: { isTc: boolean; answer: SatietyKey | null; onAnswer: (k: SatietyKey) => void }) {
@@ -140,7 +228,8 @@ function SatietyCheck({ isTc, answer, onAnswer }: { isTc: boolean; answer: Satie
   );
 }
 
-function AnchorCard({ phrase }: { phrase: string }) {
+function AnchorCard({ phrase, isTc }: { phrase: string; isTc: boolean }) {
+  const t = isTc ? UI_TEXT.tc : UI_TEXT.en;
   return (
     <motion.div
       initial={{ opacity: 0, y: 8 }}
@@ -148,20 +237,14 @@ function AnchorCard({ phrase }: { phrase: string }) {
       transition={{ duration: 0.4 }}
       className="w-full rounded-xl border border-border bg-card p-6 space-y-2"
     >
-      <p className="text-xs text-muted-foreground font-medium">Keep this</p>
+      <p className="text-xs text-muted-foreground font-medium">{t.keepThis}</p>
       <p className="text-lg text-foreground font-medium leading-snug">"{phrase}"</p>
-      <p className="text-xs text-muted-foreground/60">
-        When this thought returns, come back to this line.
-      </p>
+      <p className="text-xs text-muted-foreground/60">{t.whenReturns}</p>
     </motion.div>
   );
 }
 
-function QuickUntangleCard({
-  onClose,
-}: {
-  onClose: () => void;
-}) {
+function QuickUntangleCard({ onClose }: { onClose: () => void }) {
   const [thought, setThought] = useState("");
   const { mutateAsync: runQuick, isPending, data: result } = useQuickUntangle();
 
@@ -228,9 +311,12 @@ function QuickUntangleCard({
 }
 
 export function SessionFlow() {
-  const [step, setStep] = useState<"home" | "chat">("home");
+  const [step, setStep] = useState<"home" | "layer2" | "chat">("home");
   const [mode, setMode] = useState<Mode>("after");
+  const [uiLang, setUiLang] = useState<UiLang>("auto");
   const [freeInput, setFreeInput] = useState("");
+  const [layer2TypeInput, setLayer2TypeInput] = useState("");
+  const [showLayer2Type, setShowLayer2Type] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState("");
   const [isThinking, setIsThinking] = useState(false);
@@ -262,6 +348,19 @@ export function SessionFlow() {
 
   const recentMomentCount = useMemo(() => savedMoments?.length ?? 0, [savedMoments]);
 
+  // Compute isTc: respect manual lang choice, fallback to auto-detect
+  const isTc = useMemo(() => {
+    if (uiLang === "tc") return true;
+    if (uiLang === "en") return false;
+    const userTexts = messages.filter((m) => m.role === "user").map((m) => m.content).join("");
+    return /[\u4e00-\u9fff\u3400-\u4dbf]/.test(userTexts);
+  }, [uiLang, messages]);
+
+  const t = isTc ? UI_TEXT.tc : UI_TEXT.en;
+  const langKey = isTc ? "tc" : "en";
+  const modeOptions = MODE_OPTIONS_DATA[langKey];
+  const getModeLabel = (m: Mode) => modeOptions.find((o) => o.id === m)?.label ?? m;
+
   const doSendMessage = async (
     text: string,
     currentMode: Mode,
@@ -285,7 +384,12 @@ export function SessionFlow() {
     try {
       const history = currentMessages.map((m) => ({ role: m.role, content: m.content }));
       const res = await sendChat({
-        data: { message: text.trim(), mode: currentMode, history },
+        data: {
+          message: text.trim(),
+          mode: currentMode,
+          history,
+          language: uiLang !== "auto" ? uiLang : undefined,
+        },
       });
 
       if (res.coreNeed) setCoreNeeds((p) => (p.includes(res.coreNeed!) ? p : [...p, res.coreNeed!]));
@@ -315,9 +419,9 @@ export function SessionFlow() {
       const fallback: ChatMessage = {
         id: `a-${Date.now()}`,
         role: "assistant",
-        content: "What's the part that keeps pulling you back?",
+        content: isTc ? "什麼一直把你拉回來？" : "What's the part that keeps pulling you back?",
         isInsight: false,
-        suggestions: ["The outcome", "The choice", "I'm not sure"],
+        suggestions: [],
         loopType: null,
       };
       const withFallback = [...updatedMessages, fallback];
@@ -328,9 +432,7 @@ export function SessionFlow() {
     }
   };
 
-  const startConversation = async (selectedMode: Mode, initialText?: string) => {
-    setMode(selectedMode);
-    modeRef.current = selectedMode;
+  const goToChat = (selectedMode: Mode, initialText: string) => {
     setSavedMomentIds(new Set());
     setOriginalThought(null);
     setSurfaceBelief(null);
@@ -340,28 +442,41 @@ export function SessionFlow() {
     setShowPattern(false);
     setLoopDismissed(false);
     setSatietyAnswer(null);
+    setMessages([]);
+    messagesRef.current = [];
     setStep("chat");
 
-    const opener: ChatMessage = {
-      id: "opener",
-      role: "assistant",
-      content: OPENING_QUESTIONS[selectedMode],
-      isInsight: false,
-      suggestions: OPENING_SUGGESTIONS[selectedMode],
-      loopType: null,
-    };
-    setMessages([opener]);
-    messagesRef.current = [opener];
-
     createSession({
-      data: {
-        ruminationThought: MODE_OPTIONS.find((m) => m.id === selectedMode)?.label ?? selectedMode,
-      },
+      data: { ruminationThought: getModeLabel(selectedMode) },
     }).catch(() => {});
 
-    if (initialText?.trim()) {
-      setTimeout(() => doSendMessage(initialText.trim(), selectedMode, [opener]), 200);
+    setTimeout(() => doSendMessage(initialText, selectedMode, []), 200);
+  };
+
+  const handleModeCard = (selectedMode: Mode) => {
+    setMode(selectedMode);
+    modeRef.current = selectedMode;
+    setShowLayer2Type(false);
+    setLayer2TypeInput("");
+    setStep("layer2");
+  };
+
+  const handleLayer2Chip = (chip: string) => {
+    const l2 = LAYER2_DATA[langKey][mode];
+    const typeChip = l2.chips[l2.chips.length - 1]; // "Let me type it out" / "讓我自己打"
+    if (chip === typeChip) {
+      setShowLayer2Type(true);
+    } else {
+      goToChat(mode, chip);
     }
+  };
+
+  const handleLayer2TypeSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!layer2TypeInput.trim()) return;
+    const text = layer2TypeInput.trim();
+    setLayer2TypeInput("");
+    goToChat(mode, text);
   };
 
   const handleSend = () => {
@@ -415,6 +530,8 @@ export function SessionFlow() {
   const reset = () => {
     setStep("home");
     setFreeInput("");
+    setLayer2TypeInput("");
+    setShowLayer2Type(false);
     setMessages([]);
     messagesRef.current = [];
     setInput("");
@@ -435,7 +552,9 @@ export function SessionFlow() {
     if (!freeInput.trim()) return;
     const text = freeInput.trim();
     setFreeInput("");
-    startConversation("other", text);
+    setMode("other");
+    modeRef.current = "other";
+    goToChat("other", text);
   };
 
   const exitMessage = useMemo(() => {
@@ -445,10 +564,7 @@ export function SessionFlow() {
     return null;
   }, [messages]);
 
-  const isTc = useMemo(() => {
-    const userTexts = messages.filter((m) => m.role === "user").map((m) => m.content).join("");
-    return /[\u4e00-\u9fff\u3400-\u4dbf]/.test(userTexts);
-  }, [messages]);
+  const l2 = step === "layer2" ? LAYER2_DATA[langKey][mode] : null;
 
   return (
     <div className="min-h-screen bg-background flex flex-col items-center">
@@ -456,35 +572,56 @@ export function SessionFlow() {
 
         {/* Header */}
         <header className="flex items-center justify-between px-6 py-5 flex-shrink-0 border-b border-border/50">
-          {step === "chat" ? (
+          {step === "chat" || step === "layer2" ? (
             <button
               onClick={reset}
               className="text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
-              ← Back
+              {t.back}
             </button>
           ) : (
-            <span className="text-sm font-medium text-foreground/70 tracking-wide">Untangle</span>
+            <span className="text-sm font-medium text-foreground/70 tracking-wide">{t.brand}</span>
           )}
 
           {step === "chat" && (
             <span className="text-xs text-muted-foreground border border-border/60 px-3 py-1 rounded-full">
-              {MODE_OPTIONS.find((m) => m.id === mode)?.label ?? mode}
+              {getModeLabel(mode)}
             </span>
           )}
 
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-4">
+            {/* Language toggle */}
+            <div className="flex items-center border border-border/60 rounded-full overflow-hidden text-xs">
+              <button
+                onClick={() => setUiLang(uiLang === "tc" ? "auto" : "tc")}
+                className={`px-3 py-1.5 transition-all ${
+                  isTc ? "bg-primary/15 text-foreground font-medium" : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                繁中
+              </button>
+              <div className="w-px h-4 bg-border/60" />
+              <button
+                onClick={() => setUiLang(uiLang === "en" ? "auto" : "en")}
+                className={`px-3 py-1.5 transition-all ${
+                  !isTc ? "bg-primary/15 text-foreground font-medium" : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                EN
+              </button>
+            </div>
+
             <Link
               href="/moments"
               className="text-sm text-muted-foreground hover:text-primary transition-colors"
             >
-              {recentMomentCount > 0 ? `${recentMomentCount} saved` : "Moments"}
+              {t.moments(recentMomentCount)}
             </Link>
             <Link
               href="/history"
               className="text-sm text-muted-foreground hover:text-primary transition-colors"
             >
-              History
+              {t.history}
             </Link>
           </div>
         </header>
@@ -501,19 +638,19 @@ export function SessionFlow() {
               className="flex-1 overflow-y-auto px-6 py-10 space-y-8"
             >
               <div className="space-y-2">
-                <h1 className="text-3xl text-foreground font-medium leading-snug">
-                  What feels tangled<br />right now?
+                <h1 className="text-3xl text-foreground font-medium leading-snug whitespace-pre-line">
+                  {t.headline}
                 </h1>
                 <p className="text-sm text-muted-foreground">
-                  Start where the loop is happening.
+                  {t.subtext}
                 </p>
               </div>
 
               <div className="space-y-2">
-                {MODE_OPTIONS.map((opt) => (
+                {modeOptions.map((opt) => (
                   <button
                     key={opt.id}
-                    onClick={() => startConversation(opt.id)}
+                    onClick={() => handleModeCard(opt.id)}
                     className="w-full text-left px-5 py-4 border border-border/60 bg-card/50 hover:border-primary/30 hover:bg-primary/5 rounded-xl transition-all duration-150 group"
                   >
                     <div className="flex items-center justify-between gap-4">
@@ -539,7 +676,7 @@ export function SessionFlow() {
                     type="text"
                     value={freeInput}
                     onChange={(e) => setFreeInput(e.target.value)}
-                    placeholder="Or type what's tangled."
+                    placeholder={t.inputPlaceholder}
                     className="flex-1 bg-card/60 border border-border/60 rounded-xl px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/40 transition-colors"
                   />
                   <button
@@ -569,10 +706,10 @@ export function SessionFlow() {
                       <div className="flex items-center justify-between">
                         <div>
                           <p className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">
-                            Quick untangle
+                            {t.quickLabel}
                           </p>
                           <p className="text-xs text-muted-foreground/50 mt-0.5">
-                            Skip the conversation. Get one sharp insight.
+                            {t.quickSub}
                           </p>
                         </div>
                         <span className="text-xs text-muted-foreground/50 group-hover:text-primary transition-colors">
@@ -583,6 +720,77 @@ export function SessionFlow() {
                   )}
                 </AnimatePresence>
               </div>
+            </motion.div>
+          )}
+
+          {/* LAYER 2 */}
+          {step === "layer2" && l2 && (
+            <motion.div
+              key="layer2"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.2 }}
+              className="flex-1 overflow-y-auto px-6 py-10 space-y-8"
+            >
+              <div>
+                <p className="text-2xl text-foreground font-medium leading-snug">
+                  {l2.question}
+                </p>
+              </div>
+
+              <div className="space-y-2">
+                {l2.chips.slice(0, -1).map((chip) => (
+                  <button
+                    key={chip}
+                    onClick={() => handleLayer2Chip(chip)}
+                    className="w-full text-left px-5 py-4 border border-border/60 bg-card/50 hover:border-primary/30 hover:bg-primary/5 rounded-xl transition-all duration-150 group"
+                  >
+                    <div className="flex items-center justify-between gap-4">
+                      <p className="text-sm text-foreground">{chip}</p>
+                      <span className="text-muted-foreground/50 group-hover:text-primary transition-colors text-base">→</span>
+                    </div>
+                  </button>
+                ))}
+              </div>
+
+              {/* Type it out option */}
+              {!showLayer2Type ? (
+                <button
+                  onClick={() => setShowLayer2Type(true)}
+                  className="w-full text-left px-5 py-4 border border-border/40 border-dashed rounded-xl hover:border-primary/30 hover:bg-primary/5 transition-all group"
+                >
+                  <div className="flex items-center justify-between">
+                    <p className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">
+                      {l2.chips[l2.chips.length - 1]}
+                    </p>
+                    <span className="text-xs text-muted-foreground/50 group-hover:text-primary transition-colors">→</span>
+                  </div>
+                </button>
+              ) : (
+                <motion.form
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  onSubmit={handleLayer2TypeSubmit}
+                  className="flex gap-2"
+                >
+                  <input
+                    type="text"
+                    value={layer2TypeInput}
+                    onChange={(e) => setLayer2TypeInput(e.target.value)}
+                    placeholder={t.layer2TypePlaceholder}
+                    autoFocus
+                    className="flex-1 bg-card/60 border border-border/60 rounded-xl px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/40 transition-colors"
+                  />
+                  <button
+                    type="submit"
+                    disabled={!layer2TypeInput.trim()}
+                    className="px-5 py-3 bg-primary text-primary-foreground text-sm rounded-xl hover:opacity-90 transition-opacity disabled:opacity-40 disabled:cursor-not-allowed"
+                  >
+                    →
+                  </button>
+                </motion.form>
+              )}
             </motion.div>
           )}
 
@@ -597,7 +805,7 @@ export function SessionFlow() {
             >
               {/* Messages */}
               <div className="flex-1 overflow-y-auto px-6 py-6 space-y-5">
-                {messages.map((msg, i) => (
+                {messages.map((msg) => (
                   <motion.div
                     key={msg.id}
                     initial={{ opacity: 0, y: 8 }}
@@ -611,6 +819,7 @@ export function SessionFlow() {
                         loopType={msg.loopType}
                         onSave={() => handleSaveMoment(msg)}
                         saved={savedMomentIds.has(msg.id)}
+                        isTc={isTc}
                       />
                     ) : (
                       <div
@@ -666,7 +875,7 @@ export function SessionFlow() {
 
                 {/* Anchor phrase */}
                 {anchorPhrase && exitMessage && (
-                  <AnchorCard phrase={anchorPhrase} />
+                  <AnchorCard phrase={anchorPhrase} isTc={isTc} />
                 )}
 
                 {/* Satiety check module — appears after insight */}
@@ -691,20 +900,20 @@ export function SessionFlow() {
                         onClick={reset}
                         className="w-full px-5 py-3.5 bg-primary text-primary-foreground text-sm rounded-xl hover:opacity-90 transition-opacity"
                       >
-                        Close this loop
+                        {t.closeLoop}
                       </button>
                       <button
                         onClick={() => setLoopDismissed(true)}
                         className="w-full px-5 py-3.5 border border-border/60 bg-card/60 text-sm text-muted-foreground hover:text-foreground hover:border-border rounded-xl transition-all"
                       >
-                        I'm still thinking about it
+                        {t.stillThinking}
                       </button>
                       {!showPattern && (
                         <button
                           onClick={() => setShowPattern(true)}
                           className="w-full px-5 py-3.5 border border-border/40 bg-transparent text-sm text-muted-foreground/70 hover:text-muted-foreground hover:border-border/60 rounded-xl transition-all"
                         >
-                          Show me the pattern
+                          {t.showPattern}
                         </button>
                       )}
                     </div>
@@ -718,20 +927,25 @@ export function SessionFlow() {
                       >
                         {exitMessage.loopType && (
                           <div className="space-y-0.5">
-                            <p className="text-xs text-muted-foreground">What's looping</p>
+                            <p className="text-xs text-muted-foreground">{t.whatsLooping}</p>
                             <p className="text-sm text-foreground capitalize">{exitMessage.loopType.replace(/_/g, " ")}</p>
                           </div>
                         )}
                         {exitMessage.coreNeed && (
                           <div className="space-y-0.5">
-                            <p className="text-xs text-muted-foreground">What you actually need</p>
+                            <p className="text-xs text-muted-foreground">{t.whatYouNeed}</p>
                             <p className="text-sm text-foreground">{exitMessage.coreNeed}</p>
                           </div>
                         )}
                         {anchorPhrase && (
                           <div className="space-y-0.5">
-                            <p className="text-xs text-muted-foreground">Your stopping line</p>
+                            <p className="text-xs text-muted-foreground">{t.stoppingLine}</p>
                             <p className="text-sm text-foreground">"{anchorPhrase}"</p>
+                          </div>
+                        )}
+                        {exitMessage.loopIntensity && (
+                          <div className="space-y-0.5">
+                            <p className="text-xs text-muted-foreground/60 font-mono">{intensityDots(exitMessage.loopIntensity)}</p>
                           </div>
                         )}
                       </motion.div>
@@ -755,7 +969,7 @@ export function SessionFlow() {
                     }}
                     onKeyDown={handleKeyDown}
                     rows={1}
-                    placeholder="Write or hold mic to speak..."
+                    placeholder={t.chatPlaceholder}
                     disabled={isThinking}
                     className="flex-1 bg-card/60 border border-border/60 rounded-xl px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/40 focus:outline-none focus:border-primary/40 transition-colors resize-none overflow-hidden disabled:opacity-60"
                     style={{ minHeight: "44px", maxHeight: "120px" }}

@@ -1,0 +1,448 @@
+繁中：
+你不是在想食物。
+你是在試著讓自己有安全感。
+
+你不是在想要不要吃。
+你是在一個不安全的狀態裡，不敢讓自己放鬆。
+
+你不是在猶豫這頓飯。
+你是在試著先讓自己穩下來。
+
+EN:
+You’re not thinking about the food.
+You’re trying to feel safe.
+
+You’re not deciding whether to eat.
+You’re in a state where it doesn’t feel safe to let go.
+
+You’re not stuck on the meal.
+You’re trying to steady yourself first.
+
+⸻
+
+	2.	BURDEN LOOP
+
+⸻
+
+繁中：
+你不是在想這頓飯。
+你是在怕自己變成負擔。
+
+你不是在算這筆花費。
+你是在算自己會不會拖累別人。
+
+你不是在想吃不吃。
+你是在怕自己一有需要，就變成麻煩。
+
+EN:
+You’re not thinking about the meal.
+You’re afraid of being a burden.
+
+You’re not calculating the cost.
+You’re calculating whether you’re weighing on other people.
+
+You’re not deciding whether to eat.
+You’re afraid that your needs make you a problem.
+
+⸻
+
+	3.	WORTHINESS LOOP
+
+⸻
+
+繁中：
+你不是在想食物。
+你是在懷疑自己配不配享受。
+
+你不是在想這頓飯值不值。
+你是在想自己值不值得。
+
+你不是在想能不能吃。
+你是在懷疑自己有沒有資格要這個。
+
+EN:
+You’re not thinking about the food.
+You’re questioning whether you deserve it.
+
+You’re not asking if the meal is worth it.
+You’re asking if you are.
+
+You’re not deciding if you can have it.
+You’re wondering if you’re allowed to want it.
+
+⸻
+
+	4.	WRONG CHOICE LOOP
+
+⸻
+
+繁中：
+你不是在選餐。
+你是在試著不要選錯。
+
+你不是在想吃什麼。
+你是在怕自己做錯決定。
+
+你不是在找選項。
+你是在避免犯錯。
+
+EN:
+You’re not choosing a meal.
+You’re trying not to choose wrong.
+
+You’re not deciding what to eat.
+You’re afraid of making the wrong choice.
+
+You’re not looking for options.
+You’re trying to avoid a mistake.
+
+⸻
+
+	5.	REGRET LOOP
+
+⸻
+
+繁中：
+你不是在選食物。
+你是在試著避開後悔。
+
+你不是在想哪個更好。
+你是在怕自己等等會後悔。
+
+你不是在猶豫。
+你是在預演後悔。
+
+EN:
+You’re not choosing food.
+You’re trying to avoid regret.
+
+You’re not comparing which one is better.
+You’re afraid of regretting it later.
+
+You’re not hesitating.
+You’re rehearsing regret.
+
+⸻
+
+	6.	CONTROL LOOP
+
+⸻
+
+繁中：
+你不是在想吃多少。
+你是在試著不要失控。
+
+你不是在算這一份。
+你是在確認自己還有控制住。
+
+你不是在看份量。
+你是在怕一放鬆就停不下來。
+
+EN:
+You’re not thinking about the amount.
+You’re trying not to lose control.
+
+You’re not counting this serving.
+You’re checking whether you still have control.
+
+You’re not looking at the portion.
+You’re afraid that once you loosen up, it won’t stop.
+
+⸻
+
+	7.	SCARCITY LOOP
+
+⸻
+
+繁中：
+你不是在想價格。
+你是在怕自己浪費了資源。
+
+你不是在算多少錢。
+你是在怕花掉不該花的。
+
+你不是在想這餐貴不貴。
+你是在怕自己把有限的東西用錯地方。
+
+EN:
+You’re not thinking about the price.
+You’re afraid of wasting resources.
+
+You’re not calculating the cost.
+You’re afraid of spending what shouldn’t be spent.
+
+You’re not asking if the meal is expensive.
+You’re afraid you used limited resources the wrong way.
+
+⸻
+
+	8.	PERFECTION LOOP
+
+⸻
+
+繁中：
+你不是在選餐。
+你是在找那個完美選項。
+
+你不是在想吃什麼。
+你是在逼自己選到最好。
+
+你不是在看菜單。
+你是在證明自己能選得夠對。
+
+EN:
+You’re not choosing a meal.
+You’re trying to find the perfect one.
+
+You’re not deciding what to eat.
+You’re pushing yourself to choose the best possible option.
+
+You’re not looking at the menu.
+You’re trying to prove you can choose correctly enough.
+
+⸻
+
+	9.	COMPARISON LOOP
+
+⸻
+
+繁中：
+你不是在選。
+你是卡在比較裡。
+
+你不是還沒決定。
+你是每個選項都捨不得放掉。
+
+你不是在看更多。
+你是怕少看一個就錯過。
+
+EN:
+You’re not choosing.
+You’re stuck in comparison.
+
+You’re not just undecided.
+You don’t want to let go of any option.
+
+You’re not looking at more options.
+You’re afraid missing one means missing the best one.
+
+⸻
+
+	10.	FOMO LOOP
+
+⸻
+
+繁中：
+你不是在選食物。
+你是在怕錯過更好的。
+
+你不是在想這個夠不夠好。
+你是在怕別的更值得。
+
+你不是在猶豫。
+你是在怕自己輸給那個沒選到的版本。
+
+EN:
+You’re not choosing food.
+You’re afraid of missing something better.
+
+You’re not asking if this is good enough.
+You’re afraid something else might be more worth it.
+
+You’re not hesitating.
+You’re afraid of losing to the version you didn’t choose.
+
+⸻
+
+	11.	VALIDATION LOOP
+
+⸻
+
+繁中：
+你不是在想那頓飯。
+你是在確認自己有沒有選對。
+
+你不是在重播那餐。
+你是在找證據證明自己沒錯。
+
+你不是在想味道。
+你是在想這個決定是不是對的。
+
+EN:
+You’re not thinking about the meal.
+You’re checking if you were right.
+
+You’re not replaying the dinner.
+You’re looking for proof that you didn’t make a mistake.
+
+You’re not thinking about the taste.
+You’re thinking about whether the decision was correct.
+
+⸻
+
+	12.	SELF-WORTH LOOP
+
+⸻
+
+繁中：
+你不是在想這件事本身。
+你是在用它判自己。
+
+你不是在想你做了什麼。
+你是在想這代表你是什麼樣的人。
+
+你不是在想那個行為。
+你是在用它定義自己的價值。
+
+EN:
+You’re not thinking about the event itself.
+You’re using it to judge yourself.
+
+You’re not thinking about what you did.
+You’re thinking about what it says about you.
+
+You’re not focused on the behavior.
+You’re using it to define your value.
+
+⸻
+
+	13.	EXISTENCE LOOP
+
+⸻
+
+繁中：
+你不是在想食物本身。
+你是只要它還存在，腦子就不肯把這件事關掉。
+
+你不是一直想找它。
+你是它還在，你的腦子就把它當成未完成。
+
+你不是在做選擇。
+你是在等那個選項消失，腦子才肯安靜。
+
+EN:
+You’re not thinking about the food itself.
+As long as it still exists, your mind won’t let the loop close.
+
+You’re not just looking for it.
+Because it’s still there, your brain is treating it like unfinished business.
+
+You’re not making a decision.
+Your mind won’t relax until the option disappears.
+
+⸻
+
+	14.	PRESSURE / EXPECTATION LOOP
+
+⸻
+
+繁中：
+你不是卡在時間。
+你是在怕自己做不好。
+
+你不是在想 schedule。
+你是在怕自己達不到期待。
+
+你不是在想怎麼安排。
+你是在承受一種「我不能再做錯」的壓力。
+
+EN:
+You’re not stuck on time.
+You’re afraid you’ll fail.
+
+You’re not thinking about the schedule.
+You’re afraid you won’t meet the expectation.
+
+You’re not focused on logistics.
+You’re carrying the pressure of “I can’t get this wrong again.”
+
+⸻
+
+	15.	SATIETY / SATISFACTION REFLECTIONS
+
+⸻
+
+繁中：
+你身體已經夠了。
+但有別的東西還沒被滿足。
+
+你的身體可能還需要食物。
+但這個體驗本身已經結束了。
+
+現在缺的，不一定是食物。
+可能是別的東西還沒被安頓。
+
+EN:
+Your body is done.
+Something else is still missing.
+
+Your body may still need food.
+But the experience itself feels complete.
+
+What’s missing right now may not be food.
+It may be something else that hasn’t settled.
+
+⸻
+
+	16.	STOP LINES / KEEP THIS
+
+⸻
+
+這些只能在適合的 context 用，不能亂套。
+
+繁中：
+這個決定已經結束了。
+沒有什麼需要解決的。
+
+這一餐已經發生了。
+不用再把它重跑一次。
+
+它還在你腦子裡轉。
+不代表它真的還沒結束。
+
+EN:
+The decision is already finished.
+Nothing left to solve.
+
+The meal already happened.
+You don’t need to run it again.
+
+It’s still looping in your mind.
+That doesn’t mean it’s still unfinished.
+
+⸻
+
+	17.	GENERATION RULE
+
+⸻
+
+When generating insight:
+	1.	detect context
+	2.	detect deepest loop
+	3.	choose ONE matching insight
+	4.	do not combine multiple loops
+	5.	do not explain after the insight
+
+Maximum:
+2 sentences
+
+Only use stop lines when context allows it.
+For example:
+	•	okay after eating
+	•	not okay before eating
+
+⸻
+
+	18.	LANGUAGE RULE
+
+⸻
+
+If UI language = 繁中:
+Use only Traditional Chinese
+
+If UI language = EN:
+Use only English
+
+Never output Simplified Chinese.
+
+END

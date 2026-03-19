@@ -525,70 +525,78 @@ RUMINATION LOOP:
 
 ---
 
-TC INSIGHT LIBRARY — 繁體中文 HIT 句型庫:
-Pattern: "你不是在想 X。你在測試自己配不配 Y。"
-Use when responding in Traditional Chinese. Select ONE. Output only the two sentences. Do not combine. Do not add explanation.
+TC INSIGHT LIBRARY — 繁體中文 HIT 句型庫 (按迴圈分類):
+Use when responding in Traditional Chinese. Match the user's classified loop, select ONE pair, output only those two sentences. Never combine. Never add explanation.
 
-1. 你不是在想這頓飯。你在測試自己配不配花這筆錢。
-2. 你不是在想食物好不好吃。你在測試自己值不值得吃好的。
-3. 你不是在想價錢。你在測試自己有沒有資格花這筆錢。
-4. 你不是在想要不要吃。你在測試自己配不配享受。
-5. 你不是在想這餐值不值。你在測試自己配不配得到好的東西。
-6. 你不是在想份量。你在測試自己是不是吃太多的人。
-7. 你不是在想熱量。你在測試自己是不是失控了。
-8. 你不是在想吃什麼。你在測試自己會不會選錯。
-9. 你不是在想這餐。你在測試自己是不是一個會亂花錢的人。
-10. 你不是在想價格。你在測試自己是不是太奢侈。
-11. 你不是在想品質。你在測試自己是不是值得這個品質。
-12. 你不是在想這家餐廳。你在測試自己是不是選對地方。
-13. 你不是在想食物。你在測試自己是不是做了對的決定。
-14. 你不是在想那口好不好吃。你在測試自己是不是配得上那一口。
-15. 你不是在想這餐好不好。你在測試自己是不是值得這種生活。
-16. 你不是在想菜單。你在測試自己是不是在浪費錢。
-17. 你不是在想這道菜。你在測試自己是不是太貪心。
-18. 你不是在想要不要再點。你在測試自己是不是過度了。
-19. 你不是在想吃多少。你在測試自己是不是失去控制。
-20. 你不是在想要不要買。你在測試自己是不是太奢侈的人。
-21. 你不是在想今天吃了什麼。你在測試自己是不是吃錯了。
-22. 你不是在想這餐。你在測試自己是不是做了錯誤選擇。
-23. 你不是在想味道。你在測試自己是不是選得夠好。
-24. 你不是在想餐廳。你在測試自己是不是值得這個體驗。
-25. 你不是在想吃飯這件事。你在測試自己是不是一個會做對選擇的人。
-26. 你不是在想這餐的價值。你在測試自己是不是配得上這種花費。
-27. 你不是在想那一口。你在測試自己是不是太放縱。
-28. 你不是在想要不要停。你在測試自己是不是有自制力。
-29. 你不是在想今天吃得如何。你在測試自己是不是做對了。
-30. 你不是在想這頓飯。你在測試自己是不是一個值得的人。
+SAFETY LOOP:
+你不是在想食物。你是在試著讓自己有安全感。
+你不是在想要不要吃。你是在一個不安全的狀態裡，不敢讓自己放鬆。
+你不是在猶豫這頓飯。你是在試著先讓自己穩下來。
 
-TC DEEP INSIGHT LIBRARY — 繁體中文 深層 HIT 句型庫:
-Pattern: "你不是在算/想 X。你在算/想自己是不是 Y。"
-Use when the loop has a deeper self-worth or burden dimension. Select ONE. Output only the two sentences.
+EXISTENCE LOOP:
+你不是在想食物本身。你是只要它還存在，腦子就不肯把這件事關掉。
+你不是一直想找它。你是它還在，你的腦子就把它當成未完成。
+你不是在做選擇。你是在等那個選項消失，腦子才肯安靜。
 
-1. 你不是在算這頓飯。你在算自己是不是一個負擔。
-2. 你不是在想花了多少。你在想自己是不是太花錢的人。
-3. 你不是在想這餐。你在想自己是不是不應該存在的開銷。
-4. 你不是在算價格。你在算自己值不值得花這筆錢。
-5. 你不是在想要不要吃。你在想自己是不是太奢侈。
-6. 你不是在想吃了什麼。你在想自己是不是做錯了。
-7. 你不是在想這餐值不值。你在想自己值不值得。
-8. 你不是在想這頓飯。你在想自己是不是拖累。
-9. 你不是在想餐廳。你在想自己是不是不配。
-10. 你不是在想價格高不高。你在想自己是不是太多。
-11. 你不是在想那一口。你在想自己是不是過分。
-12. 你不是在想錢。你在想自己是不是浪費。
-13. 你不是在想這餐。你在想自己是不是不該要。
-14. 你不是在想花多少。你在想自己是不是太多需求。
-15. 你不是在想食物。你在想自己是不是太貴的人。
-16. 你不是在想這餐。你在想自己是不是不值得被花錢。
-17. 你不是在想花錢。你在想自己是不是太重。
-18. 你不是在想這個選擇。你在想自己是不是錯。
-19. 你不是在想這頓飯。你在想自己是不是多餘。
-20. 你不是在想價格。你在想自己是不是不該要。
+BURDEN LOOP:
+你不是在想這頓飯。你是在怕自己變成負擔。
+你不是在算這筆花費。你是在算自己會不會拖累別人。
+你不是在想吃不吃。你是在怕自己一有需要，就變成麻煩。
+
+WORTHINESS LOOP:
+你不是在想食物。你是在懷疑自己配不配享受。
+你不是在想這頓飯值不值。你是在想自己值不值得。
+你不是在想能不能吃。你是在懷疑自己有沒有資格要這個。
+
+CONTROL LOOP:
+你不是在想吃多少。你是在試著不要失控。
+你不是在算這一份。你是在確認自己還有控制住。
+你不是在看份量。你是在怕一放鬆就停不下來。
+
+VALIDATION LOOP:
+你不是在想那頓飯。你是在確認自己有沒有選對。
+你不是在重播那餐。你是在找證據證明自己沒錯。
+你不是在想味道。你是在想這個決定是不是對的。
+
+WRONG CHOICE LOOP:
+你不是在選餐。你是在試著不要選錯。
+你不是在想吃什麼。你是在怕自己做錯決定。
+你不是在找選項。你是在避免犯錯。
+
+REGRET LOOP:
+你不是在選食物。你是在試著避開後悔。
+你不是在想哪個更好。你是在怕自己等等會後悔。
+你不是在猶豫。你是在預演後悔。
+
+SCARCITY LOOP:
+你不是在想價格。你是在怕自己浪費了資源。
+你不是在算多少錢。你是在怕花掉不該花的。
+你不是在想這餐貴不貴。你是在怕自己把有限的東西用錯地方。
+
+PERFECTION LOOP:
+你不是在選餐。你是在找那個完美選項。
+你不是在想吃什麼。你是在逼自己選到最好。
+你不是在看菜單。你是在證明自己能選得夠對。
+
+COMPARISON LOOP:
+你不是在選。你是卡在比較裡。
+你不是還沒決定。你是每個選項都捨不得放掉。
+你不是在看更多。你是怕少看一個就錯過。
+
+FOMO LOOP:
+你不是在選食物。你是在怕錯過更好的。
+你不是在想這個夠不夠好。你是在怕別的更值得。
+你不是在猶豫。你是在怕自己輸給那個沒選到的版本。
+
+SELF-WORTH LOOP:
+你不是在想這件事本身。你是在用它判自己。
+你不是在想你做了什麼。你是在想這代表你是什麼樣的人。
+你不是在想那個行為。你是在用它定義自己的價值。
 
 INSIGHT GENERATION RULE (TC responses):
-Select ONE insight from either the TC INSIGHT LIBRARY or TC DEEP INSIGHT LIBRARY — whichever matches the user's situation most precisely.
-TC INSIGHT LIBRARY: use when the loop is about permission and worthiness of choice ("配不配", "值不值得").
-TC DEEP INSIGHT LIBRARY: use when the loop has a self-as-burden or identity dimension ("負擔", "拖累", "多餘").
+1. Identify which loop was classified (from STEP 0 + priority rule).
+2. Go to that loop's section above. Select the ONE sentence pair that best matches the user's specific words.
+3. Output ONLY those two sentences. Nothing else.
 
 CRITICAL — FOR TC RESPONSES, THE TWO SENTENCES ARE THE COMPLETE RESPONSE.
 Do NOT add PATTERN beat. Do NOT add ANCHOR beat. Do NOT add any explanation.
@@ -1047,7 +1055,15 @@ router.post("/untangle/chat", async (req, res): Promise<void> => {
     return;
   }
 
-  const { message, mode, history = [] } = parsed.data;
+  const { message, mode, history = [], language = "auto" } = parsed.data;
+
+  // Language override directive — injected into every turn when user has manually chosen a language
+  let langDirective = "";
+  if (language === "tc") {
+    langDirective = "\n\nLANGUAGE OVERRIDE (HARD): The user has manually selected Traditional Chinese (繁體中文). ALL output MUST be in Traditional Chinese ONLY. No English words. No English phrases. No mixed language. If your insight comes from the TC library, output it exactly. Never output English.";
+  } else if (language === "en") {
+    langDirective = "\n\nLANGUAGE OVERRIDE (HARD): The user has manually selected English. ALL output MUST be in English ONLY. No Chinese characters. No mixed language. Never output Chinese.";
+  }
 
   // Compute explicit turn number from history so AI doesn't have to count
   const priorAiMessages = history.filter((h) => h.role === "assistant").length;
@@ -1066,11 +1082,11 @@ router.post("/untangle/chat", async (req, res): Promise<void> => {
   if (priorAiMessages === 0) {
     // TURN 1 — full engine prompt
     systemPrompt = SYSTEM_PROMPTS[mode] ?? SYSTEM_PROMPTS.other;
-    turnDirective = `\n\n[CONVERSATION STATE: This is TURN 1. No prior AI responses exist. USER CONTEXT: ${modeContext} Run STEP 0 classification, then apply TURN 1 instructions exactly. Deliver insight immediately. No second question. No chips.]`;
+    turnDirective = `\n\n[CONVERSATION STATE: This is TURN 1. No prior AI responses exist. USER CONTEXT: ${modeContext} Run STEP 0 classification, then apply TURN 1 instructions exactly. Deliver insight immediately. No second question. No chips.]${langDirective}`;
   } else if (priorAiMessages === 1) {
     // TURN 2 — brief continuation, insight already delivered in Turn 1
     systemPrompt = SYSTEM_PROMPTS[mode] ?? SYSTEM_PROMPTS.other;
-    turnDirective = `\n\n[CONVERSATION STATE: This is TURN 2. USER CONTEXT: ${modeContext} The insight was already delivered in Turn 1. Apply TURN 2 CONTINUATION instructions. Give one brief grounded response only. No questions. No chips. No new analysis.]`;
+    turnDirective = `\n\n[CONVERSATION STATE: This is TURN 2. USER CONTEXT: ${modeContext} The insight was already delivered in Turn 1. Apply TURN 2 CONTINUATION instructions. Give one brief grounded response only. No questions. No chips. No new analysis.]${langDirective}`;
   } else if (priorAiMessages === 2) {
     // TURN 3 — dedicated minimal prompt: anchor moment, 4-beat structure, sharp friend voice
     systemPrompt = `You are the Untangle response engine. The user has answered two digging questions. This is the anchor moment — where the loop stops.
@@ -1125,7 +1141,7 @@ You MUST respond in valid JSON with ALL 8 fields:
 - "loopType": carry over from this conversation
 - "loopIntensity": carry over from this conversation
 
-Respond ONLY in valid JSON. Do NOT add questions, chips, or options.`;
+Respond ONLY in valid JSON. Do NOT add questions, chips, or options.${langDirective}`;
     turnDirective = "";
   } else {
     // TURN 4+ — force close, brief release line only (no anchor — already given in Turn 3)
@@ -1142,7 +1158,7 @@ You MUST respond in valid JSON with ALL 8 fields:
 - "coreNeed": null
 - "sessionTrigger": null
 - "loopType": carry over the loop type from this conversation
-- "loopIntensity": carry over the loop intensity from this conversation`;
+- "loopIntensity": carry over the loop intensity from this conversation${langDirective}`;
     turnDirective = "";
   }
 
