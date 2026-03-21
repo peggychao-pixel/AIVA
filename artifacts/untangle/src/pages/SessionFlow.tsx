@@ -48,8 +48,8 @@ const LAYER2_DATA: Record<"en" | "tc", Record<Mode, { question: string; chips: s
       chips: ["I'm afraid I'll choose wrong", "I can't stop comparing", "I'm worried I'll regret it", "Let me type it out"],
     },
     after: {
-      question: "What part keeps replaying?",
-      chips: ["I keep judging if it was right", "I feel like I wasted it", "I keep replaying the decision", "Let me type it out"],
+      question: "Which of these feels closest right now?",
+      chips: ["How did I end up choosing this again", "I ate, but I still don't feel satisfied", "I know I could let this go, but it feels too costly", "I can't explain it — it just keeps sitting heavily in my mind", "Let me type it out"],
     },
     other: {
       question: "What makes this feel bigger than just food?",
@@ -66,8 +66,8 @@ const LAYER2_DATA: Record<"en" | "tc", Record<Mode, { question: string; chips: s
       chips: ["我怕選錯", "我停不下來比較", "我怕自己會後悔", "讓我自己打"],
     },
     after: {
-      question: "什麼一直在重播？",
-      chips: ["我一直在評斷到底對不對", "我覺得我浪費了", "我一直在重播那個決定", "讓我自己打"],
+      question: "現在最卡你的，比較像哪一句？",
+      chips: ["我怎麼又選成這樣", "吃了也沒有真的被滿足", "我知道可以放過自己，但那個代價感太重", "我也說不上來，就是這件事一直壓在腦子裡", "讓我自己打"],
     },
     other: {
       question: "什麼讓這個感覺不只是食物那麼簡單？",

@@ -1072,7 +1072,29 @@ router.post("/untangle/chat", async (req, res): Promise<void> => {
 
   const modeLabel: Record<string, string> = {
     before:   "BEFORE EATING — user is choosing, decision has NOT happened yet. DO NOT say 'The decision is already finished.' Focus the insight on the choosing/deciding loop, not on replaying.",
-    after:    "AFTER EATING — decision is done, user is replaying. Past-tense anchors ('The decision is already finished. Nothing left to solve.') are appropriate.",
+    after:    `AFTER EATING — decision is done, user is replaying. Past-tense anchors ('The decision is already finished. Nothing left to solve.') are appropriate.
+
+CHIP→INSIGHT FORCED MAPPINGS (if user's message is or closely matches one of these, use the exact insight style below — do NOT ask a follow-up):
+
+Chip: "我怎麼又選成這樣" / "How did I end up choosing this again"
+→ TC: "你不是只是在想這頓飯。\\n你是在怪自己怎麼又做成這樣。"
+→ EN: "You're not just thinking about the meal.\\nYou're blaming yourself for ending up here again."
+Loop: self-blame / wrong-choice / repeating pattern
+
+Chip: "吃了也沒有真的被滿足" / "I ate, but I still don't feel satisfied"
+→ TC: "你不是一直在想那頓飯。\\n你是在卡那種明明吃了，卻還是沒有被滿足的感覺。"
+→ EN: "You're not replaying the meal.\\nYou're stuck on the gap between eating and actually feeling satisfied."
+Loop: physical + emotional dissatisfaction
+
+Chip: "我知道可以放過自己，但那個代價感太重" / "I know I could let this go, but it feels too costly"
+→ TC: "你不是不知道可以鬆手。\\n你是每次一想放過自己，就覺得代價太重。"
+→ EN: "You know you could let this go.\\nBut every time you try, the cost of releasing it feels too high."
+Loop: permission / rule-breaking feels expensive
+
+Chip: "我也說不上來，就是這件事一直壓在腦子裡" / "I can't explain it — it just keeps sitting heavily in my mind"
+→ TC: "你不是在想清楚。\\n你是這件事的重量還壓在腦子裡。"
+→ EN: "You're not trying to figure it out.\\nYou're just carrying the weight of it still sitting there."
+Loop: existence / looping / unfinished closure`,
     loop:     "LOOPING MIND — user reports the same thought repeating. Focus the insight on the REPETITION itself, not on the decision. Name what the loop is actually doing, not what triggered it.",
     pressure: "FEELING PRESSURE — user feels they must get something exactly right. Focus the insight on the TEST or PROVING dynamic. Name what they are trying to prove, not just what they are deciding.",
     other:    "OPEN — no specific context. Follow standard classification.",
