@@ -1,0 +1,209 @@
+CHINESE COPY FIX + BEFORE/AFTER FLOW FIX
+
+The current Traditional Chinese copy feels translated from English, not naturally written in Chinese.
+
+Problems:
+	1.	Many labels and buttons sound like direct translation, not real spoken Traditional Chinese.
+	2.	The “Before eating” path is incorrectly flowing into the satiety/satisfaction module, which only makes sense after eating.
+
+We need to fix both language tone and flow logic.
+
+==================================================
+	1.	TRADITIONAL CHINESE COPY SHOULD FEEL NATIVE
+==================================================
+
+Do not translate English literally.
+
+The Chinese should feel:
+	•	natural
+	•	spoken
+	•	emotionally immediate
+	•	like something a real person in Taiwan / Hong Kong would actually say to themselves
+
+Avoid literal translated wording like:
+	•	現在什麼感覺糾結？
+	•	關掉這個迴圈
+	•	現在比較接近哪個？
+	•	這個選擇已經結束了
+
+These are understandable but unnatural.
+
+Use more natural Traditional Chinese.
+
+Recommended replacements:
+
+Header:
+Current: 現在什麼感覺糾結？
+Replace with:
+現在卡住你的是什麼？
+
+Subtext:
+Current: 從迴圈發生的地方開始。
+Replace with:
+從最卡的地方開始。
+
+Buttons / labels:
+Current: 關掉這個迴圈
+Replace with:
+先停在這裡
+
+Current: 我還在想
+Replace with:
+我還卡著
+
+Current: 留著這句話
+Replace with:
+記住這句話
+
+Current: 現在比較接近哪個？
+Replace with:
+現在更像哪個？
+
+Current: 儲存這個時刻
+Replace with:
+存下這句
+
+Current: 不只是食物那麼簡單
+Replace with:
+這不只是吃的問題
+
+Current: 腦子停不下來
+Can stay, but better:
+腦子一直轉不停
+
+Input placeholder:
+Current: 打字，或按麥克風說…
+Replace with:
+直接打出來，或按麥克風說
+
+==================================================
+2. SATIETY / SATISFACTION MODULE MUST ONLY APPEAR AFTER EATING
+
+The satiety/satisfaction options:
+	•	我很飽也很滿足
+	•	我很飽但不滿足
+	•	我不飽但滿足
+	•	我不飽也不滿足
+
+only make sense AFTER eating.
+
+They must never appear in the “Before eating” path.
+
+This is a flow bug.
+
+Correct rule:
+
+BEFORE EATING:
+	•	no satiety/satisfaction module
+	•	no fullness check
+	•	focus on:
+	•	fear of choosing wrong
+	•	comparison
+	•	regret
+	•	pressure
+	•	safety
+
+AFTER EATING:
+	•	satiety/satisfaction module may appear
+	•	only after the insight
+	•	only if relevant
+
+==================================================
+3. BEFORE EATING FLOW SHOULD BE THIS
+
+Example:
+User enters:
+「我怕選錯」
+
+Correct flow:
+
+Step 1:
+Generate insight:
+「你不是在選食物。
+你是在試著不要選錯。」
+
+Step 2:
+If needed, offer a short clarification or stop point.
+
+Optional follow-up choices:
+	•	我怕後悔
+	•	我一直在比較
+	•	我就是選不下去
+	•	對，就是這個
+
+Do NOT show:
+飽 / 不飽 / 滿足 / 不滿足
+
+That belongs to after eating only.
+
+==================================================
+4. AFTER EATING FLOW SHOULD BE THIS
+
+Example:
+User enters:
+「我一直在想到底對不對」
+
+Correct flow:
+
+Step 1:
+Generate insight:
+「你不是一直在想那頓飯。
+你是在確認自己有沒有選錯。」
+
+Step 2:
+If relevant, THEN show the satiety/satisfaction module:
+「現在更像哪個？」
+	•	我很飽也很滿足
+	•	我很飽但還是不滿足
+	•	我還沒飽，但心裡有比較安定
+	•	我不飽，也沒有被滿足
+
+These options should also be rewritten more naturally.
+
+Recommended Chinese wording:
+	1.	我很飽，也有被滿足到
+	2.	我很飽，但心裡還是不滿足
+	3.	我還沒飽，但心裡有比較安定
+	4.	我不飽，也沒有被滿足到
+
+==================================================
+5. CHINESE MICROCOPY STYLE RULE
+
+Traditional Chinese in Untangle should sound like:
+	•	inner monologue
+	•	close friend language
+	•	clear and direct
+	•	emotionally precise
+
+It should NOT sound like:
+	•	machine translation
+	•	therapy worksheet
+	•	formal writing
+	•	psychological textbook
+
+Use shorter, more natural phrasing.
+
+Whenever possible, prefer:
+	•	卡住
+	•	還在想
+	•	放不掉
+	•	很重
+	•	過不去
+	•	不敢
+	•	怕選錯
+	•	怕後悔
+	•	沒有被滿足到
+
+These feel much more natural than literal translated UI language.
+
+==================================================
+6. PRODUCT GOAL
+
+The Traditional Chinese version should feel like:
+“這真的像人在講話”
+not
+“這是英文產品翻過來的”
+
+And the before/after flows must stay logically correct.
+
+END

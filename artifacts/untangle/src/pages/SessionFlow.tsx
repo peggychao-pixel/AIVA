@@ -36,8 +36,8 @@ const MODE_OPTIONS_DATA: Record<"en" | "tc", { id: Mode; label: string; descript
   tc: [
     { id: "before", label: "飯前",              description: "在選擇、比較、想做對。" },
     { id: "after",  label: "飯後",              description: "在重播、評斷、確認選對了沒。" },
-    { id: "other",  label: "不只是食物那麼簡單", description: "食物是一部分，但有更深的東西在拉著我。" },
-    { id: "loop",   label: "腦子停不下來",       description: "那個念頭一直重新打開，就算我想停也停不了。" },
+    { id: "other",  label: "這不只是吃的問題",   description: "食物是一部分，但有更深的東西在拉著我。" },
+    { id: "loop",   label: "腦子一直轉不停",     description: "那個念頭一直重新打開，就算我想停也停不了。" },
   ],
 };
 
@@ -110,20 +110,20 @@ const UI_TEXT = {
     back: "← 返回",
     moments: (n: number) => n > 0 ? `${n} 已儲存` : "紀錄",
     history: "歷史",
-    headline: "現在什麼\n感覺糾結？",
-    subtext: "從迴圈發生的地方開始。",
+    headline: "現在卡住你的\n是什麼？",
+    subtext: "從最卡的地方開始。",
     inputPlaceholder: "或者直接打出來。",
     quickLabel: "快速解開",
     quickSub: "跳過對話，直接得到一個精準洞察。",
     layer2TypePlaceholder: "在這裡打...",
-    chatPlaceholder: "打字，或按麥克風說...",
+    chatPlaceholder: "直接打出來，或按麥克風說",
     untangleMoment: "Untangle 時刻",
-    saveThis: "儲存這個時刻",
+    saveThis: "存下這句",
     saved: "已儲存",
-    keepThis: "留著這句話",
-    whenReturns: "當這個念頭回來，回到這句話。",
-    closeLoop: "關掉這個迴圈",
-    stillThinking: "我還在想",
+    keepThis: "記住這句話",
+    whenReturns: "下次這個念頭回來，回到這句。",
+    closeLoop: "先停在這裡",
+    stillThinking: "我還卡著",
     showPattern: "讓我看看這個模式",
     whatsLooping: "什麼在迴圈",
     whatYouNeed: "你真正需要的",
@@ -176,17 +176,17 @@ function InsightCard({
 type SatietyKey = "full+satisfied" | "full+unsatisfied" | "notfull+satisfied" | "notfull+unsatisfied";
 
 const SATIETY_OPTIONS: { key: SatietyKey; en: string; tc: string }[] = [
-  { key: "full+satisfied",      en: "I'm full and satisfied",            tc: "我很飽也很滿足" },
-  { key: "full+unsatisfied",    en: "I'm full but not satisfied",        tc: "我很飽但不滿足" },
-  { key: "notfull+satisfied",   en: "I'm not full but satisfied",        tc: "我不飽但滿足" },
-  { key: "notfull+unsatisfied", en: "I'm not full and not satisfied",    tc: "我不飽也不滿足" },
+  { key: "full+satisfied",      en: "I'm full and satisfied",            tc: "我很飽，也有被滿足到" },
+  { key: "full+unsatisfied",    en: "I'm full but not satisfied",        tc: "我很飽，但心裡還是不滿足" },
+  { key: "notfull+satisfied",   en: "I'm not full but satisfied",        tc: "我還沒飽，但心裡有比較安定" },
+  { key: "notfull+unsatisfied", en: "I'm not full and not satisfied",    tc: "我不飽，也沒有被滿足到" },
 ];
 
 const SATIETY_RESPONSES: Record<SatietyKey, { en: string; tc: string }> = {
   "full+satisfied":      { en: "Nothing more is needed.",                                               tc: "不需要再做什麼了。" },
-  "full+unsatisfied":    { en: "Your body is done.\nSomething else is still missing.",                   tc: "身體已經夠了。\n但有別的東西還沒被滿足。" },
-  "notfull+satisfied":   { en: "Your body may still need food.\nThe experience itself feels complete.",  tc: "身體可能還需要食物。\n但這次體驗本身是完整的。" },
-  "notfull+unsatisfied": { en: "Neither your body nor the experience is complete.",                      tc: "身體和體驗都還沒完成。" },
+  "full+unsatisfied":    { en: "Your body is done.\nSomething else is still missing.",                   tc: "身體已經夠了。\n還卡著的，是別的東西。" },
+  "notfull+satisfied":   { en: "Your body may still need food.\nThe experience itself feels complete.",  tc: "身體可能還需要食物。\n但這次的感覺本身，是完整的。" },
+  "notfull+unsatisfied": { en: "Neither your body nor the experience is complete.",                      tc: "身體和心裡，都還沒到位。" },
 };
 
 function SatietyCheck({ isTc, answer, onAnswer }: { isTc: boolean; answer: SatietyKey | null; onAnswer: (k: SatietyKey) => void }) {
@@ -199,7 +199,7 @@ function SatietyCheck({ isTc, answer, onAnswer }: { isTc: boolean; answer: Satie
       className="w-full rounded-xl border border-border/50 bg-card/40 p-5 space-y-4"
     >
       <p className="text-xs text-muted-foreground font-medium">
-        {isTc ? "現在比較接近哪個？" : "Right now — which one feels true?"}
+        {isTc ? "現在更像哪個？" : "Right now — which one feels true?"}
       </p>
       {!answer && (
         <div className="flex flex-col gap-2">
@@ -895,8 +895,8 @@ export function SessionFlow() {
                   <AnchorCard phrase={anchorPhrase} isTc={isTc} />
                 )}
 
-                {/* Satiety check module — appears after insight */}
-                {exitMessage && !loopDismissed && (
+                {/* Satiety check module — after eating only */}
+                {exitMessage && !loopDismissed && mode === "after" && (
                   <SatietyCheck
                     isTc={isTc}
                     answer={satietyAnswer}
