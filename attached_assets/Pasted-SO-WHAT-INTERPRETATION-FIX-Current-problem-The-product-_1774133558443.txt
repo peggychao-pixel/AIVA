@@ -1,0 +1,125 @@
+SO-WHAT INTERPRETATION FIX
+
+Current problem:
+The product generates insights and asks satiety/satisfaction questions,
+but it often stops at description.
+
+This makes the user feel:
+“Okay… but so what?”
+“I still don’t feel better.”
+“It named the state, but didn’t help me understand why I’m still stuck.”
+
+We need to fix this.
+
+==================================================
+	1.	INSIGHT MUST LEAD TO CONSEQUENCE
+==================================================
+
+Do not stop at:
+	•	naming the loop
+	•	describing the state
+	•	paraphrasing the user
+
+Every meaningful insight should answer:
+“So what does this mean about why I’m still stuck?”
+
+New rule:
+
+After the insight, include one short consequence or implication.
+
+Format:
+
+[Insight]
+→ [So what this means]
+
+Example:
+
+Weak:
+「你不是在想這個選擇。
+你是在怪自己沒有做到完美。」
+
+Better:
+「你不是卡在忘了點什麼。
+你是即使有補救，心裡還是不肯把它算成夠好。
+
+所以你才不會因為『有控制住』就真的安心，
+因為真正卡住你的不是量，是你對次佳解的不接受。」
+
+This second part is the “so what.”
+That is what makes the insight useful.
+
+==================================================
+2. SATIETY / SATISFACTION MUST ALSO LEAD TO SO WHAT
+
+If the user answers the satiety/satisfaction module,
+do not stop at classification.
+
+The system must interpret what the state means.
+
+Example:
+User selects:
+「身體和心理，都還沒到位」
+
+Bad:
+Just show the selected state and move on.
+
+Better:
+「這代表你現在卡的不是吃不吃的問題。
+是這餐既沒有把身體帶到完成，也沒有把心裡帶到安定，所以腦子才不肯放掉。」
+
+That is useful because it explains:
+why the loop is still alive.
+
+==================================================
+3. EACH SATIETY STATE SHOULD HAVE A SO-WHAT
+
+A. 我很飽，也有被滿足到
+So what:
+「這餐有到位。
+現在比較不需要再往下追了。」
+
+B. 我很飽，但心裡還是不滿足
+So what:
+「身體夠了，但心裡還沒被安頓。
+所以你還會繼續想，因為卡住的不是份量。」
+
+C. 我還沒飽，但心裡有比較安定
+So what:
+「身體可能還需要一點，
+但這餐至少有把你帶到比較完整的地方。」
+
+D. 我不飽，也沒有被滿足到
+So what:
+「這表示這餐兩邊都沒有真正完成，
+所以你的腦子還在找一個可以結束的理由。」
+
+E. 我沒有飽，也沒有被滿足到，只是覺得脹
+So what:
+「這不是完成感，
+是身體有負擔，但這餐沒有真的把你帶到位。
+所以你才會更卡，而不是更安心。」
+
+==================================================
+4. PRODUCT RULE
+
+The product should not only say:
+“Here is your state.”
+
+It should also say:
+“This is why that state is still keeping the loop alive.”
+
+That is the difference between:
+description
+and
+helpful interpretation
+
+==================================================
+5. UX GOAL
+
+The user should feel:
+“喔，原來我現在還卡著，是因為它根本沒有把我帶到完成。”
+
+Not:
+“Okay, I picked an option. Now what?”
+
+END

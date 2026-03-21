@@ -187,20 +187,20 @@ const SATIETY_RESPONSES: Record<SatietyKey, { en: string; tc: string }> = {
     tc: "這餐有到位。\n現在比較不需要再往下追了。",
   },
   "full+unsatisfied":    {
-    en: "Your body is done.\nBut something inside still hasn't settled.\nWhat's stuck may not be about the portion — it's something else.",
-    tc: "身體夠了，但心裡還沒被安頓。\n卡住的可能不是份量，是別的東西。",
+    en: "Your body is done, but something inside still hasn't settled.\nSo you'll keep thinking — because what's stuck isn't the portion, it's something else entirely.",
+    tc: "身體夠了，但心裡還沒被安頓。\n所以你還會繼續想，因為卡住的不是份量，是心裡還沒有真的安定。",
   },
   "notfull+satisfied":   {
-    en: "Your body may still need a little more.\nBut the experience itself feels complete.",
-    tc: "身體可能還需要一點，但這餐帶來的感受有比較完整。",
+    en: "Your body may still need a little more.\nBut this meal at least brought you to a more complete place than you were before.",
+    tc: "身體可能還需要一點，\n但這餐至少有把你帶到比較完整的地方。",
   },
   "notfull+unsatisfied": {
-    en: "This didn't feel like a real finish.\nNeither your body nor the experience got to where it needed to be.",
-    tc: "這不像是真的完成。\n比較像這餐兩邊都沒把你帶到位。",
+    en: "This means neither side actually finished — not the body, not the experience.\nSo your mind is still looking for a reason it can use to close the loop.",
+    tc: "這代表這餐兩邊都沒有真正完成。\n所以你的腦子還在找一個可以結束的理由。",
   },
   "notfull+bloated":     {
-    en: "This isn't fullness. This isn't satisfaction.\nIt's more like your body is carrying something, but the meal didn't actually complete.",
-    tc: "這不是飽，也不是滿足。\n比較像身體有負擔感，但這餐沒有真的完成。",
+    en: "This isn't completion — it's your body carrying something without the meal actually landing.\nThat's why you feel more stuck, not more settled.",
+    tc: "這不是完成感，是身體有負擔，但這餐沒有真的把你帶到位。\n所以你才會更卡，而不是更安心。",
   },
 };
 
