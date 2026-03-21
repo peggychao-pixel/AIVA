@@ -1,0 +1,176 @@
+FLOW BUGS + SAVE STATE + BUTTON MERGE + SATIETY RESPONSE FIX
+
+There are multiple serious product issues that need to be fixed.
+
+==================================================
+	1.	SATIETY / SATISFACTION CHOICE SHOULD NOT JUST DISAPPEAR
+==================================================
+
+Current problem:
+After the user selects a satiety/satisfaction option, the options disappear and the UI jumps forward without clearly showing:
+	•	what the user picked
+	•	how the system interpreted it
+	•	what the next step is
+
+This feels broken.
+
+Fix:
+After the user chooses one satiety/satisfaction state, the UI should do all three:
+	1.	keep a visible record of what the user selected
+	2.	generate a short interpretation based on that state
+	3.	then show the next action clearly
+
+Example:
+
+User picks:
+「身體和心理，都還沒到位」
+
+The system should visibly show:
+你選的是：身體和心理，都還沒到位
+
+Then interpret:
+「這不像是真的吃完。
+比較像是身體有反應了，但這一餐沒有真的完成。」
+
+Then offer the next step.
+
+Do NOT let the module silently disappear.
+
+==================================================
+2. SAVE FUNCTION MUST BE REAL OR REMOVED
+
+Current problem:
+The UI always shows “7 saved” and the save button appears to work, but the count does not meaningfully change.
+This makes the save feature feel fake.
+
+Fix:
+If save is real:
+	•	the count must update
+	•	the saved item must appear in History
+	•	the button should visibly change state (e.g. 已儲存 / Saved)
+
+If save is not real yet:
+	•	remove the save count
+	•	remove the save action
+	•	do not fake persistence
+
+No fake storage indicators.
+
+==================================================
+3. MERGE “GO DEEPER” AND “THIS DIDN’T HIT”
+
+Current problem:
+The buttons:
+	•	再往下挖一層
+	•	這句還沒打中
+
+feel too similar.
+
+They both mean:
+the current insight is not enough.
+
+Fix:
+Merge them into one clearer action.
+
+Recommended label:
+
+Traditional Chinese:
+	•	再看深一點
+or
+	•	換個角度再看一次
+
+English:
+	•	Go deeper
+or
+	•	Try a different angle
+
+Meaning:
+The current insight did not land. Go one layer deeper or reinterpret.
+
+Do not keep two buttons that imply almost the same thing.
+
+==================================================
+4. SATIETY / SATISFACTION STATES MUST LEAD TO USEFUL INTERPRETATION
+
+Current problem:
+When the user selects something like:
+「身體和心理，都還沒到位」
+
+the system currently identifies the state but does not help enough afterward.
+
+The user naturally thinks:
+“Okay… and then what?”
+
+Fix:
+Each satiety/satisfaction option must lead to a short interpretation that helps the user understand the state.
+
+Suggested mappings:
+
+A.
+「我很飽，也有被滿足到」
+Interpretation:
+「這餐有到位。
+現在比較不需要再往下追了。」
+
+B.
+「我很飽，但心裡還是不滿足」
+Interpretation:
+「身體夠了，但心裡還沒被安頓。
+卡住的可能不是份量，是別的東西。」
+
+C.
+「我還沒飽，但心裡有比較安定」
+Interpretation:
+「身體可能還需要一點，但這餐帶來的感受有比較完整。」
+
+D.
+「我不飽，也沒有被滿足到」
+Interpretation:
+「這不像是真的完成。
+比較像這餐兩邊都沒把你帶到位。」
+
+E.
+「我沒有飽，也沒有被滿足到，只是覺得脹」
+Interpretation:
+「這不是飽，也不是滿足。
+比較像身體有負擔感，但這餐沒有真的完成。」
+
+The point is:
+The module should not only classify.
+It must help the user understand what the state means.
+
+==================================================
+5. NEXT STEP AFTER SATIETY INTERPRETATION
+
+After the interpretation, offer one clear next action.
+
+Recommended buttons:
+
+If the user feels understood:
+	•	先停在這裡
+
+If the user wants more:
+	•	再看深一點
+
+Optional:
+	•	直接打出來
+
+Do NOT make the user guess what the buttons do.
+
+==================================================
+6. PRODUCT RULE
+
+Every user action should cause a visible, meaningful response.
+
+No disappearing states.
+No fake save counts.
+No duplicate button meanings.
+No classification without interpretation.
+
+Untangle should feel:
+coherent
+real
+useful
+responsive
+
+END

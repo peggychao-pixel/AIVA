@@ -99,8 +99,7 @@ const UI_TEXT = {
     keepThis: "Your stop line — use this when it loops back",
     whenReturns: "Say this the next time the loop starts.",
     closeLoop: "Close this loop",
-    stillThinking: "Go one layer deeper",
-    showPattern: "This didn't quite hit",
+    stillThinking: "Go deeper",
     whatsLooping: "What's looping",
     whatYouNeed: "What you actually need",
     stoppingLine: "Your stopping line",
@@ -123,8 +122,7 @@ const UI_TEXT = {
     keepThis: "下次卡住時，先用這句",
     whenReturns: "這是你這次的 stop line。",
     closeLoop: "先停在這裡",
-    stillThinking: "再往下挖一層",
-    showPattern: "這句還沒打中",
+    stillThinking: "再看深一點",
     whatsLooping: "什麼在迴圈",
     whatYouNeed: "你真正需要的",
     stoppingLine: "你的停止句",
@@ -173,23 +171,41 @@ function InsightCard({
   );
 }
 
-type SatietyKey = "full+satisfied" | "full+unsatisfied" | "notfull+satisfied" | "notfull+unsatisfied";
+type SatietyKey = "full+satisfied" | "full+unsatisfied" | "notfull+satisfied" | "notfull+unsatisfied" | "notfull+bloated";
 
 const SATIETY_OPTIONS: { key: SatietyKey; en: string; tc: string }[] = [
-  { key: "full+satisfied",      en: "I'm full and satisfied",            tc: "我很飽，也有被滿足到" },
-  { key: "full+unsatisfied",    en: "I'm full but not satisfied",        tc: "我很飽，但心裡還是不滿足" },
-  { key: "notfull+satisfied",   en: "I'm not full but satisfied",        tc: "我還沒飽，但心裡有比較安定" },
-  { key: "notfull+unsatisfied", en: "I'm not full and not satisfied",    tc: "我不飽，也沒有被滿足到" },
+  { key: "full+satisfied",      en: "I'm full and satisfied",                              tc: "我很飽，也有被滿足到" },
+  { key: "full+unsatisfied",    en: "I'm full but mentally not satisfied",                 tc: "我很飽，但心裡還是不滿足" },
+  { key: "notfull+satisfied",   en: "I'm not full but the experience felt settled",        tc: "我還沒飽，但心裡有比較安定" },
+  { key: "notfull+unsatisfied", en: "I'm not full and not satisfied",                      tc: "我不飽，也沒有被滿足到" },
+  { key: "notfull+bloated",     en: "I'm not full, not satisfied — just bloated",          tc: "我沒有飽，也沒有被滿足到，只是覺得脹" },
 ];
 
 const SATIETY_RESPONSES: Record<SatietyKey, { en: string; tc: string }> = {
-  "full+satisfied":      { en: "Nothing more is needed.",                                               tc: "不需要再做什麼了。" },
-  "full+unsatisfied":    { en: "Your body is done.\nSomething else is still missing.",                   tc: "身體已經夠了。\n還卡著的，是別的東西。" },
-  "notfull+satisfied":   { en: "Your body may still need food.\nThe experience itself feels complete.",  tc: "身體可能還需要食物。\n但這次的感覺本身，是完整的。" },
-  "notfull+unsatisfied": { en: "Neither your body nor the experience is complete.",                      tc: "身體和心裡，都還沒到位。" },
+  "full+satisfied":      {
+    en: "This meal landed.\nThere's nothing more to figure out right now.",
+    tc: "這餐有到位。\n現在比較不需要再往下追了。",
+  },
+  "full+unsatisfied":    {
+    en: "Your body is done.\nBut something inside still hasn't settled.\nWhat's stuck may not be about the portion — it's something else.",
+    tc: "身體夠了，但心裡還沒被安頓。\n卡住的可能不是份量，是別的東西。",
+  },
+  "notfull+satisfied":   {
+    en: "Your body may still need a little more.\nBut the experience itself feels complete.",
+    tc: "身體可能還需要一點，但這餐帶來的感受有比較完整。",
+  },
+  "notfull+unsatisfied": {
+    en: "This didn't feel like a real finish.\nNeither your body nor the experience got to where it needed to be.",
+    tc: "這不像是真的完成。\n比較像這餐兩邊都沒把你帶到位。",
+  },
+  "notfull+bloated":     {
+    en: "This isn't fullness. This isn't satisfaction.\nIt's more like your body is carrying something, but the meal didn't actually complete.",
+    tc: "這不是飽，也不是滿足。\n比較像身體有負擔感，但這餐沒有真的完成。",
+  },
 };
 
 function SatietyCheck({ isTc, answer, onAnswer }: { isTc: boolean; answer: SatietyKey | null; onAnswer: (k: SatietyKey) => void }) {
+  const selected = answer ? SATIETY_OPTIONS.find((o) => o.key === answer) : null;
   const response = answer ? SATIETY_RESPONSES[answer] : null;
   return (
     <motion.div
@@ -214,15 +230,21 @@ function SatietyCheck({ isTc, answer, onAnswer }: { isTc: boolean; answer: Satie
           ))}
         </div>
       )}
-      {answer && response && (
-        <motion.p
+      {answer && selected && response && (
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.3 }}
-          className="text-sm text-foreground leading-relaxed whitespace-pre-wrap"
+          className="space-y-3"
         >
-          {isTc ? response.tc : response.en}
-        </motion.p>
+          <p className="text-xs text-muted-foreground/70">
+            {isTc ? "你選的是：" : "You chose: "}
+            <span className="text-foreground/80">{isTc ? selected.tc : selected.en}</span>
+          </p>
+          <p className="text-sm text-foreground leading-relaxed whitespace-pre-wrap">
+            {isTc ? response.tc : response.en}
+          </p>
+        </motion.div>
       )}
     </motion.div>
   );
@@ -328,7 +350,6 @@ export function SessionFlow() {
   const [hiddenFear, setHiddenFear] = useState<string | null>(null);
   const [anchorPhrase, setAnchorPhrase] = useState<string | null>(null);
   const [coreNeeds, setCoreNeeds] = useState<string[]>([]);
-  const [showPattern, setShowPattern] = useState(false);
   const [loopDismissed, setLoopDismissed] = useState(false);
   const [satietyAnswer, setSatietyAnswer] = useState<SatietyKey | null>(null);
 
@@ -340,7 +361,7 @@ export function SessionFlow() {
   const { mutateAsync: sendChat } = useUntangleChat();
   const { mutateAsync: createSession } = useCreateSession();
   const { mutateAsync: saveMoment } = useSaveMoment();
-  const { data: savedMoments } = useListMoments();
+  const { data: savedMoments, refetch: refetchMoments } = useListMoments();
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -439,7 +460,6 @@ export function SessionFlow() {
     setHiddenFear(null);
     setAnchorPhrase(null);
     setCoreNeeds([]);
-    setShowPattern(false);
     setLoopDismissed(false);
     setSatietyAnswer(null);
     setMessages([]);
@@ -506,6 +526,7 @@ export function SessionFlow() {
           originalThought: originalThought ?? undefined,
         },
       });
+      refetchMoments();
     } catch {
       setSavedMomentIds((prev) => {
         const next = new Set(prev);
@@ -542,7 +563,6 @@ export function SessionFlow() {
     setHiddenFear(null);
     setAnchorPhrase(null);
     setCoreNeeds([]);
-    setShowPattern(false);
     setLoopDismissed(false);
     setSatietyAnswer(null);
   };
@@ -559,13 +579,7 @@ export function SessionFlow() {
 
   const handleGoDeeper = () => {
     setLoopDismissed(true);
-    const text = isTc ? "可以再往下一層嗎？" : "Can you go one layer deeper?";
-    doSendMessage(text, mode, messagesRef.current);
-  };
-
-  const handleNotQuiteRight = () => {
-    setLoopDismissed(true);
-    const text = isTc ? "這句還沒打中" : "This didn't quite hit";
+    const text = isTc ? "可以再往下一層，或者換個角度看嗎？" : "Can you go one layer deeper, or try a different angle?";
     doSendMessage(text, mode, messagesRef.current);
   };
 
@@ -922,61 +936,20 @@ export function SessionFlow() {
                     initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.35, delay: 0.2 }}
-                    className="space-y-3"
+                    className="flex flex-col gap-2"
                   >
-                    <div className="flex flex-col gap-2">
-                      <button
-                        onClick={reset}
-                        className="w-full px-5 py-3.5 bg-primary text-primary-foreground text-sm rounded-xl hover:opacity-90 transition-opacity"
-                      >
-                        {t.closeLoop}
-                      </button>
-                      <button
-                        onClick={handleGoDeeper}
-                        className="w-full px-5 py-3.5 border border-border/60 bg-card/60 text-sm text-muted-foreground hover:text-foreground hover:border-border rounded-xl transition-all"
-                      >
-                        {t.stillThinking}
-                      </button>
-                      <button
-                        onClick={handleNotQuiteRight}
-                        className="w-full px-5 py-3.5 border border-border/40 bg-transparent text-sm text-muted-foreground/70 hover:text-muted-foreground hover:border-border/60 rounded-xl transition-all"
-                      >
-                        {t.showPattern}
-                      </button>
-                    </div>
-
-                    {showPattern && exitMessage && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 6 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="rounded-xl border border-border/50 bg-card/60 p-5 space-y-3"
-                      >
-                        {exitMessage.loopType && (
-                          <div className="space-y-0.5">
-                            <p className="text-xs text-muted-foreground">{t.whatsLooping}</p>
-                            <p className="text-sm text-foreground capitalize">{exitMessage.loopType.replace(/_/g, " ")}</p>
-                          </div>
-                        )}
-                        {exitMessage.coreNeed && (
-                          <div className="space-y-0.5">
-                            <p className="text-xs text-muted-foreground">{t.whatYouNeed}</p>
-                            <p className="text-sm text-foreground">{exitMessage.coreNeed}</p>
-                          </div>
-                        )}
-                        {anchorPhrase && (
-                          <div className="space-y-0.5">
-                            <p className="text-xs text-muted-foreground">{t.stoppingLine}</p>
-                            <p className="text-sm text-foreground">"{anchorPhrase}"</p>
-                          </div>
-                        )}
-                        {exitMessage.loopIntensity && (
-                          <div className="space-y-0.5">
-                            <p className="text-xs text-muted-foreground/60 font-mono">{intensityDots(exitMessage.loopIntensity)}</p>
-                          </div>
-                        )}
-                      </motion.div>
-                    )}
+                    <button
+                      onClick={reset}
+                      className="w-full px-5 py-3.5 bg-primary text-primary-foreground text-sm rounded-xl hover:opacity-90 transition-opacity"
+                    >
+                      {t.closeLoop}
+                    </button>
+                    <button
+                      onClick={handleGoDeeper}
+                      className="w-full px-5 py-3.5 border border-border/60 bg-card/60 text-sm text-muted-foreground hover:text-foreground hover:border-border rounded-xl transition-all"
+                    >
+                      {t.stillThinking}
+                    </button>
                   </motion.div>
                 )}
 
