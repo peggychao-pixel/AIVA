@@ -1,0 +1,111 @@
+DEEPER INSIGHT FIX — AVOID GENERIC PSYCHOLOGY PARAPHRASES
+
+The current insights feel shallow and brushed-off because they are too generic.
+
+Problem:
+The system is taking the user’s words and rephrasing them into abstract psychology language,
+without actually identifying the real emotional mechanism.
+
+Examples of weak output:
+	•	「你不是在想這個選擇。你是在想自己怎麼會忘記做出最佳決定。」
+	•	「你不是在追求完美的選擇。你是在擔心這樣的選擇讓你失去了什麼。」
+
+These sound psychological, but they do not actually feel accurate.
+They feel vague, generic, and slightly lazy.
+
+They do NOT reach the user’s real pain.
+
+⸻
+
+NEW RULE
+
+Do not generate insight by simply turning the user’s words into a more abstract sentence.
+
+That is not real insight.
+
+The system must identify:
+	•	what the user was trying to do
+	•	what they lost
+	•	what they are unable to accept
+	•	why the “repair” still does not feel enough
+
+⸻
+
+EXAMPLE CASE
+
+User meaning:
+“I originally wanted split.
+I forgot.
+Later I tried to repair it by eating half a scoop.
+Objectively I know I salvaged some of it.
+But psychologically I’m still stuck because it was not the best version.”
+
+This is NOT mainly:
+	•	fear of choosing wrong
+	•	fear of forgetting
+	•	perfection in a generic sense
+
+This is more specifically:
+
+The user cannot emotionally count a partial recovery as “good enough”
+because it was not the original ideal version.
+
+Core insight direction:
+
+「你不是只是在想自己忘了點什麼。
+你是在卡：補救到了，但還是不算真正到位。」
+
+or
+
+「你不是不能接受這個選擇。
+你是很難接受『次佳解也算數』。」
+
+or
+
+「最卡你的不是忘記。
+是你明明有補回一些，心裡還是不肯把它算成夠好。」
+
+These are much closer to the actual psychology.
+
+⸻
+
+REAL ANALYSIS RULE
+
+Before generating insight, ask internally:
+	•	What was the user originally hoping for?
+	•	What part of that was lost?
+	•	Did the user attempt to repair or compensate?
+	•	Why does the repair still not feel enough?
+	•	What standard is the user still holding onto?
+
+If the system cannot answer those questions,
+the insight is not deep enough yet.
+
+⸻
+
+USE THIS KIND OF LANGUAGE
+
+Good:
+	•	補到了，但心裡還是不算數
+	•	不是最理想的版本，就很難真的放過自己
+	•	明明有救回來一些，卻還是不能被算成夠好
+	•	最難的是，你不肯把次佳解也當成完成
+
+Bad:
+	•	你在擔心失去什麼
+	•	你在追求完美
+	•	你在想自己是不是選對了
+
+These are too broad unless strongly supported.
+
+⸻
+
+PRODUCT GOAL
+
+The user should feel:
+“對，就是這個，我卡的不是表面那件事，
+而是我心裡不肯讓『沒那麼完美的版本』也算完成。”
+
+That is the level of specificity we need.
+
+END
