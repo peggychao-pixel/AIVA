@@ -136,12 +136,14 @@ function intensityDots(n: number | null | undefined): string {
 
 function InsightCard({
   content,
+  anchorPhrase,
   onSave,
   saved,
   isTc,
 }: {
   content: string;
   loopType?: string | null;
+  anchorPhrase?: string | null;
   onSave: () => void;
   saved: boolean;
   isTc: boolean;
@@ -156,6 +158,12 @@ function InsightCard({
     >
       <p className="text-xs text-primary/70 font-medium tracking-wide">{t.untangleMoment}</p>
       <p className="text-base text-foreground leading-relaxed">{content}</p>
+      {anchorPhrase && (
+        <div className="border-t border-primary/15 pt-3 space-y-1">
+          <p className="text-xs text-primary/60 font-medium">{t.keepThis}</p>
+          <p className="text-sm text-foreground/80 leading-relaxed italic">「{anchorPhrase}」</p>
+        </div>
+      )}
       <button
         onClick={onSave}
         disabled={saved}
@@ -860,6 +868,7 @@ export function SessionFlow() {
                       <InsightCard
                         content={msg.content}
                         loopType={msg.loopType}
+                        anchorPhrase={msg.anchorPhrase}
                         onSave={() => handleSaveMoment(msg)}
                         saved={savedMomentIds.has(msg.id)}
                         isTc={isTc}
