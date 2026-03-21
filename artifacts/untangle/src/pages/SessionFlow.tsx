@@ -49,7 +49,7 @@ const LAYER2_DATA: Record<"en" | "tc", Record<Mode, { question: string; chips: s
     },
     after: {
       question: "Which of these feels closest right now?",
-      chips: ["How did I end up choosing this again", "I ate, but I still don't feel satisfied", "I know I could let this go, but it feels too costly", "I can't explain it — it just keeps sitting heavily in my mind", "Let me type it out"],
+      chips: ["How did I end up choosing this again", "I ate, but it still didn't feel satisfying", "I know I fixed some of it, but it still doesn't count", "I can't explain it — I'm just still stuck", "Let me type it out"],
     },
     other: {
       question: "What makes this feel bigger than just food?",
@@ -67,7 +67,7 @@ const LAYER2_DATA: Record<"en" | "tc", Record<Mode, { question: string; chips: s
     },
     after: {
       question: "現在最卡你的，比較像哪一句？",
-      chips: ["我怎麼又選成這樣", "吃了也沒有真的被滿足", "我知道可以放過自己，但那個代價感太重", "我也說不上來，就是這件事一直壓在腦子裡", "讓我自己打"],
+      chips: ["我怎麼又選成這樣", "吃了也沒有真的被滿足", "我知道有補回一些，但心裡還是不算數", "我也說不上來，就是還卡著", "讓我自己打"],
     },
     other: {
       question: "什麼讓這個感覺不只是食物那麼簡單？",
