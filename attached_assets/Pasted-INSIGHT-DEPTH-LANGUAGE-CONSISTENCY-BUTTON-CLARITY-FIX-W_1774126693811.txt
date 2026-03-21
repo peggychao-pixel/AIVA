@@ -1,0 +1,155 @@
+INSIGHT DEPTH + LANGUAGE CONSISTENCY + BUTTON CLARITY FIX
+
+We need to fix three issues:
+	1.	Some insights are still too shallow and just restate the user’s words.
+	2.	Language is still mixed on the same screen.
+	3.	The bottom buttons are unclear and do not explain what they do.
+
+==================================================
+	1.	DO NOT JUST REPHRASE THE USER
+==================================================
+
+If the user says:
+“I’m worried I’ll regret it”
+
+Do NOT respond with:
+“You’re trying to avoid regret.”
+
+That is only a paraphrase, not an insight.
+
+New rule:
+If the current output only repeats the user meaning in simpler words,
+it is not deep enough.
+
+For “regret” cases, go one layer deeper before generating the final insight.
+
+Use one short follow-up question such as:
+
+English:
+“What feels worst about regretting it?”
+	•	I’ll keep replaying it
+	•	I’ll blame myself
+	•	It’ll feel like I ruined it
+	•	I don’t know, it just feels unbearable
+
+Traditional Chinese:
+「如果真的後悔了，最難受的是哪個？」
+	•	我會一直重播
+	•	我會怪自己
+	•	會覺得整件事毀了
+	•	我也說不上來，就是很難受
+
+Then generate a deeper insight.
+
+Examples:
+
+If user picks:
+“I’ll blame myself”
+Insight:
+“You’re not just afraid of regret.
+You’re afraid regret will turn into self-blame.”
+
+If user picks:
+“It’ll feel like I ruined it”
+Insight:
+“You’re not just afraid of regret.
+You’re afraid one wrong choice will ruin the whole experience.”
+
+If user picks:
+“I’ll keep replaying it”
+Insight:
+“You’re not just afraid of regret.
+You’re afraid it will keep running in your head afterward.”
+
+This deeper step is needed for regret-related inputs.
+
+==================================================
+2. SINGLE-LANGUAGE SCREEN RULE
+
+A single screen must never mix languages.
+
+If language toggle = EN:
+	•	all UI labels in English
+	•	all AI insight text in English
+	•	all stop lines in English
+	•	all buttons in English
+
+If language toggle = 繁中:
+	•	all UI labels in Traditional Chinese
+	•	all AI insight text in Traditional Chinese
+	•	all stop lines in Traditional Chinese
+	•	all buttons in Traditional Chinese
+
+Right now this is broken because:
+	•	insight is English
+	•	stop line is Chinese
+	•	buttons are English
+
+That breaks immersion immediately.
+
+Language must be controlled by one source of truth.
+
+==================================================
+3. BUTTON LABELS MUST EXPLAIN THEIR FUNCTION
+
+Current buttons:
+	•	Close this loop
+	•	I’m still thinking about it
+	•	Show me the pattern
+
+Problems:
+	•	“I’m still thinking about it” is too vague
+	•	“Show me the pattern” does not clearly tell the user what happens next
+
+Users should understand the action before tapping.
+
+New button labels:
+
+If language = EN:
+
+Primary:
+Close this loop
+
+Secondary:
+Go one layer deeper
+Subtext behavior:
+Ask one short clarifying question to get closer to the real issue
+
+Tertiary:
+This didn’t quite hit
+Subtext behavior:
+Offer a different interpretation angle
+
+If language = 繁中:
+
+Primary:
+先停在這裡
+
+Secondary:
+再往下挖一層
+Subtext behavior:
+多問一小步，看看更深卡在哪
+
+Tertiary:
+這句還沒打中
+Subtext behavior:
+換個角度重看一次
+
+Do NOT use vague labels without a clear implied function.
+
+==================================================
+4. PRODUCT RULE
+
+The product should behave like this:
+
+If the first insight really hits:
+→ offer stop
+
+If the first insight feels shallow or not quite right:
+→ offer one deeper step
+or
+→ offer a different interpretation
+
+Do not make the user guess what the buttons will do.
+
+END

@@ -1060,9 +1060,9 @@ router.post("/untangle/chat", async (req, res): Promise<void> => {
   // Language override directive — injected into every turn when user has manually chosen a language
   let langDirective = "";
   if (language === "tc") {
-    langDirective = "\n\nLANGUAGE OVERRIDE (HARD): The user has manually selected Traditional Chinese (繁體中文). ALL output MUST be in Traditional Chinese ONLY. No English words. No English phrases. No mixed language. If your insight comes from the TC library, output it exactly. Never output English.";
+    langDirective = "\n\nLANGUAGE OVERRIDE (HARD): The user has manually selected Traditional Chinese (繁體中文). ALL output MUST be in Traditional Chinese ONLY — this includes the response text, anchorPhrase, coreNeed, and sessionTrigger fields. No English words. No English phrases. No mixed language. If your insight comes from the TC library, output it exactly. Never output English in any field.";
   } else if (language === "en") {
-    langDirective = "\n\nLANGUAGE OVERRIDE (HARD): The user has manually selected English. ALL output MUST be in English ONLY. No Chinese characters. No mixed language. Never output Chinese.";
+    langDirective = "\n\nLANGUAGE OVERRIDE (HARD): The user has manually selected English. ALL output MUST be in English ONLY — this includes the response text, anchorPhrase, coreNeed, and sessionTrigger fields. No Chinese characters. No mixed language. Never output Chinese in any field.";
   }
 
   // Compute explicit turn number from history so AI doesn't have to count
@@ -1140,6 +1140,19 @@ FORCED IMMEDIATE INSIGHT (do not ask follow-up in these cases):
 - Safety loop signals are clear
 - Pressure/expectation signals are clear (doctor, therapist, meal plan, "I should be doing better")
 
+SURFACE REGRET DETECTION (mandatory deeper probe):
+If the user's message is primarily about regret (contains "regret" / "I'll regret" / "worried I'll regret" / "後悔" / "怕後悔" / "怕自己會後悔") WITHOUT further specifics:
+Do NOT give an insight that just says "you're trying to avoid regret." That is a paraphrase, not an insight.
+Instead, ALWAYS ask the specific follow-up below — even if confidence feels high.
+
+TC follow-up: "如果真的後悔了，最難受的是哪個？"
+TC suggestions: ["我會一直重播", "我會怪自己", "會覺得整件事毀了", "我也說不上來，就是很難受"]
+
+EN follow-up: "What feels worst about regretting it?"
+EN suggestions: ["I'll keep replaying it", "I'll blame myself", "It'll feel like I ruined it", "I don't know — it just feels unbearable"]
+
+Set: "isInsight": false, "anchorPhrase": null, "coreNeed": null, "sessionTrigger": null, "suggestions": [the 4 options above]
+
 ]${langDirective}`;
   } else if (priorAiMessages === 1) {
     // TURN 2 — handles both: (a) user reacting to Turn 1 insight, (b) user answering Turn 1 follow-up question
@@ -1153,6 +1166,14 @@ CASE A: Turn 1 was an INSIGHT (had two sharp sentences naming a loop/belief).
 
 CASE B: Turn 1 was a FOLLOW-UP QUESTION (asked the user to clarify between loop options).
 → The user has now answered that question. Run the RELEVANCE CHAIN silently (Context → Loop → Core belief → Insight), then deliver the insight immediately. 2 sentences. Standard format. isInsight=true. anchorPhrase=a short separate stop-line (NOT the insight sentences), first-person, from ANCHOR LINE LIBRARY or similar, max 15 words.
+
+CASE C: User is asking to GO DEEPER ("Can you go one layer deeper?" / "可以再往下一層嗎？" / similar phrasing):
+→ Do NOT repeat the previous insight.
+→ Ask ONE probing follow-up question that goes one layer below the insight already given.
+→ The question should be concrete and personal — not abstract. Not "What feels at stake?" — something specific to what was named.
+→ TC example: "最難受的是哪一塊：怕自己又做錯、怕後悔、還是怕自己根本不值得選到好的？"
+→ EN example: "Which part feels heaviest: afraid of choosing wrong again, afraid of regret, or something about what it means about you?"
+→ Set: "isInsight": false, "anchorPhrase": null, "suggestions": [], "coreNeed": null, "sessionTrigger": null
 
 ─────────────────────────────
 

@@ -99,8 +99,8 @@ const UI_TEXT = {
     keepThis: "Your stop line — use this when it loops back",
     whenReturns: "Say this the next time the loop starts.",
     closeLoop: "Close this loop",
-    stillThinking: "I'm still thinking about it",
-    showPattern: "Show me the pattern",
+    stillThinking: "Go one layer deeper",
+    showPattern: "This didn't quite hit",
     whatsLooping: "What's looping",
     whatYouNeed: "What you actually need",
     stoppingLine: "Your stopping line",
@@ -123,8 +123,8 @@ const UI_TEXT = {
     keepThis: "下次卡住時，先用這句",
     whenReturns: "這是你這次的 stop line。",
     closeLoop: "先停在這裡",
-    stillThinking: "我還卡著",
-    showPattern: "讓我看看這個模式",
+    stillThinking: "再往下挖一層",
+    showPattern: "這句還沒打中",
     whatsLooping: "什麼在迴圈",
     whatYouNeed: "你真正需要的",
     stoppingLine: "你的停止句",
@@ -557,6 +557,18 @@ export function SessionFlow() {
     goToChat("other", text);
   };
 
+  const handleGoDeeper = () => {
+    setLoopDismissed(true);
+    const text = isTc ? "可以再往下一層嗎？" : "Can you go one layer deeper?";
+    doSendMessage(text, mode, messagesRef.current);
+  };
+
+  const handleNotQuiteRight = () => {
+    setLoopDismissed(true);
+    const text = isTc ? "這句還沒打中" : "This didn't quite hit";
+    doSendMessage(text, mode, messagesRef.current);
+  };
+
   const exitMessage = useMemo(() => {
     // Only show closure UI when the last anchorPhrase message has no user replies after it
     for (let i = messages.length - 1; i >= 0; i--) {
@@ -920,19 +932,17 @@ export function SessionFlow() {
                         {t.closeLoop}
                       </button>
                       <button
-                        onClick={() => setLoopDismissed(true)}
+                        onClick={handleGoDeeper}
                         className="w-full px-5 py-3.5 border border-border/60 bg-card/60 text-sm text-muted-foreground hover:text-foreground hover:border-border rounded-xl transition-all"
                       >
                         {t.stillThinking}
                       </button>
-                      {!showPattern && (
-                        <button
-                          onClick={() => setShowPattern(true)}
-                          className="w-full px-5 py-3.5 border border-border/40 bg-transparent text-sm text-muted-foreground/70 hover:text-muted-foreground hover:border-border/60 rounded-xl transition-all"
-                        >
-                          {t.showPattern}
-                        </button>
-                      )}
+                      <button
+                        onClick={handleNotQuiteRight}
+                        className="w-full px-5 py-3.5 border border-border/40 bg-transparent text-sm text-muted-foreground/70 hover:text-muted-foreground hover:border-border/60 rounded-xl transition-all"
+                      >
+                        {t.showPattern}
+                      </button>
                     </div>
 
                     {showPattern && exitMessage && (
