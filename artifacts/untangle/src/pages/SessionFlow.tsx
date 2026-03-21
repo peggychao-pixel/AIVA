@@ -575,39 +575,52 @@ export function SessionFlow() {
       <main className="w-full max-w-lg flex flex-col h-screen">
 
         {/* Header */}
-        <header className="flex items-center justify-between px-6 py-5 flex-shrink-0 border-b border-border/50">
-          {step === "chat" || step === "layer2" ? (
-            <button
-              onClick={reset}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              {t.back}
-            </button>
-          ) : (
-            <span className="text-sm font-medium text-foreground/70 tracking-wide">{t.brand}</span>
-          )}
+        <header className="flex items-center gap-2 px-4 py-3 flex-shrink-0 border-b border-border/50 min-w-0">
+          {/* Left: back or brand */}
+          <div className="flex-shrink-0">
+            {step === "chat" || step === "layer2" ? (
+              <button
+                onClick={reset}
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap"
+              >
+                {t.back}
+              </button>
+            ) : (
+              <span className="text-sm font-medium text-foreground/70 tracking-wide whitespace-nowrap">{t.brand}</span>
+            )}
+          </div>
 
+          {/* Center: mode chip (chat only) — short label, never wraps */}
           {step === "chat" && (
-            <span className="text-xs text-muted-foreground border border-border/60 px-3 py-1 rounded-full">
-              {getModeLabel(mode)}
+            <span className="flex-1 min-w-0 flex justify-center">
+              <span className="text-xs text-muted-foreground border border-border/60 px-2.5 py-1 rounded-full whitespace-nowrap">
+                {(isTc
+                  ? { before: "飯前", after: "飯後", other: "更深", loop: "停不下來" }
+                  : { before: "Before", after: "After", other: "Bigger", loop: "Looping" }
+                )[mode]}
+              </span>
             </span>
           )}
 
-          <div className="flex items-center gap-4">
-            {/* Language toggle */}
-            <div className="flex items-center border border-border/60 rounded-full overflow-hidden text-xs">
+          {/* Spacer when no mode chip */}
+          {step !== "chat" && <div className="flex-1" />}
+
+          {/* Right: lang toggle + nav */}
+          <div className="flex items-center gap-3 flex-shrink-0">
+            {/* Language toggle — fixed height, full fill */}
+            <div className="flex h-7 border border-border/60 rounded-full overflow-hidden text-xs">
               <button
                 onClick={() => setUiLang(uiLang === "tc" ? "auto" : "tc")}
-                className={`px-3 py-1.5 transition-all ${
+                className={`px-2.5 h-full flex items-center transition-all ${
                   isTc ? "bg-primary/15 text-foreground font-medium" : "text-muted-foreground hover:text-foreground"
                 }`}
               >
                 繁中
               </button>
-              <div className="w-px h-4 bg-border/60" />
+              <div className="w-px bg-border/60" />
               <button
                 onClick={() => setUiLang(uiLang === "en" ? "auto" : "en")}
-                className={`px-3 py-1.5 transition-all ${
+                className={`px-2.5 h-full flex items-center transition-all ${
                   !isTc ? "bg-primary/15 text-foreground font-medium" : "text-muted-foreground hover:text-foreground"
                 }`}
               >
@@ -617,13 +630,13 @@ export function SessionFlow() {
 
             <Link
               href="/moments"
-              className="text-sm text-muted-foreground hover:text-primary transition-colors"
+              className="text-sm text-muted-foreground hover:text-primary transition-colors whitespace-nowrap"
             >
               {t.moments(recentMomentCount)}
             </Link>
             <Link
               href="/history"
-              className="text-sm text-muted-foreground hover:text-primary transition-colors"
+              className="text-sm text-muted-foreground hover:text-primary transition-colors whitespace-nowrap"
             >
               {t.history}
             </Link>

@@ -1,0 +1,252 @@
+HEADER UI FIX + INSIGHT RELEVANCE FIX
+
+We need to fix two major issues at the same time:
+	1.	The header segmented controls are visually broken on mobile.
+	2.	The AI sometimes generates insights that do not match the actual user meaning.
+
+These are both harming the product experience.
+
+==================================================
+	1.	HEADER UI FIX
+==================================================
+
+Current problems:
+	•	“After eating” wraps into two lines
+	•	the pill becomes taller than the others
+	•	the selected background color in the language toggle does not fill the full height
+	•	the whole top row looks broken and uneven
+
+Fix rules:
+	1.	All header pills must stay on ONE line.
+Do not allow wrapping for:
+
+	•	Before eating
+	•	After eating
+	•	It’s bigger than the food
+	•	My mind won’t let it go
+	•	繁中
+	•	EN
+
+Use:
+	•	white-space: nowrap
+	•	fixed height
+	•	centered text
+	•	horizontal padding
+	•	smaller font if needed on mobile
+
+	2.	If a label is too long for mobile, shorten it instead of wrapping.
+
+Recommended mobile labels:
+	•	Before
+	•	After
+	•	Bigger
+	•	Looping
+
+	3.	The segmented control selected background must always fill the full height of the selected segment.
+Right now the green highlight is clipped and too short.
+Fix the selected state so it:
+
+	•	matches the segment height
+	•	is vertically centered
+	•	has correct border radius
+	•	fills the full selected area
+
+	4.	The header row should always visually read as one clean line:
+
+Back | Context pill | Language toggle | Saved | History
+
+No wrapping.
+No broken alignment.
+No uneven heights.
+
+==================================================
+2. INSIGHT RELEVANCE FIX
+
+Current problem:
+The AI sometimes responds with an insight that sounds psychologically plausible,
+but does NOT actually match what the user meant.
+
+This creates a “牛頭不對馬嘴” feeling.
+
+Example:
+User says:
+“Trying to pick the right option”
+
+System says:
+“You’re trying to pass a test of your judgment.”
+
+This is sometimes too interpretive and too generic.
+
+Another example:
+User says:
+“My doctor will criticize me if I don’t eat properly but my schedule is full.”
+
+System reduces it to time/schedule or gives a vague loop answer.
+
+That misses the actual pressure.
+
+Another example:
+User says:
+“The food is still in my bag and I keep thinking about it until it’s gone.”
+
+System gives a generic food or decision insight.
+That misses the actual existence-triggered loop.
+
+Fix rule:
+The AI must not jump to a deep interpretation too quickly.
+
+Before generating insight, it must do:
+
+Context → Loop → Core belief → Insight
+
+And the insight must match the user’s actual meaning, not just a plausible template.
+
+==================================================
+3. RELEVANCE CHECK BEFORE FINAL INSIGHT
+
+Before finalizing an insight, the system must internally check:
+	•	Does this insight directly answer what the user actually said?
+	•	Is it too generic?
+	•	Is it skipping over a more obvious or more central emotional driver?
+	•	Would the user likely react with “對，就是這個” instead of “蛤”?
+
+If the answer is uncertain, the system should ask ONE short clarifying question before giving the final insight.
+
+Do NOT force a deep interpretation too early.
+
+==================================================
+4. WHEN TO ASK A FOLLOW-UP
+
+Ask one follow-up only if:
+	•	the user answer is too vague
+	•	multiple loops are equally possible
+	•	the system confidence is low
+
+Examples of good follow-up questions:
+	•	“更像是哪一種：怕花太多、怕自己是負擔，還是怕不安全？”
+	•	“這更像是 guilt、壓力，還是怕做不好？”
+	•	“最重的是哪塊：花費、後悔，還是你對自己的感覺？”
+
+Do NOT ask abstract therapy questions like:
+	•	“What feels at stake here?”
+	•	“What part keeps pulling you back?”
+
+Those are too vague and often feel useless.
+
+==================================================
+5. CONTEXT-SPECIFIC RELEVANCE RULES
+
+BEFORE EATING:
+Focus on:
+	•	fear of choosing wrong
+	•	comparison
+	•	perfection
+	•	regret
+	•	pressure before action
+
+Do NOT use:
+“The decision is already finished.”
+
+AFTER EATING:
+Focus on:
+	•	replay
+	•	judging
+	•	validation
+	•	regret checking
+
+LOOPING:
+Focus on:
+	•	repetition
+	•	unfinished closure
+	•	thought reopening
+
+IT’S BIGGER THAN THE FOOD:
+Do not jump straight to a deep insight after one vague answer.
+Allow one extra layer:
+question → answer → follow-up → answer → insight
+
+==================================================
+6. EXISTENCE LOOP RULE
+
+If the user says the food keeps occupying their mind simply because it still exists, is nearby, is in their bag, or is still accessible:
+
+Do NOT reduce it to:
+	•	time management
+	•	simple hunger
+	•	generic food thoughts
+	•	willpower
+
+Detect:
+EXISTENCE LOOP
+
+Core idea:
+As long as it still exists, the mind does not feel allowed to close the loop.
+
+Correct style:
+“You’re not thinking about the food itself.
+You’re stuck because as long as it’s still there, your mind won’t let the loop close.”
+
+==================================================
+7. PRESSURE / EXPECTATION RULE
+
+If the user mentions:
+	•	doctor
+	•	therapist
+	•	plan
+	•	expectation
+	•	“I should be doing better”
+	•	schedule stress tied to being judged
+
+Do NOT reduce this to logistics.
+
+Detect:
+pressure / expectation / fear of failing
+
+Correct style:
+“You’re not stuck on time.
+You’re afraid you’ll fail the expectation.”
+
+==================================================
+8. INSIGHT OUTPUT RULE
+
+Insights must be:
+	•	maximum 2 sentences
+	•	sharp
+	•	specific
+	•	directly relevant
+	•	not generic
+	•	not filler
+
+Bad:
+“This is about proving something to yourself.”
+Too vague if unsupported.
+
+Bad:
+“You can step back — it’s just a decision.”
+Too generic and often wrong.
+
+Good:
+“You’re not replaying the meal.
+You’re checking if you chose wrong.”
+
+Good:
+“你不是在想花了多少。
+你是在怕自己變成負擔。”
+
+==================================================
+9. PRODUCT GOAL
+
+Untangle should feel:
+clean in UI
+precise in language
+accurate in meaning
+
+The user should not feel:
+	•	the interface is broken
+	•	the AI is guessing
+	•	the insight sounds unrelated
+
+The user should feel:
+“它真的懂我在說什麼。”
+
+END

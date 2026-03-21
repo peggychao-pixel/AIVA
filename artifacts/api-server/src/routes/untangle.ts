@@ -1080,13 +1080,59 @@ router.post("/untangle/chat", async (req, res): Promise<void> => {
   const modeContext = modeLabel[mode] ?? modeLabel.other;
 
   if (priorAiMessages === 0) {
-    // TURN 1 — full engine prompt
+    // TURN 1 — full engine prompt + confidence check before output
     systemPrompt = SYSTEM_PROMPTS[mode] ?? SYSTEM_PROMPTS.other;
-    turnDirective = `\n\n[CONVERSATION STATE: This is TURN 1. No prior AI responses exist. USER CONTEXT: ${modeContext} Run STEP 0 classification, then apply TURN 1 instructions exactly. Deliver insight immediately. No second question. No chips.]${langDirective}`;
+    turnDirective = `\n\n[CONVERSATION STATE: This is TURN 1. No prior AI responses exist. USER CONTEXT: ${modeContext}
+
+Run STEP 0 classification (silently). Then apply this CONFIDENCE CHECK before deciding output:
+
+STEP 0: Classify loop type and score. Apply priority rule.
+
+STEP B — RELEVANCE CHAIN (internal, never output):
+  1. Context: what situation is the user actually in?
+  2. Loop: what is the deepest loop driving this?
+  3. Core belief: what hidden belief does this loop rest on?
+  4. Insight: does the 2-sentence insight directly name what the user said — or is it too generic?
+
+STEP C — CONFIDENCE ASSESSMENT:
+Ask yourself: "Would a user react with '對，就是這個' or with '蛤，不太對'?"
+
+CONFIDENT: user's message is specific enough to name the loop precisely → deliver insight immediately (2 sentences, standard format).
+
+LOW CONFIDENCE / AMBIGUOUS: user's message is vague, multiple loops are equally plausible, or the most obvious interpretation could easily be wrong → ask ONE targeted follow-up question.
+
+GOOD follow-up format (targeted, concrete):
+TC: "更像是哪一種：怕花太多、怕自己是負擔，還是怕不安全？"
+TC: "最重的是哪塊：花費、後悔，還是你對自己的感覺？"
+EN: "More like — afraid of wasting it, afraid of being a burden, or afraid of not feeling safe?"
+EN: "Which feels heavier: the cost, the regret, or what it says about you?"
+
+BAD follow-up (too abstract, too vague — NEVER use these):
+"What feels at stake here?" / "What part keeps pulling you back?" / "How does this make you feel?"
+
+When asking a follow-up: keep it to ONE sentence. Give 2–3 concrete options inline (not chips). Set "isInsight": false, "suggestions": [], "anchorPhrase": null.
+
+FORCED IMMEDIATE INSIGHT (do not ask follow-up in these cases):
+- User's Layer 2 chip was specific (e.g. "I'm afraid I'll choose wrong" / "I feel guilty")
+- Existence loop signals are clear (food still in bag / can't stop until it's gone)
+- Safety loop signals are clear
+- Pressure/expectation signals are clear (doctor, therapist, meal plan, "I should be doing better")
+
+]${langDirective}`;
   } else if (priorAiMessages === 1) {
-    // TURN 2 — insight confidence check + optional clarify mode
+    // TURN 2 — handles both: (a) user reacting to Turn 1 insight, (b) user answering Turn 1 follow-up question
     systemPrompt = SYSTEM_PROMPTS[mode] ?? SYSTEM_PROMPTS.other;
-    turnDirective = `\n\n[CONVERSATION STATE: This is TURN 2. An insight was delivered in Turn 1. USER CONTEXT: ${modeContext}
+    turnDirective = `\n\n[CONVERSATION STATE: This is TURN 2. USER CONTEXT: ${modeContext}
+
+FIRST — read the Turn 1 assistant message and determine what it was:
+
+CASE A: Turn 1 was an INSIGHT (had two sharp sentences naming a loop/belief).
+→ Apply STEP A below (miss/recognition detection).
+
+CASE B: Turn 1 was a FOLLOW-UP QUESTION (asked the user to clarify between loop options).
+→ The user has now answered that question. Run the RELEVANCE CHAIN silently (Context → Loop → Core belief → Insight), then deliver the insight immediately. 2 sentences. Standard format. isInsight=true. anchorPhrase=second sentence verbatim.
+
+─────────────────────────────
 
 STEP A — DETECT THE USER'S REACTION TO THE INSIGHT:
 
