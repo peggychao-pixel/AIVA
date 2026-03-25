@@ -886,9 +886,9 @@ export function SessionFlow() {
                     )}
 
                     {msg.role === "assistant" &&
-                      msg.id === "opener" &&
                       msg.suggestions &&
-                      msg.suggestions.length > 0 && (
+                      msg.suggestions.length > 0 &&
+                      !messages.slice(messages.findIndex(m => m.id === msg.id) + 1).some(m => m.role === "user") && (
                         <div className="flex flex-wrap gap-2 max-w-full">
                           {msg.suggestions.map((s, si) => (
                             <button

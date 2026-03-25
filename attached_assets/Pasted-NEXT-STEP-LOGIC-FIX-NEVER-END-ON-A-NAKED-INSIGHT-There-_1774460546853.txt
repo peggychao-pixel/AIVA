@@ -1,0 +1,200 @@
+NEXT-STEP LOGIC FIX — NEVER END ON A NAKED INSIGHT
+
+There is a major flow hole in the current product:
+
+The system receives input,
+generates one insight,
+and then stops.
+
+That is not a complete product interaction.
+That is only a partial response.
+
+==================================================
+1. EVERY INSIGHT MUST BE FOLLOWED BY A NEXT STEP
+==================================================
+
+The app must never end on a naked insight bubble.
+
+After every insight, the system must decide and render the next step.
+
+Minimum requirement:
+Every insight card must be followed by one of these:
+
+A. user validation step
+B. branch clarification step
+C. action step
+D. deeper step
+E. pause step
+
+If none of these appear, the flow is incomplete.
+
+==================================================
+2. REQUIRED POST-INSIGHT ROUTING
+==================================================
+
+After an insight is shown, the system must ask internally:
+
+- Did this likely hit?
+- Is there ambiguity between two subtypes?
+- Is there an obvious deeper layer?
+- Is there a real-world constraint that needs rerouting?
+- Should the user pause here?
+
+Then choose the correct next block.
+
+==================================================
+3. APPROVED NEXT BLOCK TYPES
+==================================================
+
+Type A — “Did this land?”
+Use when the system is somewhat confident, but not certain.
+
+Traditional Chinese:
+「這句比較接近嗎？」
+
+Buttons:
+- 有，差不多是這個
+- 還差一點
+- 不是這個
+
+English:
+“Does this feel close?”
+
+Buttons:
+- Yes, that’s close
+- Close, but not quite
+- No, not really
+
+--------------------------------
+
+Type B — Branch clarification
+Use when the system sees multiple plausible interpretations.
+
+For “It feels expensive,” do NOT stop after one generic insight.
+Ask whether it is more like:
+
+Traditional Chinese:
+「比較像哪個？」
+- 我在想值不值得
+- 我真的有預算限制
+- 我比較不敢承認自己有需要
+- 幾個都有
+
+English:
+“Which feels closer?”
+- I’m stuck on whether it’s worth it
+- There is a real budget limit
+- The harder part is admitting I need more
+- It’s a mix
+
+--------------------------------
+
+Type C — Go deeper / continue
+Use when the system has a plausible first layer and a likely deeper layer.
+
+Buttons:
+- 再看深一點
+- 先停在這裡
+- 直接說更多
+
+English:
+- Go deeper
+- Pause here
+- Say more
+
+--------------------------------
+
+Type D — Reroute to real-constraint flow
+Use when the money issue may reflect a real external limit.
+
+If the user indicates:
+- real budget cap
+- family rule
+- fear of asking
+- shame around needing more
+
+Then reroute immediately to:
+REAL CONSTRAINT + CAN’T ASK LOOP
+
+--------------------------------
+
+Type E — Stop line / pause
+Use only after:
+- the insight likely landed
+- the subtype is sufficiently clear
+- the user has somewhere to pause
+
+Never offer pause too early.
+
+==================================================
+4. DO NOT LEAVE THE SCREEN EMPTY AFTER INSIGHT
+==================================================
+
+A screen with:
+- user input
+- one system paragraph
+- nothing after it
+
+feels broken.
+
+It makes the product seem like a chat reply rather than a guided flow.
+
+Every response must visually continue the interaction.
+
+==================================================
+5. SPECIFIC FIX FOR “IT FEELS EXPENSIVE”
+==================================================
+
+For “It feels expensive,” do NOT stop after:
+
+“You’re not just worried about the cost…”
+
+Because that sentence alone does not resolve:
+- worth-it pressure
+- real budget limit
+- fear of wasting
+- fear of asking for more
+- burden / guilt
+
+The system must immediately follow with a branch clarifier like:
+
+Traditional Chinese:
+「這個『貴』比較像哪個？」
+- 我在想這樣到底值不值得
+- 真的有預算上限在壓我
+- 我比較不敢說自己其實有需要
+- 幾個都有
+
+English:
+“What feels most true about ‘expensive’ here?”
+- I’m stuck on whether it’s worth it
+- There’s a real budget limit
+- I don’t feel able to admit I need more
+- It’s a mix of those
+
+==================================================
+6. PRODUCT RULE
+==================================================
+
+An insight is not the end of the interaction.
+It is only the first landing point.
+
+The system must always answer:
+“Now that I’ve named this, what happens next?”
+
+If the app cannot answer that, the flow is incomplete.
+
+==================================================
+7. UX GOAL
+==================================================
+
+The user should feel:
+- it named something
+- then it helped me move
+- then it showed me what to do with that
+
+Not:
+- it said one decent sentence
+- then left me hanging
+
+END
