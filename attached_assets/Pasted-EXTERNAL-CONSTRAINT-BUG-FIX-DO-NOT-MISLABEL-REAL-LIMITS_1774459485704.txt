@@ -1,0 +1,164 @@
+EXTERNAL CONSTRAINT BUG FIX — DO NOT MISLABEL REAL LIMITS AS OVERTHINKING
+
+There is a serious interpretation bug in the “expensive / bigger than food” flow.
+
+Current failure:
+When the user says something like:
+- “It feels expensive”
+- “This costs too much”
+- “I don’t know if I can spend this”
+the system sometimes interprets it as:
+- generalized fear of wasting resources
+- abstract money anxiety
+- a calculation loop that should be softened
+
+This is wrong when the user is describing a REAL external constraint.
+
+==================================================
+1. NEW RULE: DISTINGUISH REAL CONSTRAINT VS INTERNAL CALCULATION
+==================================================
+
+Before generating insight, check:
+
+Is the user describing:
+A. a vague internal feeling about money
+or
+B. a real external limit, rule, or authority?
+
+Examples of REAL external constraints:
+- my dad only gives me $50 a day
+- my family will question this
+- I’m actually on a tight limit
+- I’m scared to ask for more
+- I know there is a hard cap
+- 我爸一天真的只給我五十
+- 我真的不敢跟家裡講
+- 這不是我想像的，是現實限制
+- 我有規定
+- 我有上限
+
+If yes:
+DO NOT interpret the moment as “just a calculation.”
+DO NOT say:
+- this moment doesn’t need to be a calculation
+- you’re just worrying about wasting resources
+- you’re only stuck in overthinking
+
+That invalidates the user’s reality.
+
+==================================================
+2. ROUTE REAL MONEY LIMITS TO A NEW SUBTYPE
+==================================================
+
+New subtype:
+REAL CONSTRAINT + CAN’T ASK LOOP
+
+Definition:
+The user is not stuck because of abstract money anxiety.
+The user is stuck because a real external limit exists,
+and they do not feel able to speak honestly about what they need.
+
+Core pattern:
+real limit + real need + fear of asking = trapped loop
+
+==================================================
+3. CORRECT INSIGHT DIRECTION
+==================================================
+
+When this subtype is detected, use insight directions like:
+
+Traditional Chinese:
+- 你不是在亂算。
+  是真的有一條線在那裡，而你不敢把自己的難講出來。
+
+- 你不是單純覺得貴。
+  你是知道自己有需要，可是你不敢把那個需要說出口。
+
+- 最卡你的不是價格本身。
+  是你真的有現實限制，可是又不敢承認自己撐不住。
+
+- 你不是在多想。
+  是現實真的有限制，而你現在沒有空間老實說這很難。
+
+English:
+- You’re not overcalculating.
+  There really is a limit there, and you don’t feel able to say this is hard.
+
+- You’re not just worried about price.
+  You have a real constraint, and you don’t feel safe asking for what you need.
+
+- The hardest part may not be the money itself.
+  It may be that the limit is real, and you don’t feel able to say you’re struggling under it.
+
+==================================================
+4. SO-WHAT MUST MATCH REALITY
+==================================================
+
+After the insight, explain the consequence accurately.
+
+Good:
+- 所以你現在不是在選吃什麼而已，
+  你是在一個很緊的限制裡，硬撐著不要讓自己看起來有需要。
+
+- 所以這不是一句「別算了」就能解掉的東西，
+  因為你卡的是現實限制加上不敢開口。
+
+Bad:
+- This moment doesn’t need to be a calculation.
+- You’re only worried about wasting resources.
+- Don’t turn this into math.
+
+Those responses are only allowed when the constraint is truly internal and exaggerated, not when it is real.
+
+==================================================
+5. CLARIFYING OPTION SET FOR MONEY CASES
+==================================================
+
+If the user says “expensive” but the system is not sure whether it is internal anxiety or a real limit, ask this:
+
+Traditional Chinese:
+「比較像哪個？」
+1. 我知道其實花得起，但心裡還是很卡
+2. 真的有預算或家人的限制
+3. 我比較卡的是不敢開口講我的需要
+4. 兩個都有
+
+English:
+“Which feels closer?”
+1. I could technically afford it, but I still feel stuck
+2. There is a real budget or family limit
+3. The harder part is that I don’t feel able to say what I need
+4. Both
+
+If 2, 3, or 4 is selected:
+route to REAL CONSTRAINT + CAN’T ASK LOOP
+
+==================================================
+6. PRODUCT SAFETY RULE
+==================================================
+
+Never emotionally soothe away a real constraint.
+
+If the limit is real, the response must first validate reality.
+Only then can it help the user interpret the emotional part.
+
+Correct order:
+1. name the real limit
+2. name the silence / fear / shame around asking
+3. then help the user feel seen
+
+==================================================
+7. UX GOAL
+==================================================
+
+The user should feel:
+- 它有看出這不是我亂想
+- 它有看出限制是真的
+- 它有看出我不敢說才是更卡的地方
+
+Not:
+- 它叫我不要算
+- 它把真問題講成心態問題
+- 它在敷衍我的現實
+
+END

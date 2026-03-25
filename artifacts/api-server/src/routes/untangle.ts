@@ -336,6 +336,11 @@ H) BODY-NOT-DONE LOOP — body is not full, not satisfied, or physically burdene
    Signs: not full, not satisfied, bloated but not done, body and mind both unresolved, "撐但不飽", "身體和心理沒到位", "不是飽是脹", "有負擔感但沒完成"
    Route to SATIETY module or generate BODY-NOT-DONE insight. Do NOT treat as hunger or reward mismatch.
 
+I) REAL CONSTRAINT + CAN'T ASK LOOP — The user is not stuck because of abstract money anxiety. A real external limit (family budget, fixed allowance, authority figure, hard cap) exists, AND the user feels unable to honestly state that they are struggling or need more.
+   Signs: "my dad only gives me", "my family will question", "I'm on a tight limit", "I can't ask for more", "I'm scared to say I need", "我爸一天真的只給我", "我真的不敢跟家裡講", "這不是我想像的，是現實", "我有上限", "我有規定", concrete dollar amounts with family/authority context
+   CRITICAL: Do NOT interpret this as abstract money worry. Do NOT say "this doesn't need to be a calculation." Do NOT soften away the reality. Validate the real limit first, then name the silence/fear around asking.
+   Distinguish from scarcity loop (internal fear of wasting resources) → this is about a REAL external constraint + the fear of being honest about needing more.
+
 A) MOSTLY RUMINATION — no concrete external constraint; the loop is the main problem
    Signs: "what if", "I keep thinking", "I can't stop", "maybe I should have", nothing specific blocking them
 
@@ -385,6 +390,7 @@ Signal keywords per loop:
 - incomplete+justification loop: not full but kept thinking, not satisfied enough, high-end enough, good enough to count, was it worth it if I'm not full, replay whether it was satisfying, 沒飽, 夠高檔嗎, 夠好嗎, 算不算一餐, 不飽但一直想, 值不值得算, 夠不夠好
 - partial_recovery loop: forgot to order, tried to fix it, compensated, salvaged some, still not the best version, still disappointed after fixing, 忘了點, 補救了, 有救回一些, 補了一些, 還是不算, 還是卡著, 補回去了但, 最後有補
 - body-not-done loop: not full and not satisfied, bloated without completion, body has burden but no closure, 不飽也不滿足, 只是脹, 撐但不飽, 身體沒到位心裡也沒到位, 有負擔感沒完成感
+- real_constraint+cant_ask loop: my dad only gives me, family limit, on a tight budget, can't ask for more, scared to say I need, concrete dollar/amount cap with authority figure, 我爸一天只給, 家裡有限制, 不敢開口, 真的有上限, 不敢說我需要, 有現實限制
 
 ---
 
@@ -464,8 +470,9 @@ Priority order (highest wins):
   3. burden loop / worthiness loop
   4. control loop
   5. validation loop / wrong choice loop / regret loop
-  6. scarcity / perfection / comparison / FOMO
-  7. self-worth loop    ← lowest priority; only choose if no deeper loop present
+  6. real_constraint+cant_ask loop ← overrides scarcity if real external limit + can't ask is present
+  7. scarcity / perfection / comparison / FOMO
+  8. self-worth loop    ← lowest priority; only choose if no deeper loop present
 
 Do NOT respond to a surface loop if a deeper one is present.
 Example: unsafe + parents + food still exists → safety loop (NOT existence, NOT burden).
@@ -484,6 +491,7 @@ CORE BELIEFS per loop type (the hidden belief driving the loop):
 - burden loop → "If I cost money, I become a burden."
 - control loop → "If I lose control, everything falls apart."
 - scarcity loop → "Resources are limited, I must not waste them."
+- real_constraint+cant_ask loop → "The limit is real, and I am not allowed to admit I am struggling under it."
 - perfection loop → "There is a perfect choice, and I must find it."
 - comparison loop → "If I don't compare everything, I'll miss something better."
 - FOMO loop → "If I miss something better, I lose."
@@ -615,6 +623,14 @@ SCARCITY LOOP:
 你不是在想價格。你是在怕自己浪費了資源。
 你不是在算多少錢。你是在怕花掉不該花的。
 你不是在想這餐貴不貴。你是在怕自己把有限的東西用錯地方。
+
+REAL CONSTRAINT + CAN'T ASK LOOP:
+你不是在亂算。是真的有一條線在那裡，而你不敢把自己的難講出來。
+你不是單純覺得貴。你是知道自己有需要，可是你不敢把那個需要說出口。
+最卡你的不是價格本身。是你真的有現實限制，可是又不敢承認自己撐不住。
+你不是在多想。是現實真的有限制，而你現在沒有空間老實說這很難。
+所以你現在不是在選吃什麼而已，你是在一個很緊的限制裡，硬撐著不要讓自己看起來有需要。
+所以這不是一句「別算了」就能解掉的東西，因為你卡的是現實限制加上不敢開口。
 
 PERFECTION LOOP:
 你不是在選餐。你是在找那個完美選項。
@@ -1345,6 +1361,47 @@ EN suggestions: ["I'll keep replaying it", "I'll blame myself", "It'll feel like
 
 Set: "isInsight": false, "anchorPhrase": null, "coreNeed": null, "sessionTrigger": null, "suggestions": [the 4 options above]
 
+MONEY AMBIGUITY DETECTION — run when the user mentions cost/price/expensive in "other" (bigger than food) context:
+
+Before generating insight for any money-related input, check:
+Is this (A) an internal feeling of abstract money anxiety, OR (B) a real external limit with an authority figure or hard cap?
+
+Signals of REAL external constraint (B):
+- mentions a specific person who controls the money (dad, mom, family, partner)
+- mentions a specific amount or cap they don't control
+- mentions fear of asking, not wanting to admit they can't afford it, or not feeling allowed to say they need more
+- 我爸/媽/家裡 + money context
+- "I can't ask for more", "they'll question me", "I have a limit"
+
+If CLEARLY A → classify as scarcity loop → generate insight directly.
+If CLEARLY B → classify as real_constraint+cant_ask loop → generate insight directly using REAL CONSTRAINT library. Do NOT say "this doesn't need to be a calculation."
+If AMBIGUOUS → show the clarifying option set below. Set "isInsight": false, "suggestions": [the 4 options], "anchorPhrase": null.
+
+TC clarifying question: "比較像哪個？"
+TC options: ["我知道其實花得起，但心裡還是很卡", "真的有預算或家人的限制", "我比較卡的是不敢開口講我的需要", "兩個都有"]
+
+EN clarifying question: "Which feels closer?"
+EN options: ["I could technically afford it, but I still feel stuck", "There is a real budget or family limit", "The harder part is that I don't feel able to say what I need", "Both"]
+
+If user selects option 2, 3, or 4 → route to real_constraint+cant_ask loop on the next turn.
+
+---
+
+PRODUCT SAFETY RULE — applies to ALL responses involving money, cost, or financial constraints:
+
+NEVER emotionally soothe away a real constraint.
+NEVER respond to a real limit by saying:
+- "This moment doesn't need to be a calculation."
+- "You're just worried about wasting resources."
+- "Don't overthink the math."
+- "You're only stuck in overthinking."
+Any response that reframes a real external limit as internal overthinking is WRONG and invalidates the user's reality.
+
+Correct order when a real constraint is detected:
+1. Name the real limit (it exists, it is real)
+2. Name the silence or fear around asking for help
+3. THEN help the user feel seen within that reality
+
 ]${langDirective}`;
   } else if (priorAiMessages === 1) {
     // TURN 2 — handles both: (a) user reacting to Turn 1 insight, (b) user answering Turn 1 follow-up question
@@ -1636,7 +1693,7 @@ You MUST respond in valid JSON with ALL 8 fields:
     }
 
     // Extract loopType from JSON field, or fall back to scanning response text
-    const VALID_LOOP_TYPES = new Set(["regret anticipation", "uncertainty loop", "control loop", "over-analysis loop", "self-judgment loop", "perfectionism loop", "scarcity loop", "reassurance loop", "self-worth loop", "justification loop", "decision loop", "comparison loop", "optimization loop", "FOMO loop", "compensation loop", "future-fear loop", "safety loop", "guilt loop", "over-responsibility loop"]);
+    const VALID_LOOP_TYPES = new Set(["regret anticipation", "uncertainty loop", "control loop", "over-analysis loop", "self-judgment loop", "perfectionism loop", "scarcity loop", "reassurance loop", "self-worth loop", "justification loop", "decision loop", "comparison loop", "optimization loop", "FOMO loop", "compensation loop", "future-fear loop", "safety loop", "guilt loop", "over-responsibility loop", "partial_recovery loop", "body-not-done loop", "real_constraint+cant_ask loop", "incomplete+justification loop", "over-control loop", "existence loop", "burden loop", "worthiness loop", "validation loop", "wrong choice loop", "regret loop", "comparison loop", "FOMO loop", "self-worth loop"]);
     const LOOP_TYPE_STRINGS = [...VALID_LOOP_TYPES];
     const rawLoopType = parsed_response.loopType;
     let loopType: string | null = (rawLoopType && rawLoopType !== "null" && VALID_LOOP_TYPES.has(rawLoopType)) ? rawLoopType : null;
