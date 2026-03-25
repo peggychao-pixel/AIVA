@@ -161,7 +161,7 @@ function InsightCard({
       {anchorPhrase && (
         <div className="border-t border-primary/15 pt-3 space-y-1">
           <p className="text-xs text-primary/60 font-medium">{t.keepThis}</p>
-          <p className="text-sm text-foreground/80 leading-relaxed italic">「{anchorPhrase}」</p>
+          <p className="text-sm text-foreground/80 leading-relaxed italic">{isTc ? `「${anchorPhrase}」` : `"${anchorPhrase}"`}</p>
         </div>
       )}
       <button

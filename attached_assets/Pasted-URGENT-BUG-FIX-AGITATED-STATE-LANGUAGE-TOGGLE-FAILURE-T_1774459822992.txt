@@ -1,0 +1,135 @@
+URGENT BUG FIX — AGITATED STATE + LANGUAGE TOGGLE FAILURE
+
+This screen is failing badly.
+
+There are two major problems:
+
+==================================================
+1. DO NOT GIVE ABSTRACT “WISE” LINES WHEN THE USER IS ALREADY AGITATED
+==================================================
+
+If the user is already in a highly activated / agitated / overwhelmed state,
+do NOT respond with vague philosophy like:
+
+- “You’re not thinking about the price.”
+- “You’re afraid of wasting resources.”
+- “This number won’t give you the answer you’re looking for.”
+
+These lines feel fake, floaty, and invalidating.
+
+They make the user feel more irritated, not more understood.
+
+New rule:
+
+If the user is in an activated state and the issue involves a REAL limit,
+the response must be:
+
+1. concrete
+2. reality-based
+3. emotionally accurate
+4. low-abstraction
+
+Correct direction:
+- name the real limit
+- name the pressure
+- name the fear of saying what is hard
+- do not philosophize
+
+Examples of better insight:
+
+Traditional Chinese:
+- 這不是你在亂算。
+  是真的有一條限制在那裡，而你現在很難承認自己撐不住。
+
+- 你不是單純嫌貴。
+  你是知道限制是真的，所以更不敢讓自己的需要變大聲。
+
+- 最卡你的不是這個價格。
+  是你真的有壓力，又沒有空間老實說這很難。
+
+English:
+- This isn’t just money anxiety.
+  There is a real limit here, and you don’t feel able to say this is hard.
+
+- You’re not just reacting to the price.
+  You’re under a real constraint, and that makes your need feel harder to admit.
+
+==================================================
+2. NEVER MIX LANGUAGES ON THE SAME SCREEN
+==================================================
+
+Current screen is broken because it mixes:
+- English insight
+- Chinese stop line
+- English support copy
+
+This is unacceptable.
+
+New rule:
+One screen = one language only.
+
+If toggle = 繁中:
+ALL of the following must be Traditional Chinese:
+- user reply chips
+- insight card
+- helper text
+- stop line
+- button labels
+- section headers
+
+If toggle = EN:
+ALL of the following must be English:
+- user reply chips
+- insight card
+- helper text
+- stop line
+- button labels
+- section headers
+
+No mixed-language screens.
+No exceptions.
+
+==================================================
+3. IF TOGGLE CHANGES MID-CONVERSATION
+==================================================
+
+If the user manually switches language in the middle of a conversation:
+
+Do NOT partially translate the screen.
+
+Choose one of these behaviors:
+
+Option A:
+Keep all existing conversation bubbles in their original language,
+but render ALL new system text in the newly selected language.
+
+Option B:
+Re-render the entire system side of the conversation in the new language consistently.
+
+But never do this:
+- one card in English
+- stop line in Chinese
+- helper text in English
+- buttons mixed
+
+That feels broken.
+
+==================================================
+4. PRODUCT RULE
+==================================================
+
+When the user is already overwhelmed,
+the system must become:
+- more concrete
+- more grounded
+- less abstract
+- less poetic
+- less “wise”
+
+When the user changes language,
+the system must become:
+- fully consistent
+- visually calm
+- not mixed
+
+END
