@@ -1,0 +1,155 @@
+CRITICAL FIX — DO NOT TURN REALITY INTO A STOP LINE
+
+There is a major product failure in the real-constraint flow.
+
+The system is doing this:
+
+1. correctly identifies that the user has a real external limit
+2. then turns that reality into a stop line
+
+Example of failure:
+「我真的有現實限制，不能不承認。」
+
+This is not helpful.
+This is not regulating.
+This is not a stop line.
+
+It only repeats the burden.
+
+==================================================
+1. NEW RULE: A STOP LINE MUST REDUCE LOOP PRESSURE
+==================================================
+
+A stop line is not:
+- a summary of the problem
+- a restatement of the burden
+- a reality check
+- a harsher version of the truth
+
+A stop line must do at least one of these:
+- reduce pressure
+- reduce self-attack
+- reduce urgency
+- reduce false responsibility
+- help the user stop spinning
+
+If a sentence only makes the user feel:
+“yes, I know, that’s the problem”
+then it is not a stop line.
+
+==================================================
+2. DO NOT USE “HARD TRUTH” AS REGULATION
+==================================================
+
+Banned stop-line types:
+- “I have real limits.”
+- “I can’t deny reality.”
+- “This is a real constraint.”
+- “I have to accept this.”
+- 「我真的有現實限制，不能不承認。」
+- 「這就是現實。」
+- 「我本來就有限制。」
+- 「這就是我得接受的事。」
+
+Why these fail:
+- they increase heaviness
+- they restate pressure
+- they do not soothe or release
+- they sound punishing
+- they make the user feel more trapped
+
+==================================================
+3. REAL-CONSTRAINT STOP LINES MUST HELP THE USER HOLD REALITY MORE GENTLY
+==================================================
+
+If the issue is a real external limit, the stop line should NOT deny reality,
+but it must help the user carry it with less internal violence.
+
+Good directions:
+
+Traditional Chinese:
+- 限制是真的，但我不用現在把每個選擇都逼成考試。
+- 有限制是真的，不代表我現在要一直逼自己算到完美。
+- 現實很緊，已經夠難了，我不用再多壓自己一層。
+- 我知道有限制，先不用把每一步都弄得像犯錯。
+- 限制在，但我不用因為這樣一直對自己更兇。
+
+English:
+- The limit is real, but I don’t have to turn every choice into a test.
+- The constraint is real, but I don’t have to pressure myself into getting it perfect.
+- Reality is tight enough already. I don’t need to add another layer of pressure.
+- The limit is there. I don’t have to treat every move like a mistake.
+- The constraint is real, but I don’t need to be harsher to myself because of it.
+
+==================================================
+4. INSIGHT VS STOP LINE MUST BE SEPARATE
+==================================================
+
+Insight can name:
+- there is a real budget limit
+- this makes every choice feel tighter
+- the user feels trapped
+
+But the stop line must do something different.
+
+Insight:
+「你不是真的在亂算。你是真的有預算限制，這讓每個選擇都更緊張。」
+
+This is acceptable as insight.
+
+But the stop line must NOT be:
+「我真的有現實限制，不能不承認。」
+
+Instead it should be something like:
+「限制是真的，但我不用現在把每一步都逼成考試。」
+
+==================================================
+5. TEST FOR STOP LINE QUALITY
+==================================================
+
+Before showing a stop line, ask:
+
+After reading this, would the user feel:
+A. slightly more able to unclench
+or
+B. more trapped inside the same problem?
+
+If B, do not use it.
+
+A stop line must create a little space.
+Not just repeat the trap.
+
+==================================================
+6. SPECIAL RULE FOR REAL-CONSTRAINT FLOWS
+==================================================
+
+When the system detects:
+- family budget rule
+- hard money cap
+- fear of asking for more
+- real external restriction
+
+then the stop line should focus on:
+- reducing self-pressure
+- reducing self-blame
+- reducing test-like thinking
+
+NOT on:
+- repeating the limit
+- insisting on acceptance
+- “admitting reality”
+
+==================================================
+7. UX GOAL
+==================================================
+
+The user should feel:
+- yes, the limit is real
+- but I am not being crushed harder by the app
+- the sentence gives me a little room
+- it helps me stop tightening
+
+Not:
+- great, now the app is just repeating my prison back to me
+
+END

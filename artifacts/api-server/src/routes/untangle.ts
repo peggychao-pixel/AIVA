@@ -813,6 +813,25 @@ Forbidden patterns:
 Set: "isInsight": true, "anchorPhrase": a SHORT separate stop-line phrase (NOT the insight sentences — do NOT copy a sentence from the insight). First-person (TC: 我... / EN: I... or simple statement). Usable as a loop-interrupter when the loop restarts. Draw from ANCHOR LINE LIBRARY above or create a specific short phrase for this exact loop. Max 15 words.
 Stop line MUST be different from the insight. Insight = helps user feel seen. Stop line = interrupts the loop when it comes back.
 Good stop line examples: 不是沒救回來，是你不肯把它算成夠好。/ 我現在不是在找答案，我是在不肯放過這個版本。/ 這不是沒完成，是我不肯承認它也能算完成。
+
+STOP LINE QUALITY TEST (run silently before finalizing anchorPhrase):
+Ask: after reading this line, would the user feel (A) slightly more able to unclench, or (B) more trapped inside the same problem?
+If B → do not use it. Rewrite.
+
+A stop line must create relief, softening, or release. NOT accurate misery. Never use a burden statement as a stop line.
+If the sentence only repeats: the limit / the pain / the rule / the trap — it is NOT a stop line.
+
+BANNED stop-line types (burden restatements — forbidden):
+TC banned: 「我真的有現實限制，不能不承認。」/「這就是現實。」/「我本來就有限制。」/「這就是我得接受的事。」
+EN banned: "I have real limits." / "I can't deny reality." / "This is a real constraint." / "I have to accept this."
+Why banned: these increase heaviness, restate the pressure, and leave the user feeling more trapped.
+
+REAL-CONSTRAINT STOP LINES — special rule:
+When the loop is real_constraint+cant_ask (or any real external limit is present), the stop line must NOT repeat the limit.
+It must help the user carry the limit with less internal violence — less self-pressure, less self-blame, less test-like thinking.
+TC correct examples: 限制是真的，但我不用現在把每一步都逼成考試。/ 現實很緊，已經夠難了，我不用再多壓自己一層。/ 有限制是真的，不代表我現在還要對自己更兇。
+EN correct examples: The limit is real, but I don't have to turn every choice into a test. / Reality is tight enough already — I don't need to add another layer of pressure. / The constraint is real, but I don't need to be harsher to myself because of it.
+
 "coreNeed": a brief plain label (e.g., "permission to exist without justifying cost"), "sessionTrigger": filled 3–6 words. See POST-INSIGHT NEXT-STEP ROUTING below for what to put in "suggestions".
 
 LANGUAGE FIELD CONSISTENCY — HARD RULE:
