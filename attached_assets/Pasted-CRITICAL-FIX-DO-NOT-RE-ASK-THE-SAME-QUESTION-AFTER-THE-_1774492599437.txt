@@ -1,0 +1,164 @@
+CRITICAL FIX — DO NOT RE-ASK THE SAME QUESTION AFTER THE USER ALREADY ANSWERED IT
+
+This screen shows a major conversation-state and routing failure.
+
+Current failure pattern:
+1. system asks a question
+2. user answers it
+3. system repeats the same question again
+4. then shows generic options
+5. language is mixed on the same screen
+
+This is broken.
+
+==================================================
+1. HARD RULE — NEVER RE-ASK THE SAME QUESTION AFTER A DIRECT USER ANSWER
+==================================================
+
+If the system asks:
+“What part keeps pulling you back?”
+
+and the user answers:
+「我會一直重播」
+or
+“The same thought keeps replaying”
+
+the system must NOT ask:
+“What part keeps pulling you back?”
+again.
+
+That is a state failure.
+
+It makes the product feel:
+- forgetful
+- dumb
+- not actually listening
+- stuck in a broken loop
+
+==================================================
+2. DIRECT ANSWERS MUST ADVANCE THE FLOW
+==================================================
+
+If the user gives a direct answer to the question,
+the next system step must be one of these:
+
+A. generate an insight from that answer
+B. route to the correct subtype
+C. offer a more specific follow-up
+D. offer a next action
+
+It must never just repeat the same question.
+
+==================================================
+3. SPECIFIC RULE FOR “I KEEP REPLAYING IT”
+==================================================
+
+If the user says:
+- 我會一直重播
+- 同一個念頭一直回來
+- it keeps replaying
+- same thought keeps looping
+- I can’t stop replaying it
+
+Then route directly to LOOPING / REPLAY subtype.
+
+Do NOT ask another abstract question.
+
+Use insight directions like:
+
+Traditional Chinese:
+- 你現在最累人的，不是這個決定本身。
+  是同一個念頭一直回來，讓這件事關不掉。
+
+- 你不是還在找新答案。
+  你是同一個問題一直在重播，讓腦子停不下來。
+
+- 看起來卡住你的，不是資訊不夠。
+  是你已經在同一個地方轉太久了。
+
+English:
+- What’s exhausting here may not be the decision itself.
+  It’s that the same thought keeps replaying and won’t close.
+
+- You may not be searching for new information anymore.
+  You may be stuck in repetition.
+
+- This may not be about needing more answers.
+  It may be about the same loop replaying too long.
+
+==================================================
+4. IF FOLLOW-UP IS NEEDED, IT MUST BE MORE SPECIFIC
+==================================================
+
+If the system still needs clarification after “I keep replaying it,”
+the next question must be narrower, not broader.
+
+Good:
+「你重播的比較像哪個？」
+- 怕選錯
+- 怕後悔
+- 想找更好的
+- 已經選了還不肯放過
+
+Bad:
+“What part keeps pulling you back?”
+again
+
+==================================================
+5. LANGUAGE CONSISTENCY FIX
+==================================================
+
+This screen is also failing language consistency.
+
+Current screen mixes:
+- Chinese header
+- English system question
+- Chinese user answer
+- English option chips
+
+That is broken.
+
+One screen = one system language.
+
+If toggle = 繁中:
+- all system questions
+- all option chips
+- all helper text
+- all section labels
+must be Traditional Chinese
+
+If toggle = EN:
+all of the above must be English
+
+No mixed-language follow-up UI.
+
+==================================================
+6. STATE MACHINE RULE
+==================================================
+
+After a user answer is submitted, the system must mark the prior question as answered.
+
+That node must not be rendered again unless the user explicitly reopens it.
+
+Question state should be:
+- pending
+- answered
+- advanced
+
+Once answered, move to advanced state.
+
+==================================================
+7. UX GOAL
+==================================================
+
+The user should feel:
+- it heard my answer
+- it moved forward
+- it understood the subtype
+- it did not ask me the same thing twice
+
+Not:
+- it forgot what I just said
+- it is looping harder than I am
+
+END
