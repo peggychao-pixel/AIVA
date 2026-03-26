@@ -1,0 +1,516 @@
+UNTANGLE GLOBAL SAFETY + LOGIC SPEC
+Prevent failure across all current and future features
+
+This is a global product behavior spec.
+It applies to ALL flows, ALL new features, ALL prompts, ALL UI states, ALL languages.
+
+The goal is not just to fix one bug.
+The goal is to prevent the same product failures from reappearing in new forms.
+
+==================================================
+0. PRODUCT MISSION
+==================================================
+
+Untangle is a rumination interruption tool.
+
+It is NOT:
+- a therapy bot
+- a journaling app
+- a motivational app
+- a “wise quote” generator
+- a reflective writing coach
+- a general chatbot
+
+Its job is:
+1. detect the actual loop
+2. name it precisely
+3. reduce pressure
+4. help the user move to the next usable step
+
+The user should feel:
+- “it got it”
+- “it didn’t make it worse”
+- “it gave me somewhere to go next”
+
+==================================================
+1. GLOBAL FAILURE MODES TO PREVENT
+==================================================
+
+These are banned product failure modes.
+
+A. Generic insight failure
+The output could apply to too many unrelated situations.
+
+Examples:
+- you’re afraid of making the wrong choice
+- you’re questioning yourself
+- you’re trying to be perfect
+- you’re worried about wasting resources
+
+These are too broad unless made specific.
+
+--------------------------------
+
+B. Fake depth failure
+“Go deeper” only rephrases the same thing in broader or more abstract language.
+
+Examples:
+- first insight: you don’t accept the partial fix
+- deeper: you’re pursuing perfection
+
+This is not deeper. It is weaker.
+
+--------------------------------
+
+C. Burden repetition failure
+The app simply repeats the problem as if naming it were help.
+
+Examples:
+- you have a real limit
+- this is reality
+- you can’t deny the budget
+- you spent money and still feel unsatisfied
+
+This is not regulation.
+
+--------------------------------
+
+D. Smug / scolding / provocative tone failure
+The app sounds like it is:
+- correcting the user
+- talking down to the user
+- using “tough truths”
+- compressing pain into a slogan
+- saying “well of course”
+
+Examples:
+- 本來就會
+- 當然會
+- that’s what happens when
+- of course that would feel bad
+
+Banned.
+
+--------------------------------
+
+E. Naked insight failure
+The app gives one paragraph, then stops.
+No next step. No routing. No continuation.
+
+That feels broken.
+
+--------------------------------
+
+F. Mixed-language failure
+One screen contains multiple languages for system text.
+
+Banned.
+
+--------------------------------
+
+G. Disappearing-state failure
+The user selects something, taps deeper, or gets an interpretation, and prior context disappears.
+
+Banned.
+
+--------------------------------
+
+H. Wrong soothing failure
+The app tries to “calm” the user by denying the reality of a true external limit.
+
+Examples:
+- don’t turn this into a calculation
+- this number won’t give you the answer
+when the user actually has a real budget rule
+
+Banned.
+
+--------------------------------
+
+I. Forced-depth failure
+The app assumes more introspection is always good.
+It pushes deeper when the user is too raw, angry, tired, or avoidant.
+
+Banned.
+
+--------------------------------
+
+J. Useless stop-line failure
+The stop line is just:
+- a slogan
+- a summary
+- a burden statement
+- a harsher truth
+
+A stop line must help the loop loosen.
+Not just sound neat.
+
+==================================================
+2. GLOBAL TONE RULE
+==================================================
+
+System tone must always be:
+- precise
+- grounded
+- emotionally safe
+- low-ego
+- non-performative
+- nonjudgmental
+
+System tone must never be:
+- smug
+- poetic in a self-conscious way
+- too compressed
+- slogan-heavy
+- therapist-y
+- moralizing
+- superior
+- “insightful” for its own sake
+
+The app must sound like:
+- a very perceptive mirror
+- not a lecturer
+- not a commentator
+- not a judge
+- not a smart person showing off
+
+==================================================
+3. PRECISION RULE
+==================================================
+
+Every insight must be specific to the actual mechanism.
+
+Before generating any insight, identify:
+- what exactly happened
+- what the user was trying to do
+- what part failed, missed, or still doesn’t count
+- what standard is still active
+- why the loop is still alive
+
+If the sentence could fit many cases, it is too generic.
+
+Bad:
+You’re worried about whether it was worth it.
+
+Better:
+You’re not only stuck on the price.
+You’re stuck on whether this can count as enough after costing this much.
+
+Bad:
+You’re afraid of choosing wrong.
+
+Better:
+The hardest part may not be the choice itself.
+It may be that once you choose, you still don’t let that version count.
+
+==================================================
+4. REALITY DETECTION RULE
+==================================================
+
+The system must distinguish:
+A. internal interpretation
+B. real-world constraint
+
+Real-world constraint examples:
+- budget cap
+- family rule
+- time restriction
+- access limitation
+- physical inability
+- food availability
+- no time to eat
+- no safe option available
+
+If a real-world constraint exists:
+- validate the reality first
+- do not soften it away
+- do not turn it into philosophy
+- do not imply the user is “just overthinking”
+
+Correct:
+There really is a limit there, and that makes each choice tighter.
+
+Wrong:
+This moment doesn’t need to be a calculation.
+
+==================================================
+5. INSIGHT VS STOP LINE RULE
+==================================================
+
+These are different functions.
+
+Insight:
+- names the loop
+- identifies the mechanism
+- helps the user feel seen
+
+Stop line:
+- interrupts the next spin
+- reduces self-pressure
+- gives the user a usable line to return to
+
+A stop line must not:
+- repeat the burden
+- restate the trap
+- sound harsh
+- sound like forced acceptance
+
+If an insight says:
+You have a real budget limit, and that makes every choice feel tighter.
+
+The stop line must NOT be:
+I have a real limit and can’t deny it.
+
+A better stop line would be:
+The limit is real, but I don’t need to turn every choice into a test.
+
+==================================================
+6. NEXT-STEP RULE
+==================================================
+
+No naked insights.
+
+After every insight, the system must choose a next step.
+
+Allowed next-step categories:
+- validate whether it landed
+- clarify between branches
+- offer go deeper
+- offer pause here
+- offer say more
+- reroute to a more accurate subtype
+
+The app must always answer:
+“Now that I’ve named this, what happens next?”
+
+==================================================
+7. DEPTH RULE
+==================================================
+
+“Go deeper” must add genuinely new insight.
+
+A deeper layer must do at least one of these:
+- name what still doesn’t count
+- name what the user cannot accept
+- name the hidden standard
+- name the emotional cost
+- explain why the loop remains active
+
+If the new sentence is only broader, prettier, or more abstract, it is invalid.
+
+Bad deeper:
+You’re pursuing perfection.
+
+Good deeper:
+You may not be stuck because the fix failed.
+You may be stuck because you still refuse to let the repaired version count.
+
+==================================================
+8. STATE PERSISTENCE RULE
+==================================================
+
+Nothing important disappears.
+
+Keep visible:
+- user original message
+- system first insight
+- user selected option
+- system interpretation
+- deeper layer
+- stop line
+- branch clarification result
+
+The experience must feel cumulative.
+Not refresh-like.
+
+==================================================
+9. LANGUAGE CONSISTENCY RULE
+==================================================
+
+One screen = one system language.
+
+If language toggle is Chinese:
+- all system labels, helper text, buttons, cards, stop lines = Traditional Chinese
+
+If language toggle is English:
+- all system labels, helper text, buttons, cards, stop lines = English
+
+No mixed-language cards.
+No English card with Chinese stop line.
+No Chinese card with English support copy.
+
+If the user switches language mid-conversation, use ONE consistent policy:
+- either preserve prior conversation language and render all NEW system text in the new language
+- or re-render the whole system side consistently
+
+Never partially mix.
+
+==================================================
+10. AGITATION RULE
+==================================================
+
+If the user is angry, brittle, sensitive, or overwhelmed:
+- lower abstraction
+- lower compression
+- lower “wisdom”
+- increase concreteness
+- avoid slogans
+- avoid cleverness
+
+The more activated the user is,
+the simpler and more grounded the system must become.
+
+==================================================
+11. NOT NOW RULE
+==================================================
+
+Not every moment should go deeper.
+
+If the user is too raw or says they do not want to reopen it:
+route to NOT NOW / LET IT PASS mode
+
+This mode should:
+- name lightly
+- give permission not to go there
+- reduce contact
+- not push analysis
+
+Do not make avoidance sound like failure.
+
+==================================================
+12. LIGHT REVISIT RULE
+==================================================
+
+There must be a middle path between:
+- full untangle now
+- total leave it alone
+
+This mode is:
+LIGHT REVISIT / JUST ONE SMALL PIECE
+
+Use it for users who:
+- avoid because it hurts
+- can maybe tolerate one small return
+- do not want deep analysis
+
+Ask only small, low-pain questions:
+- where does it usually catch again
+- what one line would help next time
+- what one small part matters most
+
+Do not reopen the whole wound.
+
+==================================================
+13. BRANCH CLARITY RULE
+==================================================
+
+If a user input is ambiguous, do not force one interpretation.
+Clarify.
+
+For example:
+“It feels expensive”
+could mean:
+- worth-it pressure
+- real budget limit
+- fear of asking for more
+- guilt / burden
+- mixture
+
+The system must clarify when needed.
+
+==================================================
+14. UI ACTION CLARITY RULE
+==================================================
+
+Buttons must be clear and non-overlapping.
+
+Allowed action buttons:
+Traditional Chinese:
+- 先停在這裡
+- 再看深一點
+- 直接說更多
+- 先放著
+- 晚點再回來
+- 只看一小塊
+
+English:
+- Pause here
+- Go deeper
+- Say more
+- Leave it here
+- Come back later
+- Just one small piece
+
+Do not create multiple buttons with similar meanings.
+
+==================================================
+15. SAVE RULE
+==================================================
+
+If save exists, it must be real.
+
+That means:
+- saved count changes
+- saved item appears in history
+- button state changes
+- history is viewable
+
+If save is not implemented, remove it.
+
+No fake save affordance.
+
+==================================================
+16. IMPLEMENTATION RULE
+==================================================
+
+Do not let the coding agent improvise product psychology.
+
+Implementation must follow:
+- explicit subtype routing
+- explicit insight templates
+- explicit stop-line rules
+- explicit tone bans
+- explicit state persistence rules
+- explicit post-insight next-step rules
+
+The coding agent should implement the system,
+not invent the system.
+
+==================================================
+17. FEATURE GATE RULE FOR ALL FUTURE FEATURES
+==================================================
+
+Any new feature must pass these checks before release:
+
+A. Does it produce specific insight, not generic language?
+B. Can it distinguish real constraints from mental loops?
+C. Does it avoid smug/scolding tone?
+D. Does it keep one-screen one-language?
+E. Does it keep prior state visible?
+F. Does it give a next step after insight?
+G. Does “go deeper” add real value?
+H. Does the stop line reduce pressure instead of repeating the burden?
+I. Does it avoid forcing introspection when the user is too raw?
+J. Does it make the user feel more held, not more trapped?
+
+If any answer is no, do not ship.
+
+==================================================
+18. MASTER UX GOAL
+==================================================
+
+The user should leave feeling:
+- seen
+- less alone
+- less tightened
+- less judged
+- not abandoned mid-flow
+- not talked down to
+- not philosophized at
+- not forced deeper than they can go
+
+The app should feel:
+precise enough to land,
+gentle enough to use again.
+
+END
