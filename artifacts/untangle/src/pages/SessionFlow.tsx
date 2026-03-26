@@ -20,6 +20,7 @@ interface ChatMessage {
   isInsight?: boolean;
   notNow?: boolean;
   lightRevisit?: boolean;
+  deeperLayer?: { surface: string; deeper: string; landing: string } | null;
   suggestions?: string[];
   loopType?: string | null;
   loopIntensity?: number | null;
@@ -166,6 +167,73 @@ function InsightCard({
           <p className="text-sm text-foreground/80 leading-relaxed italic">{isTc ? `「${anchorPhrase}」` : `"${anchorPhrase}"`}</p>
         </div>
       )}
+      <button
+        onClick={onSave}
+        disabled={saved}
+        className={`text-xs px-4 py-2 rounded-full border transition-all ${
+          saved
+            ? "border-primary/30 text-primary/60 cursor-default"
+            : "border-border text-muted-foreground hover:border-primary/40 hover:text-primary"
+        }`}
+      >
+        {saved ? t.saved : t.saveThis}
+      </button>
+    </motion.div>
+  );
+}
+
+function DeeperLayerCard({
+  surface,
+  deeper,
+  landing,
+  onSave,
+  saved,
+  isTc,
+}: {
+  surface: string;
+  deeper: string;
+  landing: string;
+  onSave: () => void;
+  saved: boolean;
+  isTc: boolean;
+}) {
+  const t = isTc ? UI_TEXT.tc : UI_TEXT.en;
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
+      className="w-full rounded-xl border border-border/60 bg-card p-5 space-y-4"
+    >
+      <p className="text-xs text-muted-foreground font-medium tracking-wide">
+        {isTc ? "再往下看一層" : "One layer deeper"}
+      </p>
+
+      <div className="space-y-3">
+        <div className="space-y-1">
+          <p className="text-[10px] text-muted-foreground/50 uppercase tracking-widest font-medium">
+            {isTc ? "表層" : "Surface"}
+          </p>
+          <p className="text-sm text-foreground/70 leading-relaxed">{surface}</p>
+        </div>
+
+        <div className="space-y-1">
+          <p className="text-[10px] text-muted-foreground/50 uppercase tracking-widest font-medium">
+            {isTc ? "更底下" : "Underneath"}
+          </p>
+          <p className="text-sm text-foreground leading-relaxed">{deeper}</p>
+        </div>
+      </div>
+
+      <div className="border-t border-border/40 pt-3 space-y-1">
+        <p className="text-[10px] text-muted-foreground/50 uppercase tracking-widest font-medium">
+          {isTc ? "接住句" : "Softer hold"}
+        </p>
+        <p className="text-sm text-foreground/80 leading-relaxed italic">
+          {isTc ? `「${landing}」` : `"${landing}"`}
+        </p>
+      </div>
+
       <button
         onClick={onSave}
         disabled={saved}
@@ -442,6 +510,7 @@ export function SessionFlow() {
         isInsight: res.isInsight,
         notNow: res.notNow,
         lightRevisit: res.lightRevisit,
+        deeperLayer: res.deeperLayer,
         suggestions: res.suggestions,
         loopType: res.loopType,
         loopIntensity: res.loopIntensity,
@@ -532,12 +601,16 @@ export function SessionFlow() {
   const handleSaveMoment = async (msg: ChatMessage) => {
     if (savedMomentIds.has(msg.id)) return;
     setSavedMomentIds((prev) => new Set(prev).add(msg.id));
+    const saveContent = msg.deeperLayer
+      ? `${msg.deeperLayer.deeper}\n${msg.deeperLayer.landing}`
+      : msg.content;
+    const saveAnchor = msg.deeperLayer ? msg.deeperLayer.landing : (anchorPhrase ?? undefined);
     try {
       await saveMoment({
         data: {
-          content: msg.content,
+          content: saveContent,
           loopType: msg.loopType ?? undefined,
-          anchorPhrase: anchorPhrase ?? undefined,
+          anchorPhrase: saveAnchor,
           surfaceBelief: surfaceBelief ?? undefined,
           hiddenFear: hiddenFear ?? undefined,
           coreNeed: msg.coreNeed ?? coreNeeds[0] ?? undefined,
@@ -876,7 +949,16 @@ export function SessionFlow() {
                     transition={{ duration: 0.25 }}
                     className={`flex flex-col ${msg.role === "user" ? "items-end" : "items-start"} gap-2.5`}
                   >
-                    {msg.role === "assistant" && msg.isInsight ? (
+                    {msg.role === "assistant" && msg.deeperLayer ? (
+                      <DeeperLayerCard
+                        surface={msg.deeperLayer.surface}
+                        deeper={msg.deeperLayer.deeper}
+                        landing={msg.deeperLayer.landing}
+                        onSave={() => handleSaveMoment(msg)}
+                        saved={savedMomentIds.has(msg.id)}
+                        isTc={isTc}
+                      />
+                    ) : msg.role === "assistant" && msg.isInsight ? (
                       <InsightCard
                         content={msg.content}
                         loopType={msg.loopType}
