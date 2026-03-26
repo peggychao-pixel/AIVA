@@ -1,0 +1,100 @@
+THIS VERSION IS BETTER, BUT STILL OVERGENERALIZES TOO FAST
+
+This version is a meaningful improvement:
+- it no longer repeats the loop as the stop line
+- it goes one layer deeper
+- it is less sarcastic
+- it is less obviously broken
+
+However, two problems remain:
+
+1. It escalates too quickly into generic identity-level psychology.
+2. Language consistency is still not fully fixed.
+
+==================================================
+1. DO NOT JUMP TO SELF-WORTH TOO FAST
+==================================================
+
+In regret flows, do not automatically escalate to:
+- worth
+- not being enough
+- identity-level inadequacy
+- “this reflects badly on me”
+
+unless the user has actually indicated that.
+
+Fear of regret does NOT always mean:
+- low self-worth
+- fear of being a failure
+- not enoughness
+
+Sometimes it means:
+- fear of replay
+- fear of choosing a version that won’t count
+- fear of missing a better option
+- fear of wasting the opportunity
+- fear of being stuck with the choice
+
+These are different mechanisms.
+
+New rule:
+before escalating to identity/self-worth layer, check whether the user has actually signaled:
+- shame
+- worthlessness
+- “what this says about me”
+- fear of being fundamentally inadequate
+
+If not, keep the deeper layer closer to the decision mechanism.
+
+==================================================
+2. PREFER MECHANISM-LEVEL DEPTH BEFORE IDENTITY-LEVEL DEPTH
+==================================================
+
+For “I’m worried I’ll regret it,” better deeper directions are:
+
+- You may not be trying to avoid regret itself.
+  You may be trying to avoid getting stuck replaying the choice afterward.
+
+- The harder part may not be making the wrong choice.
+  It may be getting trapped with a version you won’t let yourself move on from.
+
+- This may not be about failure in general.
+  It may be that once you choose, you keep reopening the decision instead of letting it close.
+
+These are more specific and less generic than:
+- this reflects badly on you
+- it means you are not enough
+- regret doesn’t define your worth
+
+==================================================
+3. STOP LINE SHOULD MATCH THE ACTUAL DEPTH LEVEL
+==================================================
+
+If the deeper layer is still mechanism-level,
+the stop line should stay mechanism-level too.
+
+Do NOT jump from:
+decision anxiety
+to
+identity-worth stop line
+
+That feels mismatched.
+
+For this case, better stop lines would be:
+- I don’t need a regret-proof option to choose.
+- The job is to choose, not to solve all future regret first.
+- I can choose without reopening the decision over and over.
+- 我現在不用先找到不會後悔的版本，才能選。
+- 現在要做的是選，不是先把後悔清乾淨。
+- 選完之後，我不一定要一直重開這個決定。
+
+==================================================
+4. LANGUAGE CONSISTENCY STILL NOT FIXED
+==================================================
+
+This screen still mixes languages in the UI.
+
+One screen = one language.
+Finish this fix completely.
+
+END
