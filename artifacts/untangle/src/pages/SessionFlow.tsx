@@ -19,6 +19,7 @@ interface ChatMessage {
   content: string;
   isInsight?: boolean;
   notNow?: boolean;
+  lightRevisit?: boolean;
   suggestions?: string[];
   loopType?: string | null;
   loopIntensity?: number | null;
@@ -361,6 +362,7 @@ export function SessionFlow() {
   const [coreNeeds, setCoreNeeds] = useState<string[]>([]);
   const [loopDismissed, setLoopDismissed] = useState(false);
   const [notNowMode, setNotNowMode] = useState(false);
+  const [lightRevisitMode, setLightRevisitMode] = useState(false);
   const [satietyAnswer, setSatietyAnswer] = useState<SatietyKey | null>(null);
 
   const bottomRef = useRef<HTMLDivElement>(null);
@@ -426,6 +428,7 @@ export function SessionFlow() {
       if (res.coreNeed) setCoreNeeds((p) => (p.includes(res.coreNeed!) ? p : [...p, res.coreNeed!]));
       if (res.anchorPhrase) setAnchorPhrase(res.anchorPhrase);
       if (res.notNow) setNotNowMode(true);
+      if (res.lightRevisit) setLightRevisitMode(true);
 
       if (aiResponseCount === 0) {
         const match = res.response.match(/Surface belief:\s*"([^"]+)"/);
@@ -438,6 +441,7 @@ export function SessionFlow() {
         content: res.response,
         isInsight: res.isInsight,
         notNow: res.notNow,
+        lightRevisit: res.lightRevisit,
         suggestions: res.suggestions,
         loopType: res.loopType,
         loopIntensity: res.loopIntensity,
@@ -474,6 +478,7 @@ export function SessionFlow() {
     setCoreNeeds([]);
     setLoopDismissed(false);
     setNotNowMode(false);
+    setLightRevisitMode(false);
     setSatietyAnswer(null);
     setMessages([]);
     messagesRef.current = [];
@@ -578,6 +583,7 @@ export function SessionFlow() {
     setCoreNeeds([]);
     setLoopDismissed(false);
     setNotNowMode(false);
+    setLightRevisitMode(false);
     setSatietyAnswer(null);
   };
 
@@ -959,7 +965,7 @@ export function SessionFlow() {
                     >
                       {t.closeLoop}
                     </button>
-                    {!notNowMode && (
+                    {!notNowMode && !lightRevisitMode && (
                       <button
                         onClick={handleGoDeeper}
                         className="w-full px-5 py-3.5 border border-border/60 bg-card/60 text-sm text-muted-foreground hover:text-foreground hover:border-border rounded-xl transition-all"

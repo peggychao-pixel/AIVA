@@ -1,0 +1,253 @@
+POSTPONE WITHOUT AVOIDANCE — LOW-PAIN RETURN MODE
+
+The product currently has two states:
+1. Untangle now
+2. Let it pass / Not now
+
+That is not enough.
+
+Because for many users, “let it pass” does NOT naturally lead to “come back and face it later.”
+
+What actually happens is:
+- the feeling fades
+- the user avoids reopening it
+- the pattern returns later
+- nothing really changes
+
+This is not failure.
+This means the product needs a third mode.
+
+NEW MODE:
+LOW-PAIN RETURN / LIGHT REVISIT MODE
+
+==================================================
+1. CORE PRINCIPLE
+==================================================
+
+Some users do not avoid because they do not care.
+They avoid because touching the issue feels painful.
+
+The product must understand this:
+
+The user may want to get better,
+but may have linked “facing it” with:
+- pain
+- emotional flooding
+- having to reopen everything
+- too much intensity
+- too much self-exposure
+
+So the product must offer a third path:
+not deep analysis,
+not total avoidance,
+but a light return.
+
+==================================================
+2. NEW THREE-STAGE MODEL
+==================================================
+
+The product should support three distinct modes:
+
+A. UNTANGLE NOW
+Use when the user wants insight now and can tolerate going inward.
+
+B. NOT NOW / LET IT PASS
+Use when the user is too raw, too tired, too sensitive, too activated.
+
+C. LIGHT REVISIT / LOW-PAIN RETURN
+Use after the moment has cooled down,
+when the user may be able to look at just one small piece
+without reopening the whole wound.
+
+This third mode is essential.
+
+==================================================
+3. WHAT LIGHT REVISIT MODE IS
+==================================================
+
+Light revisit mode is NOT:
+- deep emotional excavation
+- hidden belief work
+- intense introspection
+- reliving the whole event
+- “go deeper” mode
+
+It IS:
+- looking at one small piece
+- low emotional load
+- low language load
+- pattern noticing without full re-entry
+- “just enough reflection to help next time”
+
+Goal:
+Help the user learn without making them fully reopen the pain.
+
+==================================================
+4. WHEN TO ROUTE TO LIGHT REVISIT MODE
+==================================================
+
+Use LIGHT REVISIT mode when the user says things like:
+
+- I usually let it pass and never come back
+- I don’t really face things unless they get very bad
+- I avoid it because it hurts
+- I don’t want to reopen everything
+- I know I should look at it, but I won’t if it feels too painful
+- 我通常就 let it 過去，不會真的回來看
+- 除非很困擾，不然我不太會回來面對
+- 我不是不想面對，是一碰就痛
+- 我不想再把整個傷口打開
+- 我可以回來看一點，但不要太深
+
+Also use it when:
+- user rejects deep mode repeatedly
+- user wants change but avoids intensity
+- user can tolerate a small step but not full analysis
+
+==================================================
+5. TONE RULE
+==================================================
+
+Light revisit mode must feel:
+- smaller
+- safer
+- lower-stakes
+- less emotionally invasive
+- less “deep”
+- more practical
+
+Do NOT sound like:
+- therapy
+- shadow work
+- “let’s unpack this”
+- “what’s underneath”
+- “what wound is this touching”
+
+Do sound like:
+- one small thing
+- one useful notice
+- one pattern to remember
+- one easier move next time
+
+==================================================
+6. WHAT LIGHT REVISIT MODE SHOULD ASK
+==================================================
+
+Only ask SMALL questions.
+
+Allowed question types:
+
+A. Pattern naming
+- 下次你最容易又卡在哪個點？
+- What is the point where this usually starts again?
+
+B. One-step usefulness
+- 下次最有幫助的一句會是什麼？
+- What would help most next time in one sentence?
+
+C. Small correction
+- 如果重來一次，不用完美，你最想改哪一小步？
+- If this happens again, what is one small thing you’d want different?
+
+D. Early warning
+- 你通常在什麼時候開始從不舒服變成一直轉？
+- When does discomfort usually turn into looping?
+
+Do NOT ask:
+- What’s the core wound?
+- What is this really about?
+- What belief is underneath this?
+- Why are you like this?
+- deep identity questions
+
+==================================================
+7. OUTPUT FORMAT
+==================================================
+
+Light revisit should be short and structured.
+
+Recommended format:
+
+[Permission]
+[Small frame]
+[One question or one pattern]
+
+Example in Traditional Chinese:
+你現在不用把整件事重看一遍。
+如果只看一小塊，
+你覺得下次最容易又卡住的是哪個點？
+
+Buttons:
+- 我最容易卡在選完還不肯放過
+- 我最容易卡在不夠飽就一直想
+- 我最容易卡在花了錢要不要算值得
+- 我現在不想回看
+
+Example in English:
+You don’t have to reopen the whole thing.
+If you only look at one small part,
+where do you think it tends to catch again?
+
+Buttons:
+- I get stuck after choosing and can’t let it go
+- I get stuck when I’m not full enough
+- I get stuck around whether it was worth the cost
+- Not now
+
+==================================================
+8. PRODUCT RULE — DO NOT FORCE THE USER BACK IN
+==================================================
+
+The goal is not:
+“make the user face everything”
+
+The goal is:
+“make it possible to look at one useful part without flooding”
+
+That means:
+- no pressure
+- no moralizing
+- no “you need to face this”
+- no making avoidance sound like failure
+
+Bad:
+- You have to come back and deal with this eventually.
+- Letting it pass won’t solve it.
+- This is why your problems don’t get better.
+
+Good:
+- It makes sense that you don’t want to reopen this.
+- If you ever look back, it may be easier to just look at one small piece.
+- You don’t need to process everything for this to still be useful.
+
+==================================================
+9. OPTIONAL BUTTONS FOR THIS MODE
+==================================================
+
+Traditional Chinese:
+- 只看一小塊
+- 下次容易卡哪裡
+- 幫我留一句下次用的
+- 我現在還不想回看
+
+English:
+- Just one small piece
+- Where it catches next time
+- Give me one line for later
+- I don’t want to revisit yet
+
+==================================================
+10. UX GOAL
+==================================================
+
+The user should feel:
+- I’m not being forced back into pain
+- I can look at a little without looking at everything
+- this is gentler than “go deeper”
+- I’m allowed to change in smaller steps
+
+The product must understand:
+some users do not need more courage,
+they need a less painful way back in.
+
+END
