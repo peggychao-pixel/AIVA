@@ -1,0 +1,129 @@
+CRITICAL STOP-LINE FIX — NEVER ECHO THE LOOP AS THE STOP LINE
+
+There is a severe product error in the regret flow.
+
+User says:
+“I’m worried I’ll regret it.”
+
+The system then generates a stop line:
+「這樣做會不會讓我後悔？」
+
+This is a total failure.
+
+That sentence is not a stop line.
+That sentence is the loop itself.
+
+==================================================
+1. HARD RULE: STOP LINE MUST NEVER REPEAT THE USER’S LOOP QUESTION
+==================================================
+
+If the user’s loop is a question, fear, or repeated mental check,
+the stop line must NOT restate that same question.
+
+Banned examples:
+- 這樣做會不會讓我後悔？
+- 我到底有沒有選對？
+- 值不值得？
+- 這樣夠不夠？
+- Will I regret this?
+- Did I choose right?
+- Is this worth it?
+- Is this enough?
+
+Why banned:
+- they continue the loop
+- they increase checking
+- they are not interruptive
+- they are literally the thought being repeated
+
+==================================================
+2. STOP LINE FUNCTION
+==================================================
+
+A real stop line must:
+- interrupt repetition
+- reduce checking
+- reduce urgency
+- reduce perfection pressure
+- move the user one step away from the question
+
+It must NOT:
+- reopen the question
+- keep the decision active
+- sound like the next line in the loop
+
+==================================================
+3. FOR REGRET FLOWS, STOP LINE MUST CLOSE THE DECISION LOOP
+==================================================
+
+If the user is afraid of regret before choosing,
+the stop line should help reduce the fantasy that regret can be fully prevented.
+
+Good directions:
+
+Traditional Chinese:
+- 我現在不是在找不會後悔的選項。
+- 不用先保證不後悔，才能做決定。
+- 我可以先選，不用先把後悔清乾淨。
+- 現在要做的是選，不是把未來算完。
+- 我不用先證明這是零風險，才能往下走。
+
+English:
+- I don’t need a regret-proof choice to move forward.
+- I can choose without clearing all future regret first.
+- The job is to choose, not to eliminate all regret.
+- I don’t need zero risk before deciding.
+- I can move without solving the future first.
+
+==================================================
+4. INSIGHT VS STOP LINE FOR THIS CASE
+==================================================
+
+Insight can be:
+You’re not just worried about the meal.
+You’re trying to avoid the feeling of regret.
+
+That is acceptable as a first-layer insight.
+
+But the stop line must NOT be:
+Will this make me regret it?
+
+A correct stop line would be:
+- 我現在不是在找不會後悔的選項。
+or
+- 現在要做的是選，不是把後悔先算完。
+
+==================================================
+5. GLOBAL RULE
+==================================================
+
+The stop line must never be:
+- the user’s original fear
+- the user’s original question
+- a restated version of the user’s looping sentence
+
+If it sounds like something the user was already anxiously asking,
+it is invalid.
+
+==================================================
+6. LANGUAGE CONSISTENCY
+==================================================
+
+Also fix language on this screen:
+- no English insight + Chinese stop line + English helper copy
+- one screen = one language
+
+==================================================
+7. UX TEST
+==================================================
+
+Before showing a stop line, test:
+
+Does this sentence:
+A. close the loop a little
+or
+B. reopen the exact same loop?
+
+If B, reject it immediately.
+
+END

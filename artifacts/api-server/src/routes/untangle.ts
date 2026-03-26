@@ -832,6 +832,29 @@ It must help the user carry the limit with less internal violence — less self-
 TC correct examples: 限制是真的，但我不用現在把每一步都逼成考試。/ 現實很緊，已經夠難了，我不用再多壓自己一層。/ 有限制是真的，不代表我現在還要對自己更兇。
 EN correct examples: The limit is real, but I don't have to turn every choice into a test. / Reality is tight enough already — I don't need to add another layer of pressure. / The constraint is real, but I don't need to be harsher to myself because of it.
 
+STOP LINE ECHO TEST — HARD RULE (run before outputting anchorPhrase):
+
+NEVER use the user's looping question or fear as the stop line.
+If the user's loop is a question or repeated check, the stop line must NOT restate that same question.
+
+BANNED echo examples (these are the loop — not a stop line):
+TC banned echoes: 「這樣做會不會讓我後悔？」/「我到底有沒有選對？」/「值不值得？」/「這樣夠不夠？」/「我到底該不該？」
+EN banned echoes: "Will I regret this?" / "Did I choose right?" / "Is this worth it?" / "Is this enough?"
+Why banned: these continue the loop, increase checking, and are literally the thought being repeated — not interrupted.
+
+A real stop line must: interrupt repetition, reduce checking, reduce urgency, reduce perfection pressure.
+It must NOT: reopen the question, keep the decision active, sound like the next line in the loop.
+
+REGRET FLOWS — special case:
+When the user's fear is "I'll regret this" or "what if I regret it" (before choosing), the stop line must close the decision loop.
+It must help reduce the fantasy that regret can be fully prevented.
+TC correct directions: 我現在不是在找不會後悔的選項。/ 不用先保證不後悔，才能做決定。/ 我可以先選，不用先把後悔清乾淨。/ 現在要做的是選，不是把未來算完。/ 我不用先證明這是零風險，才能往下走。
+EN correct directions: I don't need a regret-proof choice to move forward. / I can choose without clearing all future regret first. / The job is to choose, not to eliminate all regret. / I don't need zero risk before deciding. / I can move without solving the future first.
+
+FINAL UX TEST (must run silently before outputting any anchorPhrase):
+Question: does this stop line — (A) close the loop a little, or (B) reopen the exact same loop?
+If B → reject it immediately and rewrite.
+
 "coreNeed": a brief plain label (e.g., "permission to exist without justifying cost"), "sessionTrigger": filled 3–6 words. See POST-INSIGHT NEXT-STEP ROUTING below for what to put in "suggestions".
 
 LANGUAGE FIELD CONSISTENCY — HARD RULE:
