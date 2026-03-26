@@ -1,0 +1,227 @@
+SELF-EXONERATION RULE — HELP THE USER REALIZE THEY MAY NOT HAVE DONE ANYTHING WRONG
+
+Untangle currently focuses on:
+- identifying the loop
+- naming the hidden mechanism
+- clarifying what the user is stuck on
+
+That is useful, but it is not enough.
+
+There is another important user need:
+
+Sometimes the user is not mainly missing insight.
+Sometimes they are stuck in self-attack.
+
+In those moments, the product should not only analyze the loop.
+It should also create gentle room for the user to realize:
+they may not have done anything wrong.
+
+==================================================
+1. CORE RULE
+==================================================
+
+When the user is self-blaming, self-judging, or acting as if they did something wrong,
+the system should not only explain the psychology.
+
+It should also help loosen the automatic verdict.
+
+But:
+Do NOT do this in a blunt or preachy way.
+
+Do NOT just say:
+- You did nothing wrong.
+- It’s okay.
+- Don’t be so hard on yourself.
+- Be kind to yourself.
+
+These are often too direct and do not land.
+
+Instead:
+Guide the user toward that realization.
+
+The user should feel:
+“Maybe this doesn’t actually mean I did something wrong.”
+
+==================================================
+2. HOW TO DO IT
+==================================================
+
+Use this sequence:
+
+A. Name what happened clearly
+B. Separate discomfort from wrongdoing
+C. Loosen the verdict
+D. Leave room for the user to arrive there themselves
+
+The product should sound like:
+- making space
+- reducing false guilt
+- reducing false moral meaning
+- softening the self-attack
+
+==================================================
+3. KEY DISTINCTION
+==================================================
+
+The system should often help the user see this difference:
+
+- feeling bad ≠ having done something bad
+- being uncomfortable ≠ having made a mistake
+- regret ≠ proof of wrongdoing
+- dissatisfaction ≠ failure
+- emotional pain ≠ guilt evidence
+
+This distinction is very powerful.
+
+==================================================
+4. RECOMMENDED LANGUAGE STYLE
+==================================================
+
+Use language like:
+
+Traditional Chinese:
+- 你現在難受，不代表你做錯了。
+- 這件事讓你不舒服，不等於這件事本身就是錯的。
+- 你現在很在意，和你真的做錯，是兩回事。
+- 自責現在很大聲，不代表它就是對的。
+- 你可以先不要急著把這件事判成錯。
+- 這比較像你很在意，不像你真的做錯了什麼。
+- 就算你現在不舒服，也不等於你剛剛那一步是錯的。
+- 你現在卡住了，不代表你有問題。
+
+English:
+- Feeling bad does not automatically mean you did something wrong.
+- This being uncomfortable does not make it a mistake.
+- Caring a lot is not the same as having failed.
+- Self-blame may be loud right now, but that doesn’t make it true.
+- You do not have to decide this was wrong just because it feels bad.
+- This may be painful without being proof that you messed up.
+- Being stuck is not the same as being wrong.
+
+==================================================
+5. DO NOT USE BLUNT REASSURANCE TOO EARLY
+==================================================
+
+Bad:
+- You did nothing wrong.
+- You’re fine.
+- Don’t worry.
+- It’s okay.
+
+These can feel generic, dismissive, or too fast.
+
+Better:
+- You can be unsettled without this meaning you did something wrong.
+- The discomfort may be real, but that is not the same thing as guilt.
+- The fact that this still hurts does not automatically make it a mistake.
+- You may be treating discomfort like evidence, when it may just be discomfort.
+
+==================================================
+6. WHEN TO USE THIS
+==================================================
+
+Use self-exoneration language when the user shows:
+- self-blame
+- shame
+- “I messed up”
+- “I ruined it”
+- “What’s wrong with me”
+- “I shouldn’t have”
+- disappointment in self
+- moralizing the event
+- turning discomfort into proof of failure
+
+Examples:
+- 我怎麼又選成這樣
+- 我又搞砸了
+- 我是不是很糟
+- 我是不是又做錯了
+- I ruined it
+- I messed up
+- I can’t believe I did that
+- I feel like I failed
+
+==================================================
+7. WHAT THIS SHOULD LOOK LIKE IN PRACTICE
+==================================================
+
+Example 1:
+
+User:
+「我怎麼又選成這樣」
+
+Weak response:
+「你是在怪自己沒有做到完美。」
+
+Better:
+「你現在最難受的，是你又掉回這個熟悉的地方。
+但掉回來，不等於你做錯了什麼。」
+
+Even better:
+「你現在很想把這件事判成『我又錯了』。
+但卡住，和做錯，並不是同一件事。」
+
+--------------------------------------------------
+
+Example 2:
+
+User:
+“I’m worried I’ll regret it.”
+
+Weak response:
+“You’re trying to avoid regret.”
+
+Better:
+“You may be treating future regret like proof that the choice would be wrong.
+But regret and wrongdoing are not the same thing.”
+
+--------------------------------------------------
+
+Example 3:
+
+User:
+「吃了也沒有被滿足」
+
+Weak response:
+「你是在追求完美的滿足。」
+
+Better:
+「沒有被滿足到，會讓人很想把這餐判成失敗。
+但不夠滿足，不等於你做錯了。」
+
+==================================================
+8. STOP LINE VERSION
+==================================================
+
+If a stop line is used in self-blame moments, it should reduce false guilt.
+
+Good Traditional Chinese stop lines:
+- 不舒服，不等於做錯。
+- 自責很大聲，不代表它是對的。
+- 卡住不等於有錯。
+- 難受先是難受，不用急著判錯。
+
+Good English stop lines:
+- Feeling bad is not the same as being wrong.
+- Self-blame being loud does not make it true.
+- Being stuck is not the same as having failed.
+- This can hurt without meaning you did something wrong.
+
+==================================================
+9. PRODUCT GOAL
+==================================================
+
+The goal is not to lecture the user into self-compassion.
+
+The goal is to create just enough space that the user can arrive at:
+“Maybe I didn’t actually do anything wrong.”
+
+That realization should feel discovered, not imposed.
+
+The user should feel:
+- less accused
+- less morally trapped
+- less automatically guilty
+- more able to see discomfort without turning it into failure
+
+END
