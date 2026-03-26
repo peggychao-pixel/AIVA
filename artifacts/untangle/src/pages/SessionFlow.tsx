@@ -18,6 +18,7 @@ interface ChatMessage {
   role: "user" | "assistant";
   content: string;
   isInsight?: boolean;
+  notNow?: boolean;
   suggestions?: string[];
   loopType?: string | null;
   loopIntensity?: number | null;
@@ -359,6 +360,7 @@ export function SessionFlow() {
   const [anchorPhrase, setAnchorPhrase] = useState<string | null>(null);
   const [coreNeeds, setCoreNeeds] = useState<string[]>([]);
   const [loopDismissed, setLoopDismissed] = useState(false);
+  const [notNowMode, setNotNowMode] = useState(false);
   const [satietyAnswer, setSatietyAnswer] = useState<SatietyKey | null>(null);
 
   const bottomRef = useRef<HTMLDivElement>(null);
@@ -423,6 +425,7 @@ export function SessionFlow() {
 
       if (res.coreNeed) setCoreNeeds((p) => (p.includes(res.coreNeed!) ? p : [...p, res.coreNeed!]));
       if (res.anchorPhrase) setAnchorPhrase(res.anchorPhrase);
+      if (res.notNow) setNotNowMode(true);
 
       if (aiResponseCount === 0) {
         const match = res.response.match(/Surface belief:\s*"([^"]+)"/);
@@ -434,6 +437,7 @@ export function SessionFlow() {
         role: "assistant",
         content: res.response,
         isInsight: res.isInsight,
+        notNow: res.notNow,
         suggestions: res.suggestions,
         loopType: res.loopType,
         loopIntensity: res.loopIntensity,
@@ -469,6 +473,7 @@ export function SessionFlow() {
     setAnchorPhrase(null);
     setCoreNeeds([]);
     setLoopDismissed(false);
+    setNotNowMode(false);
     setSatietyAnswer(null);
     setMessages([]);
     messagesRef.current = [];
@@ -572,6 +577,7 @@ export function SessionFlow() {
     setAnchorPhrase(null);
     setCoreNeeds([]);
     setLoopDismissed(false);
+    setNotNowMode(false);
     setSatietyAnswer(null);
   };
 
@@ -953,12 +959,14 @@ export function SessionFlow() {
                     >
                       {t.closeLoop}
                     </button>
-                    <button
-                      onClick={handleGoDeeper}
-                      className="w-full px-5 py-3.5 border border-border/60 bg-card/60 text-sm text-muted-foreground hover:text-foreground hover:border-border rounded-xl transition-all"
-                    >
-                      {t.stillThinking}
-                    </button>
+                    {!notNowMode && (
+                      <button
+                        onClick={handleGoDeeper}
+                        className="w-full px-5 py-3.5 border border-border/60 bg-card/60 text-sm text-muted-foreground hover:text-foreground hover:border-border rounded-xl transition-all"
+                      >
+                        {t.stillThinking}
+                      </button>
+                    )}
                   </motion.div>
                 )}
 

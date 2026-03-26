@@ -1,0 +1,222 @@
+NEW MODE — NOT NOW / LET IT PASS MODE
+
+Untangle currently assumes the user always wants insight, analysis, and deeper reflection.
+
+That is wrong.
+
+There are moments when the user is:
+- too sensitive
+- too raw
+- too overwhelmed
+- too tired
+- trying to let pain fade with time
+- not wanting to reopen the wound
+
+In those moments, the app must NOT push deeper.
+
+The app needs a new mode:
+
+NOT NOW / LET IT PASS MODE
+
+==================================================
+1. CORE RULE
+==================================================
+
+Sometimes the right help is not:
+- deeper insight
+- hidden belief analysis
+- emotional excavation
+- more naming
+- more reflection
+
+Sometimes the right help is:
+- permission to not go there right now
+- reducing contact with the pain
+- a gentle pause
+- emotional de-intensification
+- letting the feeling fade instead of pulling it closer
+
+The product must support both:
+- facing the loop
+- not facing it right now
+
+==================================================
+2. WHEN TO ROUTE TO NOT NOW MODE
+==================================================
+
+Route to NOT NOW / LET IT PASS mode when the user says things like:
+
+- I don’t want to deal with this right now
+- I want time to make it fade
+- I’m too sensitive right now
+- I don’t want to reopen this
+- I don’t want to analyze it
+- touching this makes it worse
+- I’m too raw for this
+- I want it to pass on its own
+- 我現在不想碰這個
+- 我只想讓時間淡掉它
+- 我現在太敏感了
+- 我不想再拆了
+- 現在碰這個只會更煩
+- 我想先不要分析
+- 我現在沒有力氣面對
+
+Also route to NOT NOW mode if the user is showing:
+- high irritation
+- emotional overload
+- brittle mood
+- low tolerance for introspection
+- repeated negative response to deeper prompts
+
+==================================================
+3. WHAT NOT NOW MODE MUST NOT DO
+==================================================
+
+In NOT NOW mode, do NOT:
+- ask “what’s underneath?”
+- ask “what part keeps pulling you back?”
+- offer “go deeper”
+- push hidden belief analysis
+- force pattern recognition
+- sound therapeutic
+- sound wise
+- sound like “this is actually about…”
+
+This mode must not feel like stealth analysis.
+
+==================================================
+4. WHAT NOT NOW MODE SHOULD DO
+==================================================
+
+In NOT NOW mode, do only these things:
+
+1. Name the state lightly
+2. Give permission not to go deeper
+3. Help the user step back
+4. Offer a soft exit
+5. Avoid reopening the emotional center
+
+Good directions:
+
+Traditional Chinese:
+- 你現在不是準備好要拆這個。先讓它淡一點也可以。
+- 這輪先不用想清楚。先退一步。
+- 不是你不敢面對，是你現在沒有力氣再碰。
+- 現在先不要挖。先讓自己鬆開一點。
+- 這個現在不用解決。先讓它過去。
+
+English:
+- You don’t have to open this right now.
+- This may be a “not now” moment, not a “go deeper” moment.
+- You don’t need to figure this out tonight.
+- Stepping back is okay here.
+- Letting it fade a little is allowed.
+
+==================================================
+5. TONE RULE FOR NOT NOW MODE
+==================================================
+
+Tone must be:
+- gentle
+- low-pressure
+- non-intrusive
+- low-language-load
+- emotionally safe
+
+Do NOT sound:
+- insightful
+- clever
+- diagnostic
+- intense
+- poetic
+- compressed
+- slogan-like
+
+The user should feel:
+“I’m allowed to leave this alone for now.”
+
+Not:
+“The app is still trying to get me to face something.”
+
+==================================================
+6. UI / FLOW RULES
+==================================================
+
+When the user is in NOT NOW mode, do NOT show:
+- 再看深一點
+- Show me the pattern
+- hidden belief prompts
+- branch clarifiers that dig deeper
+
+Instead show simple actions:
+
+Traditional Chinese:
+- 先放著
+- 晚點再回來
+- 這輪先不拆
+- 我現在只想讓它過去
+
+English:
+- Leave it here
+- Come back later
+- Not this round
+- Let it pass for now
+
+==================================================
+7. OUTPUT FORMAT
+==================================================
+
+A NOT NOW response should be short.
+
+Recommended structure:
+
+[Light naming]
+[Permission]
+[Soft next step]
+
+Example in Traditional Chinese:
+你現在不是想看清楚它，
+你是想先不要再碰它。
+先放這裡也可以。
+
+Buttons:
+- 先放著
+- 晚點再回來
+- 我現在只想讓它過去
+
+Example in English:
+This doesn’t seem like a “go deeper” moment.
+It seems more like a “leave it alone for now” moment.
+That’s okay.
+
+Buttons:
+- Leave it here
+- Come back later
+- Let it pass for now
+
+==================================================
+8. PRODUCT PRINCIPLE
+==================================================
+
+Untangle must not assume that insight is always helpful.
+
+Sometimes the most helpful move is:
+not understanding more,
+but touching it less.
+
+The app must know the difference between:
+- a user ready to face the loop
+- a user needing distance from the loop
+
+==================================================
+9. UX GOAL
+==================================================
+
+The user should feel:
+- I’m not failing by not analyzing this
+- the app knows when to stop
+- I don’t have to reopen everything right now
+- distance is allowed
+
+END

@@ -85,6 +85,7 @@ export const UntangleChatBody = zod.object({
 export const UntangleChatResponse = zod.object({
   response: zod.string(),
   isInsight: zod.boolean(),
+  notNow: zod.boolean().optional(),
   suggestions: zod.array(zod.string()),
   loopType: zod.string().optional().nullable(),
   loopIntensity: zod.number().min(1).max(5).optional().nullable(),
