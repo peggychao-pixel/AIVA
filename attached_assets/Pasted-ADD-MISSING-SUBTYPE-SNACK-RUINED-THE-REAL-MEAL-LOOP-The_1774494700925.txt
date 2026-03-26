@@ -1,0 +1,79 @@
+ADD MISSING SUBTYPE — SNACK RUINED THE REAL MEAL LOOP
+
+There is a missing subtype in the current selection screen.
+
+Current options cover:
+- choosing the same thing again
+- eating but not feeling satisfied
+- partially fixing it but it still not counting
+- generic stuckness
+
+But they do NOT cover this very common loop:
+
+The user ate a small snack or mediocre food item before the real meal,
+and is now stuck because:
+- it did not feel worth it
+- it may reduce appetite
+- it may ruin space for the meal that actually mattered
+- the wrong thing got there first
+
+This is a distinct subtype.
+
+==================================================
+NEW SUBTYPE
+==================================================
+
+Name:
+SNACK STOLE THE MOMENT LOOP
+or
+PREMEAL INTERFERENCE LOOP
+
+Definition:
+The user is not mainly stuck on what they ate.
+They are stuck because something not-worth-it may have taken space away from the meal that actually mattered more.
+
+Core mechanism:
+unworthy thing entered first + fear of lost appetite/space + fear of ruining the “real” meal
+
+==================================================
+NEW OPTION TO ADD
+==================================================
+
+English:
+I ate something not worth it, and now I’m worried it ruined the meal I actually wanted
+
+Alternative shorter version:
+I ate a mediocre snack, and now I’m scared I won’t have room for the meal I actually care about
+
+Traditional Chinese:
+我剛剛吃了一個不太值得的東西，現在怕它把後面真正想吃的那餐弄壞
+
+Alternative:
+我先吃了一點，但現在怕沒胃留給真正想吃的餐
+
+==================================================
+INSIGHT DIRECTION FOR THIS SUBTYPE
+==================================================
+
+Traditional Chinese:
+- 你現在卡的不是那塊 snack 本身。
+  是它不夠值得，卻可能先把後面那餐的空間佔掉。
+
+- 你不是只在想剛剛吃了什麼。
+  你是在怕：不夠好的東西先進來了，真正重要的那餐會不會被它弄壞。
+
+English:
+- You may not be stuck on the snack itself.
+  You may be stuck on the fear that something not worth it got in first and took space away from the meal that actually mattered.
+
+- This may not be about having eaten a little.
+  It may be about fearing that the wrong thing got there first and spoiled the version you were actually waiting for.
+
+==================================================
+UI RULE
+==================================================
+
+Do not force this scenario into generic “I’m still stuck.”
+It deserves its own subtype and routing path.
+
+END

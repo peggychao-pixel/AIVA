@@ -402,6 +402,7 @@ Signal keywords per loop:
 - partial_recovery loop: forgot to order, tried to fix it, compensated, salvaged some, still not the best version, still disappointed after fixing, 忘了點, 補救了, 有救回一些, 補了一些, 還是不算, 還是卡著, 補回去了但, 最後有補
 - body-not-done loop: not full and not satisfied, bloated without completion, body has burden but no closure, 不飽也不滿足, 只是脹, 撐但不飽, 身體沒到位心裡也沒到位, 有負擔感沒完成感
 - real_constraint+cant_ask loop: my dad only gives me, family limit, on a tight budget, can't ask for more, scared to say I need, concrete dollar/amount cap with authority figure, 我爸一天只給, 家裡有限制, 不敢開口, 真的有上限, 不敢說我需要, 有現實限制
+- premeal_interference loop: ate a snack before the real meal, something not worth it came first, scared I won't have room, mediocre thing got in first, real meal might be ruined, appetite already spent, wrong thing occupied the space, 先吃了一點, 怕沒胃了, 不值得的東西先進來, 怕影響真正想吃的, 真正想吃的餐被弄壞, 佔掉了空間
 
 ---
 
@@ -460,6 +461,18 @@ LOOP TYPES — canonical list. Choose exactly ONE after scoring and applying the
     "You're not just thinking about whether you're full. You're deciding whether the meal was good enough to count — because your body not feeling complete makes your mind demand justification."
     "You're not looking for simple satisfaction. You're looking for a strong enough reason to tell yourself this meal counts."
     "You're not replaying because you're hungry. Once your body doesn't feel complete, your mind starts requiring the meal to be worth it."
+
+16. premeal_interference loop — "Something not worth it got in first and may have ruined the real meal."
+    Core pattern: the user ate a small snack or mediocre food BEFORE the meal that actually mattered. The loop is NOT about the snack itself — it is about fear that the unworthy thing took space from the worthy one. Do NOT treat as simple regret. Do NOT route to over-control. This is interference + lost-space fear.
+    Signals: ate something before the main meal, scared there won't be room, "it wasn't worth it", "something not worth it came first", "real meal might be ruined", 先吃了一點, 怕沒胃, 不值得的先進來, 佔掉了空間, 怕影響真正想吃的那餐
+    TC insights:
+    "你現在卡的不是那個 snack 本身。是它不夠值得，卻可能先把後面那餐的空間佔掉。"
+    "你不是只在想剛剛吃了什麼。你是在怕：不夠好的東西先進來了，真正重要的那餐會不會被它弄壞。"
+    EN insights:
+    "You may not be stuck on the snack itself. You may be stuck on the fear that something not worth it got in first and took space away from the meal that actually mattered."
+    "This may not be about having eaten a little. It may be about fearing that the wrong thing got there first and spoiled the version you were actually waiting for."
+    TC anchor examples: 那一口不值得，不代表後面的那餐也不能好好的。/ 先進來的不是我真正想要的，但它還沒有真的把後面那餐的機會收走。
+    EN anchor examples: That snack doesn't cancel the real meal. / What got in first doesn't have to define what comes next.
 
 13. existence loop — "As long as it still exists, the loop is not closed." (PRIORITY #2 after safety)
     Core pattern: the food's or option's continued existence keeps the brain's loop open — not hunger, not desire, but the unresolved presence of an unclosed task.
@@ -1679,6 +1692,12 @@ Chip: "我知道可以放過自己，但那個代價感太重" / "I know I could
 → EN: "You know you could let this go.\\nBut every time you try, the cost of releasing it feels too high."
 Loop: permission / rule-breaking feels expensive
 
+Chip: "我先吃了一點，但現在怕沒胃留給真正想吃的餐" / "I ate something not worth it, and now I'm scared I won't have room for the meal I actually care about"
+→ TC: "你現在卡的不是那個 snack 本身。\\n是它不夠值得，卻可能先把後面那餐的空間佔掉。"
+→ EN: "You may not be stuck on the snack itself.\\nYou may be stuck on the fear that something not worth it got in first and took space away from the meal that actually mattered."
+Loop: premeal_interference loop
+Do NOT ask follow-up. Generate insight immediately from this direction. This is a distinct subtype — do not route to generic "still stuck."
+
 Chip: "我也說不上來，就是這件事一直壓在腦子裡" / "I can't explain it — it just keeps sitting heavily in my mind"
 → TC: "你不是在想清楚。\\n你是這件事的重量還壓在腦子裡。"
 → EN: "You're not trying to figure it out.\\nYou're just carrying the weight of it still sitting there."
@@ -2105,7 +2124,7 @@ You MUST respond in valid JSON with ALL 8 fields:
     }
 
     // Extract loopType from JSON field, or fall back to scanning response text
-    const VALID_LOOP_TYPES = new Set(["regret anticipation", "uncertainty loop", "control loop", "over-analysis loop", "self-judgment loop", "perfectionism loop", "scarcity loop", "reassurance loop", "self-worth loop", "justification loop", "decision loop", "comparison loop", "optimization loop", "FOMO loop", "compensation loop", "future-fear loop", "safety loop", "guilt loop", "over-responsibility loop", "partial_recovery loop", "body-not-done loop", "real_constraint+cant_ask loop", "incomplete+justification loop", "over-control loop", "existence loop", "burden loop", "worthiness loop", "validation loop", "wrong choice loop", "regret loop", "comparison loop", "FOMO loop", "self-worth loop"]);
+    const VALID_LOOP_TYPES = new Set(["regret anticipation", "uncertainty loop", "control loop", "over-analysis loop", "self-judgment loop", "perfectionism loop", "scarcity loop", "reassurance loop", "self-worth loop", "justification loop", "decision loop", "comparison loop", "optimization loop", "FOMO loop", "compensation loop", "future-fear loop", "safety loop", "guilt loop", "over-responsibility loop", "partial_recovery loop", "body-not-done loop", "real_constraint+cant_ask loop", "incomplete+justification loop", "over-control loop", "existence loop", "burden loop", "worthiness loop", "validation loop", "wrong choice loop", "regret loop", "comparison loop", "FOMO loop", "self-worth loop", "premeal_interference loop"]);
     const LOOP_TYPE_STRINGS = [...VALID_LOOP_TYPES];
     const rawLoopType = parsed_response.loopType;
     let loopType: string | null = (rawLoopType && rawLoopType !== "null" && VALID_LOOP_TYPES.has(rawLoopType)) ? rawLoopType : null;
