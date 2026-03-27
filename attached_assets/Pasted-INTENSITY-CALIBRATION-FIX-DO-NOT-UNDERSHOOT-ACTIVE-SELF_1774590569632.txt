@@ -1,0 +1,89 @@
+INTENSITY CALIBRATION FIX — DO NOT UNDERSHOOT ACTIVE SELF-BLAME
+
+The current after-eating guilty flow uses wording like:
+“The strongest thing right now is guilt — I’m starting to blame myself.”
+
+This is too weak for many real moments.
+
+There is an important difference between:
+1. guilt beginning
+2. active self-blame already taking over
+3. full shame spiral
+
+The UI and routing must distinguish these levels.
+
+==================================================
+1. NEW RULE: MATCH THE INTENSITY OF THE USER’S STATE
+==================================================
+
+Do not use soft or early-stage wording when the user is already in severe self-attack.
+
+“starting to blame myself” only fits mild early guilt.
+
+If the user is already:
+- harshly judging themselves
+- spiraling
+- stuck in intense guilt
+- in active self-attack
+
+then the wording must reflect that.
+
+==================================================
+2. REPLACE THE CURRENT OPTION
+==================================================
+
+Replace:
+“The strongest thing right now is guilt — I’m starting to blame myself”
+
+With stronger, more accurate options.
+
+Recommended English:
+- I’m deep in self-blame now
+
+Alternatives:
+- I’m already blaming myself hard
+- I’m spiraling into self-blame
+- I can’t stop attacking myself for it
+
+Recommended Traditional Chinese:
+- 我現在整個人在自責裡
+
+Alternatives:
+- 我現在已經在狠狠怪自己了
+- 我已經停不下來一直怪自己
+
+==================================================
+3. ROUTING RULE
+==================================================
+
+If the user selects the stronger self-blame option,
+route to ACTIVE SELF-ATTACK subtype,
+not mild guilt subtype.
+
+==================================================
+4. INSIGHT TONE MUST MATCH THE INTENSITY
+==================================================
+
+For ACTIVE SELF-ATTACK, use language like:
+
+Traditional Chinese:
+- 你現在最痛的可能不是吃了多少，而是自責已經整個接手了。
+- 現在不是有一點怪自己而已，是你已經被自責捲進去了。
+- 你現在卡的，不只是這餐，是你正在用很重的力氣對付自己。
+
+English:
+- What feels heaviest may not be the eating itself, but how fully self-blame has taken over now.
+- This may not be a light feeling of guilt anymore — self-attack may already be running the whole moment.
+- The hardest part right now may not be what happened, but how intensely you’re turning against yourself.
+
+==================================================
+5. PRODUCT PRINCIPLE
+==================================================
+
+Do not understate the user’s pain.
+
+If the wording is too weak, the user feels unseen.
+If the wording is too strong, the user feels misread.
+The system must calibrate intensity accurately.
+
+END
