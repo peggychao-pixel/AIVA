@@ -1,0 +1,8 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "qPpWKcUuwY3v5gQD-WV1k"
+uri = "file://untangle-product-brief.md"
+type = "text"
+title = "Untangle — Product Strategy Brief"

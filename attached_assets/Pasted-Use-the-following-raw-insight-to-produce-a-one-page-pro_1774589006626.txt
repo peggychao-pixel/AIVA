@@ -1,0 +1,109 @@
+Use the following raw insight to produce a one-page product framing document for my app.
+
+IMPORTANT: Keep the product positioning tight.
+This product is NOT:
+- a therapy app
+- a calorie tracker
+- a meal planner
+- a journaling app
+- a generic mental wellness app
+- a strict habit or discipline app
+
+This product IS:
+- a moment-based rumination interruption tool
+- designed for eating-related loops, especially before / during / after food decisions
+- focused on helping users reach “enough” with less self-surveillance and less rebound
+- meant to provide a soft, non-rigid container in high-risk moments
+- meant to reduce looping, self-monitoring, and fear of loss of control
+- not meant to replace treatment or provide clinical therapy
+
+Your job:
+Turn the raw insight below into a clean 1-page product strategy summary with these exact sections:
+
+1. Product problem
+2. Core user insight
+3. Why existing solutions miss
+4. Product opportunity
+5. Design principles
+6. What this product is NOT
+7. One-sentence product positioning
+8. Optional: a short user journey map
+
+Writing requirements:
+- Write in clear, founder-style product language
+- Be emotionally precise, but not dramatic
+- Do not over-clinicalize the user
+- Do not generalize into all mental health
+- Stay tightly focused on eating-related rumination moments
+- Do not turn this into a treatment plan
+- Do not suggest calorie tracking, rigid meal rules, or more self-monitoring as the main answer
+- Emphasize “container,” “completion,” “enough,” “non-rigid structure,” and “reduced self-surveillance”
+- Keep it grounded in real user pain, not abstract psychology jargon
+- Make the output sound investable and designable
+- Keep it concise but strong
+
+Raw insight:
+The problem is not just food itself. The problem is the vacuum around it.
+
+More precisely, this moment reveals several design problems:
+
+1. The issue is not simply wanting to eat; it is fear of losing control.
+Many products only see the behavior and assume the problem is bingeing, overeating, or not being able to stop. But the real pain point here is:
+eating while simultaneously fearing that you are about to lose control.
+So the suffering is not just in the behavior. It is in the anticipated collapse.
+
+2. The user does not lack information; the user lacks a container.
+The user already knows a lot. More knowledge does not solve the moment.
+What is missing is not information but a structure that can hold rhythm, boundary, and ending without requiring constant self-control.
+This is a major product insight:
+many interventions give more information, more tracking, more rules.
+But what the user actually needs is a structure that helps them feel held without increasing surveillance.
+
+3. Rules themselves can become a trigger.
+Many health products default to reminders, restrictions, goals, portion control, logging, or traffic-light systems.
+But this moment shows that for some users, greater explicit control creates more rigidity, and greater rigidity creates more rebound.
+So the product should not assume that better discipline solves the loop.
+For some users, discipline itself is part of the loop.
+
+4. Home can be a high-risk environment because it lacks natural boundaries.
+Outside, there are built-in stopping cues: the bill, the courses, the leaving moment, the social rhythm.
+At home, those cues may disappear.
+So the issue is not weak willpower.
+The issue is that some environments lack natural stopping points.
+
+5. The user is not mainly chasing quantity.
+The user is chasing completion, ending, and being carried through.
+A meal may feel “enough” not only because of the amount eaten, but because:
+- the timing felt complete
+- the rhythm felt held
+- the ending felt beautiful
+- the user did not have to keep deciding
+- the user did not have to keep judging
+
+This leads to a core insight:
+The real desire is not simply to eat less or eat healthier.
+It is to arrive at “enough” with less internal friction.
+
+Potential framing:
+People with eating-related rumination are not only struggling with food decisions; they are struggling with the absence of a safe, non-rigid structure that helps them reach completion without triggering self-surveillance or rebound.
+
+Another plain-language framing:
+The pain point is not just overeating. It is having to be your own monitor, decision-maker, and judge in an environment with no natural stopping point.
+
+Design principles already suggested by this insight:
+- Do not assume the user lacks knowledge
+- Do not default to more rules
+- Address fear before loss of control, not only aftermath
+- Design a soft container, not rigid boundaries
+- Help the user reach completion / enoughness, not just eat less
+
+Optional user journey embedded in the insight:
+1. User encounters highly triggering food
+2. Begins eating while anticipating loss of control
+3. Self-monitoring activates
+4. Rigidity rises
+5. Rebound urge rises
+6. After eating, rumination and self-judgment continue
+7. Future fear increases
+
+Now produce the final one-page product framing document.
