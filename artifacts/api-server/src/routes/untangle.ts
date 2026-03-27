@@ -337,6 +337,15 @@ H) BODY-NOT-DONE LOOP — body is not full, not satisfied, or physically burdene
    Signs: not full, not satisfied, bloated but not done, body and mind both unresolved, "撐但不飽", "身體和心理沒到位", "不是飽是脹", "有負擔感但沒完成"
    Route to SATIETY module or generate BODY-NOT-DONE insight. Do NOT treat as hunger or reward mismatch.
 
+J) GUILT+OVEREATING LOOP — user has already eaten more than they intended (real or perceived) and is now in a guilt/panic/shame spiral about it.
+   Signs: ate too much, overdid it, feel guilty after eating, feel ashamed, panic after eating, couldn't stop, feel out of control, "吃太多", "吃過頭", "停不下來", "很罪惡", "好慌", "失控感", "吃完開始慌"
+   CRITICAL — CONTEXTUAL SATIETY INFERENCE: when these signals are present, the body state is ALREADY KNOWN (user is full or overfull). Do NOT ask a neutral fullness question. Do NOT show the generic satiety menu. Do NOT ask "which of these feels closest: I'm full and satisfied / not satisfied" — that question is irrelevant and tone-deaf when the user just said they overate.
+   Instead: classify immediately as J → guilt+overeating loop → generate insight directly (use SELF-EXONERATION RULE) → follow up with TARGETED emotional chips, not a satiety menu.
+   Targeted chips after insight:
+   TC: ["我身體已經夠了，但心裡還在慌", "我很撐，開始怪自己", "我沒有真的滿足，只是停不下來", "最難的是這件事收不掉"]
+   EN: ["My body has had enough, but my mind is still panicking", "I feel overly full and I'm blaming myself", "I don't feel satisfied — I just couldn't stop", "What feels hardest is that I can't make it feel over"]
+   The product must feel like it REMEMBERS and INFERS — not that it reset and is asking from zero.
+
 I) REAL CONSTRAINT + CAN'T ASK LOOP — The user is not stuck because of abstract money anxiety. A real external limit (family budget, fixed allowance, authority figure, hard cap) exists, AND the user feels unable to honestly state that they are struggling or need more.
    Signs: "my dad only gives me", "my family will question", "I'm on a tight limit", "I can't ask for more", "I'm scared to say I need", "我爸一天真的只給我", "我真的不敢跟家裡講", "這不是我想像的，是現實", "我有上限", "我有規定", concrete dollar amounts with family/authority context
    CRITICAL: Do NOT interpret this as abstract money worry. Do NOT say "this doesn't need to be a calculation." Do NOT soften away the reality. Validate the real limit first, then name the silence/fear around asking.
@@ -402,6 +411,7 @@ Signal keywords per loop:
 - partial_recovery loop: forgot to order, tried to fix it, compensated, salvaged some, still not the best version, still disappointed after fixing, 忘了點, 補救了, 有救回一些, 補了一些, 還是不算, 還是卡著, 補回去了但, 最後有補
 - body-not-done loop: not full and not satisfied, bloated without completion, body has burden but no closure, 不飽也不滿足, 只是脹, 撐但不飽, 身體沒到位心裡也沒到位, 有負擔感沒完成感
 - real_constraint+cant_ask loop: my dad only gives me, family limit, on a tight budget, can't ask for more, scared to say I need, concrete dollar/amount cap with authority figure, 我爸一天只給, 家裡有限制, 不敢開口, 真的有上限, 不敢說我需要, 有現實限制
+- guilt+overeating loop: ate too much, overdid it, can't stop, feel guilty after eating, feel ashamed, spiraling, out of control feeling, panic after eating, couldn't stop eating, feel disgusted with self, 吃太多, 吃過頭, 停不下來, 很罪惡, 很慚愧, 好慌, 失控感, 吃完開始慌, 停不下來, 覺得自己很糟
 - premeal_interference loop: ate a snack before the real meal, something not worth it came first, scared I won't have room, mediocre thing got in first, real meal might be ruined, appetite already spent, wrong thing occupied the space, 先吃了一點, 怕沒胃了, 不值得的東西先進來, 怕影響真正想吃的, 真正想吃的餐被弄壞, 佔掉了空間
 
 ---
@@ -461,6 +471,21 @@ LOOP TYPES — canonical list. Choose exactly ONE after scoring and applying the
     "You're not just thinking about whether you're full. You're deciding whether the meal was good enough to count — because your body not feeling complete makes your mind demand justification."
     "You're not looking for simple satisfaction. You're looking for a strong enough reason to tell yourself this meal counts."
     "You're not replaying because you're hungry. Once your body doesn't feel complete, your mind starts requiring the meal to be worth it."
+
+17. guilt+overeating loop — "I ate too much, and now I feel guilty / out of control / ashamed."
+    Core pattern: user has already overeaten (real or perceived) and is now in a guilt/panic/shame spiral. The problem is NOT how much they ate — it is the inability to close the moment emotionally. Do NOT ask neutral fullness questions. Do NOT suggest calorie awareness. Do NOT make this a math problem. Do NOT validate the guilt as deserved. Apply SELF-EXONERATION RULE: discomfort ≠ wrongdoing. stopping ≠ failure.
+    Signals: ate too much, overdid it, can't stop, feel guilty, feel ashamed, feel out of control after eating, panic after eating, couldn't stop, feeling disgusted
+    TC insights:
+    "你現在最累人的，可能不只是你吃了什麼。是吃完之後那個感覺一直沒辦法收掉。"
+    "你現在很想把這件事判成「我又錯了」。但停不下來，和做錯，並不是同一件事。"
+    "你停下來了。就是停下來了。這件事現在已經結束了，就算它現在感覺還沒結束。"
+    EN insights:
+    "What's most exhausting may not be what you ate. It may be that the feeling afterward won't settle."
+    "You may be treating what happened as proof that you failed. But not being able to stop is not the same as doing something wrong."
+    "It stopped. That's what actually happened. Even if it doesn't feel over yet."
+    TC anchor examples: 不舒服，不等於做錯。/ 停下來了，就是停下來了。/ 難受先是難受，不用急著判錯。/ 那一刻的感覺，不代表整件事的結論。
+    EN anchor examples: Feeling bad doesn't mean you were wrong. / It stopped. That's what happened. / Being overwhelmed is not the same as failing.
+    IMPORTANT: After insight, use TARGETED follow-up chips. Do NOT show generic satiety menu.
 
 16. premeal_interference loop — "Something not worth it got in first and may have ruined the real meal."
     Core pattern: the user ate a small snack or mediocre food BEFORE the meal that actually mattered. The loop is NOT about the snack itself — it is about fear that the unworthy thing took space from the worthy one. Do NOT treat as simple regret. Do NOT route to over-control. This is interference + lost-space fear.
@@ -687,6 +712,13 @@ OVER-CONTROL LOOP:
 你現在最需要降下來的，不只是吃的量。是吃完之後腦中的運算量。
 問題不一定是你吃了多少。而是你為了吃這一點點，付出了多少心理成本。
 你不是失控。你是一直在很用力地收，只是這種收法太耗能了。
+
+GUILT+OVEREATING LOOP:
+你現在最累人的，可能不只是你吃了什麼。是吃完之後那個感覺一直沒辦法收掉。
+你現在很想把這件事判成「我又錯了」。但停不下來，和做錯，並不是同一件事。
+你現在很慌，不代表你剛才失去了什麼重要的東西。慌，和真的壞掉，不是同一回事。
+不舒服的感覺是真的。但這個感覺，不等於你做了什麼很嚴重的事。
+你停下來了。就是停下來了。這件事現在已經結束了，就算它現在感覺還沒結束。
 
 PARTIAL_RECOVERY LOOP:
 最卡你的不是忘記。是你明明有補回一些，心裡還是不肯把它算成夠好。
@@ -1742,6 +1774,15 @@ Chip: "我知道可以放過自己，但那個代價感太重" / "I know I could
 → EN: "You know you could let this go.\\nBut every time you try, the cost of releasing it feels too high."
 Loop: permission / rule-breaking feels expensive
 
+Chip: "我覺得我吃太多了，現在很罪惡" / "I think I ate too much, and now I feel guilty"
+→ TC: "你現在最累人的，可能不只是你吃了什麼。\\n是吃完之後那個感覺一直沒辦法收掉。"
+→ EN: "What's most exhausting may not be what you ate.\\nIt may be that the feeling afterward won't settle."
+Loop: guilt+overeating loop
+Do NOT ask about fullness or satiety. User has already indicated overconsumption. Route to guilt+overeating insight. Apply SELF-EXONERATION RULE. Generate insight immediately — do NOT ask neutral fullness question.
+After insight, use TARGETED follow-up chips (not generic satiety menu):
+IF TOGGLE = TC: suggestions: ["我身體已經夠了，但心裡還在慌", "我很撐，開始怪自己", "我沒有真的滿足，只是停不下來", "最難的是這件事收不掉"]
+IF TOGGLE = EN: suggestions: ["My body has had enough, but my mind is still panicking", "I feel overly full and I'm blaming myself", "I don't feel satisfied — I just couldn't stop", "What feels hardest is that I can't make it feel over"]
+
 Chip: "我先吃了一點，但現在怕沒胃留給真正想吃的餐" / "I ate something not worth it, and now I'm scared I won't have room for the meal I actually care about"
 → TC: "你現在卡的不是那個 snack 本身。\\n是它不夠值得，卻可能先把後面那餐的空間佔掉。"
 → EN: "You may not be stuck on the snack itself.\\nYou may be stuck on the fear that something not worth it got in first and took space away from the meal that actually mattered."
@@ -2174,7 +2215,7 @@ You MUST respond in valid JSON with ALL 8 fields:
     }
 
     // Extract loopType from JSON field, or fall back to scanning response text
-    const VALID_LOOP_TYPES = new Set(["regret anticipation", "uncertainty loop", "control loop", "over-analysis loop", "self-judgment loop", "perfectionism loop", "scarcity loop", "reassurance loop", "self-worth loop", "justification loop", "decision loop", "comparison loop", "optimization loop", "FOMO loop", "compensation loop", "future-fear loop", "safety loop", "guilt loop", "over-responsibility loop", "partial_recovery loop", "body-not-done loop", "real_constraint+cant_ask loop", "incomplete+justification loop", "over-control loop", "existence loop", "burden loop", "worthiness loop", "validation loop", "wrong choice loop", "regret loop", "comparison loop", "FOMO loop", "self-worth loop", "premeal_interference loop"]);
+    const VALID_LOOP_TYPES = new Set(["regret anticipation", "uncertainty loop", "control loop", "over-analysis loop", "self-judgment loop", "perfectionism loop", "scarcity loop", "reassurance loop", "self-worth loop", "justification loop", "decision loop", "comparison loop", "optimization loop", "FOMO loop", "compensation loop", "future-fear loop", "safety loop", "guilt loop", "over-responsibility loop", "partial_recovery loop", "body-not-done loop", "real_constraint+cant_ask loop", "incomplete+justification loop", "over-control loop", "existence loop", "burden loop", "worthiness loop", "validation loop", "wrong choice loop", "regret loop", "comparison loop", "FOMO loop", "self-worth loop", "premeal_interference loop", "guilt+overeating loop"]);
     const LOOP_TYPE_STRINGS = [...VALID_LOOP_TYPES];
     const rawLoopType = parsed_response.loopType;
     let loopType: string | null = (rawLoopType && rawLoopType !== "null" && VALID_LOOP_TYPES.has(rawLoopType)) ? rawLoopType : null;

@@ -1,0 +1,141 @@
+AFTER-EATING FLOW FIX — ADD OVERATE/GUILT ENTRY AND USE CONTEXTUAL INFERENCE
+
+There are two major issues in the current after-eating flow.
+
+==================================================
+1. MISSING CORE ENTRY: “I ATE TOO MUCH / I FEEL GUILTY”
+==================================================
+
+The current after-eating entry options are incomplete.
+
+They include:
+- I ate, but it still didn’t feel satisfying
+- I fixed some of it, but it still doesn’t count
+- generic stuckness
+
+But they are missing one of the most common and important after-eating states:
+
+The user feels:
+- I ate too much
+- I overdid it
+- I feel guilty
+- I feel out of control
+- I feel ashamed after eating
+
+This must be a first-class entry option.
+
+Add:
+
+English:
+- I think I ate too much, and now I feel guilty
+
+Alternative:
+- I feel like I overdid it, and now I’m spiraling
+
+Traditional Chinese:
+- 我覺得我吃太多了，現在很罪惡
+
+Alternative:
+- 我好像吃過頭了，現在開始慌了
+
+This is not a minor variant.
+It is a core after-eating subtype.
+
+==================================================
+2. USE CONTEXT TO INFER LIKELY SATIETY STATE
+==================================================
+
+The system currently asks neutral fullness questions even when the prior user context already strongly implies the likely body state.
+
+Example:
+If the user says:
+- I ate too much
+- I kept eating
+- I couldn’t stop
+- I was at home and there were no stopping cues
+- I felt out of control
+
+Then the system should NOT behave as if fullness is completely unknown.
+
+In these cases, it should infer:
+- the user is likely full or overfull
+- the problem is not lack of intake
+- the problem is likely guilt, fear, loss of ending, or inability to stop
+
+Do not ask a fully neutral fullness menu if the context already strongly suggests the answer.
+
+==================================================
+3. NEW RULE: CONTEXTUAL SATIETY INFERENCE
+==================================================
+
+Before showing post-eating body-state options, the system must estimate:
+- likely underfed
+- likely adequately fed
+- likely full/overfull
+- unclear
+
+Use cues from earlier text such as:
+- ate too much
+- kept going
+- couldn’t stop
+- feel stuffed
+- overdid it
+- panic after eating
+- no stopping point
+- binge-like language
+
+If likely full/overfull:
+either
+A. preselect that path internally and ask a more precise emotional follow-up
+or
+B. show a refined question instead of a generic fullness menu
+
+==================================================
+4. BETTER FOLLOW-UP IF USER LIKELY ATE TOO MUCH
+==================================================
+
+Instead of:
+“Which feels closer now?”
+- I’m full and satisfied
+- I’m full but unsatisfied
+etc.
+
+Use a more targeted question like:
+
+Traditional Chinese:
+「現在更像哪個？」
+- 我身體已經夠了，但心裡還在慌
+- 我很撐，開始怪自己
+- 我沒有真的滿足，只是停不下來
+- 我現在最卡的是收不掉
+
+English:
+“What feels closest now?”
+- My body has had enough, but my mind is still panicking
+- I feel overly full and I’m blaming myself
+- I don’t feel satisfied — I just couldn’t stop
+- What feels hardest is that I can’t make it feel over
+
+This is much better than asking a neutral body-state menu when the likely fullness state is already obvious.
+
+==================================================
+5. PRODUCT PRINCIPLE
+==================================================
+
+The app should not make the user repeat obvious facts the context already provides.
+
+If the user clearly implies:
+“I ate a lot and now I feel bad”
+the system should move forward from that,
+not step backwards into generic intake questions.
+
+The product should feel like:
+- it remembers
+- it infers
+- it follows the actual moment
+
+Not:
+- it forgot everything
+- it is asking from zero again
+
+END
