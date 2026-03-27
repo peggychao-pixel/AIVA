@@ -1,0 +1,102 @@
+AFTER-EATING OPTION OVERLAP FIX + BRANCH LOGIC FIX
+
+There are two major problems in the current after-eating guilty/overate flow.
+
+==================================================
+1. DO NOT OFFER OVERLAPPING BODY-STATE OPTIONS
+==================================================
+
+Current options include things like:
+- 我身體已經夠了，心裡還在慌
+- 我很撐，開始怪自己
+
+These are too close and feel overlapping.
+
+From the user’s perspective, “very full” and “my body has had enough” are not cleanly distinct enough to justify separate parallel options.
+
+The real difference is not body fullness.
+The real difference is the dominant emotional stuck point:
+- panic
+- self-blame
+- unsatisfaction
+- inability to close the moment
+
+New rule:
+After-eating options should differentiate by dominant loop mechanism,
+not by slightly different fullness wording.
+
+==================================================
+2. REWRITE THE AFTER-EATING FOLLOW-UP OPTIONS
+==================================================
+
+Replace overlapping options with these more distinct ones.
+
+Traditional Chinese:
+- 我身體已經夠了，但心裡還停不下來
+- 我現在最強的是罪惡感，開始怪自己
+- 我沒有真的被滿足，只是一路吃過頭
+- 最難的是這件事收不掉
+
+English:
+- My body has had enough, but my mind still won’t stop
+- The strongest thing right now is guilt — I’m starting to blame myself
+- I don’t feel satisfied; I just kept going too far
+- The hardest part is that this moment won’t close
+
+These options are better because each one points to a different intervention path.
+
+==================================================
+3. DIRECT USER SELECTION MUST ADVANCE THE BRANCH
+==================================================
+
+If the user selects:
+「我很撐，開始怪自己」
+or its rewritten equivalent
+
+the system must NOT respond with:
+“What part keeps pulling you back?”
+
+That is too generic and ignores the user’s actual answer.
+
+Instead, route directly to the self-blame / guilt subtype.
+
+Example insight directions:
+
+Traditional Chinese:
+- 你現在最重的，不只是撐。
+  是你一感覺過頭了，就開始把自己判錯。
+
+- 最折磨你的可能不是這一口口吃下去的東西，
+  是撐住之後，你開始用很兇的方式對自己說話。
+
+- 你現在卡的，不只是吃多了。
+  是身體一不舒服，自責就馬上接手了。
+
+English:
+- What feels heaviest may not just be the fullness.
+  It may be how quickly self-blame takes over once you feel you’ve gone too far.
+
+- The hardest part may not be what you ate.
+  It may be how harshly you start speaking to yourself once your body feels overfull.
+
+==================================================
+4. NO GENERIC FOLLOW-UP AFTER A SPECIFIC USER CHOICE
+==================================================
+
+Once the user picks a specific emotional option,
+do not revert to broad abstract prompts.
+
+Bad:
+What part keeps pulling you back?
+
+Good:
+Respond directly to the selected branch.
+
+==================================================
+5. LANGUAGE CONSISTENCY
+==================================================
+
+This screen must also obey one-screen-one-language.
+No mixed English follow-up with Chinese prior state.
+
+END
