@@ -1,0 +1,150 @@
+GUILT ROUTING FIX — DISTINGUISH RESOURCE GUILT FROM IDENTITY GUILT
+
+There is a major routing problem in the current guilt flow.
+
+The system currently over-interprets guilt as:
+- “something is wrong with me”
+- “I crossed a moral line”
+- “I am imperfect / wrong”
+- identity-level shame
+
+But many guilt moments are not identity guilt.
+Some are specifically about money, spending, permission, or relational burden.
+
+Example:
+If the user says they feel guilty after spending a lot of money on food,
+the system should NOT immediately jump to:
+- “does this make me wrong?”
+- “something’s wrong with you”
+- “being imperfect doesn’t mean I’m wrong”
+
+That may be inaccurate.
+
+==================================================
+1. NEW RULE: SPLIT GUILT INTO SUBTYPES
+==================================================
+
+Do not treat all guilt as the same.
+
+At minimum, distinguish between:
+
+A. Identity guilt / moralized self-blame
+- I feel like I did something wrong
+- I feel like I crossed a line
+- I feel like this says something bad about me
+
+B. Resource guilt / spending guilt
+- I spent too much
+- I feel bad about the money
+- This felt too expensive
+- I feel guilty for using resources this way
+
+C. Relational guilt
+- I feel bad because of my parents / family / what others gave up
+- I feel guilty receiving / spending / asking
+- I feel like I’m burdening someone
+
+D. Appetite / eating guilt
+- I ate too much
+- I overdid it
+- I feel guilty after eating
+
+These should not all route to the same identity-shame logic.
+
+==================================================
+2. SPECIFIC RULE FOR FOOD-SPENDING GUILT
+==================================================
+
+If the guilt is about:
+- spending a lot on food
+- expensive meals
+- using money on self-pleasure
+- food as luxury
+- tension with family money rules
+
+then first interpret it as RESOURCE GUILT or RELATIONAL GUILT,
+not identity shame.
+
+Possible insight directions:
+
+Traditional Chinese:
+- 你現在的罪惡感，不一定是在說你做錯了。
+  可能是在說這筆花費對你來說太重了。
+
+- 你不一定是在怪自己這個人。
+  你比較像是在承受這筆支出帶來的壓力和不安。
+
+- 這個 guilt 可能不是「我有問題」，
+  而是「我不知道自己能不能承受這樣花」。
+
+- 你現在卡的，可能不是這餐本身，
+  而是這筆錢花下去之後，你心裡沒有空間好好接住它。
+
+English:
+- This guilt may not be telling you that you’re a bad person.
+  It may be telling you that the cost feels heavy to carry.
+
+- You may not be judging yourself as a person.
+  You may be reacting to the weight of the spending.
+
+- This may be less about “something is wrong with me”
+  and more about “I don’t know how to feel okay about this expense.”
+
+- The hardest part may not be the meal itself,
+  but not knowing how to emotionally hold what it cost.
+
+==================================================
+3. DO NOT JUMP TO “YOU ARE WRONG / NOT ENOUGH”
+==================================================
+
+For money-related guilt, do NOT automatically generate:
+- whether this makes you wrong
+- whether something is wrong with you
+- being imperfect doesn’t mean I’m wrong
+- your worth is not defined by this
+
+These may fit some moments, but they are too identity-heavy for straightforward spending guilt.
+
+==================================================
+4. BETTER STOP LINE DIRECTIONS FOR RESOURCE GUILT
+==================================================
+
+For food-spending guilt, better stop lines include:
+
+Traditional Chinese:
+- 這筆花費讓我不安，不等於我做錯了。
+- 我現在在承受花費的重量，不用立刻把它判成錯。
+- 覺得貴、覺得重，和我有沒有錯，不是同一件事。
+- 我可以先承認這筆錢讓我心裡很重，不用立刻判自己。
+
+English:
+- This expense can feel heavy without meaning I did something wrong.
+- Feeling the weight of the cost is not the same as being wrong.
+- This can feel expensive and unsettling without becoming a moral verdict.
+- I can admit this cost feels heavy without turning it into self-condemnation.
+
+==================================================
+5. IF FAMILY / PARENTS ARE IMPLIED, CONSIDER RELATIONAL GUILT
+==================================================
+
+If spending guilt includes:
+- dad / mom / parents
+- family rules
+- fear of disappointing family
+- guilt about using their money
+
+then consider RELATIONAL GUILT before identity guilt.
+
+==================================================
+6. PRODUCT PRINCIPLE
+==================================================
+
+Do not over-psychologize practical guilt.
+
+Sometimes guilt is not a hidden self-worth wound.
+Sometimes it is a concrete reaction to money, permission, scarcity, or relational pressure.
+
+The system must earn the right to go deeper.
+It should not skip there automatically.
+
+END
