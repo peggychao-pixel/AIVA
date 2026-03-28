@@ -1,0 +1,220 @@
+GUILT FLOW REVISION — INTEGRATE BETTER COMFORT, BETTER DEEPENING, AND LANGUAGE CONSISTENCY
+
+Please revise the guilt flow using all of the following rules together.
+
+==================================================
+A. CORE PROBLEM
+==================================================
+
+The current guilt flow still has three weaknesses:
+
+1. It overroutes guilt into “wrong person / flaw / imperfection / worth” too quickly.
+2. The second layer often repeats the first layer instead of adding new mechanism.
+3. Language consistency is still broken across the screen.
+
+The goal is to make guilt responses:
+- more emotionally accurate
+- less repetitive
+- less identity-heavy by default
+- more comforting in a grounded way
+- more product-usable
+
+==================================================
+B. DO NOT TREAT ALL GUILT AS IDENTITY GUILT
+==================================================
+
+Do not automatically interpret guilt as:
+- I am wrong
+- something is wrong with me
+- I am flawed
+- I am not enough
+- my worth is damaged
+
+Sometimes guilt is:
+- resource guilt
+- spending guilt
+- relational guilt
+- eating guilt
+- fear of having crossed a line
+- fear of loss of control
+- fear of what this moment opens up
+
+You must earn the right to escalate to identity-level shame.
+Do not jump there automatically.
+
+==================================================
+C. EFFECTIVE COMFORT RULE
+==================================================
+
+When the user says “I feel guilty,” the first-layer response should comfort effectively by:
+
+1. separating heaviness from wrongdoing
+2. lowering self-condemnation
+3. avoiding lectures
+4. avoiding self-worth slogans
+5. not treating discomfort as proof of guilt
+
+Preferred direction:
+- feeling this as heavy does not automatically mean the user did something wrong
+- the user may be carrying weight, not proving fault
+- the user does not need an immediate verdict
+
+Good first-layer directions:
+- This may feel heavy without meaning you did something wrong.
+- Feeling this much weight does not automatically make it a verdict.
+- You may be carrying a strong sense of wrongness, but that does not make it true.
+
+Traditional Chinese equivalents:
+- 這很重，不等於你真的做錯了。
+- 覺得很重，不等於這就是證據。
+- 你現在在承受一種很強的錯感，但那不自動代表它是真的。
+
+==================================================
+D. FIRST LAYER SHOULD NAME THE MOMENT CLEARLY
+==================================================
+
+A good first layer for guilt can include:
+- sense of having crossed a line
+- moralized discomfort
+- the mind translating bad feeling into wrongdoing
+- intense heaviness
+
+But it should not over-explain.
+
+Example shape:
+You may not just be feeling guilty — you may be feeling like you crossed a line somewhere.
+Feeling this weight doesn’t automatically mean you did something wrong.
+
+==================================================
+E. DEEPER LAYER MUST ADD NEW MECHANISM
+==================================================
+
+The deeper layer must NOT simply restate:
+- wrongness
+- perfection
+- self-judgment
+- flaw
+- not enough
+
+with new wording.
+
+A valid deeper layer must introduce genuinely new information such as:
+
+1. what guilt is trying to protect
+2. what consequence the user fears this moment opens up
+3. why the user cannot let go of the guilt
+4. what function guilt is serving in the loop
+
+Good deeper directions:
+- You may be holding onto guilt because it proves to you that you still care.
+- If you stopped feeling bad, it might feel like you had really gone too far.
+- The fear may not be just this one moment, but what it seems to open the door to.
+- What makes this sticky may be that your mind turns discomfort into proof, and proof into self-judgment.
+
+Traditional Chinese equivalents:
+- 你可能捨不得放掉這個 guilt，因為只要還在自責，就像還證明自己有在乎。
+- 如果你現在不再覺得糟，心裡反而可能會覺得：那我是不是就真的太超過了。
+- 你怕的可能不只是這一刻，而是這一刻好像打開了什麼口。
+- 最黏人的地方可能是：你一不舒服，腦子就把它翻成證據，再翻成對自己的判決。
+
+==================================================
+F. STOP LINE RULE
+==================================================
+
+The stop line should:
+- reduce self-condemnation
+- stay close to the mechanism
+- not become a giant life lesson
+- not moralize
+- not jump to abstract worth language unless the user already went there
+
+Good stop-line directions:
+- Feeling bad is not the same as being wrong.
+- This feeling is heavy, but it is not a verdict.
+- I don’t need to turn this discomfort into proof.
+- 這很重，但不等於定案。
+- 不舒服，不等於做錯。
+- 這個感覺很重，但它不是判決。
+
+Avoid stop lines like:
+- your worth is not defined by this
+- being imperfect doesn’t mean you’re wrong
+unless the user clearly went to self-worth / imperfection language first.
+
+==================================================
+G. DO NOT OVERREPEAT “PERFECTION”
+==================================================
+
+Do not use “perfection” in both first and second layer unless absolutely necessary.
+It becomes repetitive and generic.
+
+If “perfection” is already implied in the first layer,
+the deeper layer should move to:
+- protection function
+- feared consequence
+- why guilt is hard to release
+
+==================================================
+H. ONE-SCREEN-ONE-LANGUAGE
+==================================================
+
+Fix the language bug fully.
+
+One screen must use one system language only:
+- insight card
+- stop line
+- helper text
+- buttons
+- deeper prompts
+- labels
+
+No English card with Chinese stop line.
+No Chinese card with English support copy.
+
+==================================================
+I. EXAMPLE OF IMPROVED GUILT FLOW
+==================================================
+
+Example first layer:
+You may not just be feeling guilty — you may be feeling like you crossed a line somewhere.
+But feeling this much weight does not automatically mean you did something wrong.
+
+Example deeper layer:
+What may make this so hard to release is that guilt can feel like proof that you still care.
+If you stopped feeling bad too soon, it might feel like you had really gone too far.
+
+Example stop line:
+This feels heavy, but it is not a verdict.
+
+Traditional Chinese version:
+你現在不只是 guilt，可能更像是一種「我是不是越線了」的感覺。
+但這種很重的錯感，不自動等於你真的做錯了。
+
+再深一層：
+最黏人的地方可能是，你捨不得太快放掉這個 guilt，
+因為只要還在自責，就像還證明自己有在乎。
+如果太快不難受了，心裡反而可能會怕：那我是不是就真的太超過了。
+
+止住句：
+這很重，但不等於定案。
+
+==================================================
+J. PRODUCT PRINCIPLE
+==================================================
+
+The guilt flow should feel:
+- precise
+- humane
+- less moralizing
+- less repetitive
+- less like generic psychology content
+- more like real emotional guidance in a stuck moment
+
+The user should feel:
+- seen
+- less condemned
+- less trapped in self-verdict
+- not talked down to
+- not translated too fast into self-worth language
+
+END
