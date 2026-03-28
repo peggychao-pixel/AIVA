@@ -1,0 +1,114 @@
+Generate concrete product ideas for my app based on the following user problem.
+
+USER PROBLEM
+The user experiences eating distress not primarily because of hunger, but because of unfinished emotional closure around food and nighttime routines.
+
+She is highly sensitive to:
+- fragmentation
+- lack of containment
+- abrupt transitions
+- unfinished endings
+- the feeling that a meal or evening did not “land”
+
+She often seeks externally structured, aesthetic experiences because they provide:
+- pacing
+- dignity
+- emotional containment
+- a graceful ending
+- less need to self-monitor
+
+The real need is not more food information.
+The real need is help moving from urgency / search / repair mode into:
+- completion
+- enoughness
+- safe landing
+- emotional closure
+
+DESIGN DIRECTION
+Generate product ideas that help the user:
+- feel held without rigid control
+- move from “I still need something” into “this can end here”
+- reduce the urge to use the next experience to repair the previous one
+- create a sense of guided transition at night
+- create emotional closure without requiring perfection
+
+IMPORTANT CONSTRAINTS
+Do NOT suggest:
+- calorie tracking
+- meal logging
+- macros
+- rigid routines
+- self-discipline systems
+- streaks
+- reward/punishment mechanics
+- generic self-care advice
+- “just journal”
+- therapy-style exercises as the main product
+- meditation app clichés
+
+Instead focus on:
+- closure
+- containment
+- guided endings
+- transition rituals
+- soft structure
+- pacing
+- aesthetic emotional regulation
+- reducing fragmentation
+- helping the user stop searching for the next thing to make the night feel complete
+
+OUTPUT FORMAT
+Generate exactly 12 product ideas.
+
+For each idea, include these sections:
+
+1. Name
+A short, memorable feature or concept name.
+
+2. Core moment
+What exact moment does this feature help with?
+Be specific.
+
+3. User pain it addresses
+What specific emotional problem is it solving?
+Use precise language, not generic wellness language.
+
+4. How it works
+Describe the interaction concretely.
+What does the user see, tap, hear, or move through?
+
+5. Why it helps
+Explain the mechanism.
+How does it increase closure, containment, or enoughness?
+
+6. Why this is different from generic wellness
+Explain why this is not just habit tracking, mindfulness, or journaling.
+
+7. Risks or failure modes
+How could this feature become annoying, rigid, fake, or triggering?
+
+QUALITY BAR
+The ideas must feel:
+- emotionally intelligent
+- productizable
+- specific enough to prototype
+- designed for vulnerable late-night states
+- less like advice and more like actual UX / feature design
+
+The ideas should be varied across:
+- guided UI flows
+- sensory transitions
+- structured endings
+- ritualized closure
+- soft prompts
+- environmental or pacing support
+- aesthetic containment
+- post-meal/nighttime landing
+
+Do not stay abstract.
+Do not give generic app categories.
+Do not repeat the same idea with different names.
+
+At the end, add:
+- Top 3 most prototype-worthy ideas
+- Why those 3 are strongest for this user
