@@ -94,6 +94,12 @@ const UI_TEXT = {
     inputPlaceholder: "Or type what's tangled.",
     quickLabel: "Quick untangle",
     quickSub: "Skip the conversation. Get one sharp insight.",
+    quickTitle: "Quick untangle",
+    quickPlaceholder: "What thought is looping...",
+    quickLooking: "Looking...",
+    quickBtn: "Untangle →",
+    quickKeep: "Keep this",
+    quickClose: "← Close",
     layer2TypePlaceholder: "Write it here...",
     chatPlaceholder: "Write or hold mic to speak...",
     untangleMoment: "Untangle moment",
@@ -106,6 +112,15 @@ const UI_TEXT = {
     whatsLooping: "What's looping",
     whatYouNeed: "What you actually need",
     stoppingLine: "Your stopping line",
+    deeperLayerLabel: "One layer deeper",
+    surface: "Surface",
+    underneath: "Underneath",
+    softerHold: "Softer hold",
+    satietyQuestion: "Right now — which one feels true?",
+    satietyChose: "You chose: ",
+    goDeeperMessage: "Can you go one layer deeper, or try a different angle?",
+    modeChips: { before: "Before", after: "After", other: "Bigger", loop: "Looping" } as Record<string, string>,
+    fallback: "What's the part that keeps pulling you back?",
   },
   tc: {
     brand: "Untangle",
@@ -117,6 +132,12 @@ const UI_TEXT = {
     inputPlaceholder: "或者直接打出來。",
     quickLabel: "快速解開",
     quickSub: "跳過對話，直接得到一個精準洞察。",
+    quickTitle: "快速解開",
+    quickPlaceholder: "什麼念頭在轉...",
+    quickLooking: "思考中...",
+    quickBtn: "解開 →",
+    quickKeep: "記住這句",
+    quickClose: "← 關閉",
     layer2TypePlaceholder: "在這裡打...",
     chatPlaceholder: "直接打出來，或按麥克風說",
     untangleMoment: "Untangle 時刻",
@@ -129,6 +150,15 @@ const UI_TEXT = {
     whatsLooping: "什麼在迴圈",
     whatYouNeed: "你真正需要的",
     stoppingLine: "你的停止句",
+    deeperLayerLabel: "再往下看一層",
+    surface: "表層",
+    underneath: "更底下",
+    softerHold: "接住句",
+    satietyQuestion: "現在更像哪個？",
+    satietyChose: "你選的是：",
+    goDeeperMessage: "可以再往下一層，或者換個角度看嗎？",
+    modeChips: { before: "飯前", after: "飯後", other: "更深", loop: "停不下來" } as Record<string, string>,
+    fallback: "什麼一直把你拉回來？",
   },
 } as const;
 
@@ -206,20 +236,20 @@ function DeeperLayerCard({
       className="w-full rounded-xl border border-border/60 bg-card p-5 space-y-4"
     >
       <p className="text-xs text-muted-foreground font-medium tracking-wide">
-        {isTc ? "再往下看一層" : "One layer deeper"}
+        {t.deeperLayerLabel}
       </p>
 
       <div className="space-y-3">
         <div className="space-y-1">
           <p className="text-[10px] text-muted-foreground/50 uppercase tracking-widest font-medium">
-            {isTc ? "表層" : "Surface"}
+            {t.surface}
           </p>
           <p className="text-sm text-foreground/70 leading-relaxed">{surface}</p>
         </div>
 
         <div className="space-y-1">
           <p className="text-[10px] text-muted-foreground/50 uppercase tracking-widest font-medium">
-            {isTc ? "更底下" : "Underneath"}
+            {t.underneath}
           </p>
           <p className="text-sm text-foreground leading-relaxed">{deeper}</p>
         </div>
@@ -227,7 +257,7 @@ function DeeperLayerCard({
 
       <div className="border-t border-border/40 pt-3 space-y-1">
         <p className="text-[10px] text-muted-foreground/50 uppercase tracking-widest font-medium">
-          {isTc ? "接住句" : "Softer hold"}
+          {t.softerHold}
         </p>
         <p className="text-sm text-foreground/80 leading-relaxed italic">
           {isTc ? `「${landing}」` : `"${landing}"`}
@@ -283,6 +313,7 @@ const SATIETY_RESPONSES: Record<SatietyKey, { en: string; tc: string }> = {
 };
 
 function SatietyCheck({ isTc, answer, onAnswer }: { isTc: boolean; answer: SatietyKey | null; onAnswer: (k: SatietyKey) => void }) {
+  const t = isTc ? UI_TEXT.tc : UI_TEXT.en;
   const selected = answer ? SATIETY_OPTIONS.find((o) => o.key === answer) : null;
   const response = answer ? SATIETY_RESPONSES[answer] : null;
   return (
@@ -293,7 +324,7 @@ function SatietyCheck({ isTc, answer, onAnswer }: { isTc: boolean; answer: Satie
       className="w-full rounded-xl border border-border/50 bg-card/40 p-5 space-y-4"
     >
       <p className="text-xs text-muted-foreground font-medium">
-        {isTc ? "現在更像哪個？" : "Right now — which one feels true?"}
+        {t.satietyQuestion}
       </p>
       {!answer && (
         <div className="flex flex-col gap-2">
@@ -316,7 +347,7 @@ function SatietyCheck({ isTc, answer, onAnswer }: { isTc: boolean; answer: Satie
           className="space-y-3"
         >
           <p className="text-xs text-muted-foreground/70">
-            {isTc ? "你選的是：" : "You chose: "}
+            {t.satietyChose}
             <span className="text-foreground/80">{isTc ? selected.tc : selected.en}</span>
           </p>
           <p className="text-sm text-foreground leading-relaxed whitespace-pre-wrap">
@@ -344,7 +375,8 @@ function AnchorCard({ phrase, isTc }: { phrase: string; isTc: boolean }) {
   );
 }
 
-function QuickUntangleCard({ onClose }: { onClose: () => void }) {
+function QuickUntangleCard({ onClose, isTc }: { onClose: () => void; isTc: boolean }) {
+  const t = isTc ? UI_TEXT.tc : UI_TEXT.en;
   const [thought, setThought] = useState("");
   const { mutateAsync: runQuick, isPending, data: result } = useQuickUntangle();
 
@@ -362,7 +394,7 @@ function QuickUntangleCard({ onClose }: { onClose: () => void }) {
       className="border border-border bg-card rounded-xl p-5 space-y-4"
     >
       <div className="flex items-center justify-between">
-        <p className="text-sm text-foreground font-medium">Quick untangle</p>
+        <p className="text-sm text-foreground font-medium">{t.quickTitle}</p>
         <button onClick={onClose} className="text-muted-foreground hover:text-foreground text-lg leading-none">×</button>
       </div>
 
@@ -371,7 +403,7 @@ function QuickUntangleCard({ onClose }: { onClose: () => void }) {
           <textarea
             value={thought}
             onChange={(e) => setThought(e.target.value)}
-            placeholder="What thought is looping..."
+            placeholder={t.quickPlaceholder}
             rows={2}
             disabled={isPending}
             className="w-full bg-background border border-border rounded-lg px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 transition-colors resize-none"
@@ -381,7 +413,7 @@ function QuickUntangleCard({ onClose }: { onClose: () => void }) {
             disabled={!thought.trim() || isPending}
             className="w-full py-2.5 bg-primary text-primary-foreground text-sm rounded-lg hover:opacity-90 transition-opacity disabled:opacity-40 disabled:cursor-not-allowed"
           >
-            {isPending ? "Looking..." : "Untangle →"}
+            {isPending ? t.quickLooking : t.quickBtn}
           </button>
         </form>
       ) : (
@@ -389,8 +421,8 @@ function QuickUntangleCard({ onClose }: { onClose: () => void }) {
           <p className="text-sm text-foreground leading-relaxed whitespace-pre-wrap">{result.insight}</p>
           {result.anchorPhrase && (
             <div className="border-t border-border/50 pt-3 space-y-1">
-              <p className="text-xs text-muted-foreground">Keep this</p>
-              <p className="text-sm text-primary">"{result.anchorPhrase}"</p>
+              <p className="text-xs text-muted-foreground">{t.quickKeep}</p>
+              <p className="text-sm text-primary">{isTc ? `「${result.anchorPhrase}」` : `"${result.anchorPhrase}"`}</p>
             </div>
           )}
           {result.suggestion && (
@@ -402,7 +434,7 @@ function QuickUntangleCard({ onClose }: { onClose: () => void }) {
             onClick={() => { setThought(""); onClose(); }}
             className="text-xs text-muted-foreground hover:text-foreground"
           >
-            ← Close
+            {t.quickClose}
           </button>
         </div>
       )}
@@ -526,7 +558,7 @@ export function SessionFlow() {
       const fallback: ChatMessage = {
         id: `a-${Date.now()}`,
         role: "assistant",
-        content: isTc ? "什麼一直把你拉回來？" : "What's the part that keeps pulling you back?",
+        content: t.fallback,
         isInsight: false,
         suggestions: [],
         loopType: null,
@@ -682,8 +714,7 @@ export function SessionFlow() {
 
   const handleGoDeeper = () => {
     setLoopDismissed(true);
-    const text = isTc ? "可以再往下一層，或者換個角度看嗎？" : "Can you go one layer deeper, or try a different angle?";
-    doSendMessage(text, mode, messagesRef.current);
+    doSendMessage(t.goDeeperMessage, mode, messagesRef.current);
   };
 
   const exitMessage = useMemo(() => {
@@ -723,10 +754,7 @@ export function SessionFlow() {
           {step === "chat" && (
             <span className="flex-1 min-w-0 flex justify-center">
               <span className="text-xs text-muted-foreground border border-border/60 px-2.5 py-1 rounded-full whitespace-nowrap">
-                {(isTc
-                  ? { before: "飯前", after: "飯後", other: "更深", loop: "停不下來" }
-                  : { before: "Before", after: "After", other: "Bigger", loop: "Looping" }
-                )[mode]}
+                {t.modeChips[mode] ?? mode}
               </span>
             </span>
           )}
@@ -839,7 +867,7 @@ export function SessionFlow() {
               <div className="space-y-2">
                 <AnimatePresence>
                   {showQuick ? (
-                    <QuickUntangleCard onClose={() => setShowQuick(false)} />
+                    <QuickUntangleCard onClose={() => setShowQuick(false)} isTc={isTc} />
                   ) : (
                     <motion.button
                       key="quick-btn"

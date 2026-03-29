@@ -1,0 +1,111 @@
+LANGUAGE CONSISTENCY BUG — ONE SCREEN MUST USE ONE SYSTEM LANGUAGE
+
+The current screen is still mixing languages.
+
+Example failure:
+- user prompt is in English
+- follow-up question is in English
+- main insight card is in Chinese
+- stop line is in Chinese
+- helper text is in English
+- input placeholder is in English
+
+This is broken.
+
+==================================================
+1. HARD RULE
+==================================================
+
+One screen must use one system language only.
+
+If the selected language toggle is Traditional Chinese:
+ALL system-generated text on that screen must be Traditional Chinese:
+- insight cards
+- stop lines
+- helper text
+- section labels
+- follow-up prompts
+- button labels
+- placeholder text
+
+If the selected language toggle is English:
+ALL system-generated text on that screen must be English.
+
+No mixed-language system UI on the same screen.
+
+==================================================
+2. IMPORTANT DISTINCTION
+==================================================
+
+User-authored text may remain in the language the user typed it.
+That is okay.
+
+But all system-authored text must follow the current selected language.
+
+So if the user typed in English but the toggle is Chinese:
+- keep the user bubble in English
+- render all system responses in Chinese
+
+If the user typed in Chinese but the toggle is English:
+- keep the user bubble in Chinese
+- render all system responses in English
+
+==================================================
+3. APPLY THIS TO ALL SYSTEM TEXT
+==================================================
+
+Do not only translate the main insight card.
+
+Also enforce language consistency for:
+- stop-line cards
+- “When the loop comes back...” helper text
+- “Save this moment”
+- “This is your stop line for this loop.”
+- “Can you go one layer deeper, or try a different angle?”
+- placeholder text
+- chip labels
+- follow-up options
+- “History”
+- “saved”
+- “Back”
+- mode labels like Before / After / Bigger
+
+Everything system-generated should obey the same language state.
+
+==================================================
+4. IMPLEMENTATION RULE
+==================================================
+
+Please centralize language control instead of translating each element independently.
+
+Use one source of truth for current app language.
+All renderable system strings should come from the same language dictionary / translation layer.
+
+Do not let individual components fall back to default English.
+
+==================================================
+5. QA CHECK
+==================================================
+
+Before shipping, test these cases:
+1. User types English while toggle = 繁中
+2. User types Chinese while toggle = EN
+3. User switches language mid-flow
+4. Existing saved/history items render with correct surrounding UI language
+5. Deeper layer and stop line stay in the same language as the selected toggle
+
+==================================================
+6. UX GOAL
+==================================================
+
+The user should feel:
+- the app has a coherent voice
+- the app is calm and intentional
+- the language setting actually works
+
+Not:
+- the app is stitched together from mixed pieces
+- the translation is random
+- the system forgot what language it is in
+
+END
