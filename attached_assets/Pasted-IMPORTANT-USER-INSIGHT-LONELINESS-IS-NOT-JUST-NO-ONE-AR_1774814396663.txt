@@ -1,0 +1,164 @@
+IMPORTANT USER INSIGHT — LONELINESS IS NOT JUST “NO ONE AROUND”
+
+Please update the product logic and concept framing with this insight:
+
+The user’s loneliness is not ordinary loneliness.
+It is not simply “having no one to hang out with” or “wanting company.”
+
+A more accurate description is:
+
+The user lacks a stable other who helps her:
+- settle
+- come down
+- close the day
+- hold the emotional drop
+- make needs feel visible without shame
+- move from hanging / suspended / searching into being safely placed
+
+This means the user is often not just seeking:
+- food
+- spending
+- stimulation
+- novelty
+- a treat
+- a special experience
+
+She may actually be seeking something that can do these functions:
+- accompany her through the empty gap
+- make nighttime feel less dangerous
+- let her needs exist without secrecy
+- make her feel seen
+- give an experience a real ending
+- keep her from being left alone with her own mind
+
+So the need is not “more stimulation” by itself.
+
+The deeper need is:
+something that can accompany her from suspended, searching, and unsettled
+into contained, placed, and emotionally landed.
+
+==================================================
+1. PRODUCT INTERPRETATION RULE
+==================================================
+
+Do not flatten this into:
+- generic loneliness
+- social isolation only
+- “just needs more connection”
+- craving excitement
+- wanting distraction
+
+Instead recognize this as:
+lack of a containing other
+lack of a co-regulating ending
+lack of help moving from activation into closure
+
+==================================================
+2. PRODUCT DESIGN IMPLICATION
+==================================================
+
+The product should not merely:
+- distract
+- entertain
+- soothe with generic affirmations
+- give more stimulation
+
+It should help provide a feeling closer to:
+- being accompanied through the drop
+- being emotionally held at the edge of the night
+- being gently guided toward an ending
+- not having to self-contain everything alone
+
+The key move is:
+from hanging → to being placed
+from searching → to landing
+from alone with the mind → to lightly accompanied
+from needing the next experience to repair the last one → to enoughness
+
+==================================================
+3. GOOD PRODUCT DIRECTIONS
+==================================================
+
+Good feature directions may include:
+- soft landing flows
+- night-ending rituals
+- guided transitions
+- containment UI
+- emotionally warm but non-intrusive endings
+- “you do not have to carry the end of the night alone” type design
+- modes that reduce the need to keep searching for one more thing
+
+Bad directions:
+- generic chat companion
+- motivational quotes
+- random wellness prompts
+- more stimulation
+- shallow “self-care” content
+- productivity-style routines
+
+==================================================
+4. LANGUAGE / INSIGHT DIRECTIONS
+==================================================
+
+Good insight directions:
+
+Traditional Chinese:
+- 你現在缺的，不只是陪伴。
+  比較像是少了一個能幫你收心、收尾、接住掉下去感覺的他者。
+
+- 你不是只想找亮點。
+  你是在找一個東西，能陪你從懸著走到被安放。
+
+- 你不是單純怕無聊。
+  你比較像是在怕夜晚只剩你和你自己的腦。
+
+- 你要的可能不只是刺激，
+  而是有東西能幫你把這一段好好帶過去。
+
+English:
+- What seems missing may not just be company.
+  It may be a stable other that helps you settle, close, and not fall through the night alone.
+
+- You may not just be looking for something exciting.
+  You may be looking for something that can take you from suspended to safely placed.
+
+- This may not be simple loneliness.
+  It may be the absence of something that helps the night land.
+
+==================================================
+5. PRODUCT POSITIONING GUARDRAIL
+==================================================
+
+Do not let this turn the product into a general loneliness app.
+
+This is still a lightweight, moment-based tool for:
+- eating-related loops
+- nighttime search / repair mode
+- unfinished endings
+- anticipatory panic about not landing
+- emotional closure problems
+
+This loneliness insight should deepen the product,
+not broaden it into a vague mental health platform.
+
+==================================================
+6. OUTPUT REQUEST
+==================================================
+
+Using this insight, please do all of the following:
+
+A. Rewrite the user insight in cleaner product language
+B. Suggest 5 feature ideas that address this form of loneliness without turning the product into a generic companion app
+C. Suggest 3 UI moments where this insight matters most
+D. Suggest 3 short stop-line or comfort-line directions based on this insight
+E. Explain how this changes the product without changing its core positioning
+
+Requirements:
+- keep it emotionally precise
+- keep it prototype-able
+- keep the product lightweight
+- do not overgeneralize
+- do not turn it into therapy
+- do not turn it into a social app
+
+END
