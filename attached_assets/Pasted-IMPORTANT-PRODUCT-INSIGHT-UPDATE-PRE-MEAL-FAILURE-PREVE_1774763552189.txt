@@ -1,0 +1,213 @@
+IMPORTANT PRODUCT INSIGHT UPDATE — PRE-MEAL FAILURE-PREVENTION MODE
+
+Please update the product logic, framing, and feature design based on this more accurate insight:
+
+The user’s distress before eating is not just ordinary anticipation and not just general anxiety.
+It is often a failure-prevention state.
+
+The user already knows how painful the aftermath can be if the meal or evening does not “land” well.
+Because of that, before eating, she is often not simply deciding what she wants.
+She is trying to prevent:
+- a failed ending
+- painful rumination later
+- unfinishedness at night
+- being mentally “hung” for hours
+- the need to keep repairing the evening
+- difficulty sleeping because the day never felt complete
+
+This means the pre-meal phase is often:
+not craving
+not simple indecision
+but high-alert prevention of a known painful spiral.
+
+==================================================
+1. UPDATE THE CORE PROBLEM FRAMING
+==================================================
+
+Do not frame the product only as:
+- post-meal rumination support
+- craving interruption
+- eating guilt support
+- anticipatory anxiety before meals
+
+A more accurate framing is:
+
+The product supports users who enter a high-alert failure-prevention mode before eating, because they fear that a bad or incomplete ending will lead to intense rumination and distress later.
+
+Preferred wording:
+The user is not only trying to choose dinner.
+She is trying to prevent a known pattern in which a failed ending leads to severe emotional aftermath.
+
+Plain-language version:
+The pain is not just “what should I eat?”
+It is “how do I stop tonight from turning into a painful unfinished mess later?”
+
+==================================================
+2. PRODUCT TIMING IMPLICATION
+==================================================
+
+This means the most important intervention moment may be:
+BEFORE the meal,
+when the user starts bracing against failure.
+
+The product should not only activate after the user is already spiraling.
+It should also support the earlier moment when the user starts:
+- scanning
+- comparing
+- searching
+- planning
+- pre-repairing
+- mentally rehearsing outcomes
+- worrying about how to make the night land safely
+
+==================================================
+3. NEW PRE-MEAL SUBTYPE
+==================================================
+
+Add a new subtype or entry path:
+
+PRE-MEAL FAILURE-PREVENTION MODE
+
+Definition:
+The user is not only anxious about the meal.
+She is trying to avoid a much more painful post-meal spiral that she already knows can happen.
+
+Possible user language:
+English:
+- I’m already trying to stop tonight from going badly
+- I’m scared dinner won’t land and I’ll be stuck with it all night
+- I’m not just choosing — I’m trying to prevent regret and spiraling later
+- I can already feel myself trying to avoid a bad ending
+
+Traditional Chinese:
+- 我現在不是在選而已，我是在防止今晚失敗
+- 我怕今晚收不好，後面會整晚卡著
+- 我現在是在避免等等更痛的反芻
+- 我不是在想吃什麼，我是在防止這晚變得很難收尾
+
+==================================================
+4. IMPORTANT DISTINCTION
+==================================================
+
+Do not flatten this into:
+- generic pre-meal anxiety
+- simple fear of choosing wrong
+- craving for the “right” food
+- perfectionism alone
+
+This state is more specific:
+The user is actively trying to prevent a known, painful emotional aftermath.
+
+That is why the pre-meal distress can be so intense.
+The panic is not random.
+It is trying to protect against a future crash.
+
+==================================================
+5. FEATURE IMPLICATIONS
+==================================================
+
+Design features for the pre-meal phase that help the user:
+- reduce failure-prevention vigilance
+- feel less like the whole night depends on one perfect choice
+- reduce the need to pre-repair the entire evening
+- move from alarm into something more held and navigable
+- feel like the night does not need to be perfectly secured in advance
+
+Do NOT solve this with:
+- meal optimization
+- more comparisons
+- more food analysis
+- rules
+- calorie logic
+- “just choose something”
+- generic grounding
+
+Focus instead on:
+- soft containment before the meal
+- reducing the terror of a bad ending
+- helping the user feel that one imperfect meal does not automatically doom the whole night
+- loosening the feeling that the entire evening has to be engineered in advance
+
+==================================================
+6. INSIGHT DIRECTIONS FOR THIS SUBTYPE
+==================================================
+
+Good directions:
+
+Traditional Chinese:
+- 你現在不是只在想晚餐吃什麼。
+  你是在防止今晚掉進你已經很熟悉的那種痛裡。
+
+- 你現在這麼警戒，不只是因為這一餐重要。
+  是因為你知道一旦收不好，後面會很難撐。
+
+- 你現在不是在做一般的選擇。
+  你是在避免一個你已經知道代價很高的失敗。
+
+- 最卡你的可能不是晚餐本身，
+  而是你太知道一個失敗的收尾會帶來什麼。
+
+English:
+- You may not just be deciding what to eat.
+  You may be trying to prevent a kind of ending that you already know can hurt badly later.
+
+- This may not be ordinary dinner anxiety.
+  It may be high alert because you know what happens when the night doesn’t land.
+
+- You may not be choosing in a neutral way.
+  You may be trying to prevent a failure that already has a known emotional cost.
+
+==================================================
+7. STOP LINE DIRECTIONS
+==================================================
+
+Good stop lines for this subtype should reduce the feeling that the whole night must be perfectly prevented in advance.
+
+Traditional Chinese:
+- 今晚不需要先被我保證成功，才能開始。
+- 我現在不用先把整晚救完，才能往下走。
+- 這一餐重要，但它不是整晚命運的全部。
+- 我現在是在防止痛，不是在真的看見未來。
+
+English:
+- I don’t need to secure the whole night before it begins.
+- I don’t need to save the entire evening in advance.
+- This meal matters, but it does not have to determine the whole night.
+- I am trying to prevent pain right now, not actually seeing the future.
+
+==================================================
+8. UPDATE CLASS / PRODUCT WRITING
+==================================================
+
+Use this framing in summaries, cards, and product descriptions:
+
+Problem statement:
+The problem is not only post-meal rumination. It often begins earlier, when the user enters a failure-prevention mode before eating, trying to avoid a painful emotional aftermath later in the night.
+
+Why it matters:
+This matters because the user may spend the entire day in vigilance, search, and mental planning, not because the meal has already gone badly, but because she fears how painful it will be if the night does not end well.
+
+Key uncertainty to test:
+Whether the deepest pain is best described as pre-meal failure-prevention against a known rumination spiral, rather than general anxiety, craving, or perfectionism.
+
+==================================================
+9. OUTPUT REQUEST
+==================================================
+
+Based on this updated insight, please do all of the following:
+
+A. Rewrite the app’s core problem statement
+B. Add this as a new subtype in the routing logic
+C. Suggest 5 feature ideas specifically for the pre-meal failure-prevention phase
+D. Suggest 3 UI entry points for this state
+E. Suggest 3 stop-line directions for this state
+F. Explain how this differs from generic pre-meal anxiety support
+
+Requirements:
+- Keep the product lightweight and moment-based
+- Do not turn this into a therapy app
+- Do not turn this into a meal-planning app
+- Stay specific to eating-related closure / ending distress
+- Make the ideas emotionally precise and prototype-able
+
+END

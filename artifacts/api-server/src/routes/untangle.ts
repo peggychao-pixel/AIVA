@@ -394,6 +394,30 @@ I) REAL CONSTRAINT + CAN'T ASK LOOP — The user is not stuck because of abstrac
    CRITICAL: Do NOT interpret this as abstract money worry. Do NOT say "this doesn't need to be a calculation." Do NOT soften away the reality. Validate the real limit first, then name the silence/fear around asking.
    Distinguish from scarcity loop (internal fear of wasting resources) → this is about a REAL external constraint + the fear of being honest about needing more.
 
+L) PRE-MEAL FAILURE-PREVENTION MODE — the user is not simply choosing a meal or managing pre-meal anxiety. She is in high-alert mode, actively trying to prevent a known, painful emotional aftermath later in the night. The distress before eating is driven by memory of what happens when the night does not land.
+   Signs: "I'm already trying to stop tonight from going badly", "I'm scared dinner won't land and I'll be stuck with it all night", "I'm not just choosing — I'm trying to prevent spiraling later", "I can already feel myself trying to avoid a bad ending", "I'm planning so hard because I know what happens if I get it wrong", "我現在不是在選而已，我是在防止今晚失敗", "我怕今晚收不好，後面會整晚卡著", "我現在是在避免等等更痛的反芻", "我不是在想吃什麼，我是在防止這晚變得很難收尾", high search/planning/comparison behavior in the before-eating window WITH explicit fear of the aftermath
+   CRITICAL DISTINCTION: This is NOT the same as:
+   - Generic pre-meal anxiety (simple nervousness about choosing)
+   - Perfectionism (wanting the ideal meal)
+   - FOMO (fear of missing better options)
+   - Decision loop (stuck between options without knowing why)
+   The defining feature is: the user already knows this specific kind of pain and is trying to prevent it from happening again. The vigilance is not random — it is protection against a known outcome.
+   Do NOT treat as: indecision, craving, FOMO, or perfectionism.
+   Do NOT say: "just choose something" / "any choice is fine" / "trust yourself."
+   Insight directions:
+   TC:
+   - 你現在不是只在想晚餐吃什麼。你是在防止今晚掉進你已經很熟悉的那種痛裡。
+   - 你現在這麼警戒，不只是因為這一餐重要。是因為你知道一旦收不好，後面會很難撐。
+   - 你現在不是在做一般的選擇。你是在避免一個你已經知道代價很高的失敗。
+   - 最卡你的可能不是晚餐本身，而是你太知道一個失敗的收尾會帶來什麼。
+   EN:
+   - You may not just be deciding what to eat. You may be trying to prevent a kind of ending you already know can hurt badly later.
+   - This may not be ordinary dinner anxiety. It may be high alert because you know what happens when the night doesn't land.
+   - You may not be choosing in a neutral way. You may be trying to prevent a failure that already has a known emotional cost.
+   Stop lines:
+   TC: 今晚不需要先被我保證成功，才能開始。/ 我現在不用先把整晚救完，才能往下走。/ 這一餐重要，但它不是整晚命運的全部。/ 我現在是在防止痛，不是在真的看見未來。
+   EN: I don't need to secure the whole night before it begins. / I don't need to save the entire evening in advance. / This meal matters, but it does not have to determine the whole night. / I am trying to prevent pain right now, not actually seeing the future.
+
 K) ANTICIPATORY PANIC — UNFINISHED NIGHT LOOP — user is predicting that tonight will not land emotionally, and the panic has already started. The distress is not post-meal — it is pre-collapse.
    Signs: "I'm already worried tonight won't end well", "I can feel that tonight won't close", "I'm scared I'll be hanging all night", "I need to figure out what to do tonight", "tonight feels like it won't land", "I'm already anxious about later", "I sense tonight will fail", afternoon/evening timing + "no good options", fear that the specific item or experience that would close the night will not be available, "我已經在怕今晚沒辦法結束", "我感覺今晚不會好好落地", "今晚可能沒有好的收尾", "我怕今晚會整個懸著", "我現在就在擔心今晚了"
    CRITICAL FRAMING: This is NOT generic anxiety, NOT craving, NOT post-meal regret. The user is experiencing anticipatory panic about an emotionally unfinished ending to the day. The core fear is: the day may not reach closure.
@@ -2546,7 +2570,7 @@ You MUST respond in valid JSON with ALL 8 fields:
     }
 
     // Extract loopType from JSON field, or fall back to scanning response text
-    const VALID_LOOP_TYPES = new Set(["regret anticipation", "uncertainty loop", "control loop", "over-analysis loop", "self-judgment loop", "perfectionism loop", "scarcity loop", "reassurance loop", "self-worth loop", "justification loop", "decision loop", "comparison loop", "optimization loop", "FOMO loop", "compensation loop", "future-fear loop", "safety loop", "guilt loop", "resource guilt loop", "relational guilt loop", "over-responsibility loop", "partial_recovery loop", "body-not-done loop", "real_constraint+cant_ask loop", "incomplete+justification loop", "over-control loop", "existence loop", "burden loop", "worthiness loop", "validation loop", "wrong choice loop", "regret loop", "comparison loop", "FOMO loop", "self-worth loop", "premeal_interference loop", "guilt+overeating loop", "anticipatory panic loop"]);
+    const VALID_LOOP_TYPES = new Set(["regret anticipation", "uncertainty loop", "control loop", "over-analysis loop", "self-judgment loop", "perfectionism loop", "scarcity loop", "reassurance loop", "self-worth loop", "justification loop", "decision loop", "comparison loop", "optimization loop", "FOMO loop", "compensation loop", "future-fear loop", "safety loop", "guilt loop", "resource guilt loop", "relational guilt loop", "over-responsibility loop", "partial_recovery loop", "body-not-done loop", "real_constraint+cant_ask loop", "incomplete+justification loop", "over-control loop", "existence loop", "burden loop", "worthiness loop", "validation loop", "wrong choice loop", "regret loop", "comparison loop", "FOMO loop", "self-worth loop", "premeal_interference loop", "guilt+overeating loop", "anticipatory panic loop", "pre-meal failure-prevention loop"]);
     const LOOP_TYPE_STRINGS = [...VALID_LOOP_TYPES];
     const rawLoopType = parsed_response.loopType;
     let loopType: string | null = (rawLoopType && rawLoopType !== "null" && VALID_LOOP_TYPES.has(rawLoopType)) ? rawLoopType : null;
