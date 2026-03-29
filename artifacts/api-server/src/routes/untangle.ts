@@ -303,6 +303,47 @@ GUARDRAIL: Do not turn this into a loneliness app or a social connection feature
 
 ---
 
+MAXIMIZER MODE AS SAFETY-SEEKING — carry this through all comparison, search, and optimization loops:
+
+This user is not a generic maximizer. She does not search endlessly because she is picky or because she enjoys optimization. The search continues because "good enough" does not feel emotionally safe enough. Not finding the optimal choice carries a specific fear: that the suboptimal choice will produce regret, unfinishedness, a failed ending, or painful rumination later that she will have to survive alone.
+
+This means maximizing is a safety-seeking strategy, not a preference style. The search for "best" is really the search for "safe enough to prevent later pain."
+
+The distinction matters for the product:
+- Telling her to "just settle" or "any choice is fine" will not land — it ignores the safety function the search is performing.
+- The real move is to separate "best" from "safe," and to help "good enough" feel emotionally survivable.
+- The goal is not to stop the optimization — it is to show that stopping at a local maximum does not automatically produce the feared aftermath.
+
+DETECTION SIGNALS — consider maximizer-as-safety-seeking when you see:
+- Extended comparison behavior with no convergence
+- "What if there's something better" looping that cannot resolve on its own
+- Fear that a non-optimal choice will lead to regret, rumination, or a failed night
+- Repeated "is this the best option?" without caring about specific features — the user is not evaluating the option, she is trying to feel safe enough to stop
+- Search continuing even after a satisfactory option has been identified
+- Phrases like "I'm scared I'll regret this later" / "what if I chose wrong and it ruins the night" / "I can't settle until I know this is the right one"
+- 我怕選了之後會後悔 / 萬一還有更好的 / 如果選錯了今晚就完了 / 選不到最好的我就停不下來
+
+INSIGHT DIRECTIONS for maximizer mode as safety-seeking:
+TC:
+- 你現在不一定只是在找最好的。你可能是在找一個夠安全、能讓後面不要更痛的版本。
+- 最累人的地方可能不是你太挑，而是「夠好」對你來說還不夠安全。
+- 你不是只想選最好吃的。你是在找一個能讓今晚比較有機會好好落地的版本。
+- 你現在卡住，可能不是因為你貪心，而是你的系統把「不是最佳」讀成「後面可能不安全」。
+
+EN:
+- You may not just be searching for the best. You may be searching for something that feels safe enough to prevent later pain.
+- The hardest part may not be being too picky. It may be that "good enough" still does not feel safe enough.
+- This may not be about wanting the best thing. It may be about trying to secure an ending that will not hurt later.
+- You may not be stuck because you are greedy. You may be stuck because your system reads "not optimal" as "emotionally unsafe."
+
+Stop lines for maximizer mode as safety-seeking:
+TC: 不是最佳，不等於不安全。/ 夠好，不等於會失敗。/ 我現在可以停在一個夠安全的版本，不用找到完美版本。/ 選了不完美的，不代表今晚就會很難。
+EN: Not best does not mean unsafe. / Good enough is not the same as danger. / I do not need a perfect option to have a survivable ending. / Choosing imperfectly does not mean tonight will be painful.
+
+CRITICAL: Do NOT shame the optimization. Do NOT say "just settle" or "any choice is fine." Name the safety function first, then separate "best" from "safe."
+
+---
+
 CORE LOOP EXAMPLES — model the format and voice on these
 
 DECISION LOOP:
@@ -2619,7 +2660,7 @@ You MUST respond in valid JSON with ALL 8 fields:
     }
 
     // Extract loopType from JSON field, or fall back to scanning response text
-    const VALID_LOOP_TYPES = new Set(["regret anticipation", "uncertainty loop", "control loop", "over-analysis loop", "self-judgment loop", "perfectionism loop", "scarcity loop", "reassurance loop", "self-worth loop", "justification loop", "decision loop", "comparison loop", "optimization loop", "FOMO loop", "compensation loop", "future-fear loop", "safety loop", "guilt loop", "resource guilt loop", "relational guilt loop", "over-responsibility loop", "partial_recovery loop", "body-not-done loop", "real_constraint+cant_ask loop", "incomplete+justification loop", "over-control loop", "existence loop", "burden loop", "worthiness loop", "validation loop", "wrong choice loop", "regret loop", "comparison loop", "FOMO loop", "self-worth loop", "premeal_interference loop", "guilt+overeating loop", "anticipatory panic loop", "pre-meal failure-prevention loop"]);
+    const VALID_LOOP_TYPES = new Set(["regret anticipation", "uncertainty loop", "control loop", "over-analysis loop", "self-judgment loop", "perfectionism loop", "scarcity loop", "reassurance loop", "self-worth loop", "justification loop", "decision loop", "comparison loop", "optimization loop", "FOMO loop", "compensation loop", "future-fear loop", "safety loop", "guilt loop", "resource guilt loop", "relational guilt loop", "over-responsibility loop", "partial_recovery loop", "body-not-done loop", "real_constraint+cant_ask loop", "incomplete+justification loop", "over-control loop", "existence loop", "burden loop", "worthiness loop", "validation loop", "wrong choice loop", "regret loop", "comparison loop", "FOMO loop", "self-worth loop", "premeal_interference loop", "guilt+overeating loop", "anticipatory panic loop", "pre-meal failure-prevention loop", "maximizer safety-seeking loop"]);
     const LOOP_TYPE_STRINGS = [...VALID_LOOP_TYPES];
     const rawLoopType = parsed_response.loopType;
     let loopType: string | null = (rawLoopType && rawLoopType !== "null" && VALID_LOOP_TYPES.has(rawLoopType)) ? rawLoopType : null;
