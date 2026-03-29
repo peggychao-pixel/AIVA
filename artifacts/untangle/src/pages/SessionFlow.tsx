@@ -517,12 +517,18 @@ export function SessionFlow() {
 
     try {
       const history = currentMessages.map((m) => ({ role: m.role, content: m.content }));
+      const textHasTc = /[\u4e00-\u9fff\u3400-\u4dbf]/.test(text.trim());
+      const effectiveLang: "tc" | "en" =
+        uiLang === "tc" ? "tc"
+        : uiLang === "en" ? "en"
+        : (isTc || textHasTc ? "tc" : "en");
+
       const res = await sendChat({
         data: {
           message: text.trim(),
           mode: currentMode,
           history,
-          language: uiLang !== "auto" ? uiLang : undefined,
+          language: effectiveLang,
         },
       });
 
