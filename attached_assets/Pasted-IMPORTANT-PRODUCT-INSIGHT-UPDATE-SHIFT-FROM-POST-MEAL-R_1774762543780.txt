@@ -1,0 +1,180 @@
+IMPORTANT PRODUCT INSIGHT UPDATE — SHIFT FROM POST-MEAL RUMINATION TO ANTICIPATORY PANIC ABOUT AN UNFINISHED ENDING
+
+Please update the product logic, problem framing, and idea generation based on this newer and more accurate insight:
+
+The core problem is not only post-meal rumination.
+It often begins earlier as anticipatory panic.
+
+The user becomes distressed as soon as she senses that the day may not end with emotional closure.
+
+This panic can begin before dinner, often in the afternoon or early evening, especially when she predicts:
+- tonight may not land well
+- there may be no satisfying ending
+- there may be no “completion object” available later
+- she may be stuck with family/home food
+- options may become limited
+- she may be in an unfamiliar environment
+- she may not be able to go back out and get the one thing that helps the day feel closed
+- dessert / the final landing item may not be available
+
+This means the structure is often:
+
+1. The user predicts that tonight may not end well
+2. Anticipatory panic starts
+3. Search / vigilance / planning / mental preoccupation take over
+4. The eating process itself becomes tense and hard to settle into
+5. If the night still does not end with closure, the user becomes mentally “hung,” keeps thinking about what is missing, and may struggle to sleep
+
+This is critical:
+The user is not only craving food.
+She is fearing an unfinished day.
+
+The food item (often dessert, cake, or some final treat) is not just food.
+It often functions as:
+- a completion object
+- a landing signal
+- an ending marker
+- proof that the day can close safely
+
+==================================================
+1. UPDATE THE CORE PRODUCT FRAMING
+==================================================
+
+Do not frame the app only as a tool for:
+- post-meal rumination
+- craving management
+- eating guilt after the fact
+
+Instead update the framing to include:
+- anticipatory panic
+- fear of an unfinished ending
+- distress caused by predicting that the day will not land safely
+- the need for emotional closure before collapse begins
+
+Preferred framing:
+The product helps users when they begin to panic that the day may not reach emotional closure, especially when options feel limited and the night threatens to remain mentally unfinished.
+
+Plain-language version:
+The problem is not just what the user eats.
+The problem is the terror of feeling that the day may not end in a way that feels emotionally complete.
+
+==================================================
+2. PRODUCT TIMING IMPLICATION
+==================================================
+
+A major design implication:
+The most important intervention moment may not be the collapse phase.
+It may be the anticipatory phase.
+
+This means:
+Do not focus only on “after eating” or “after the loop is severe.”
+Also design for the earlier moment when the user senses:
+- tonight may fail
+- there may be no good ending
+- I may be stuck hanging all night
+- I need to start searching now
+
+Build for the pre-collapse phase:
+afternoon / early evening / the moment options narrow.
+
+==================================================
+3. NEW USER STATE TO ADD
+==================================================
+
+Add a new subtype or mode for:
+ANTICIPATORY PANIC ABOUT AN UNFINISHED NIGHT
+
+Possible English labels:
+- I’m already panicking that tonight won’t land well
+- I feel like tonight won’t end properly
+- I’m scared I’ll be mentally hanging all night
+- I can already feel that tonight may not close
+
+Possible Traditional Chinese labels:
+- 我已經開始怕今晚收不了尾
+- 我感覺今晚可能不會好好落地
+- 我怕我今晚會整個懸著
+- 我現在就在怕今晚沒辦法好好結束
+
+This state should not be forced into generic craving, generic anxiety, or post-meal regret.
+
+==================================================
+4. UPDATE LOGIC ABOUT FOOD OBJECTS
+==================================================
+
+Do not interpret cake / dessert / final treat only as:
+- indulgence
+- sugar craving
+- reward seeking
+- lack of discipline
+
+Sometimes it is functioning as:
+- completion object
+- closure cue
+- emotional landing device
+- ending ritual
+
+This distinction must shape the product.
+
+==================================================
+5. WHAT THE PRODUCT SHOULD HELP WITH
+==================================================
+
+The product should help the user:
+- reduce anticipatory panic before the night unravels
+- feel less trapped by the fear of an unfinished ending
+- reduce search / vigilance / mental preoccupation
+- find another path to landing that does not depend entirely on finding the perfect final food item
+- move from alarm into a more held, less suspended state
+
+Do NOT solve this with:
+- calorie tracking
+- rule-setting
+- “just don’t think about dessert”
+- generic self-soothing
+- rigid meal plans
+
+Focus on:
+- closure
+- containment
+- anticipation regulation
+- reducing the terror of an unfinished day
+- creating a believable landing path before the user spirals
+
+==================================================
+6. CARD / ASSIGNMENT LANGUAGE UPDATE
+==================================================
+
+Use this wording when rewriting class cards, product summaries, or problem framing.
+
+Product problem:
+I assume the problem is not just rumination after eating, but anticipatory panic that begins when the user senses the day may not end with emotional closure.
+
+Why it matters:
+I assume this matters because the fear of an unfinished ending can dominate the user’s attention long before dinner happens. Instead of simply deciding what to eat, the user spends the day in vigilance, dread, and mental preoccupation, and may later struggle to sleep if the day never feels complete.
+
+Key uncertainty:
+The assumption I most need to test is whether the deepest pain is best described as anticipatory panic about an unfinished ending, rather than general anxiety, craving, or post-meal regret.
+
+==================================================
+7. OUTPUT REQUEST
+==================================================
+
+Based on this updated insight, please do the following:
+
+A. Rewrite the core product problem statement
+B. Rewrite the “why it matters” section
+C. Suggest 5 feature ideas specifically for the anticipatory phase
+D. Suggest 3 UI entry points for the moment when the user predicts the night will not land well
+E. Suggest 3 stop-line directions that reduce panic about an unfinished ending
+F. Explain how this changes the product compared with a generic food-rumination app
+
+Writing requirements:
+- Keep the product tightly focused
+- Do not overgeneralize into all mental health
+- Do not flatten this into generic craving or generic anxiety
+- Be emotionally precise
+- Make the ideas prototype-able
+- Keep the app’s identity as a lightweight moment-based intervention tool
+
+END
