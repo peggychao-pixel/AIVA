@@ -1,0 +1,164 @@
+INTEGRATE MAXIMIZER / SATISFICER MODE INTO THE PRODUCT WITHOUT DRIFTING THE POSITIONING
+
+Please integrate the maximizer vs satisficer insight into the existing product, but do NOT let the app drift into a generic decision-making tool, personality quiz, productivity app, or anti-perfectionism app.
+
+==================================================
+1. PRODUCT POSITIONING MUST STAY THE SAME
+==================================================
+
+This product is still:
+- a lightweight, moment-based support tool
+- for eating-related loops
+- unfinished endings
+- anticipatory panic
+- nighttime search / repair mode
+- emotional landing and closure problems
+
+It is NOT:
+- a general decision-making app
+- a maximizer/satisficer personality app
+- a productivity app
+- a rational choice coach
+- a generic perfectionism reduction app
+
+The maximizer/satisficer insight should deepen the current product,
+not replace its identity.
+
+==================================================
+2. HOW TO USE THIS INSIGHT
+==================================================
+
+Use maximizer/satisficer as an internal lens for certain moments.
+
+The relevant user pattern is:
+
+The user may not just be searching for the best option.
+She may be treating “best” as emotionally safer than “good enough.”
+
+For this user:
+- “not best” can feel like “not safe”
+- “good enough” can feel risky
+- endless search may function as safety-seeking, not greed
+- stopping the search may feel dangerous because it risks regret, unfinishedness, or a failed ending
+
+This means the product should help the user:
+- notice when best-seeking is really safety-seeking
+- separate “best” from “safe”
+- move from endless search toward a believable safe-enough state
+- stop treating non-optimal as emotional danger
+
+==================================================
+3. DO NOT EXPOSE THEORY LANGUAGE TOO DIRECTLY
+==================================================
+
+Do not make the user-facing copy say things like:
+- You are a maximizer
+- Switch to satisficer mode
+- You have maximizer tendencies
+
+That is too theoretical and drifts the product.
+
+Instead use natural product language such as:
+
+Traditional Chinese:
+- 你現在明明已經有一個可以的版本，但還是不敢停
+- 你現在不是只在找更好的，可能也是在找更安全的
+- 對你來說，「夠好」現在還不夠安全
+- 你不是太挑，可能是現在停下來的代價感太高
+
+English:
+- You may already have an okay option, but it still doesn’t feel safe enough to stop.
+- You may not just be looking for better — you may be looking for safer.
+- “Good enough” may not feel safe enough right now.
+- This may not be pickiness. It may be that stopping feels too risky.
+
+==================================================
+4. WHERE THIS BELONGS IN THE PRODUCT
+==================================================
+
+Use this logic only in moments like:
+- endless search for a better option
+- worth-it / expensive spirals
+- pre-meal failure-prevention mode
+- “I already have an okay option but I still can’t settle”
+- “I keep looking for one more thing to make the night land”
+
+Do not turn this into a global app mode.
+Do not add a front-page maximizer test.
+Do not center the whole app around this framework.
+
+==================================================
+5. FEATURE DIRECTIONS
+==================================================
+
+Please integrate this insight into small, product-fit features such as:
+
+A. Detection prompts
+Examples:
+- 我明明已經有一個可以的選項，但還是停不下來
+- 我一直在找更好的版本
+- 我怕「夠好」之後會變成後悔
+- I already have an okay option, but I still can’t settle
+- I keep looking for something better
+- I’m scared “good enough” will turn into regret later
+
+B. Clarifying prompts
+Examples:
+- 你現在還有新資訊進來嗎，還是在重複比較？
+- 你現在是在找最好，還是在找一個夠安全的版本？
+- Are you still getting new information, or repeating the comparison?
+- Are you looking for the best, or for something safe enough to stop on?
+
+C. Safe-enough transition
+The product should help the user shift from:
+best-seeking → safe-enough landing
+
+without sounding like “just settle.”
+
+==================================================
+6. STOP LINE DIRECTIONS
+==================================================
+
+Good stop lines:
+Traditional Chinese:
+- 不是最佳，不等於不安全。
+- 夠好，不等於會失敗。
+- 我現在可以停在一個夠安全的版本，不用找到完美版本。
+- 我現在不是在找最好，我是在找能落地的版本。
+
+English:
+- Not best does not mean unsafe.
+- Good enough is not the same as danger.
+- I can stop at a version that is safe enough, even if it is not perfect.
+- I may not need the best option to have a survivable ending.
+
+==================================================
+7. KEEP THE PRODUCT FOCUSED ON LANDING
+==================================================
+
+Always connect this logic back to the product’s real job:
+helping the user reduce loops and reach closure / enoughness / emotional landing.
+
+Do not let this become abstract optimization coaching.
+It should always answer:
+How does this help the user stop searching and land the night more safely?
+
+==================================================
+8. OUTPUT REQUEST
+==================================================
+
+Please do all of the following:
+
+A. Suggest 3 places in the current app where this maximizer/satisficer lens should be added
+B. Rewrite 5 user-facing prompts using natural language, not theory language
+C. Suggest 3 stop lines for this state
+D. Explain how this improves the product without changing its core positioning
+
+Requirements:
+- keep the product lightweight
+- keep it emotionally precise
+- do not let it become a generic decision app
+- do not shame the user
+- make all ideas compatible with the current app structure
+
+END
