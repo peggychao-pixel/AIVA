@@ -1,0 +1,17 @@
+{
+  "expo": {
+    "extra": {
+      "eas": {
+        "projectId": "df404eb9-9d86-4ab0-b39f-398edb363a9c"
+      }
+    },
+    "owner": "helio-health",
+    "slug": "untangle",
+    "ios": {
+      "bundleIdentifier": "com.heliohealth.untangle",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    }
+  }
+}
