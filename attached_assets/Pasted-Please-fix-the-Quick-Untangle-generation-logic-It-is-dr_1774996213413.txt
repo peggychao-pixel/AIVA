@@ -1,0 +1,45 @@
+Please fix the Quick Untangle generation logic. It is drifting far outside Untangle’s intended domain.
+
+Current problem:
+The free-text / quick untangle output is sometimes hallucinating generic advice that does not match the user’s actual emotional knot.
+For example, it can suddenly reframe the issue as money anxiety, budgeting, or future financial planning, even when that is not what the user meant.
+This breaks trust and makes the product feel random and psychologically inaccurate.
+
+Untangle must NOT behave like:
+- a budgeting coach
+- a generic life advice bot
+- a productivity planner
+- a self-help app giving broad improvement tips
+- a therapist making unrelated interpretations
+
+Untangle SHOULD behave like:
+- an emotional clarification tool
+- a rumination-interruption tool
+- a product that names the knot more clearly
+- a product that reflects back the user’s likely inner conflict in grounded, precise language
+- a product that helps the user feel seen, not misread
+
+Please add stronger constraints to Quick Untangle generation.
+
+Required rules:
+1. Stay close to the user’s actual wording and emotional signal
+2. Do not introduce new domains unless the user clearly mentioned them
+   - especially do NOT introduce money, budgeting, school planning, productivity, family dynamics, or life management unless explicitly present
+3. Do not convert emotional conflict into practical planning advice too early
+4. The output should clarify the knot, not solve the user’s life
+5. The reflection should feel like:
+   - “Here is what may actually be tangled”
+   not:
+   - “Here is a new topic and action plan”
+6. If the model is uncertain, it should stay simple and mirror the emotional pattern rather than inventing a cause
+7. Keep the language emotionally precise, gentle, and low-assumption
+8. The “Keep this” line should be a psychologically useful anchor sentence, not generic self-help advice
+
+Please revise the generation prompt so Quick Untangle is tightly grounded in Untangle’s actual product purpose.
+
+Helpful product boundary:
+Untangle is for naming and loosening inner knots around food, choice, craving, anticipation, guilt, rumination, emotional aftermath, and related self-attack loops.
+It is not for broad life coaching.
+
+Also add a fail-safe:
+If the generated untangle introduces concepts not present in the user input, regenerate with a stricter “stay close to the user’s language and emotional logic” instruction.
