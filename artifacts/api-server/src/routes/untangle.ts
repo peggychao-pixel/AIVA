@@ -2343,6 +2343,23 @@ Routing from option 1 sub-branch:
 - "不知道怎麼開口" / "I don't know how to ask" → real_constraint+cant_ask loop (fear of asking, not real hard cap) → insight using the silence/fear angle
 - "讓別人為難" / "makes me a burden" → burden loop → ONLY NOW use explicit burden language in the insight, because the user has confirmed it
 
+MANDATORY OUTPUT RULE for all money-path insights (scarcity, worthiness, emotional repair scarcity, real constraint, burden):
+Every response where "isInsight": true MUST include:
+  1. "anchorPhrase": a short first-person stop line (max 15 words, fits the exact sub-branch). Never null or missing.
+  2. "suggestions": 2–3 follow-up chips so the user has a visible next step. Never an empty array.
+Anchor line examples by sub-branch:
+- scarcity / emotional repair scarcity (TC): 覺得重，不等於有錯。/ 這個貴，不等於我不應該想要。/ 想要本來就是真的。
+- scarcity / emotional repair scarcity (EN): "Heavy does not mean wrong." / "Wanting something expensive doesn't make the wanting wrong."
+- worthiness (TC): 想要不等於奢侈。/ 這個需要是真的，不用再審查一次。
+- worthiness (EN): "Wanting this is not the same as being wrong." / "The need is real. It doesn't need to be justified."
+- real constraint + cant ask (TC): 有限制的情況下，還是可以有需要。
+- real constraint + cant ask (EN): "Having a limit doesn't make the need disappear."
+- burden (TC): 想要不等於製造麻煩。
+- burden (EN): "Needing something is not the same as being a burden."
+Suggestion chips for money-path insight follow-ups:
+TC: ["我想再看深一點", "我想就這樣先停了", "我還是覺得很難"]
+EN: ["I want to go a layer deeper", "I think I'm ready to close this", "I still feel stuck"]
+
 CRITICAL: Never declare "you're afraid of being a burden" before the user has selected the burden option or used that language themselves. Burden is one possible deeper angle among several — not the default truth for cost-related inputs.
 
 ---

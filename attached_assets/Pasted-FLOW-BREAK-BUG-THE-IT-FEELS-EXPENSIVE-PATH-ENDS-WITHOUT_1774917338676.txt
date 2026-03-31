@@ -1,0 +1,101 @@
+FLOW BREAK BUG — THE “IT FEELS EXPENSIVE” PATH ENDS WITHOUT A NEXT STEP
+
+There is a serious flow continuity bug in the “It feels expensive” route.
+
+Current behavior:
+- user enters “It feels expensive”
+- system shows one insight card:
+  “You're not just feeling the price. You're afraid of wasting resources.”
+- then the flow stops
+
+What is missing:
+- no stop line
+- no “go deeper” option
+- no “close this loop” option
+- no follow-up chips
+- no visible next step
+- no sign that the app is still holding the user
+
+This makes the app feel broken and emotionally abandoning.
+
+==================================================
+1. HARD RULE
+==================================================
+
+Every insight card must lead to a visible next state.
+
+After a first-layer insight, the screen must always show at least one of:
+- a stop line card
+- a “close this loop” button
+- a “go deeper” button
+- follow-up chips
+- a clear prompt for what the user can do next
+
+The user must never be left at a dead end after a system card.
+
+==================================================
+2. SPECIFIC FIX FOR “IT FEELS EXPENSIVE”
+==================================================
+
+This route must not stop after one interpretation.
+
+It should continue with one or more of:
+
+A. stop line
+Examples:
+- Heavy does not mean wrong.
+- This expense can feel weighty without becoming a verdict.
+- 覺得重，不等於有錯。
+- 這筆花費很重，不等於我要立刻判自己。
+
+B. deeper / different angle button
+If deeper is available, it must render.
+
+C. close-this-loop option
+If the system believes the first layer may be enough, still show a visible close option.
+
+D. follow-up clarifiers
+Examples:
+- It feels more like guilt than cost
+- I’m scared it wasn’t worth it
+- I feel like I’m not allowed to want this
+- It feels heavy because of family / money / pressure
+
+==================================================
+3. UX RULE
+==================================================
+
+No branch should end with:
+insight card + save button only
+
+That is incomplete.
+
+The save button is not a continuation path.
+It is an auxiliary action.
+
+==================================================
+4. IMPLEMENTATION CHECK
+==================================================
+
+Please inspect the “expensive” branch for:
+- missing stopLine data
+- missing canGoDeeper state
+- missing nextStep rendering
+- conditional UI not firing
+- route-specific schema mismatch
+
+There may be a branch where the first-layer insight exists but the rest of the node structure is undefined.
+
+==================================================
+5. PRODUCT GOAL
+==================================================
+
+The user should always feel:
+- the app is still with me
+- I can either stop here or go further
+- this moment has somewhere to land
+
+Not:
+- the app made one observation and then disappeared
+
+END

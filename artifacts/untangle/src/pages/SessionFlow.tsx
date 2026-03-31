@@ -724,11 +724,13 @@ export function SessionFlow() {
   };
 
   const exitMessage = useMemo(() => {
-    // Only show closure UI when the last anchorPhrase message has no user replies after it
+    // Show closure UI when the last insight/anchor message has no user replies after it
+    // Triggers on anchorPhrase OR isInsight so every insight card gets closure buttons
     for (let i = messages.length - 1; i >= 0; i--) {
-      if (messages[i].role === "assistant" && messages[i].anchorPhrase) {
+      const msg = messages[i];
+      if (msg.role === "assistant" && (msg.anchorPhrase || msg.isInsight)) {
         const hasUserAfter = messages.slice(i + 1).some((m) => m.role === "user");
-        return hasUserAfter ? null : messages[i];
+        return hasUserAfter ? null : msg;
       }
     }
     return null;

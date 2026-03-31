@@ -1,0 +1,154 @@
+FULL BRANCH AUDIT REQUEST — CHECK EVERY PATH, NOT JUST THIS ONE
+
+I do not want another one-off fix.
+Please audit the entire branching system and verify that every branch is structurally complete and emotionally usable.
+
+Right now, multiple issues suggest that some branches are incomplete, inconsistent, or missing required next states.
+
+I need you to inspect ALL branches, not just the currently visible one.
+
+==================================================
+1. WHAT TO AUDIT
+==================================================
+
+Please review every major branch / route in the app, including but not limited to:
+- before eating
+- after eating
+- guilt
+- expensive / worth-it
+- fear of choosing wrong
+- unfinished ending / no landing
+- self-blame
+- search / looking for something better
+- anticipatory panic
+- any deeper-layer route
+- any “different angle” route
+
+==================================================
+2. CHECK FOR STRUCTURAL COMPLETENESS
+==================================================
+
+For each branch, verify that it has a complete and usable flow.
+
+Minimum expected node structure:
+- entry / user state
+- first-layer insight
+- stop line
+- close-this-loop path
+- optional deeper / different-angle path
+- optional follow-up chips or clarifiers
+- correct language rendering
+- no dead ends
+
+No route should render as:
+- only one insight card
+- only a save button
+- no next action
+- no stop line
+- no way to close or continue
+
+==================================================
+3. CHECK FOR SCHEMA CONSISTENCY
+==================================================
+
+Please inspect whether all branches use the same internal schema.
+
+I suspect some branches are missing fields such as:
+- stopLine
+- canGoDeeper
+- nextStep
+- closeLabel
+- followUpOptions
+- languageKey
+- translated helper text
+
+If different branches are shaped differently, normalize them.
+
+==================================================
+4. CHECK FOR CONDITIONAL RENDERING FAILURES
+==================================================
+
+Please inspect whether any branch is failing because:
+- the data exists but the UI condition never fires
+- the branch has missing booleans / flags
+- the deeper button is hidden unexpectedly
+- stop-line rendering depends on undefined fields
+- route-specific logic skips next-step controls
+
+==================================================
+5. CHECK LANGUAGE CONSISTENCY ON EVERY BRANCH
+==================================================
+
+For every route, verify:
+- if toggle = Traditional Chinese, all system text on screen is Traditional Chinese
+- if toggle = English, all system text on screen is English
+
+User-entered text can remain in the user’s original language.
+System-authored text must be consistent.
+
+Audit:
+- insight cards
+- stop lines
+- helper text
+- button labels
+- placeholder text
+- deeper prompts
+- follow-up chips
+- navigation labels
+
+==================================================
+6. CHECK EMOTIONAL CALIBRATION
+==================================================
+
+While auditing, also flag branches that:
+- jump too quickly to self-worth / identity shame
+- repeat the same idea in first and deeper layer
+- understate strong self-blame
+- overgeneralize practical guilt into moral guilt
+- sound too abstract / slogan-like
+- sound emotionally unfinished
+
+Do not rewrite everything at once unless needed.
+But identify which branches are structurally broken vs emotionally miscalibrated.
+
+==================================================
+7. OUTPUT I WANT
+==================================================
+
+Please give me:
+
+A. A list of all current branches / paths you found
+B. For each one, whether it passes or fails the branch audit
+C. The specific missing elements for any failed branch
+D. A list of routes with language inconsistency
+E. A list of routes with emotional calibration problems
+F. A proposed normalized branch schema for the whole app
+G. Then fix the highest-priority broken branches first
+
+==================================================
+8. PRIORITY RULE
+==================================================
+
+Fix in this order:
+1. dead-end branches
+2. missing next-step controls
+3. language inconsistency
+4. repeated / weak deeper layers
+5. emotional overreach into self-worth language
+
+==================================================
+9. PRODUCT GOAL
+==================================================
+
+The app should feel like:
+- every path is held
+- every moment has somewhere to land
+- the user is never abandoned in a half-built branch
+- the structure is coherent across the whole product
+
+Not:
+- some branches are polished and others are broken
+- each path was built separately with different logic
+- the user randomly hits unfinished screens
+
+END
