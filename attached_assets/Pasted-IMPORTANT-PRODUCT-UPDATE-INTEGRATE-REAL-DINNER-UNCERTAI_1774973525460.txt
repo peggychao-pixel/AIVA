@@ -1,0 +1,227 @@
+IMPORTANT PRODUCT UPDATE — INTEGRATE REAL DINNER UNCERTAINTY, SCARCITY, AND HUNGER INTO THE APP
+
+Please update the product logic based on this refined problem understanding:
+
+The product should not assume that all food-related distress is mainly about craving, perfectionism, post-meal rumination, or emotional closure alone.
+
+A more accurate model is:
+
+For some users with a history of bingeing, loss-of-control eating, or food-related distress, dinner is not just a meal.
+It functions as a physical and psychological anchor.
+
+When dinner feels uncertain — especially under conditions like:
+- real physical hunger
+- warm food not being guaranteed
+- limited food options
+- stores closing soon
+- being unable to go back out
+- unfamiliar environment
+- money being tight
+- food access feeling unstable
+
+the user may enter a state of:
+- urgency
+- scarcity thinking
+- anticipatory distress
+- self-numbing or coping behavior
+- intense mental preoccupation
+
+In these moments, the user may not mainly be seeking pleasure.
+She may be seeking:
+- safety
+- warmth
+- fullness
+- relief
+- something reliable to hold onto
+
+This is very important.
+
+==================================================
+1. PRODUCT POSITIONING UPDATE
+==================================================
+
+Do NOT frame the app only as:
+- a rumination interruption tool
+- a guilt support tool
+- a closure / ending tool
+- a craving management tool
+
+Instead expand the product’s understanding to include:
+- dinner uncertainty
+- resource scarcity
+- real hunger
+- unstable food access
+- warm nourishment as an anchor
+- urgency caused by conditions, not just psychology
+
+This should deepen the product, not replace its identity.
+
+The app is still a lightweight, moment-based support tool,
+but it must recognize that some eating distress is intensified by real-world conditions, not just internal interpretation.
+
+==================================================
+2. NEW INTERPRETATION RULE
+==================================================
+
+When the user is distressed around food, do not assume the problem is always:
+- wanting the best thing
+- needing closure
+- overthinking
+- self-worth panic
+
+Sometimes the deeper issue is:
+- I am really hungry
+- I do not know if I will get enough food
+- I do not know if I will get warm food
+- my options are shrinking
+- I do not feel secure that I will be fed
+- money makes comfort or nourishment feel risky
+
+The product must be able to recognize:
+This may be a safety / nourishment / access problem,
+not only a meaning-making problem.
+
+==================================================
+3. SPECIFIC USER STATES TO ADD
+==================================================
+
+Please add or revise product states that cover:
+
+A. DINNER UNCERTAINTY
+Examples:
+- I don’t know what dinner will be
+- I’m scared there won’t be enough
+- I don’t know if I’ll get something warm
+- I can feel options shrinking
+
+B. HUNGER + URGENCY
+Examples:
+- I’m getting too hungry and everything feels worse
+- I can feel my body panicking
+- I need something reliable soon
+- I’m not just emotional — I’m underfed and overwhelmed
+
+C. SCARCITY + ACCESS STRESS
+Examples:
+- stores are closing
+- I can’t go back out later
+- money is tight
+- I don’t know if I can get what I need
+- I’m in an unfamiliar place and I don’t feel secure about food
+
+These should not be flattened into generic anxiety or generic craving.
+
+==================================================
+4. PRODUCT DESIGN IMPLICATION
+==================================================
+
+The app should be able to distinguish between moments where the user needs:
+
+A. Emotional untangling
+vs.
+B. Immediate stabilization around food certainty, access, warmth, or enoughness
+
+That means the product may need branches that do things like:
+- reduce panic caused by shrinking options
+- acknowledge real hunger
+- help the user identify what is truly needed right now
+- reduce moralization when the body is under stress
+- support the user in moving toward a reliable next step, not just a reflective insight
+
+==================================================
+5. WHAT THE PRODUCT SHOULD SAY IN THESE MOMENTS
+==================================================
+
+Good directions:
+
+Traditional Chinese:
+- 你現在不一定只是在想太多，可能也是真的太餓、太不確定了。
+- 當晚餐沒有把握、選項在縮、身體又很餓時，整個系統本來就會更警戒。
+- 你現在想找的，不一定是享受，可能是可靠、溫熱、夠用、能讓身體先放心下來的東西。
+- 這不只是情緒問題，這裡面也有真實的飢餓、現實限制、和食物不確定性。
+
+English:
+- This may not just be overthinking. You may also be genuinely too hungry and too uncertain.
+- When dinner is unclear, options are shrinking, and your body is already very hungry, it makes sense that everything feels more urgent.
+- You may not mainly be seeking pleasure right now. You may be seeking something reliable, warm, and sufficient enough for your body to stop panicking.
+- This is not only emotional. Real hunger and real uncertainty may be part of the distress.
+
+==================================================
+6. DO NOT OVER-PSYCHOLOGIZE
+==================================================
+
+In these states, do NOT jump too quickly to:
+- self-worth
+- perfectionism
+- identity-level shame
+- abstract closure theory
+- “you’re really afraid of being not enough”
+
+Sometimes the user’s distress is being amplified by:
+- real hunger
+- lack of access
+- unreliable dinner plans
+- money constraints
+- lack of warm food
+- unstable environment
+
+The product must earn the right to go deeper.
+It should first recognize the concrete conditions.
+
+==================================================
+7. FEATURE / FLOW IMPLICATIONS
+==================================================
+
+Please revise the app so that it can support moments like:
+- “I’m really hungry and I don’t know what dinner is”
+- “I’m afraid there won’t be enough”
+- “The stores are closing and I’m panicking”
+- “I don’t know if I can afford what would actually help”
+- “I need something warm and reliable, not just something perfect”
+
+Potential directions:
+- a branch for real hunger + uncertainty
+- a branch for shrinking options / closing window panic
+- a branch for access + money stress
+- language that normalizes urgency under these conditions
+- support that helps the user identify the most stabilizing next step
+
+==================================================
+8. IMPORTANT PRODUCT BALANCE
+==================================================
+
+Do not turn the app into:
+- a meal planning app
+- a calorie tracker
+- a budgeting app
+- a generic food finder
+
+Keep it as a lightweight moment-based support tool.
+
+But allow it to say:
+“This moment may need certainty and stabilization, not just interpretation.”
+
+==================================================
+9. OUTPUT REQUEST
+==================================================
+
+Based on this updated problem understanding, please do all of the following:
+
+A. Rewrite the app’s core problem framing so it includes real hunger, food uncertainty, and scarcity
+B. Suggest 5 new user entry points that reflect dinner uncertainty and urgency
+C. Suggest 3 new support branches for:
+   1. real hunger + uncertainty
+   2. shrinking options / stores closing
+   3. money stress + nourishment guilt
+D. Suggest 5 natural-language prompts the app can use in these states
+E. Explain how to integrate this without changing the app into a meal-planning or food-tracking product
+
+Requirements:
+- keep the product lightweight
+- keep it emotionally precise
+- do not over-psychologize
+- do not moralize hunger
+- do not flatten real scarcity into “just anxiety”
+- keep all ideas prototype-able inside the current app direction
+
+END

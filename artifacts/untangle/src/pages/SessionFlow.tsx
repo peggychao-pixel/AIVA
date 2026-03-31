@@ -48,7 +48,7 @@ const LAYER2_DATA: Record<"en" | "tc", Record<Mode, { question: string; chips: s
   en: {
     before: {
       question: "What feels wrong before you even start?",
-      chips: ["I'm afraid I'll choose wrong", "I can't stop comparing", "I'm worried I'll regret it", "Let me type it out"],
+      chips: ["I'm afraid I'll choose wrong", "I can't stop comparing", "I'm worried I'll regret it", "I don't know what dinner is yet — and I'm already panicking", "I'm getting too hungry and my options are shrinking", "Let me type it out"],
     },
     after: {
       question: "Which of these feels closest right now?",
@@ -66,7 +66,7 @@ const LAYER2_DATA: Record<"en" | "tc", Record<Mode, { question: string; chips: s
   tc: {
     before: {
       question: "開始之前，什麼感覺不對？",
-      chips: ["我怕選錯", "我停不下來比較", "我怕自己會後悔", "讓我自己打"],
+      chips: ["我怕選錯", "我停不下來比較", "我怕自己會後悔", "我還不知道晚餐怎麼辦，我已經開始慌了", "我越來越餓，選項也越來越少", "讓我自己打"],
     },
     after: {
       question: "現在最卡你的，比較像哪一句？",
