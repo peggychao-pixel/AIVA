@@ -207,7 +207,7 @@ const BROAD_CHIP_ROUTING: Record<string, { response: string; suggestions: string
     response: "What kind of 'unfinished' does this feel like?",
     suggestions: [
       "Something is still hanging, not landed",
-      "Tonight still needs one thing to make it count",
+      "This moment still needs one thing to make it count",
       "I know it's over, but my mind won't let it close",
       "I'm dreading the time ahead — I don't know how to get through it",
       "Let me type it",
@@ -257,7 +257,7 @@ const BROAD_CHIP_ROUTING: Record<string, { response: string; suggestions: string
     response: "「還沒結束」，比較像是哪種沒結束？",
     suggestions: [
       "像是有什麼還在懸著，落不下去",
-      "像是今晚還差一個讓它成立的東西",
+      "像是這一段還差一個讓它成立的東西",
       "像是我知道結束了，但腦子不肯放",
       "像是我在怕接下來的時間，不知道怎麼過",
       "讓我自己打",
