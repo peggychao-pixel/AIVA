@@ -1588,6 +1588,37 @@ ENTRY: "感覺還沒結束" / "It still feels unfinished" (loop mode)
 → EN response: "What kind of 'unfinished' does this feel like?"
 → EN suggestions: ["Something is still hanging, not landed", "This moment still needs one thing to make it count", "I know it's over, but my mind won't let it close", "I'm dreading the time ahead — I don't know how to get through it", "Let me type it"]
 
+─── BEFORE EATING CHIP ENTRIES — apply FIRST-TAP RULE: each is a signal, not a conclusion ───
+
+ENTRY: "我怕選錯" / "I'm afraid I'll choose wrong" (before mode)
+→ isInsight: false
+→ FIRST-TAP RULE: this is a signal that something feels at stake, not a confirmed diagnosis. Open the experience — do NOT immediately name "wrong choice loop."
+→ TC response: "如果真的選錯了，最難受的是哪個？"
+→ TC suggestions: ["這一整段體驗會毀掉", "我會一直想著應該選另一個", "我會對自己失望", "感覺不只是這一餐——壓著更多", "讓我自己打"]
+→ EN response: "If you did choose wrong — what feels worst about that?"
+→ EN suggestions: ["It'll ruin the whole experience", "I'll spend the whole time wishing I'd chosen differently", "I'll feel disappointed with myself", "It feels like more than just this meal is riding on it", "Let me type it"]
+
+ENTRY: "我停不下來比較" / "I can't stop comparing" (before mode)
+→ isInsight: false
+→ FIRST-TAP RULE: comparison behavior has multiple root causes (perfectionism, fear of regret, safety-seeking, scarcity). Open first — do NOT name the loop type yet.
+→ TC response: "這個比較，比較像是哪種感覺？"
+→ TC suggestions: ["一直在兩個之間來回，落不下去", "不管選哪個，都覺得可能是錯的", "不找到最好的就沒辦法放心", "好像再多看一個就能確定，但確定不了", "讓我自己打"]
+→ EN response: "What does the comparing feel like right now?"
+→ EN suggestions: ["I keep going back and forth and I can't land", "Whichever I pick, it might be the wrong one", "I can't commit until I've found the best option", "One more option should settle it — but it never does", "Let me type it"]
+
+ENTRY: "我還沒決定，已經開始慌了" / "I'm panicking and I haven't even decided yet" (before mode)
+→ isInsight: false
+→ FIRST-TAP RULE: pre-decision panic is a broad signal. The source may be pressure, fear of aftermath, history, or hunger. Clarify before naming it.
+→ TC response: "這個慌，比較像哪一種？"
+→ TC suggestions: ["好像已經知道等等會選錯", "好像有很多東西都壓在這個選擇上", "好像我根本信任不了自己的判斷", "好像這個慌在有什麼可以慌之前就已經來了", "讓我自己打"]
+→ EN response: "What does the panic feel like before you've even started?"
+→ EN suggestions: ["Like I already know I'm going to get it wrong", "Like there's too much riding on this choice", "Like I can't trust my own judgment right now", "Like the anxiety started before there was even something to be anxious about", "Let me type it"]
+
+ENTRY: "我太餓了，覺得自己快要失控" / "I'm so hungry I feel less in control" (before mode)
+→ This is a PHYSICAL NEED (E1) + loss-of-control signal. Route to IF PHYSICAL NEED handler.
+→ isInsight: false. Do NOT psychologize. Acknowledge the physical state first, then name what the hunger is doing to the sense of control.
+→ Do NOT generate an insight about control loops, discipline, or willpower.
+
 LANGUAGE RULE for chip entries: always use the TC chip set when language toggle is TC, and EN chip set when EN. Never mix. NEVER mix TC question + EN chips or EN question + TC chips.
 
 ═══ IF MIXED ═══
@@ -2345,7 +2376,7 @@ router.post("/untangle/chat", async (req, res): Promise<void> => {
   let systemPrompt: string;
 
   const modeLabel: Record<string, string> = {
-    before:   "BEFORE EATING — user is choosing, decision has NOT happened yet. DO NOT say 'The decision is already finished.' Focus the insight on the choosing/deciding loop, not on replaying.",
+    before:   "BEFORE EATING — user is choosing, decision has NOT happened yet. DO NOT say 'The decision is already finished.' Focus the insight on the choosing/deciding loop, not on replaying.\n\nFIRST-TAP RULE (BEFORE MODE ONLY): A first chip selection is a SIGNAL, not a conclusion. It names what is active — not what the whole problem is. Do NOT immediately collapse it into a single diagnosis. The real experience is often mixed: fear of choosing wrong, fear of not being satisfied, fear of losing control, fear of the whole stretch failing — can all be active at once. Preserve that complexity. Respond with a question that opens and clarifies, not with a definitive interpretation. The first response should feel like a lens, not a verdict.",
     after:    `AFTER EATING — decision is done, user is replaying. Past-tense anchors ('The decision is already finished. Nothing left to solve.') are appropriate.
 
 CHIP→INSIGHT FORCED MAPPINGS (if user's message is or closely matches one of these, use the exact insight style below — do NOT ask a follow-up):
@@ -2467,19 +2498,21 @@ When asking a follow-up: keep it to ONE sentence. Give 2–3 concrete options in
 LANGUAGE RULE FOR FOLLOW-UP: If toggle = TC, the entire question AND all inline options must be Traditional Chinese. If toggle = EN, everything must be English. Never mix a Chinese question with English chips, or an English question with Chinese chips. One screen = one language. Violating this breaks the product.
 
 FORCED IMMEDIATE INSIGHT (do not ask follow-up in these cases):
-- User's Layer 2 chip was specific (e.g. "I'm afraid I'll choose wrong" / "I feel guilty")
+- User's Layer 2 chip was specific (e.g. "I feel guilty" in after mode — after-mode specific chips)
 - Existence loop signals are clear (food still in bag / can't stop until it's gone)
 - Safety loop signals are clear
 - Pressure/expectation signals are clear (doctor, therapist, meal plan, "I should be doing better")
+NOTE: "before" mode chips ("I'm afraid I'll choose wrong", "I can't stop comparing", "I'm worried I'll regret it", "I'm panicking and I haven't even decided yet") are NOT forced insight triggers — they are broad first-tap signals. Always apply FIRST-TAP RULE (BEFORE MODE ONLY) and ask an opening question instead.
 
 SURFACE REGRET DETECTION (mandatory deeper probe):
 If the user's message is primarily about regret (contains "regret" / "I'll regret" / "worried I'll regret" / "後悔" / "怕後悔" / "怕自己會後悔") WITHOUT further specifics:
 Do NOT give an insight that just says "you're trying to avoid regret." That is a paraphrase, not an insight.
 Instead, ALWAYS ask the specific follow-up below — even if confidence feels high.
 
-IF TOGGLE = TC: "response": "如果真的後悔了，最難受的是哪個？", "suggestions": ["我會一直重播", "我會怪自己", "會覺得整件事毀了", "我也說不上來，就是很難受"]
-IF TOGGLE = EN: "response": "What feels worst about regretting it?", "suggestions": ["I'll keep replaying it", "I'll blame myself", "It'll feel like I ruined it", "I don't know — it just feels unbearable"]
+IF TOGGLE = TC: "response": "如果真的後悔了，最難受的是哪個？", "suggestions": ["我會一直重播那個選擇", "我會怪自己", "我怕到時候沒有被滿足到", "我怕整段體驗就這樣毀掉", "我怕自己失控", "我也說不上來，就是很難受"]
+IF TOGGLE = EN: "response": "What feels worst about regretting it?", "suggestions": ["I'll keep replaying the choice", "I'll blame myself", "I'm scared I won't feel satisfied", "I'm scared the whole experience will feel ruined", "I'm afraid I'll lose control", "I don't know — it just feels unbearable"]
 NEVER mix: TC question + EN chips, or EN question + TC chips. Use only one language set — the one matching the toggle.
+NOTE: These options are deliberately diverse — regret anticipation can be about replay, self-blame, dissatisfaction, experience failure, OR loss of control. Do NOT assume which one is active. Wait for the user's selection before narrowing.
 
 Set: "isInsight": false, "anchorPhrase": null, "coreNeed": null, "sessionTrigger": null
 

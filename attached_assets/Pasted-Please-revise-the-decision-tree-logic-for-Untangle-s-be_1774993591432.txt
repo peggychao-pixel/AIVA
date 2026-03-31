@@ -1,0 +1,44 @@
+Please revise the decision-tree logic for Untangle’s “before eating” flow.
+
+Current issue:
+Some first-layer options are causing the experience to narrow too early. A user taps one entry point, and the next screen or Untangle moment starts interpreting that choice as the core issue too quickly.
+
+Example:
+If the user selects “I’m worried I’ll regret it,” the follow-up flow can quickly overcommit to a single interpretation like replay/regret, when the real experience may still be mixed:
+- fear of regret
+- fear of choosing wrong
+- fear of not feeling satisfied
+- fear of waste
+- fear of losing control
+- fear of not being able to land the ending
+
+This makes the first selection feel too limiting.
+
+Design principle to adopt:
+First tap = signal, not conclusion.
+Each branch should feel like a lens, not a verdict.
+
+What to change:
+- Keep the existing product structure and tone
+- Do not redesign Untangle into a different product
+- Review the “before eating” branching logic and copy
+- Make the first-layer options function as entry points, not diagnoses
+- Make second-layer questions open up the experience rather than prematurely narrowing it
+- Make Untangle moments sound like gentle hypotheses, not definitive interpretations
+
+Specific guidance:
+1. First-layer option = identifies what is active, not what the whole problem is
+2. Follow-up questions should expand and clarify, not lock the user into one frame too early
+3. Untangle reflections should preserve mixed emotional reality
+4. Use softer language such as:
+   - “Part of what may be making this hard...”
+   - “It sounds like...”
+   - “This may be less about X itself, and more about...”
+5. Avoid overly deterministic framing like:
+   - “You’re not really struggling with X, you’re actually struggling with Y”
+6. Make the before-eating flow feel more like the after-eating flow in terms of emotional openness and complexity-holding
+
+Goal:
+The user should feel guided, not boxed in.
+The experience should help clarify what is happening without collapsing it too soon into a single explanation.
+Preserve Untangle’s original emotional-support and untangling direction.
