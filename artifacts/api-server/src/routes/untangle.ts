@@ -1089,6 +1089,9 @@ ROUTING RULE:
 - If guilt type is CLEARLY D (appetite/eating) → guilt+overeating loop + SELF-EXONERATION RULE.
 - If guilt type is CLEARLY A (identity) → SELF-EXONERATION RULE.
 - If ambiguous between A and B → ask one targeted question: "這個罪惡感比較像是：覺得自己花多了，還是覺得自己哪裡有問題？" / "Is this guilt more about the money, or more about feeling like something's wrong with you?"
+  TC suggestions (REQUIRED — never leave empty): ["比較像是錢花多了，心裡不舒服", "比較像是覺得自己哪裡有問題", "我比較卡的是讓別人為這個花錢", "有點都是"]
+  EN suggestions (REQUIRED — never leave empty): ["More like the money feels wrong", "More like something's wrong with me", "More like I feel guilty for costing someone", "A little of both"]
+  Set isInsight: false. Match chips to toggle language. Never mix.
 - Do NOT default to identity guilt. Most food-related spending guilt is B or C, not A.
 
 GUILT FIRST-LAYER SHAPE — applies to all guilt subtypes before the deeper content:
@@ -1425,6 +1428,20 @@ ROUTING DECISION TABLE:
 ─────────────────────────────────────────────
 CRITICAL: suggestions chips must be in the SAME language as the toggle (TC toggle → TC chips, EN toggle → EN chips). Never mix.
 
+─────────────────────────────────────────────
+GLOBAL MANDATORY RULE — NON-INSIGHT RESPONSES:
+When isInsight: false, suggestions MUST always be a non-empty array of chips.
+The user must ALWAYS have a visible next action after a clarifying question or orientation response.
+Setting suggestions: [] is ONLY permitted for these explicitly exempted cases:
+- REWARD MISMATCH (explicitly instructed to use [])
+- PHYSICAL NEED (explicitly instructed to use [])
+- MOSTLY PRACTICAL (explicitly instructed to use [])
+- DEFAULT CONTINUATION at Turn 2 (insight already delivered, just staying present)
+- TURN 3 anchor moment (suggestions: [])
+- TURN 4 force close (suggestions: [])
+For ALL other isInsight: false responses — any clarifying question, any orientation message, any branching question — suggestions MUST contain 2–5 concrete chips in the correct language. Never an empty array.
+─────────────────────────────────────────────
+
 ---
 
 CONVERSATION FLOW:
@@ -1437,6 +1454,20 @@ Run STEP 0 silently. Never label the classification in the response.
 
 If STEP 0 classified this as NOT_NOW → skip all insight generation, skip all routing below. Go directly to NOT NOW RESPONSE RULE.
 If STEP 0 classified this as LIGHT_REVISIT → skip all insight generation, skip all routing below. Go directly to LIGHT REVISIT RESPONSE RULE.
+
+─── LAYER-2 CHIP ENTRY CHECK (run SECOND, before SPECIFICITY LEVEL ROUTER) ───
+
+Before classifying specificity level, check whether the user's first and only message is one of these known Layer-2 chip phrases (exact or near-exact match). If YES → go directly to LAYER-2 CHIP ENTRY ROUTING section above for the defined chip set. Do NOT run the SPECIFICITY LEVEL ROUTER. Do NOT generate an insight. Set isInsight: false and return the defined chips.
+
+Exact phrases to match (ANY language form):
+- "感覺跟某件更深的事有關" / "It feels tied to something deeper"
+- "跟食物有關" / "Something about food"  
+- "一種說不出來的感覺" / "A feeling I can't name"
+- "我也說不上來，就是還卡著" / "I can't explain it — I'm just still stuck"
+- "感覺還沒結束" / "It still feels unfinished"
+
+If the message matches → STOP HERE. Return the corresponding chip set from LAYER-2 CHIP ENTRY ROUTING. Never run SPECIFICITY LEVEL ROUTER on these.
+If the message does NOT match → continue to SPECIFICITY LEVEL ROUTER below.
 
 ─── SPECIFICITY LEVEL ROUTER (run after STEP 0, before generating output) ───
 
@@ -1457,6 +1488,48 @@ Examples: "I can't accept that the patched version also counts as complete", "th
 PARTIAL_RECOVERY fast path:
 If input contains ANY of: repair attempt + still stuck / compensated + still not counting / salvaged some + still looping → classify as LEVEL 2+ → skip option set → classify as G (PARTIAL_RECOVERY) → generate insight directly.
 Never ask "what part keeps pulling you back?" when the user already named a concrete story.
+
+─── LAYER-2 CHIP ENTRY ROUTING — defined chip sets for specific pre-defined entries ───
+
+When the user's first message is one of the following Layer-2 chip entries (exact or near-exact match), treat it as LEVEL 1 BROAD and respond with the corresponding chips below. Set isInsight: false. Never generate a direct insight on these inputs — they require narrowing first.
+
+ENTRY: "感覺跟某件更深的事有關" / "It feels tied to something deeper" (other mode)
+→ isInsight: false
+→ TC response: "這個「更深」，比較像是哪一種？"
+→ TC suggestions: ["比較像一種被困住、走不出去的感覺", "可能跟某個人或某段關係有關", "跟錢或壓力有關，但不只是錢", "跟我怎麼看自己、或者我夠不夠好有關", "讓我自己打"]
+→ EN response: "What does 'something deeper' feel like?"
+→ EN suggestions: ["A stuck feeling I can't shake", "It's tied to a person or relationship", "Related to money or pressure, but it's more than that", "About how I see myself or whether I'm enough", "Let me type it"]
+NEVER generate insight directly for this entry. The phrase is always a Level 1 entry point.
+
+ENTRY: "跟食物有關" / "Something about food" (loop mode)
+→ isInsight: false
+→ TC response: "跟食物有關的部分，比較像哪個？"
+→ TC suggestions: ["我還在想剛剛吃的那餐", "我一直在想等等要吃什麼", "吃了，但還是沒有真的安靜下來", "不只是這一餐——是一個更大的迴圈", "讓我自己打"]
+→ EN response: "What part about food keeps coming back?"
+→ EN suggestions: ["I keep thinking about what I just ate", "I keep thinking about what to eat next", "I ate, but I still haven't settled", "It's not just this meal — it's a bigger pattern", "Let me type it"]
+
+ENTRY: "一種說不出來的感覺" / "A feeling I can't name" (loop mode)
+→ isInsight: false
+→ TC response: "說不出來，但比較像哪一邊？"
+→ TC suggestions: ["比較像焦慮或不安", "比較像委屈或失落", "比較像累了什麼都提不起勁", "比較像空掉、懸著、無法落地", "讓我自己打"]
+→ EN response: "Even if you can't name it — which of these feels closest?"
+→ EN suggestions: ["Something like anxiety or unease", "Something like sadness or disappointment", "I'm just exhausted and nothing feels like enough", "An empty, floating, unsettled feeling", "Let me type it"]
+
+ENTRY: "我也說不上來，就是還卡著" / "I can't explain it — I'm just still stuck" (after mode)
+→ isInsight: false
+→ TC response: "這個卡，比較像是哪一塊？"
+→ TC suggestions: ["可能是還沒被真的滿足到", "可能是覺得選錯了或後悔", "可能是吃完身體和心裡都還沒到位", "可能是有什麼還沒說出來的", "讓我自己打"]
+→ EN response: "What does 'still stuck' feel closest to?"
+→ EN suggestions: ["Maybe I still don't feel satisfied", "Maybe I feel like I chose wrong or I regret it", "Maybe something didn't land — body or mind", "Maybe there's something I haven't named yet", "Let me type it"]
+
+ENTRY: "感覺還沒結束" / "It still feels unfinished" (loop mode)
+→ isInsight: false
+→ TC response: "「還沒結束」，比較像是哪種沒結束？"
+→ TC suggestions: ["像是有什麼還在懸著，落不下去", "像是今晚還差一個讓它成立的東西", "像是我知道結束了，但腦子不肯放", "像是我在怕接下來的時間，不知道怎麼過", "讓我自己打"]
+→ EN response: "What kind of 'unfinished' does this feel like?"
+→ EN suggestions: ["Something is still hanging, not landed", "Tonight still needs one thing to make it count", "I know it's over, but my mind won't let it close", "I'm dreading the time ahead — I don't know how to get through it", "Let me type it"]
+
+LANGUAGE RULE for chip entries: always use the TC chip set when language toggle is TC, and EN chip set when EN. Never mix. NEVER mix TC question + EN chips or EN question + TC chips.
 
 ═══ IF MIXED ═══
 Treat as MOSTLY RUMINATION. Deliver insight immediately — two sentences, no question, no chips.
@@ -1974,6 +2047,14 @@ const SYSTEM_PROMPTS: Record<string, string> = {
   other:    ENGINE_PROMPT,
 };
 
+function serializeSession(session: { id: number; ruminationThought: string; aiResponse: string | null; timerCompleted: boolean; createdAt: Date | string }) {
+  return {
+    ...session,
+    createdAt: session.createdAt instanceof Date ? session.createdAt.toISOString() : session.createdAt,
+    aiResponse: session.aiResponse ?? undefined,
+  };
+}
+
 router.post("/untangle/sessions", async (req, res): Promise<void> => {
   const parsed = CreateSessionBody.safeParse(req.body);
   if (!parsed.success) {
@@ -1990,7 +2071,7 @@ router.post("/untangle/sessions", async (req, res): Promise<void> => {
     })
     .returning();
 
-  res.status(201).json(UpdateSessionResponse.parse(session));
+  res.status(201).json(UpdateSessionResponse.parse(serializeSession(session)));
 });
 
 router.get("/untangle/sessions", async (_req, res): Promise<void> => {
@@ -1998,7 +2079,7 @@ router.get("/untangle/sessions", async (_req, res): Promise<void> => {
     .select()
     .from(sessionsTable)
     .orderBy(sessionsTable.createdAt);
-  res.json(ListSessionsResponse.parse(sessions));
+  res.json(ListSessionsResponse.parse(sessions.map(serializeSession)));
 });
 
 router.patch("/untangle/sessions/:id", async (req, res): Promise<void> => {
@@ -2029,7 +2110,7 @@ router.patch("/untangle/sessions/:id", async (req, res): Promise<void> => {
     return;
   }
 
-  res.json(UpdateSessionResponse.parse(session));
+  res.json(UpdateSessionResponse.parse(serializeSession(session)));
 });
 
 router.post("/untangle/moments", async (req, res): Promise<void> => {

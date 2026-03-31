@@ -39,6 +39,32 @@ Four mode-specific system prompts (before/after/loop/other) instruct the model t
 - Surface insights occasionally with `isInsight: true` (renders as ✦ UNTANGLE MOMENT card)
 - Keep suggestion chips as short, honest user-voice replies (not reflective prompts)
 
+### Prompt Architecture (ENGINE_PROMPT, ~2800 lines)
+
+- **STEP 0**: Multi-class classification (loop type + state detection: NOT_NOW, LIGHT_REVISIT, PHYSICAL_NEED, REWARD_MISMATCH, etc.)
+- **SPECIFICITY LEVEL ROUTER**: LEVEL1 (broad) → chips, LEVEL2 → direct insight, LEVEL3 → deep insight
+- **LAYER-2 CHIP ENTRY CHECK**: Hard override before SPECIFICITY LEVEL ROUTER — specific chip phrases always return clarifying chips
+- **POST-INSIGHT NEXT-STEP ROUTING**: Type A (validation), Type B (branch clarifier), Type D (real constraint) — never empty suggestions on insight
+- **DEEPER LAYER RESPONSE RULE**: 3-part format (surface/deeper/landing); self-worth escalation guard; identity jump banned without explicit shame signal
+- **NOT_NOW / LIGHT_REVISIT RESPONSE RULES**: Gentle exits with no deeper pressure
+
+### Client-Side Chip Routing (BROAD_CHIP_ROUTING)
+
+Five Level-1 broad chip entries are intercepted on the frontend (SessionFlow.tsx) before hitting the API, with pre-defined clarifying chip sets. This ensures 100% reliable routing regardless of model behavior:
+- "I can't explain it — I'm just still stuck" / "我也說不上來，就是還卡著"
+- "It feels tied to something deeper" / "感覺跟某件更深的事有關"
+- "Something about food" / "跟食物有關"
+- "A feeling I can't name" / "一種說不出來的感覺"
+- "It still feels unfinished" / "感覺還沒結束"
+
+### Frontend State (SessionFlow.tsx)
+
+- `exitMessage`: useMemo — last assistant message with `isInsight || anchorPhrase` that has no user message after it
+- `loopDismissed`: set to true when user clicks "Go deeper". Gates only the go-deeper button, NOT the "Close this loop" button
+- `notNowMode` / `lightRevisitMode`: suppress go-deeper button
+- `anchorPhrase`: updated on every response where API returns non-null anchorPhrase
+- `overateEntry`: set true for guilt+overeating path — suppresses satiety check
+
 ---
 
 # Workspace

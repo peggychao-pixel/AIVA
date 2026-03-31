@@ -162,6 +162,109 @@ const UI_TEXT = {
   },
 } as const;
 
+const BROAD_CHIP_ROUTING: Record<string, { response: string; suggestions: string[] }> = {
+  "I can't explain it — I'm just still stuck": {
+    response: "What does 'still stuck' feel closest to?",
+    suggestions: [
+      "Maybe I still don't feel satisfied",
+      "Maybe I feel like I chose wrong or I regret it",
+      "Maybe something didn't land — body or mind",
+      "Maybe there's something I haven't named yet",
+      "Let me type it",
+    ],
+  },
+  "It feels tied to something deeper": {
+    response: "What does 'something deeper' feel like?",
+    suggestions: [
+      "A stuck feeling I can't shake",
+      "It's tied to a person or relationship",
+      "Related to money or pressure, but it's more than that",
+      "About how I see myself or whether I'm enough",
+      "Let me type it",
+    ],
+  },
+  "Something about food": {
+    response: "What part about food keeps coming back?",
+    suggestions: [
+      "I keep thinking about what I just ate",
+      "I keep thinking about what to eat next",
+      "I ate, but I still haven't settled",
+      "It's not just this meal — it's a bigger pattern",
+      "Let me type it",
+    ],
+  },
+  "A feeling I can't name": {
+    response: "Even if you can't name it — which of these feels closest?",
+    suggestions: [
+      "Something like anxiety or unease",
+      "Something like sadness or disappointment",
+      "I'm just exhausted and nothing feels like enough",
+      "An empty, floating, unsettled feeling",
+      "Let me type it",
+    ],
+  },
+  "It still feels unfinished": {
+    response: "What kind of 'unfinished' does this feel like?",
+    suggestions: [
+      "Something is still hanging, not landed",
+      "Tonight still needs one thing to make it count",
+      "I know it's over, but my mind won't let it close",
+      "I'm dreading the time ahead — I don't know how to get through it",
+      "Let me type it",
+    ],
+  },
+  "我也說不上來，就是還卡著": {
+    response: "這個卡，比較像是哪一塊？",
+    suggestions: [
+      "可能是還沒被真的滿足到",
+      "可能是覺得選錯了或後悔",
+      "可能是吃完身體和心裡都還沒到位",
+      "可能是有什麼還沒說出來的",
+      "讓我自己打",
+    ],
+  },
+  "感覺跟某件更深的事有關": {
+    response: "這個「更深」，比較像是哪一種？",
+    suggestions: [
+      "比較像一種被困住、走不出去的感覺",
+      "可能跟某個人或某段關係有關",
+      "跟錢或壓力有關，但不只是錢",
+      "跟我怎麼看自己、或者我夠不夠好有關",
+      "讓我自己打",
+    ],
+  },
+  "跟食物有關": {
+    response: "跟食物有關的部分，比較像哪個？",
+    suggestions: [
+      "我還在想剛剛吃的那餐",
+      "我一直在想等等要吃什麼",
+      "吃了，但還是沒有真的安靜下來",
+      "不只是這一餐——是一個更大的迴圈",
+      "讓我自己打",
+    ],
+  },
+  "一種說不出來的感覺": {
+    response: "說不出來，但比較像哪一邊？",
+    suggestions: [
+      "比較像焦慮或不安",
+      "比較像委屈或失落",
+      "比較像累了什麼都提不起勁",
+      "比較像空掉、懸著、無法落地",
+      "讓我自己打",
+    ],
+  },
+  "感覺還沒結束": {
+    response: "「還沒結束」，比較像是哪種沒結束？",
+    suggestions: [
+      "像是有什麼還在懸著，落不下去",
+      "像是今晚還差一個讓它成立的東西",
+      "像是我知道結束了，但腦子不肯放",
+      "像是我在怕接下來的時間，不知道怎麼過",
+      "讓我自己打",
+    ],
+  },
+};
+
 function intensityDots(n: number | null | undefined): string {
   if (!n) return "";
   return "●".repeat(n) + "○".repeat(5 - n);
@@ -191,12 +294,6 @@ function InsightCard({
     >
       <p className="text-xs text-primary/70 font-medium tracking-wide">{t.untangleMoment}</p>
       <p className="text-base text-foreground leading-relaxed">{content}</p>
-      {anchorPhrase && (
-        <div className="border-t border-primary/15 pt-3 space-y-1">
-          <p className="text-xs text-primary/60 font-medium">{t.keepThis}</p>
-          <p className="text-sm text-foreground/80 leading-relaxed italic">{isTc ? `「${anchorPhrase}」` : `"${anchorPhrase}"`}</p>
-        </div>
-      )}
       <button
         onClick={onSave}
         disabled={saved}
@@ -514,6 +611,27 @@ export function SessionFlow() {
 
     if (aiResponseCount === 0) setOriginalThought(text.trim());
     if (aiResponseCount === 1) setHiddenFear(text.trim());
+
+    // Client-side interception: Level-1 broad chip entries get pre-defined chip sets
+    // without an API call, for 100% reliable routing.
+    if (aiResponseCount === 0) {
+      const broadRoute = BROAD_CHIP_ROUTING[text.trim()];
+      if (broadRoute) {
+        const syntheticMsg: ChatMessage = {
+          id: `a-${Date.now()}`,
+          role: "assistant",
+          content: broadRoute.response,
+          isInsight: false,
+          suggestions: broadRoute.suggestions,
+          loopType: null,
+        };
+        const withSynthetic = [...updatedMessages, syntheticMsg];
+        setMessages(withSynthetic);
+        messagesRef.current = withSynthetic;
+        setIsThinking(false);
+        return;
+      }
+    }
 
     try {
       const history = currentMessages.map((m) => ({ role: m.role, content: m.content }));
@@ -1079,8 +1197,8 @@ export function SessionFlow() {
                   />
                 )}
 
-                {/* Post-insight closure actions */}
-                {exitMessage && !loopDismissed && (
+                {/* Post-insight closure actions — always show after any insight; only "Go deeper" is gated on loopDismissed */}
+                {exitMessage && (
                   <motion.div
                     initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -1093,7 +1211,7 @@ export function SessionFlow() {
                     >
                       {t.closeLoop}
                     </button>
-                    {!notNowMode && !lightRevisitMode && (
+                    {!notNowMode && !lightRevisitMode && !loopDismissed && (
                       <button
                         onClick={handleGoDeeper}
                         className="w-full px-5 py-3.5 border border-border/60 bg-card/60 text-sm text-muted-foreground hover:text-foreground hover:border-border rounded-xl transition-all"
