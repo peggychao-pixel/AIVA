@@ -23,15 +23,9 @@ export function SessionDetail() {
             ← History
           </Link>
           {session && (
-            <span
-              className={`text-xs border px-2.5 py-1 rounded-full ${
-                session.timerCompleted
-                  ? "border-primary/30 text-primary/70"
-                  : "border-border/60 text-muted-foreground"
-              }`}
-            >
-              {session.timerCompleted ? "Complete" : "Partial"}
-            </span>
+            <p className="text-xs text-muted-foreground/50">
+              {format(parseISO(session.createdAt), "MMM d, yyyy · HH:mm")}
+            </p>
           )}
         </header>
 
@@ -47,7 +41,7 @@ export function SessionDetail() {
           </div>
         ) : !session ? (
           <div className="border border-border/50 rounded-xl p-12 text-center">
-            <p className="text-sm text-muted-foreground font-medium">Session not found</p>
+            <p className="text-sm text-muted-foreground font-medium">Moment not found</p>
             <Link href="/history" className="text-xs text-muted-foreground/60 mt-3 block hover:text-foreground transition-colors">
               Back to history
             </Link>
@@ -57,39 +51,54 @@ export function SessionDetail() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
-            className="space-y-6"
+            className="space-y-8"
           >
-            <p className="text-xs text-muted-foreground/50">
-              {format(parseISO(session.createdAt), "MMMM d, yyyy · HH:mm")}
-            </p>
-
-            <div className="space-y-2">
-              <p className="text-xs text-muted-foreground/60 font-medium tracking-wide uppercase">
-                What felt tangled
-              </p>
-              <p className="text-base text-foreground leading-relaxed">
-                {session.ruminationThought}
-              </p>
-            </div>
-
             {session.aiResponse ? (
-              <div className="space-y-2">
-                <p className="text-xs text-muted-foreground/60 font-medium tracking-wide uppercase">
-                  Untangle moment
-                </p>
-                <div className="rounded-xl bg-primary/8 border border-primary/20 p-5">
-                  <p className="text-sm text-foreground leading-relaxed whitespace-pre-line">
+              <>
+                <div className="rounded-xl bg-primary/8 border border-primary/20 p-6">
+                  <p className="text-sm text-foreground leading-[1.75] whitespace-pre-line">
                     {session.aiResponse}
                   </p>
                 </div>
-              </div>
+
+                <div className="space-y-1.5 pl-1">
+                  <p className="text-xs text-muted-foreground/50 font-medium tracking-wide uppercase">
+                    What you brought in
+                  </p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {session.ruminationThought}
+                  </p>
+                </div>
+              </>
             ) : (
-              <div className="rounded-xl border border-border/40 p-5">
-                <p className="text-sm text-muted-foreground/60">
-                  This session ended before an insight was generated.
-                </p>
-              </div>
+              <>
+                <div className="space-y-1.5 pl-1">
+                  <p className="text-xs text-muted-foreground/50 font-medium tracking-wide uppercase">
+                    What you brought in
+                  </p>
+                  <p className="text-base text-foreground leading-relaxed">
+                    {session.ruminationThought}
+                  </p>
+                </div>
+
+                <div className="rounded-xl border border-border/30 p-5">
+                  <p className="text-sm text-muted-foreground/55 leading-relaxed">
+                    This session ended before an insight was reached.
+                  </p>
+                </div>
+              </>
             )}
+
+            <div className="flex items-center gap-2 pl-1">
+              <span
+                className={`w-1.5 h-1.5 rounded-full ${
+                  session.timerCompleted ? "bg-primary/50" : "bg-muted-foreground/25"
+                }`}
+              />
+              <p className="text-xs text-muted-foreground/40">
+                {session.timerCompleted ? "Completed" : "Partial"}
+              </p>
+            </div>
           </motion.div>
         )}
       </main>

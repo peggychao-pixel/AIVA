@@ -1,0 +1,58 @@
+The current “History” page does not actually feel like history.
+
+Right now it looks more like a session log, metadata list, or backend record list:
+- Before eating
+- After eating
+- Partial
+- timestamp
+
+That is not enough to create a meaningful sense of history for the user.
+
+Main issue:
+This page currently reflects technical history, not psychological history.
+
+A real Untangle history should help the user recognize:
+- what they were tangled in
+- what kind of loop it was
+- what line or moment mattered
+- what keeps recurring
+- what has softened over time
+
+Please rethink the History page around this principle:
+History should feel like revisiting real moments, not browsing log entries.
+
+What to change:
+1. Make each history entry content-first, not metadata-first
+Instead of leading with generic labels like “Before eating,” surface something meaningful such as:
+- the user’s selected signal
+- the user’s typed input
+- the core untangle theme
+- a saved anchor line
+- the most representative sentence from that session
+
+2. Reduce reliance on generic categories
+“Before eating” / “After eating” can remain as secondary metadata, but should not be the main identity of the card
+
+3. Make the page feel like personal emotional history
+Entries should help the user think:
+- “Oh, this was the time I got stuck on wasted room”
+- “This was when wanting felt not allowed”
+- “This was the full-but-not-landed moment”
+
+4. Consider stronger history structures
+Explore whether the page should emphasize one or more of these:
+- recent moments
+- saved lines / anchor lines
+- recurring loops
+- moments that were partial vs. fully untangled
+- grouped themes instead of just chronological logging
+
+5. Improve detail pages accordingly
+When opening a past session, the user should see the actual knot, not only generic labels or thin metadata
+
+Goal:
+Untangle’s History should feel like a map of past inner moments, not a raw activity log.
+It should answer:
+“What was happening in me?”
+not just:
+“What session occurred?”

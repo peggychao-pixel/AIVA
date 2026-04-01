@@ -22,9 +22,9 @@ export function History() {
         </header>
 
         <div className="space-y-2 mb-10">
-          <h1 className="text-2xl text-foreground font-medium">Session history</h1>
+          <h1 className="text-2xl text-foreground font-medium">Past moments</h1>
           <p className="text-sm text-muted-foreground">
-            Tap a session to read it again.
+            Tap a moment to revisit it.
           </p>
         </div>
 
@@ -44,9 +44,9 @@ export function History() {
             animate={{ opacity: 1 }}
             className="border border-border/50 rounded-xl p-12 text-center"
           >
-            <p className="text-sm text-muted-foreground font-medium">No sessions yet</p>
+            <p className="text-sm text-muted-foreground font-medium">Nothing here yet</p>
             <p className="text-xs text-muted-foreground/60 mt-2">
-              Start a conversation. It will appear here.
+              Start a session. It will appear here.
             </p>
           </motion.div>
         ) : (
@@ -59,50 +59,58 @@ export function History() {
                 transition={{ delay: index * 0.04 }}
               >
                 <Link href={`/history/${session.id}`}>
-                  <div
-                    className="
-                      border border-border/50 rounded-xl p-5 bg-card/60 space-y-3
-                      cursor-pointer select-none
-                      transition-all duration-150
-                      hover:border-border hover:bg-card hover:shadow-sm
-                      active:scale-[0.99] active:bg-muted/30
-                    "
-                  >
-                    <div className="flex items-start justify-between gap-4">
-                      <div className="flex items-center gap-2.5 min-w-0">
+                  {session.aiResponse ? (
+                    <div
+                      className="
+                        border border-border/50 rounded-xl p-5 bg-card/60
+                        cursor-pointer select-none
+                        transition-all duration-150
+                        hover:border-border hover:bg-card hover:shadow-sm
+                        active:scale-[0.99] active:bg-muted/30
+                      "
+                    >
+                      <div className="flex items-start justify-between gap-3">
+                        <p className="text-sm text-foreground leading-relaxed line-clamp-3 flex-1">
+                          {session.aiResponse}
+                        </p>
+                        <span className="text-muted-foreground/30 text-sm leading-none flex-shrink-0 mt-0.5">›</span>
+                      </div>
+                      <div className="flex items-center gap-1.5 mt-3">
                         <span
-                          className={`w-1.5 h-1.5 rounded-full flex-shrink-0 mt-0.5 ${
-                            session.timerCompleted ? "bg-primary" : "bg-muted-foreground/30"
+                          className={`w-1 h-1 rounded-full flex-shrink-0 ${
+                            session.timerCompleted ? "bg-primary/60" : "bg-muted-foreground/25"
                           }`}
                         />
-                        <span className="text-sm text-foreground leading-snug truncate">
+                        <p className="text-xs text-muted-foreground/50 truncate flex-1">
                           {session.ruminationThought}
+                        </p>
+                        <span className="text-muted-foreground/30 text-xs">·</span>
+                        <span className="text-xs text-muted-foreground/40 flex-shrink-0">
+                          {format(parseISO(session.createdAt), "MMM d")}
                         </span>
-                      </div>
-                      <div className="flex items-center gap-2 flex-shrink-0">
-                        <span
-                          className={`text-xs border px-2.5 py-1 rounded-full ${
-                            session.timerCompleted
-                              ? "border-primary/30 text-primary/70"
-                              : "border-border/60 text-muted-foreground"
-                          }`}
-                        >
-                          {session.timerCompleted ? "Complete" : "Partial"}
-                        </span>
-                        <span className="text-muted-foreground/30 text-sm leading-none">›</span>
                       </div>
                     </div>
-
-                    {session.aiResponse && (
-                      <p className="text-xs text-muted-foreground pl-4 border-l border-border/40 leading-relaxed line-clamp-2">
-                        {session.aiResponse}
+                  ) : (
+                    <div
+                      className="
+                        border border-border/30 rounded-xl p-5 bg-card/30
+                        cursor-pointer select-none
+                        transition-all duration-150
+                        hover:border-border/50 hover:bg-card/50
+                        active:scale-[0.99]
+                      "
+                    >
+                      <div className="flex items-start justify-between gap-3">
+                        <p className="text-sm text-muted-foreground leading-relaxed flex-1">
+                          {session.ruminationThought}
+                        </p>
+                        <span className="text-muted-foreground/20 text-sm leading-none flex-shrink-0 mt-0.5">›</span>
+                      </div>
+                      <p className="text-xs text-muted-foreground/35 mt-3">
+                        {format(parseISO(session.createdAt), "MMM d")} · ended before an insight
                       </p>
-                    )}
-
-                    <p className="text-xs text-muted-foreground/40">
-                      {format(parseISO(session.createdAt), "MMM d, yyyy · HH:mm")}
-                    </p>
-                  </div>
+                    </div>
+                  )}
                 </Link>
               </motion.div>
             ))}
