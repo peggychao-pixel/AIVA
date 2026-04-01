@@ -1,0 +1,68 @@
+Please add this psychological insight to Untangle’s user model and interpretation logic.
+
+Important:
+Do not reduce this to calories, weight fear, or generic “trigger food” language.
+Keep Untangle focused on emotional risk, body-memory, aftermath fear, and preserving the ability to land later meals safely.
+
+New insight:
+Sometimes the user is very tense around a food not only because it is tempting, rich, or high-impact, but because that food has caused a bad physical aftermath before.
+
+Example:
+A food like a donut may have previously caused stomach pain, heaviness, nausea, or enough discomfort that it almost ruined dinner afterward.
+So when the user encounters that food again, the fear is not just:
+- “This is calorie-dense”
+- “This is indulgent”
+- “This might make me lose control”
+
+It may also be:
+- “This has hurt me before”
+- “What if this steals the rest of the meal?”
+- “What if I pay for this later?”
+- “What if this takes away my appetite, comfort, or ability to eat what I actually care about afterward?”
+
+Please make Untangle understand:
+Some food anxiety comes from real aftermath memory.
+The user may be responding not only to craving or shame, but to a remembered physical consequence.
+
+This means the product should recognize a difference between:
+1. fear based on restriction / body image / calorie anxiety
+and
+2. fear based on prior bodily fallout, discomfort, ruined appetite, or loss of room for later eating
+
+Helpful framing:
+This is not just “I’m scared of the food.”
+It is often:
+“I’m scared of what happened last time happening again.”
+
+Important nuance:
+If the user is able to eat even a small amount of a previously loaded food without being swallowed by panic or the old script, that can be a meaningful moment.
+Not because she “broke a rule,” but because she touched something that used to carry a lot of fear, pull, or consequence.
+
+Please reflect this in:
+- interpretation logic
+- food-specific fear branches
+- aftermath-related flows
+- before-eating and after-eating reflections
+- any moment where the user is afraid a food might “steal” the rest of the meal
+
+Helpful language direction:
+- “Part of what may make this food feel charged is that your body remembers paying for it before.”
+- “This may be less about the food being forbidden, and more about not trusting what it might do afterward.”
+- “Sometimes the fear is not the bite itself — it is the fallout you remember.”
+- “A food can feel risky because it once took more than the moment itself.”
+- “This may feel loaded because it has threatened later comfort or later eating before.”
+
+Also add this positive interpretation rule:
+If the user eats a small amount of a previously feared food and feels proud, Untangle should be able to reflect that as a meaningful softening moment:
+- not all-or-nothing
+- not total avoidance
+- not total collapse
+- a small contact with something that used to feel highly charged
+
+Possible tone direction:
+- “You touched something that used to feel much more dangerous.”
+- “This may matter because the food did not immediately take over the whole moment.”
+- “What feels meaningful here may be that an old fear was present, but it did not fully run the show.”
+
+Preserve Untangle’s original direction:
+an emotional-support / rumination-interruption product that helps users name, soften, and land difficult food-related spirals.
