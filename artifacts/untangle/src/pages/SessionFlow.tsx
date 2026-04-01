@@ -48,7 +48,7 @@ const LAYER2_DATA: Record<"en" | "tc", Record<Mode, { question: string; chips: s
   en: {
     before: {
       question: "What feels wrong before you even start?",
-      chips: ["I'm afraid I'll choose wrong", "I can't stop comparing", "I'm worried I'll regret it", "I'm panicking and I haven't even decided yet", "I'm so hungry I feel less in control", "Let me type it out"],
+      chips: ["I'm afraid I'll choose wrong", "I can't stop comparing", "I'm worried I'll regret it", "I'm panicking and I haven't even decided yet", "I'm so hungry I feel less in control", "I want it, but I don't feel allowed to", "Let me type it out"],
     },
     after: {
       question: "Which of these feels closest right now?",
@@ -66,7 +66,7 @@ const LAYER2_DATA: Record<"en" | "tc", Record<Mode, { question: string; chips: s
   tc: {
     before: {
       question: "開始之前，什麼感覺不對？",
-      chips: ["我怕選錯", "我停不下來比較", "我怕自己會後悔", "我還沒決定，已經開始慌了", "我太餓了，覺得自己快要失控", "讓我自己打"],
+      chips: ["我怕選錯", "我停不下來比較", "我怕自己會後悔", "我還沒決定，已經開始慌了", "我太餓了，覺得自己快要失控", "我想要，但感覺自己沒有資格", "讓我自己打"],
     },
     after: {
       question: "現在最卡你的，比較像哪一句？",
@@ -163,6 +163,26 @@ const UI_TEXT = {
 } as const;
 
 const BROAD_CHIP_ROUTING: Record<string, { response: string; suggestions: string[] }> = {
+  "I want it, but I don't feel allowed to": {
+    response: "What does 'not allowed' feel closest to right now?",
+    suggestions: [
+      "I feel like I haven't done enough to deserve it",
+      "Wanting it already feels like something's wrong",
+      "I feel like I need a reason — hunger doesn't feel like enough",
+      "I'm not sure if I'm actually hungry or just wanting",
+      "Let me type it",
+    ],
+  },
+  "我想要，但感覺自己沒有資格": {
+    response: "這個「沒有資格」，比較像哪一種？",
+    suggestions: [
+      "我覺得我還沒做到什麼，不值得吃這個",
+      "光是想要這個，感覺就已經不對了",
+      "我覺得我需要一個理由——餓好像不夠",
+      "我不確定我是真的餓，還是只是想要",
+      "讓我自己打",
+    ],
+  },
   "I can't explain it — I'm just still stuck": {
     response: "What does 'still stuck' feel closest to?",
     suggestions: [

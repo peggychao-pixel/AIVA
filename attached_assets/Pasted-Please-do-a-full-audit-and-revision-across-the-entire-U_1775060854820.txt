@@ -1,0 +1,116 @@
+Please do a full audit and revision across the entire Untangle app for this recurring structural problem:
+
+The layers are still not separated enough logically.
+
+Right now, many flows appear to have two layers, but layer 2 often acts like a reinterpretation or correction of layer 1, instead of a true expansion.
+This makes the experience feel like:
+- the user gives a signal
+- the app tells them what the signal “really means”
+
+That creates the same class of problem across multiple branches:
+- narrowing too early
+- overcommitting to one interpretation
+- sounding too definitive
+- collapsing complexity too quickly
+- making the second layer feel like a verdict instead of a gentle opening
+
+Core principle to apply everywhere:
+Layer 1 = the user’s live signal / entry point / what is active right now
+Layer 2 = a gentle expansion of what may be making that signal feel heavy
+
+Very important:
+Layer 2 should NOT sound like:
+- “You’re not really X, you’re actually Y”
+- “This is really about...”
+- “What’s actually happening is...”
+- a smarter reinterpretation of the user’s first signal
+- a replacement of the user’s wording with the model’s “truer” explanation
+
+Layer 2 SHOULD sound more like:
+- “Part of what may make this hard is...”
+- “This can feel heavier when...”
+- “Sometimes this kind of moment carries...”
+- “It may not be only about X — it may also carry...”
+- “Part of the knot may be...”
+- “It may feel loaded because...”
+
+Goal:
+Make layer 1 feel valid on its own.
+Make layer 2 feel like added depth, not correction or replacement.
+
+Please apply this same fix everywhere this issue appears:
+- Before eating flows
+- After eating flows
+- Quick untangle outputs
+- Follow-up questions
+- Untangle moments
+- Stop lines
+- CTA transitions
+- Typed input interpretation
+- Any “go deeper / different angle” logic
+- Any branch where the app currently over-explains or over-defines the user
+
+Please specifically review for these repeated issues:
+1. first tap being treated as a conclusion instead of a signal
+2. second layer sounding like a verdict
+3. “not X, actually Y” sentence structure
+4. over-interpretation that boxes the user in
+5. insight that sounds smart but does not create landing
+6. closure language appearing before the user is actually more settled
+7. option sets that feel too diagnostic, clinical, or over-classified
+8. branches that preserve less emotional openness than others
+
+Please revise the whole app with these design principles:
+- First tap = signal, not conclusion
+- Each branch = lens, not verdict
+- Layer 1 = what is active
+- Layer 2 = what may be adding weight
+- Insight should lead toward softening, not overclassification
+- Naming should create room, not collapse complexity
+- Untangle should feel like it is helping the user loosen a knot, not out-explain them
+
+Also include this branch in the audit and keep it as a supported before-eating theme:
+deserving / permission / qualification around eating
+
+Core pattern:
+Sometimes before eating, the user is not just deciding whether to eat.
+She is caught in a deeper loop about whether she is allowed to want food, allowed to satisfy desire, or allowed to respond to appetite without qualification.
+
+This can sound like:
+- not hungry, no qualification to eat
+- I want it, but I don’t feel allowed to
+- I don’t feel justified enough to eat this
+- wanting it already feels wrong
+- I feel like I need a reason to eat
+- I’m treating hunger like it needs proof
+
+Important:
+This is not just indecision.
+This is not just appetite confusion.
+This is a deserving / permission / qualification loop.
+
+Please make sure this branch follows the corrected two-layer logic:
+Layer 1:
+the live signal itself is already meaningful and should stand on its own
+Layer 2:
+should gently expand the weight inside it, without replacing it with a more “correct” explanation
+
+Good direction:
+- “Part of what may make this heavy is that wanting is being treated like something that needs permission.”
+- “This can get exhausting when desire no longer feels simple — it starts to feel like something you have to justify.”
+- “It may be hard to move because the question is no longer only ‘Do I want it?’ but also ‘Am I allowed to want it without proving enough?’”
+
+Please avoid lines like:
+- “You’re not just deciding whether to eat. You’re actually grappling with whether you’re allowed...”
+- “You’re not really stuck on X...”
+- any phrasing that overwrites the user’s first-layer wording
+
+Deliverables:
+1. identify all recurring examples of this two-layer problem across the app
+2. rewrite those branches with cleaner layer separation
+3. revise prompts / generation rules so new outputs follow the corrected logic
+4. preserve Untangle’s original direction as an emotional-support / rumination-interruption product
+5. keep the tone emotionally precise, low-shame, grounded, and usable
+
+Also please review option copy length and visual rhythm across the app.
+Shorten any overly long, visually disruptive options so option sets feel parallel, coherent, and easy to scan.
