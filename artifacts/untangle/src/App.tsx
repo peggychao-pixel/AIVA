@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import { SessionFlow } from "./pages/SessionFlow";
 import { History } from "./pages/History";
+import { SessionDetail } from "./pages/SessionDetail";
 import { Moments } from "./pages/Moments";
 import NotFound from "./pages/not-found";
 
@@ -21,6 +22,7 @@ function Router() {
     <Switch>
       <Route path="/" component={SessionFlow} />
       <Route path="/history" component={History} />
+      <Route path="/history/:id" component={SessionDetail} />
       <Route path="/moments" component={Moments} />
       <Route component={NotFound} />
     </Switch>

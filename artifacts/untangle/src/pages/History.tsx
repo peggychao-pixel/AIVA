@@ -24,7 +24,7 @@ export function History() {
         <div className="space-y-2 mb-10">
           <h1 className="text-2xl text-foreground font-medium">Session history</h1>
           <p className="text-sm text-muted-foreground">
-            Every conversation, logged.
+            Tap a session to read it again.
           </p>
         </div>
 
@@ -57,37 +57,53 @@ export function History() {
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.04 }}
-                className="border border-border/50 rounded-xl p-5 bg-card/60 space-y-3"
               >
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex items-center gap-2.5">
-                    <span
-                      className={`w-1.5 h-1.5 rounded-full flex-shrink-0 mt-0.5 ${
-                        session.timerCompleted ? "bg-primary" : "bg-muted-foreground/30"
-                      }`}
-                    />
-                    <span className="text-sm text-foreground leading-snug">{session.ruminationThought}</span>
-                  </div>
-                  <span
-                    className={`text-xs border px-2.5 py-1 rounded-full flex-shrink-0 ${
-                      session.timerCompleted
-                        ? "border-primary/30 text-primary/70"
-                        : "border-border/60 text-muted-foreground"
-                    }`}
+                <Link href={`/history/${session.id}`}>
+                  <div
+                    className="
+                      border border-border/50 rounded-xl p-5 bg-card/60 space-y-3
+                      cursor-pointer select-none
+                      transition-all duration-150
+                      hover:border-border hover:bg-card hover:shadow-sm
+                      active:scale-[0.99] active:bg-muted/30
+                    "
                   >
-                    {session.timerCompleted ? "Complete" : "Partial"}
-                  </span>
-                </div>
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="flex items-center gap-2.5 min-w-0">
+                        <span
+                          className={`w-1.5 h-1.5 rounded-full flex-shrink-0 mt-0.5 ${
+                            session.timerCompleted ? "bg-primary" : "bg-muted-foreground/30"
+                          }`}
+                        />
+                        <span className="text-sm text-foreground leading-snug truncate">
+                          {session.ruminationThought}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-2 flex-shrink-0">
+                        <span
+                          className={`text-xs border px-2.5 py-1 rounded-full ${
+                            session.timerCompleted
+                              ? "border-primary/30 text-primary/70"
+                              : "border-border/60 text-muted-foreground"
+                          }`}
+                        >
+                          {session.timerCompleted ? "Complete" : "Partial"}
+                        </span>
+                        <span className="text-muted-foreground/30 text-sm leading-none">›</span>
+                      </div>
+                    </div>
 
-                {session.aiResponse && (
-                  <p className="text-xs text-muted-foreground pl-4 border-l border-border/40 leading-relaxed line-clamp-2">
-                    {session.aiResponse}
-                  </p>
-                )}
+                    {session.aiResponse && (
+                      <p className="text-xs text-muted-foreground pl-4 border-l border-border/40 leading-relaxed line-clamp-2">
+                        {session.aiResponse}
+                      </p>
+                    )}
 
-                <p className="text-xs text-muted-foreground/40">
-                  {format(parseISO(session.createdAt), "MMM d, yyyy · HH:mm")}
-                </p>
+                    <p className="text-xs text-muted-foreground/40">
+                      {format(parseISO(session.createdAt), "MMM d, yyyy · HH:mm")}
+                    </p>
+                  </div>
+                </Link>
               </motion.div>
             ))}
           </div>
