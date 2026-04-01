@@ -1,0 +1,93 @@
+Please do a full Traditional Chinese (繁體中文) voice and localization debug across the entire Untangle app.
+
+Main problem:
+The current Chinese version often feels too literal, too flat, too translated-from-English, and not psychologically alive enough.
+Even when the meaning is technically understandable, the tone can feel weak, watery, unnatural, or unlike something a real user would feel or say internally in Chinese.
+
+This is NOT just a translation accuracy issue.
+It is a voice, tone, and emotional-language quality issue.
+
+Please audit and revise all Traditional Chinese copy across the app, including:
+- option labels
+- follow-up questions
+- Untangle moments
+- stop lines / anchor lines
+- CTA buttons
+- quick untangle outputs
+- typed-input interpretations
+- before eating / after eating branches
+- deeper-angle flows
+- saved moment language
+- any bilingual or mirrored EN/TC branch logic
+
+What to look for:
+1. overly literal translation from English
+2. phrasing that is grammatically correct but emotionally weak
+3. wording that does not sound like real inner language in Traditional Chinese
+4. abstract phrasing that sounds translated rather than felt
+5. unnatural collocations, especially around emotion, shame, desire, guilt, regret, heaviness, qualification, and inner conflict
+6. sentences that “mean the right thing” but do not land naturally in Chinese
+7. places where the Chinese feels thinner, flatter, or less precise than the English
+8. lines that lose the emotional mechanism and become vague
+
+Important product principle:
+The Traditional Chinese version should not sound like a direct translation of an English therapeutic interface.
+It should sound like emotionally precise, natural, low-shame inner-language for a Traditional Chinese-speaking user.
+
+Tone goals for Traditional Chinese:
+- natural
+- emotionally exact
+- grounded
+- low-shame
+- not preachy
+- not clinical
+- not overly literary
+- not self-help cheesy
+- not therapist-jargon
+- not AI-translated sounding
+
+Please preserve Untangle’s product voice:
+- psychologically sharp
+- gentle but not soft in a vague way
+- clear but not robotic
+- emotionally meaningful
+- concise enough to scan on mobile
+
+Specific instruction:
+Do not mirror English sentence structure when it creates weak Chinese.
+Rewrite for native-feeling Chinese, even if the structure changes.
+
+Examples of the problem:
+Current Chinese can sound like:
+- 「你不只是感到罪惡」
+- 「心裡有一個重的標準在檢驗你」
+- 「不舒服，不等於做錯。」
+
+These may be understandable but still feel translated, thin, or awkward.
+
+Preferred direction:
+Use Chinese that feels like actual inner-language, for example:
+- 「你卡住的不只是罪惡感」
+- 「比較像是心裡有一套很嚴的標準在審你」
+- 「難受，不代表你真的做錯了」
+
+Please apply this kind of revision logic everywhere, not just in this one branch.
+
+Also review CTAs and anchor lines in Chinese:
+They should feel usable and emotionally true, not like button-localization artifacts.
+
+Examples:
+Instead of stiff UI-like CTAs, prefer more natural options such as:
+- 「先停這裡就好」
+- 「先放這裡」
+- 「先讓它停在這裡」
+
+Please deliver:
+1. a full audit of recurring Traditional Chinese voice problems
+2. revised Chinese copy across the app
+3. updated translation / generation rules so future Chinese outputs do not regress into literal translated language
+4. examples of revised Chinese style principles for the team to follow
+
+Important:
+This is a full Traditional Chinese quality pass, not a simple translation pass.
+Please debug similar issues everywhere they appear.
