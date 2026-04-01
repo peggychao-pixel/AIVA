@@ -1,0 +1,46 @@
+Please improve this “I’m so hungry I feel less in control” branch.
+
+Current problem:
+The response is emotionally valid, but too abstract and incomplete.
+
+Current copy:
+“You're not just overthinking — you're hungry and running on fumes.
+When the body isn't taken care of, the mind tends to amplify everything.
+Eat first — the rest can wait.”
+
+Why it does not fully work:
+For some users, “eat first” is not actionable enough.
+The issue is not resistance to eating — the issue is that when they are too hungry / overwhelmed, they may not know what to eat unless there is one concrete thing they can mentally grab onto.
+So the response creates recognition, but not landing.
+
+Important product insight:
+When the user is very hungry and feels less in control, they may not need more explanation.
+They may need help moving from abstract overwhelm to one concrete edible next step.
+
+Please revise this branch using the following principles:
+1. Validate the state
+2. Reduce the feeling of global overwhelm
+3. Help narrow the next step
+4. Move from “eat something” to “find one concrete thing”
+5. Do not sound like a diet app, nutrition coach, or generic self-help app
+6. Keep the tone gentle, specific, low-shame, and usable
+
+Desired direction:
+Instead of ending on “Eat first,” end on something more actionable, such as:
+- you do not need to solve the whole meal right now
+- you only need one concrete starting point
+- pick one thing you can actually picture
+- let the next step be specific, not perfect
+
+Please revise the copy so it helps the user feel:
+“I do not need to figure everything out. I just need one real thing to start with.”
+
+Possible tone direction:
+“You do not need to solve dinner all at once.
+Right now, the goal is not the perfect choice — it is finding one thing concrete enough to begin with.”
+
+Or:
+“When you are this hungry, the hardest part may be that everything still feels too open.
+Try not to solve the whole meal in your head. Just get to one specific thing you can actually picture.”
+
+Please update this branch so it creates a clearer landing, not just insight.
