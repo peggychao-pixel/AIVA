@@ -1,0 +1,81 @@
+Please do a full UX/content audit across the entire Untangle app for the same class of problems we have been noticing.
+
+Main request:
+Review all flows — especially Before, After, quick untangle, follow-up questions, untangle moments, stop lines, and CTA buttons — and check for structural, tonal, and UX inconsistencies.
+
+We are seeing repeated issues such as:
+- the app narrows too early
+- first-tap choices become overcommitted interpretations
+- reflections sound too definitive
+- some flows feel like questionnaires or symptom checkers
+- some branches over-explain without actually helping the user land
+- some CTAs promise closure before the user feels settled
+- some option sets feel tonally inconsistent with the rest of the screen
+- some copy is too long, too analytical, too clinical, or too abstract for the emotional state the user is in
+
+Please audit the whole app for these issues, not just one branch.
+
+What to review across all flows:
+1. Option length and visual rhythm
+   - check whether any options are noticeably too long, too dense, or too visually disruptive compared to the rest
+   - shorten or split where needed
+   - keep option sets feeling parallel and coherent
+
+2. First-tap logic
+   - check whether first-layer options are being treated as signals or as conclusions
+   - revise branches that lock into one interpretation too quickly
+
+3. Follow-up question quality
+   - check whether second-step questions genuinely open exploration or prematurely narrow the user into a single frame
+   - avoid making follow-ups feel like diagnostic funnels
+
+4. Untangle moment copy
+   - check whether reflections sound like grounded, gentle hypotheses rather than verdicts
+   - soften anything that feels overly conclusive, therapist-like, or “I know what you really mean”
+
+5. Emotional landing
+   - check whether flows actually help the user feel more settled, or only provide interpretation
+   - revise places where the app names the knot but does not help the user come down from it
+
+6. CTA honesty
+   - review buttons like “Close this loop” and similar language
+   - make sure CTA wording matches what the user actually feels at that point
+   - avoid promising closure too early
+
+7. Tone consistency
+   - check whether the app stays emotionally precise, grounded, low-shame, and usable
+   - remove anything that sounds like a diet app, symptom checker, generic self-help coach, budgeting app, or overly abstract therapist bot
+
+8. UI-pattern consistency
+   - check whether screens feel too much like forms or quizzes
+   - identify where the experience should feel more like untangling and less like answering labeled boxes
+
+Specific issue to fix right now:
+One of the “after eating” options is too long and visually jarring:
+“I ate something not worth it, and now I’m scared I won’t have room for the meal I actually care about”
+
+This option is emotionally real, but too long and too visually disruptive compared to the other choices.
+Please rewrite it into a shorter, cleaner option that preserves the meaning.
+
+Good directions could be things like:
+- I ate something not worth it, and now I regret the space it took
+- I ate something not worth it, and now I feel like I wasted room
+- I’m stuck on the fact that it took room from what I actually wanted
+- I ate something I didn’t really want, and now I regret using the room
+- I feel like I used up room on the wrong thing
+
+Please review all other option sets for similar outliers.
+
+Important design principles:
+- First tap = signal, not conclusion
+- Each branch = lens, not verdict
+- Insight should not become overclassification
+- Naming should lead toward softening and landing
+- Keep copy concise, emotionally true, and psychologically accurate
+- Preserve Untangle’s original direction as an emotional-support / rumination-interruption product
+
+Deliverables:
+1. identify the major recurring issues across the app
+2. propose revised principles for all flows
+3. rewrite the problematic option sets and branches
+4. make the app feel more coherent end-to-end without changing the core product
