@@ -1,0 +1,156 @@
+Please update Untangle in two connected ways:
+1. refine the psychological model
+2. explore a UI direction that feels more like “untangling” and less like filling out a form
+
+Important:
+Do NOT change the core product category.
+Untangle should remain an emotional-support / rumination-interruption product for inner conflict around food, craving, anticipation, guilt, overwhelm, and aftermath.
+Do NOT turn it into a calorie tracker, nutrition coach, meal planner, generic ED app, or life advice bot.
+
+-----------------------------------
+PART 1 — PSYCHOLOGICAL MODEL UPDATES
+-----------------------------------
+
+A. First-tap should not narrow too early
+Current issue:
+Some “before eating” branches become too restrictive too fast. A first-layer tap can make the experience feel like the user has already been boxed into one explanation.
+
+Design principle:
+First tap = signal, not conclusion.
+Each branch = lens, not verdict.
+
+Please revise the branching logic so:
+- first-layer options identify what is active, not what the whole problem is
+- second-layer prompts expand understanding rather than overcommitting too quickly
+- reflections sound like grounded hypotheses, not therapist-style conclusions
+- mixed emotional reality is preserved longer
+
+Use softer framing such as:
+- “Part of what may be making this hard...”
+- “It sounds like...”
+- “This may be less about X itself, and more about...”
+
+Avoid deterministic lines like:
+- “You’re not really struggling with X, you’re actually struggling with Y”
+
+B. Capture emotional risk, not just calories or restriction
+Untangle should understand that sometimes the user is hungry but still does not want to risk a certain food.
+This is not necessarily because she wants to restrict or because calories are the core problem.
+
+Often the real question is:
+- Will this food actually hold me?
+- Will it make my emotional state worse?
+- Will it trigger more pull and less control?
+- Will it cost a lot psychologically and still not satisfy anything real?
+
+Important distinction:
+Some foods feel dangerous not because they are “bad,” but because they are high-trigger and low-holding for the state the user is in:
+- easy to enter
+- hard to stop
+- poor at creating real steadiness or safety
+- likely to intensify rumination or aftermath
+
+Please make sure Untangle can distinguish between:
+1. fear of food because of body/weight concerns
+and
+2. fear of food because it feels destabilizing, risky, unsatisfying, or hard to land safely
+
+Treat this as a core internal question:
+“Will this actually hold me?”
+
+C. Add this new insight: food-shape / whole-ness anxiety
+Please add another important psychological insight:
+
+Sometimes what distresses the user is not only what she ate, but the fact that it does not feel like a coherent, recognizable whole.
+
+For example:
+A combination of foods may actually meet different needs and help her feel more physically or emotionally held.
+But if it does not look like “a real snack” or “a proper meal” or “one complete thing,” she may feel agitated, suspicious, or dysregulated afterward.
+
+This is not just about nutrition or calories.
+It is about lack of form coherence.
+
+Key idea:
+The user may feel distress when the food does not feel like:
+- one recognizable unit
+- one named thing
+- one socially legible snack or meal
+- one whole, coherent object she can mentally accept and “close”
+
+This can create panic such as:
+- “This doesn’t feel like a real snack”
+- “This feels too random / pieced together”
+- “This doesn’t feel like a whole”
+- “This feels abnormal even if it helped”
+
+Please reflect this nuance in Untangle’s interpretation logic.
+
+Desired behavior:
+- recognize that distress may come from lack of coherence, not just from the food itself
+- understand that the mind may be looking for a form it can accept, not only a calorie count or emotional fix
+- help the user feel less defective if the food was “assembled” rather than textbook
+- distinguish between “not elegant” and “not valid”
+
+Helpful language direction:
+- “Part of what may feel unsettling is not just what you ate, but that it doesn’t feel like one whole, nameable thing.”
+- “This may be less about whether it was wrong, and more about whether it felt coherent enough to mentally land.”
+- “Sometimes the food can help, but still feel hard to trust if it doesn’t look like a complete unit.”
+
+D. Make high-hunger branches more concrete
+Current issue:
+In branches like “I’m so hungry I feel less in control,” responses such as “Eat first” are emotionally valid but too abstract.
+
+When the user is this hungry, she may not need more explanation.
+She may need help moving from vague overwhelm to one concrete edible next step.
+
+Please revise those branches so they:
+- validate the hunger state
+- reduce global overwhelm
+- move from “eat something” to “find one concrete thing”
+- help the user feel she does not have to solve everything at once
+
+-----------------------------------
+PART 2 — UI DIRECTION UPDATE
+-----------------------------------
+
+Current concern:
+The current box-by-box option UI is clear, but it can feel too much like:
+- a questionnaire
+- a symptom checker
+- a decision tree
+- a form with emotional labels
+
+This weakens the core feeling of Untangle.
+The interface should feel less like answering boxes and more like gradually loosening a knot of thoughts, pulls, fears, and spirals.
+
+Important:
+Do NOT make the UI abstract, confusing, or purely decorative.
+Do NOT sacrifice usability.
+Keep interactions simple and tappable on mobile.
+
+Please explore a hybrid interaction model where:
+- the center of the screen represents a tangled mental knot / messy thought cluster / emotional spiral
+- around it are selectable thoughts, fears, or “threads”
+- each option feels like one strand of the knot, not a diagnostic category
+- when tapped, a selected thread becomes highlighted / separated / gently pulled out
+- the knot visually softens, loosens, or partially clears as the conversation progresses
+- the experience feels like untangling, not form completion
+
+Design principles:
+1. Keep first interaction lightweight and clear
+2. Preserve fast tapping and low cognitive load
+3. Make emotional states feel visualized, not just labeled
+4. Each choice should feel like a thread or pull, not a box in a form
+5. The visual system should move from chaos -> clarity
+6. Keep the tone grounded, emotionally intelligent, and not overly whimsical
+7. Avoid making it feel like a quiz, mood tracker, horoscope app, or meditation toy
+
+Please propose:
+1. a refined UI concept description
+2. how this can stay highly usable on mobile
+3. what should remain simple cards/buttons versus what should become thread-based
+4. a minimal implementation plan without rebuilding the whole app
+
+Overall goal:
+Make Untangle feel more like untangling.
+Keep it emotionally precise, low-shame, usable, and distinct from generic chatbot forms.

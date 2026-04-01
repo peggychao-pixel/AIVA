@@ -1033,23 +1033,25 @@ export function SessionFlow() {
               transition={{ duration: 0.2 }}
               className="flex-1 overflow-y-auto px-6 py-10 space-y-8"
             >
-              <div>
+              <div className="space-y-5">
+                {/* Thread accent */}
+                <svg width="44" height="20" viewBox="0 0 44 20" fill="none" className="opacity-25 text-foreground" aria-hidden="true">
+                  <path d="M2 16 C7 4, 16 18, 24 8 C30 1, 36 13, 42 9" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
+                  <path d="M4 11 C10 19, 20 3, 28 14 C34 20, 38 7, 42 13" stroke="currentColor" strokeWidth="0.7" strokeLinecap="round" strokeDasharray="2 3"/>
+                </svg>
                 <p className="text-2xl text-foreground font-medium leading-snug">
                   {l2.question}
                 </p>
               </div>
 
-              <div className="space-y-2">
+              <div className="flex flex-wrap gap-2">
                 {l2.chips.slice(0, -1).map((chip) => (
                   <button
                     key={chip}
                     onClick={() => handleLayer2Chip(chip)}
-                    className="w-full text-left px-5 py-4 border border-border/60 bg-card/50 hover:border-primary/30 hover:bg-primary/5 rounded-xl transition-all duration-150 group"
+                    className="text-left px-4 py-3 border border-border/60 bg-card/50 hover:border-primary/40 hover:bg-primary/5 rounded-2xl transition-all duration-150 text-sm text-foreground leading-snug"
                   >
-                    <div className="flex items-center justify-between gap-4">
-                      <p className="text-sm text-foreground">{chip}</p>
-                      <span className="text-muted-foreground/50 group-hover:text-primary transition-colors text-base">→</span>
-                    </div>
+                    {chip}
                   </button>
                 ))}
               </div>
@@ -1064,7 +1066,6 @@ export function SessionFlow() {
                     <p className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">
                       {l2.chips[l2.chips.length - 1]}
                     </p>
-                    <span className="text-xs text-muted-foreground/50 group-hover:text-primary transition-colors">→</span>
                   </div>
                 </button>
               ) : (
