@@ -7,11 +7,10 @@ import { SessionDetail } from "./pages/SessionDetail";
 import { Moments } from "./pages/Moments";
 import NotFound from "./pages/not-found";
 
-// Use a reasonable staleTime to avoid over-fetching
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 1000 * 60 * 5, // 5 minutes
+      staleTime: 1000 * 60 * 5,
       retry: 1,
     },
   },

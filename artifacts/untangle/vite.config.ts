@@ -57,6 +57,20 @@ export default defineConfig({
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
   },
+  optimizeDeps: {
+    exclude: [
+      "react-native",
+      "react-native-svg",
+      "react-native-gesture-handler",
+      "react-native-reanimated",
+      "react-native-safe-area-context",
+      "@react-native-async-storage/async-storage",
+      "expo",
+      "expo-router",
+      "expo-font",
+      "expo-splash-screen",
+    ],
+  },
   server: {
     port,
     host: "0.0.0.0",

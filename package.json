@@ -16,6 +16,7 @@
   "dependencies": {
     "expo": "^55.0.9",
     "react": "19.2.0",
-    "react-native": "^0.83.4"
+    "react-native": "^0.83.4",
+    "react-native-webview": "13.16.0"
   }
 }
