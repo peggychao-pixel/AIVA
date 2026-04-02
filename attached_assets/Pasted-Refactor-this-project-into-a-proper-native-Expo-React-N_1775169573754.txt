@@ -1,0 +1,124 @@
+Refactor this project into a proper native Expo / React Native iOS app for TestFlight/App Store submission.
+
+CRITICAL RULE:
+Do NOT change the product behavior, information architecture, user flow, copy, conversational logic, feature set, or overall UX intent.
+Preserve all current functionality and flow exactly as much as possible.
+This is a technical migration and stabilization task, not a product redesign.
+
+PRIMARY GOAL:
+Replace the current web-style implementation with a native React Native implementation that works reliably in Expo / EAS / TestFlight / App Store.
+
+CONTEXT:
+The current app appears to rely on web-style patterns and components, including things like:
+- div / button / input / textarea
+- className-based styling
+- framer-motion
+- wouter
+- HTML element refs such as HTMLDivElement / HTMLTextAreaElement
+- web routing assumptions
+This causes instability and blank-screen issues in native iOS builds.
+
+REQUIRED MIGRATION:
+1. Convert all UI in the Untangle session flow to React Native primitives:
+   - div -> View
+   - span / p / h1 etc -> Text
+   - button -> Pressable or TouchableOpacity
+   - input / textarea -> TextInput
+   - scrolling containers -> ScrollView / FlatList / KeyboardAvoidingView where appropriate
+
+2. Remove web-only dependencies from the mobile path:
+   - remove framer-motion usage from native screens
+   - remove wouter usage from native screens
+   - remove import.meta usage
+   - remove HTML element refs and replace with React Native refs
+
+3. Use a proper native navigation solution:
+   - prefer expo-router if cleanly supported in this project
+   - otherwise use @react-navigation/native
+   - preserve the same routes/screens and flow:
+     - Home
+     - Layer 2 selection
+     - Chat/session flow
+     - History
+     - Session detail
+     - Moments
+
+4. Preserve ALL existing product logic and content:
+   - mode selection logic
+   - layer 2 chip routing
+   - bilingual behavior
+   - quick untangle flow
+   - save moment flow
+   - history flow
+   - moments flow
+   - anchor phrase behavior
+   - satiety check behavior
+   - insight / deeper layer cards
+   - closure actions
+   - voice transcript integration if possible
+If anything cannot be preserved exactly, implement the closest native equivalent and clearly document it.
+
+5. Preserve all existing text/copy:
+   - do not rewrite the product language unless necessary for rendering
+   - keep English and Traditional Chinese text and behavior intact
+   - preserve all chip labels, prompts, button labels, headers, and responses
+
+6. Styling:
+   - Keep the current visual feel as closely as possible:
+     - calm, minimal, emotionally gentle
+     - soft borders
+     - rounded cards
+     - light neutral background
+     - subtle hierarchy
+   - The UI should still feel like Untangle, not like a generic starter app
+   - You may use StyleSheet or NativeWind, but do NOT redesign the app
+
+7. Native stability requirements:
+   - no blank screen on launch
+   - no web-only runtime assumptions
+   - no unsupported browser APIs
+   - no dependence on CSS-only layout behavior
+   - no unsupported animation libraries in native-only screens
+   - keyboard behavior should be handled properly on iPhone
+   - scrolling chat should remain usable
+
+8. Architecture requirements:
+   - make the native app entry clean and explicit
+   - avoid hacky root redirects through web entry files
+   - ensure App.tsx / native entry is stable
+   - separate native app code from legacy web-specific code if needed
+   - if needed, create a dedicated native folder / screen structure and migrate the existing Untangle flow into it
+
+9. Data/API integration:
+   - keep existing API hooks and business logic where possible
+   - preserve useUntangleChat, useCreateSession, useSaveMoment, useListMoments, useQuickUntangle, and VoiceButton integration if compatible
+   - if any hook depends on browser behavior, refactor it for native compatibility without changing functionality
+
+10. Deliverables:
+   - a working native Expo app structure
+   - native screens for the full Untangle flow
+   - removal or isolation of web-only code from the native path
+   - successful local Expo preview
+   - code ready for EAS build / TestFlight submission
+
+IMPORTANT:
+Before making changes, inspect the current Untangle flow carefully and preserve it.
+Do not simplify away features.
+Do not replace the app with a placeholder.
+Do not collapse multiple steps into one.
+Do not remove bilingual support.
+Do not remove history, moments, or quick untangle.
+Do not change the emotional tone.
+
+WORK STYLE:
+- First, identify all web-only files/components used by the current mobile path.
+- Then create the native screen structure.
+- Then migrate the existing flow screen by screen.
+- Then fix build/runtime issues.
+- Then verify the full end-to-end flow.
+
+At the end, provide:
+1. a summary of what was migrated
+2. which files were newly created
+3. which files were replaced or isolated
+4. any remaining issues blocking final App Store readiness

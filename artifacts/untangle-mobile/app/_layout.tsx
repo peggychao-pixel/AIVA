@@ -16,8 +16,15 @@ import { setBaseUrl } from "@workspace/api-client-react";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { LangProvider } from "@/context/LangContext";
 
-if (process.env.EXPO_PUBLIC_DOMAIN) {
-  setBaseUrl(`https://${process.env.EXPO_PUBLIC_DOMAIN}`);
+// Dev (Expo Go via Replit): EXPO_PUBLIC_DOMAIN is set by the Metro start script.
+// Production (EAS / App Store): EXPO_PUBLIC_API_URL must be set in eas.json env.
+const _apiUrl =
+  process.env.EXPO_PUBLIC_API_URL ||
+  (process.env.EXPO_PUBLIC_DOMAIN
+    ? `https://${process.env.EXPO_PUBLIC_DOMAIN}`
+    : null);
+if (_apiUrl) {
+  setBaseUrl(_apiUrl);
 }
 
 SplashScreen.preventAutoHideAsync();
@@ -53,7 +60,7 @@ export default function RootLayout() {
     <SafeAreaProvider>
       <ErrorBoundary>
         <QueryClientProvider client={queryClient}>
-          <GestureHandlerRootView>
+          <GestureHandlerRootView style={{ flex: 1 }}>
             <LangProvider>
               <RootLayoutNav />
             </LangProvider>

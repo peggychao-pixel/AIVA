@@ -33,7 +33,7 @@ Untangle is an AI-powered thinking partner that helps users notice and exit ment
 - `components/VoiceButton.tsx` — Hold-to-record mic button → transcribes via backend
 - `components/Timer.tsx`, `ReactionGame.tsx`, `AntiLoopMessages.tsx` — Available but not in main flow
 
-### Mobile (`artifacts/untangle-mobile/`)
+### Mobile (`artifacts/untangle-mobile/`) — App Store ready (native migration complete)
 - `app/(tabs)/index.tsx` — Full session flow mirroring web: mode grid, free-text input, QuickUntangle, layer2 chips, full chat with DeeperLayerCard/InsightCard/AnchorCard/SatietyCheck, closure buttons, language toggle, typing indicator
 - `components/DeeperLayerCard.tsx` — 3-section card (Surface/Underneath/Softer Hold)
 - `components/SatietyCheck.tsx` — 5-option satiety module for "after" mode
@@ -44,6 +44,14 @@ Untangle is an AI-powered thinking partner that helps users notice and exit ment
 - `components/ChatBubble.tsx` — User/assistant chat bubbles
 - `constants/product.ts` — Shared MODE_OPTIONS_DATA, LAYER2_DATA, BROAD_CHIP_ROUTING, UI_TEXT
 - `context/LangContext.tsx` — Global language state (tc/en) for history/moments tabs
+
+#### Native iOS fixes applied (EAS/App Store readiness)
+- `GestureHandlerRootView` has `style={{ flex: 1 }}` in `_layout.tsx` (required for layout)
+- `borderStyle: "dashed"` replaced with `"dotted"` everywhere (dashed is unreliable on iOS native)
+- `_layout.tsx` resolves API URL from `EXPO_PUBLIC_API_URL` (prod) → `EXPO_PUBLIC_DOMAIN` (dev) → null
+- `app.json` has `buildNumber: "1"` (required for App Store), `ITSAppUsesNonExemptEncryption: false`
+- `eas.json` has `EXPO_PUBLIC_API_URL` placeholder in production/preview env — **replace with actual deployed API URL before EAS build**
+- Apple credentials (appleId, ascAppId, appleTeamId) in `eas.json` submit profile must be filled before `eas submit`
 
 ## AI System Design
 

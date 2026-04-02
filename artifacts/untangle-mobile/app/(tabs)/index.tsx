@@ -1067,7 +1067,7 @@ const styles = StyleSheet.create({
   },
   quickBtn: {
     borderWidth: 1,
-    borderStyle: "dashed",
+    borderStyle: "dotted",
     borderRadius: 12,
     paddingHorizontal: 16,
     paddingVertical: 14,
@@ -1131,7 +1131,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 10,
     borderWidth: 1,
-    borderStyle: "dashed",
+    borderStyle: "dotted",
     borderRadius: 999,
     marginTop: 4,
   },

@@ -11,11 +11,17 @@
       "distribution": "internal",
       "ios": {
         "simulator": false
+      },
+      "env": {
+        "EXPO_PUBLIC_API_URL": "https://your-deployed-api-url.replit.app"
       }
     },
     "production": {
       "ios": {
         "buildConfiguration": "Release"
+      },
+      "env": {
+        "EXPO_PUBLIC_API_URL": "https://your-deployed-api-url.replit.app"
       }
     }
   },
