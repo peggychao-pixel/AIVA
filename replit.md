@@ -9,7 +9,7 @@ Untangle is an AI-powered thinking partner that helps users notice and exit ment
 ## Architecture
 
 - **Frontend (Web)**: React + Vite at `/` (`artifacts/untangle`)
-- **Frontend (iOS)**: Expo/React Native (`artifacts/untangle-mobile`) — 3-tab app (Home, Past moments, Moments)
+- **Frontend (iOS)**: Expo/React Native (`artifacts/untangle-mobile`) — 3-tab app (Home, History, Moments) — mirrors web app completely
 - **Backend**: Express 5 API server at `/api` (`artifacts/api-server`)
 - **Database**: PostgreSQL via Drizzle ORM (`lib/db`)
 - **AI**: OpenAI `gpt-4o-mini` via Replit AI Integrations (`lib/integrations-openai-ai-server`)
@@ -27,10 +27,23 @@ Untangle is an AI-powered thinking partner that helps users notice and exit ment
 
 ## Key Components
 
-- `artifacts/untangle/src/pages/SessionFlow.tsx` — Full app (home + conversation UI)
-- `artifacts/untangle/src/pages/History.tsx` — Session log
-- `artifacts/untangle/src/components/VoiceButton.tsx` — Hold-to-record mic button → transcribes via backend
-- `artifacts/untangle/src/components/Timer.tsx`, `ReactionGame.tsx`, `AntiLoopMessages.tsx` — Available but not in main flow
+### Web (`artifacts/untangle/src/`)
+- `pages/SessionFlow.tsx` — Full app (home + conversation UI, 1351 lines)
+- `pages/History.tsx` — Session log
+- `components/VoiceButton.tsx` — Hold-to-record mic button → transcribes via backend
+- `components/Timer.tsx`, `ReactionGame.tsx`, `AntiLoopMessages.tsx` — Available but not in main flow
+
+### Mobile (`artifacts/untangle-mobile/`)
+- `app/(tabs)/index.tsx` — Full session flow mirroring web: mode grid, free-text input, QuickUntangle, layer2 chips, full chat with DeeperLayerCard/InsightCard/AnchorCard/SatietyCheck, closure buttons, language toggle, typing indicator
+- `components/DeeperLayerCard.tsx` — 3-section card (Surface/Underneath/Softer Hold)
+- `components/SatietyCheck.tsx` — 5-option satiety module for "after" mode
+- `components/AnchorCard.tsx` — Anchor phrase display card
+- `components/QuickUntangleCard.tsx` — Quick untangle panel with thought input + insight
+- `components/TypingIndicator.tsx` — 3 animated dots typing indicator
+- `components/InsightCard.tsx` — Insight moment card with save button
+- `components/ChatBubble.tsx` — User/assistant chat bubbles
+- `constants/product.ts` — Shared MODE_OPTIONS_DATA, LAYER2_DATA, BROAD_CHIP_ROUTING, UI_TEXT
+- `context/LangContext.tsx` — Global language state (tc/en) for history/moments tabs
 
 ## AI System Design
 
