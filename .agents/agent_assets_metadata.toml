@@ -1,5 +1,10 @@
 uploads = []
-generated = []
+
+[[generated]]
+id = "8y4CDB7KAAevKsC6rDbHC"
+uri = "file://artifacts/untangle-mobile/assets/images/icon.png"
+type = "image"
+title = "untangle knot icon"
 
 [[outputs]]
 id = "qPpWKcUuwY3v5gQD-WV1k"

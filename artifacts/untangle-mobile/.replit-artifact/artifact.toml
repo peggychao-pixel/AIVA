@@ -1,0 +1,27 @@
+kind = "mobile"
+previewPath = "/untangle-mobile/"
+title = "Untangle iOS"
+version = "1.0.0"
+id = "artifacts/untangle-mobile"
+router = "expo-domain"
+
+[[integratedSkills]]
+name = "expo"
+version = "1.0.0"
+
+[[services]]
+ensurePreviewReachable = "/status"
+name = "expo"
+paths = [ "/untangle-mobile/" ]
+localPort = 19446
+
+[services.development]
+run = "pnpm --filter @workspace/untangle-mobile run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/untangle-mobile", "run", "build" ]
+run = [ "pnpm", "--filter", "@workspace/untangle-mobile", "run", "serve" ]
+
+[services.env]
+PORT = "19446"
+BASE_PATH = "/untangle-mobile/"

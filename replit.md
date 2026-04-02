@@ -8,11 +8,13 @@ Untangle is an AI-powered thinking partner that helps users notice and exit ment
 
 ## Architecture
 
-- **Frontend**: React + Vite at `/` (`artifacts/untangle`)
+- **Frontend (Web)**: React + Vite at `/` (`artifacts/untangle`)
+- **Frontend (iOS)**: Expo/React Native (`artifacts/untangle-mobile`) — 3-tab app (Home, Past moments, Moments)
 - **Backend**: Express 5 API server at `/api` (`artifacts/api-server`)
 - **Database**: PostgreSQL via Drizzle ORM (`lib/db`)
 - **AI**: OpenAI `gpt-4o-mini` via Replit AI Integrations (`lib/integrations-openai-ai-server`)
 - **Audio**: `speechToText` from `@workspace/integrations-openai-ai-server/audio`
+- **API Client**: `lib/api-client-react` — shared React Query hooks/functions with `setBaseUrl`/`setAuthTokenGetter` support
 
 ## Key Endpoints
 

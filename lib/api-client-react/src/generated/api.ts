@@ -29,6 +29,8 @@ import type {
   OpenaiConversationWithMessages,
   OpenaiError,
   OpenaiMessage,
+  QuickUntangleBody,
+  QuickUntangleResponse,
   SaveMomentBody,
   SendOpenaiMessageBody,
   Session,
