@@ -290,6 +290,62 @@ function intensityDots(n: number | null | undefined): string {
   return "●".repeat(n) + "○".repeat(5 - n);
 }
 
+function KnotSvg({ loose = false }: { loose?: boolean }) {
+  return (
+    <motion.svg
+      viewBox="0 0 180 100"
+      fill="none"
+      className="w-full max-w-[180px] text-foreground"
+      aria-hidden="true"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: loose ? 0.22 : 0.28 }}
+      transition={{ duration: 0.6 }}
+    >
+      {/* Main tangled loop */}
+      <motion.path
+        d="M18 50 C32 12, 68 80, 100 38 C122 14, 116 68, 84 56 C62 47, 50 62, 72 46 C88 34, 114 57, 96 46"
+        stroke="currentColor"
+        strokeWidth={loose ? 1.4 : 2.0}
+        strokeLinecap="round"
+        animate={{ pathLength: 1 }}
+        initial={{ pathLength: 0 }}
+        transition={{ duration: 1.2, ease: "easeOut" }}
+      />
+      {/* Secondary cross-thread */}
+      <motion.path
+        d="M28 65 C50 40, 82 72, 104 54 C118 40, 112 62, 94 68"
+        stroke="currentColor"
+        strokeWidth={loose ? 0.9 : 1.3}
+        strokeLinecap="round"
+        strokeDasharray="3 5"
+        animate={{ opacity: loose ? 0.5 : 0.7, pathLength: 1 }}
+        initial={{ opacity: 0, pathLength: 0 }}
+        transition={{ duration: 1.0, delay: 0.3, ease: "easeOut" }}
+      />
+      {/* Tight center knot */}
+      <motion.path
+        d="M58 44 C66 35, 80 50, 72 45 C65 40, 74 36, 78 43"
+        stroke="currentColor"
+        strokeWidth={loose ? 1.6 : 2.6}
+        strokeLinecap="round"
+        animate={{ opacity: loose ? 0.45 : 0.9, pathLength: 1 }}
+        initial={{ opacity: 0, pathLength: 0 }}
+        transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+      />
+      {/* Loose trailing thread */}
+      <motion.path
+        d="M110 44 C130 36, 148 52, 162 46"
+        stroke="currentColor"
+        strokeWidth={loose ? 1.1 : 1.5}
+        strokeLinecap="round"
+        animate={{ opacity: loose ? 0.4 : 0.55, pathLength: 1 }}
+        initial={{ opacity: 0, pathLength: 0 }}
+        transition={{ duration: 0.7, delay: 0.8, ease: "easeOut" }}
+      />
+    </motion.svg>
+  );
+}
+
 function InsightCard({
   content,
   anchorPhrase,
@@ -955,42 +1011,41 @@ export function SessionFlow() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="flex-1 overflow-y-auto px-6 py-10 space-y-8"
+              className="flex-1 overflow-y-auto px-6 py-8 flex flex-col gap-8"
             >
-              <div className="space-y-2">
-                <h1 className="text-3xl text-foreground font-medium leading-snug whitespace-pre-line">
-                  {t.headline}
-                </h1>
-                <p className="text-sm text-muted-foreground">
-                  {t.subtext}
-                </p>
+              {/* Knot + headline */}
+              <div className="flex flex-col items-center gap-5 pt-2">
+                <div className="text-center space-y-1">
+                  <h1 className="text-2xl text-foreground font-medium leading-snug whitespace-pre-line">
+                    {t.headline}
+                  </h1>
+                  <p className="text-sm text-muted-foreground">{t.subtext}</p>
+                </div>
+                <KnotSvg />
               </div>
 
-              <div className="space-y-2">
-                {modeOptions.map((opt) => (
-                  <button
+              {/* Mode threads — 2×2 bubble grid, not full-width cards */}
+              <div className="flex flex-wrap justify-center gap-3">
+                {modeOptions.map((opt, i) => (
+                  <motion.button
                     key={opt.id}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.08 + i * 0.07, duration: 0.3 }}
+                    whileHover={{ scale: 1.02, y: -2 }}
+                    whileTap={{ scale: 0.97 }}
                     onClick={() => handleModeCard(opt.id)}
-                    className="w-full text-left px-5 py-4 border border-border/60 bg-card/50 hover:border-primary/30 hover:bg-primary/5 rounded-xl transition-all duration-150 group"
+                    style={{ width: "calc(50% - 6px)" }}
+                    className="text-left px-4 py-4 border border-border/60 bg-card/50 hover:border-primary/40 hover:bg-primary/8 rounded-2xl transition-colors duration-150"
                   >
-                    <div className="flex items-center justify-between gap-4">
-                      <div>
-                        <p className="text-sm font-medium text-foreground">
-                          {opt.label}
-                        </p>
-                        <p className="text-xs text-muted-foreground mt-0.5">
-                          {opt.description}
-                        </p>
-                      </div>
-                      <span className="text-muted-foreground/50 group-hover:text-primary transition-colors text-base">
-                        →
-                      </span>
-                    </div>
-                  </button>
+                    <p className="text-sm font-medium text-foreground leading-snug">{opt.label}</p>
+                    <p className="text-xs text-muted-foreground/65 mt-1.5 leading-snug">{opt.description}</p>
+                  </motion.button>
                 ))}
               </div>
 
-              <form onSubmit={handleFreeSubmit} className="space-y-2">
+              {/* Free-type input */}
+              <form onSubmit={handleFreeSubmit}>
                 <div className="flex gap-2">
                   <input
                     type="text"
@@ -1010,7 +1065,7 @@ export function SessionFlow() {
               </form>
 
               {/* Quick Untangle */}
-              <div className="space-y-2">
+              <div>
                 <AnimatePresence>
                   {showQuick ? (
                     <QuickUntangleCard onClose={() => setShowQuick(false)} isTc={isTc} />
@@ -1053,41 +1108,42 @@ export function SessionFlow() {
               transition={{ duration: 0.2 }}
               className="flex-1 overflow-y-auto px-6 py-10 space-y-8"
             >
-              <div className="space-y-5">
-                {/* Thread accent */}
-                <svg width="44" height="20" viewBox="0 0 44 20" fill="none" className="opacity-25 text-foreground" aria-hidden="true">
-                  <path d="M2 16 C7 4, 16 18, 24 8 C30 1, 36 13, 42 9" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
-                  <path d="M4 11 C10 19, 20 3, 28 14 C34 20, 38 7, 42 13" stroke="currentColor" strokeWidth="0.7" strokeLinecap="round" strokeDasharray="2 3"/>
-                </svg>
+              <div className="flex flex-col items-start gap-4">
+                <KnotSvg loose />
                 <p className="text-2xl text-foreground font-medium leading-snug">
                   {l2.question}
                 </p>
               </div>
 
-              <div className="flex flex-wrap gap-2">
-                {l2.chips.slice(0, -1).map((chip) => (
-                  <button
+              {/* Thread pulls — organic pill layout, staggered */}
+              <div className="flex flex-wrap gap-2.5">
+                {l2.chips.slice(0, -1).map((chip, i) => (
+                  <motion.button
                     key={chip}
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: i * 0.07, duration: 0.25 }}
+                    whileHover={{ scale: 1.04, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
                     onClick={() => handleLayer2Chip(chip)}
-                    className="text-left px-4 py-3 border border-border/60 bg-card/50 hover:border-primary/40 hover:bg-primary/5 rounded-2xl transition-all duration-150 text-sm text-foreground leading-snug"
+                    className="text-left px-5 py-3 border border-border/60 bg-card/50 hover:border-primary/40 hover:bg-primary/8 rounded-full transition-colors duration-150 text-sm text-foreground leading-snug"
                   >
                     {chip}
-                  </button>
+                  </motion.button>
                 ))}
               </div>
 
               {/* Type it out option */}
               {!showLayer2Type ? (
-                <button
+                <motion.button
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.4 }}
                   onClick={() => setShowLayer2Type(true)}
-                  className="w-full text-left px-5 py-4 border border-border/40 border-dashed rounded-xl hover:border-primary/30 hover:bg-primary/5 transition-all group"
+                  className="text-left px-5 py-3 border border-border/40 border-dashed rounded-full hover:border-primary/30 hover:bg-primary/5 transition-all text-sm text-muted-foreground hover:text-foreground"
                 >
-                  <div className="flex items-center justify-between">
-                    <p className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">
-                      {l2.chips[l2.chips.length - 1]}
-                    </p>
-                  </div>
-                </button>
+                  {l2.chips[l2.chips.length - 1]}
+                </motion.button>
               ) : (
                 <motion.form
                   initial={{ opacity: 0, y: 8 }}
