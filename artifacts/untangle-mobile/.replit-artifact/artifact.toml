@@ -12,7 +12,7 @@ version = "1.0.0"
 [[services]]
 name = "expo"
 paths = [ "/untangle-mobile/" ]
-localPort = 19446
+localPort = 3000
 
 [services.development]
 run = "pnpm --filter @workspace/untangle-mobile run dev"
@@ -22,5 +22,5 @@ build = [ "pnpm", "--filter", "@workspace/untangle-mobile", "run", "build" ]
 run = [ "pnpm", "--filter", "@workspace/untangle-mobile", "run", "serve" ]
 
 [services.env]
-PORT = "19446"
+PORT = "3000"
 BASE_PATH = "/untangle-mobile/"
