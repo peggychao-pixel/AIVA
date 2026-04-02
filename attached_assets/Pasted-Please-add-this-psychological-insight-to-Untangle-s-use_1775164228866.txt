@@ -1,0 +1,52 @@
+Please add this psychological insight to Untangle’s user model and interpretation logic.
+
+Important:
+Do not reduce this to portion control, discipline, or simple guilt about eating.
+This is about legitimacy, qualification, and whether the user feels her way of eating “counts” enough to justify eating at all.
+
+New insight:
+Sometimes the user feels she has “no right to eat” not only because of hunger confusion or desire guilt, but because the eating does not feel legitimate enough in form.
+
+Examples:
+- eating only a very small amount
+- eating across multiple stalls / places but only a little at each
+- grazing instead of having one clear meal
+- eating in a way that does not feel like a proper, complete, socially legible unit
+
+In these moments, the user may feel:
+- “This doesn’t count enough to justify eating”
+- “If I only ate a little, I don’t have the right to eat this”
+- “If I’m eating in bits and pieces, it feels less legitimate”
+- “This feels like I’m taking without having enough basis”
+
+Important nuance:
+The distress is not only about amount.
+It is about whether the eating feels legitimate, coherent, and justified enough.
+
+This often overlaps with:
+- permission / qualification loops
+- food-shape / whole-ness anxiety
+- shame around grazing or non-unit eating
+- feeling that only a “real meal” earns the right to eat
+- feeling that small bites or fragmented eating are less valid
+
+Please make Untangle able to recognize the difference between:
+1. “I ate too much”
+and
+2. “The way I ate doesn’t feel legitimate enough to let myself eat peacefully”
+
+Helpful language direction:
+- “Part of what may feel bad is not only how much you ate, but that the eating doesn’t feel legitimate enough in your mind.”
+- “This may feel loaded because it happened in bits and pieces, not in a form that feels easy to accept.”
+- “Sometimes the shame is less about quantity and more about feeling like the eating doesn’t ‘count’ in a way your mind can permit.”
+- “It may be hard to settle when the eating doesn’t feel like a clear enough unit to mentally stand on.”
+
+Please reflect this in:
+- before-eating qualification branches
+- after-eating shame branches
+- typed-input interpretation
+- quick untangle generation
+- any flow involving fragmented eating, grazing, tasting, or eating only a little
+
+Preserve Untangle’s direction:
+emotionally precise, low-shame, psychologically sharp, and focused on untangling rather than moralizing.
