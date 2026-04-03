@@ -13,7 +13,7 @@
         "simulator": false
       },
       "env": {
-        "EXPO_PUBLIC_API_URL": "https://workspace.peggychao1369.replit.app"
+        "EXPO_PUBLIC_API_URL": "https://workspace--peggychao1369.replit.app"
       }
     },
     "production": {
@@ -21,7 +21,7 @@
         "buildConfiguration": "Release"
       },
       "env": {
-        "EXPO_PUBLIC_API_URL": "https://workspace.peggychao1369.replit.app"
+        "EXPO_PUBLIC_API_URL": "https://workspace--peggychao1369.replit.app"
       }
     }
   },
