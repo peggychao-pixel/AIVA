@@ -39,8 +39,7 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, "build/public"),
     emptyOutDir: true,
-    sourcemap: true,
-    minify: false,
+    sourcemap: "hidden",
   },
   optimizeDeps: {
     exclude: [
