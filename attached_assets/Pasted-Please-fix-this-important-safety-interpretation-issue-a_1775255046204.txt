@@ -1,0 +1,46 @@
+Please fix this important safety / interpretation issue across Untangle.
+
+Current problem:
+Some lines such as “It’s okay to feel unsettled” are too ambiguous and can accidentally normalize or soothe away a state that may actually reflect unmet physical need.
+
+This is risky because “unsettled” can mean very different things:
+1. emotional aftershock / rumination / guilt / mental looping
+2. still hungry / not physically satisfied / meal did not land / body not actually held
+
+These are not the same.
+If the user is physically unsatisfied, not full, or still not landed in a body-level way, a soft acceptance line like “It’s okay to feel unsettled” can be misread as:
+- it’s okay that you didn’t eat enough
+- it’s okay to stay underfed
+- it’s okay to stop here even though the body is still unmet
+
+That is not acceptable.
+
+Please add a stronger distinction in interpretation logic:
+Do not treat all “unsettled” states as emotions to soothe.
+Sometimes unsettledness is information that something still has not landed.
+
+New rule:
+If the user may still be physically unmet, still hungry, not full, or not actually satisfied,
+the response must not jump too quickly to acceptance / closure / stop-line language.
+
+Instead:
+- acknowledge that the unsettled feeling may reflect unmet need
+- avoid spiritualizing or normalizing underfed states
+- avoid making “still not okay” sound like something to simply tolerate
+- differentiate emotional looping from bodily incompletion
+
+Helpful language direction:
+- “If this still feels unsettled because you’re not actually satisfied, that matters.”
+- “Not everything that feels unresolved is a thought loop. Sometimes something still hasn’t landed.”
+- “If your body still feels unheld, this is not just something to breathe past.”
+- “Some unsettledness is emotional aftermath. Some unsettledness means the need is still there.”
+
+Please review all branches for similar ambiguity, especially:
+- after eating flows
+- fullness / satisfaction branches
+- stop lines
+- closure CTAs
+- any branch that currently moves too fast from ‘not landed’ to ‘acceptance’
+
+Goal:
+Untangle should not accidentally encourage restriction, under-eating, or dismissing unmet need by wrapping it in soothing language.
