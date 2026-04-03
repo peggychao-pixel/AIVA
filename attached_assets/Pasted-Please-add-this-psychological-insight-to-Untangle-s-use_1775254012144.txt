@@ -1,0 +1,76 @@
+Please add this psychological insight to Untangle’s user model and interpretation logic.
+
+Important:
+Do not flatten this into “wanting fancy food,” “being dramatic,” “being materialistic,” or simple craving.
+This is about using food, quality, rarity, or “worth-it-ness” as an emotional anchor when the user feels low, empty, chaotic, or hard to hold.
+
+New insight:
+Sometimes the user is not only looking for a food.
+She is looking for something that can make the moment feel:
+- worth it
+- less empty
+- more held
+- more elevated
+- less like pointless suffering
+
+This can show up as:
+- craving expensive, rare, special, high-quality, or “worth it” foods
+- chasing a food that feels elevated, beautiful, precious, or emotionally meaningful
+- wanting a meal that feels like proof the day was not wasted
+- feeling pulled toward “high-end” or “special” foods when emotionally low
+- previously using calorie control / restriction for order, and now using “worth-it food” or “high-value food” to create emotional structure
+
+Important distinction:
+The user may not be chasing luxury for vanity.
+She may be trying to turn diffuse pain, emptiness, or distress into something concrete, controllable, nameable, and emotionally survivable.
+
+In other words:
+The food may be functioning as an emotional locator or value-anchor.
+
+Possible internal questions underneath this:
+- “Can this make the moment feel worth something?”
+- “Can this make me feel less low?”
+- “Can this rescue the day from feeling cheap or wasted?”
+- “Can this prove I am still worth something?”
+- “Can this meal make the pain feel less pointless?”
+
+Please make Untangle understand:
+What looks like “wanting high-end food” may actually be an attempt to secure:
+- comfort
+- dignity
+- emotional justification
+- a sense of being worth care
+- a reason the day did not feel like meaningless depletion
+
+Helpful language direction:
+- “Part of what may feel urgent is not only the food, but what it would let this moment mean.”
+- “This may be less about the ingredient itself, and more about needing something that feels worth the ache.”
+- “Sometimes the pull is not just toward the food, but toward the feeling that this moment was not for nothing.”
+- “The food may be carrying value, comfort, dignity, or proof — not just taste.”
+- “What you may be reaching for is not only flavor, but something that makes the moment feel less bleak.”
+
+Important product behavior:
+Untangle should be able to distinguish between:
+1. simple craving
+2. sensory desire
+3. emotional-value anchoring through “worth-it” food
+
+Please reflect this in:
+- before-eating interpretation logic
+- typed-input understanding
+- craving-related branches
+- shame / value / self-worth related flows
+- any moment where the user seems to want a meal to redeem, justify, elevate, or emotionally anchor the moment
+
+Do not moralize this.
+Do not make it sound like the user is shallow or indulgent.
+Do not jump straight to “you deserve food” generic reassurance.
+Stay psychologically precise.
+
+Preserve Untangle’s original direction:
+an emotional-support / rumination-interruption product that helps name the knot underneath food decisions.
+
+Optional tone examples for possible Untangle lines:
+- “You may not only be looking for that food. You may be looking for something that makes this moment feel worth holding.”
+- “Part of the pull may be that the food feels like it could give shape or value to a moment that otherwise feels too raw.”
+- “Sometimes the meal is carrying more than hunger — it is carrying the hope that the pain won’t feel so cheap.”
