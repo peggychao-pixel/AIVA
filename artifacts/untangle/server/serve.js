@@ -2,30 +2,17 @@ import http from "node:http";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { execSync } from "node:child_process";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
-const STATIC_ROOT = path.resolve(ROOT, "dist", "public");
+const STATIC_ROOT = path.resolve(ROOT, "build", "public");
 const INDEX_PATH = path.join(STATIC_ROOT, "index.html");
 
 if (!fs.existsSync(INDEX_PATH)) {
-  console.log("dist/public not found — building now...");
-  try {
-    execSync("pnpm run build", {
-      cwd: ROOT,
-      stdio: "inherit",
-      env: {
-        ...process.env,
-        BASE_PATH: process.env.BASE_PATH || "/",
-        NODE_ENV: "production",
-      },
-    });
-    console.log("Build complete.");
-  } catch (err) {
-    console.error("Build failed:", err.message);
-    process.exit(1);
-  }
+  console.error(
+    "FATAL: build/public/index.html not found. Run 'pnpm run build' first.",
+  );
+  process.exit(1);
 }
 
 const MIME_TYPES = {
