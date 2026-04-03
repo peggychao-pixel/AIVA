@@ -11,3 +11,9 @@ id = "qPpWKcUuwY3v5gQD-WV1k"
 uri = "file://untangle-product-brief.md"
 type = "text"
 title = "Untangle — Product Strategy Brief"
+
+[[outputs]]
+id = "QJIOl4cmr_rBdt7ByucGE"
+uri = "file://untangle-iteration-history.md"
+type = "text"
+title = "Untangle — Product Iteration History"
