@@ -30,6 +30,7 @@ export default defineConfig({
       : []),
   ],
   resolve: {
+    dedupe: ["react", "react-dom", "@tanstack/react-query"],
     alias: {
       "@": path.resolve(import.meta.dirname, "src"),
       "@assets": path.resolve(import.meta.dirname, "..", "..", "attached_assets"),

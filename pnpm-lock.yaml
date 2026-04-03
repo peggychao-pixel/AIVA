@@ -735,11 +735,7 @@ importers:
         specifier: ^3.4.0
         version: 3.5.4(zod@3.25.76)
 
-  lib/api-client-react:
-    dependencies:
-      '@tanstack/react-query':
-        specifier: 'catalog:'
-        version: 5.90.21(react@19.2.0)
+  lib/api-client-react: {}
 
   lib/api-spec:
     devDependencies:
@@ -9145,11 +9141,6 @@ snapshots:
     dependencies:
       '@tanstack/query-core': 5.90.20
       react: 19.1.0
-
-  '@tanstack/react-query@5.90.21(react@19.2.0)':
-    dependencies:
-      '@tanstack/query-core': 5.90.20
-      react: 19.2.0
 
   '@types/babel__core@7.20.5':
     dependencies:
