@@ -16,7 +16,7 @@
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.untangle.mobile",
-      "buildNumber": "3",
+      "buildNumber": "4",
       "infoPlist": {
         "NSFaceIDUsageDescription": "Used to protect your saved moments.",
         "ITSAppUsesNonExemptEncryption": false
