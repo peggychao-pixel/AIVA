@@ -23,9 +23,4 @@ BASE_PATH = "/"
 
 [services.production]
 build = ["pnpm", "--filter", "@workspace/untangle", "run", "build"]
-publicDir = "artifacts/untangle/dist/public"
-serve = "static"
-
-[[services.production.rewrites]]
-from = "/*"
-to = "/index.html"
+run = ["pnpm", "--filter", "@workspace/untangle", "run", "serve"]
