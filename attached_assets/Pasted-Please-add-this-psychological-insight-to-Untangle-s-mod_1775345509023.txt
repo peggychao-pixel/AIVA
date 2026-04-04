@@ -1,0 +1,52 @@
+Please add this psychological insight to Untangle’s model and interpretation logic.
+
+Important:
+Do not reduce food obsession to simple craving, appetite, or lack of willpower.
+
+New insight:
+Sometimes the user becomes intensely preoccupied with food — thinking about it constantly, mentally replaying it, dreaming about it, or feeling unable to stop orbiting it — not only because she wants the food, but because she fears the aftermath of eating it.
+
+The obsession may be driven by:
+- fear of self-judgment after eating
+- fear of regret
+- fear of spiraling afterward
+- fear of guilt, compensation, or rumination
+- fear that eating will become psychologically expensive
+
+This can create a painful pattern:
+- thinking about food constantly
+- feeling pulled toward it
+- fearing what it will mean afterward
+- eating while struggling internally
+- judging oneself during the act, not just after
+
+Important distinction:
+The user is not always obsessing because the food is irresistibly pleasurable.
+She may be obsessing because the food has become loaded with anticipated consequences.
+
+In other words:
+She is not only trying to get through the eating.
+She is trying to survive what the eating will turn into in her mind.
+
+Please make Untangle understand:
+- obsession can be aftermath-driven
+- intrusive food focus can come from anticipated self-attack
+- eating may feel conflict-heavy because the judgment starts before the eating is even over
+- “struggling while eating” is a meaningful state, not just a transition
+
+Helpful language direction:
+- “Part of what keeps the food so loud may be not only wanting it, but fearing what it will become afterward.”
+- “The pull may be strong partly because the aftermath feels loaded.”
+- “You may not only be eating the food — you may also be bracing for the judgment that follows it.”
+- “Sometimes the obsession is not just about the bite. It is about the self-attack waiting behind it.”
+
+Please reflect this in:
+- craving-related flows
+- before-eating anticipation branches
+- during-eating conflict states
+- after-eating rumination flows
+- typed-input interpretation
+- quick untangle generation
+
+Preserve Untangle’s tone:
+emotionally precise, low-shame, psychologically sharp, and grounded.
