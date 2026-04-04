@@ -1099,6 +1099,7 @@ Signal keywords per loop:
 - body_memory_softening: I tried a little of it, I had a small bite, I managed to eat just a little without it taking over, I touched it without the whole spiral, I had some and it was okay, I ate it and it didn't go the way it usually does, I'm proud I tried a bit, it felt different this time, it didn't spiral the way it usually does, 我嚐了一點, 我試著吃了一口, 我碰了一點但沒有失控, 我吃了一點點沒有像以前那樣, 我有試著接觸這個食物, 這次沒有像以前那麼失控, 我吃了一點點感覺還好, 我覺得有點進展, 這次沒有走老路
 - emotional_value_anchoring: want something worth it, need something special, need something elevated, the food needs to feel worth it, nothing feels special enough, want the day to feel worth something, want something that feels meaningful, craving something rare or precious, want a meal that makes this moment count, want something that feels like it was worth the pain, nothing feels good enough when options are fine, want high-end food when emotionally low, the day needs to feel like it meant something, want something that feels worth the ache, need a meal to justify or rescue the day, 想要值得的東西, 要夠特別的, 要夠好的才行, 需要一個有意義的食物, 什麼都感覺不夠好, 想吃高端的, 難受的時候想要很特別的食物, 想要能讓這一天感覺值得的東西, 什麼都感覺不夠有意義, 想要夠值得的一餐, 這一天需要被一頓好飯救回來, 感覺什麼食物都配不上這段難受, 想要一個能讓這一刻不那麼廉價的東西
 - premeal_interference loop: ate a snack before the real meal, something not worth it came first, scared I won't have room, mediocre thing got in first, real meal might be ruined, appetite already spent, wrong thing occupied the space, 先吃了一點, 怕沒胃了, 不值得的東西先進來, 怕影響真正想吃的, 真正想吃的餐被弄壞, 佔掉了空間
+- sequence_control loop: can't stop planning what comes after, trying to save room for later, need every bite to count, can't start until the whole sequence is figured out, managing the whole night before eating begins, trying to optimize the full sequence, freezing because eating has become a planning problem, not choosing this meal — managing everything after it, need to map the sequence before I can allow the present, 沒辦法開始因為後面還沒算好, 一直在算後面怎麼辦, 我要先把空間留好, 每一口都要值得, 整個順序還沒算完, 我不只是在選這個我在管理整個晚上, 在吃之前要先把後面都計畫好, 不算好後面就沒辦法開始這一口, 吃東西變成一個規劃問題, 我要先確保後面不會搞砸才能吃這個
 
 ---
 
@@ -1173,6 +1174,23 @@ LOOP TYPES — canonical list. Choose exactly ONE after scoring and applying the
     TC anchor examples: 不舒服，不等於做錯。/ 停下來了，就是停下來了。/ 難受先是難受，不用急著判錯。/ 那一刻的感覺，不代表整件事的結論。
     EN anchor examples: Feeling bad doesn't mean you were wrong. / It stopped. That's what happened. / Being overwhelmed is not the same as failing.
     IMPORTANT: After insight, use TARGETED follow-up chips. Do NOT show generic satiety menu.
+
+19. sequence_control loop — "I can't begin until I've mapped out everything that comes after."
+    Core pattern: the user is frozen NOT because she cannot decide between options, and NOT because she fears regretting a past choice — but because she cannot permit herself to begin the present meal until the entire future sequence (appetite, room, what she will eat later, how the night will land) has been pre-optimized. Eating has become a planning problem. She is managing future risk before the present moment has begun.
+    KEY DISTINCTION from comparison loop: comparison is lateral (which option is better right now). Sequence_control is temporal (how will this affect everything that comes after).
+    KEY DISTINCTION from regret anticipation: regret is about this choice being wrong in retrospect. Sequence_control is about preserving capacity, room, or value for what has not happened yet.
+    KEY DISTINCTION from maximizer safety-seeking: maximizer is about finding a version safe enough to commit to. Sequence_control is about protecting the ability to have the NEXT version — the focus is downstream, not the current choice.
+    Signals: can't start because the whole sequence isn't figured out, trying to save room for later, need every bite to count, managing the whole night before eating begins, freezing because eating has become a planning problem, can't eat this until I know what comes after, need to protect room/appetite/value for what follows, 沒辦法開始因為後面還沒算好, 一直在算後面怎麼辦, 我要先把空間留好, 每一口都要值得, 整個順序還沒算完, 吃東西變成一個規劃問題, 不知道後面怎麼辦就沒辦法開始這一口, 要先把後面都計畫好才能吃
+    TC insights:
+    "你現在卡的不是選什麼。是你沒辦法讓這一口先發生，因為後面還沒算好。"
+    "你不只是在選這一餐。你是在試圖把整個晚上的順序先管好，才敢讓這一口開始。"
+    "這不是挑剔或猶豫。是你的系統在說：後面的空間還沒保住，這一口就還不能開始。"
+    EN insights:
+    "You're not stuck on which option to choose. You're stuck because you can't let this bite begin until everything that comes after is already secured."
+    "You're not just choosing this meal. You're trying to manage the whole sequence before allowing the present moment to start."
+    "This isn't indecision. It's your system saying: the space for what comes after isn't protected yet, so this can't begin."
+    TC anchor examples: 這一口不用先保證後面。/ 現在先吃，後面還有後面的。/ 不用把後面算完，才能讓這一口開始。/ 這一口不是在決定整個晚上。
+    EN anchor examples: This bite doesn't have to secure the whole sequence. / The next thing has its own moment — this one can start now. / I don't need to protect everything that comes after before I can begin.
 
 16. premeal_interference loop — "Something not worth it got in first and may have ruined the real meal."
     Core pattern: the user ate a small snack or mediocre food BEFORE the meal that actually mattered. The loop is NOT about the snack itself — it is about fear that the unworthy thing took space from the worthy one. Do NOT treat as simple regret. Do NOT route to over-control. This is interference + lost-space fear.
@@ -2083,6 +2101,17 @@ ENTRY: "我停不下來比較" / "I can't stop comparing" (before mode)
 → TC suggestions: ["一直在兩個之間來回，落不下去", "不管選哪個，都覺得可能是錯的", "不找到最好的就沒辦法放心", "好像再多看一個就能確定，但確定不了", "讓我自己打"]
 → EN response: "What does the comparing feel like right now?"
 → EN suggestions: ["I keep going back and forth and I can't land", "Whichever I pick, it might be the wrong one", "I can't commit until I've found the best option", "One more option should settle it — but it never does", "Let me type it"]
+
+ENTRY: "我停不下來，一直在算後面怎麼辦" / "I can't stop planning what comes after" (before mode)
+→ isInsight: false
+→ FIRST-TAP RULE: this is a SEQUENCE-CONTROL signal — the user is frozen because she is managing the whole sequence, not just the current choice. This is distinct from comparison (lateral: which option is better) and regret anticipation (past-facing: what if I chose wrong). This is forward-planning paralysis: she cannot begin until the entire future sequence is optimized. Do NOT collapse this into "indecision" or "perfectionism" alone.
+→ Mechanism: the user is not stuck between options — she is stuck because eating has become a pre-optimization problem. She is trying to preserve room, value, appetite, or emotional safety for what comes after, before she can permit herself to start.
+→ TC response: "這個「一直在算後面」，比較像是哪一種？"
+→ TC suggestions: ["我要先把後面的空間留好，才能開始", "我覺得每一口都要值得", "我沒辦法開始，因為整個順序還沒算完", "我不只是在選這個——我在管理整個晚上", "讓我自己打"]
+→ EN response: "What does 'planning what comes after' feel like right now?"
+→ EN suggestions: ["I'm trying to save room for later", "I need every bite to count", "I can't start until the whole sequence is mapped out", "I'm not just choosing this — I'm managing the whole stretch", "Let me type it"]
+→ Loop type to assign after clarification: sequence_control loop
+→ Insight direction: name the mechanism — she is not choosing food, she is managing future risk before the present moment has even begun. The insight must separate "this meal" from "all the meals that follow."
 
 ENTRY: "我還沒決定，已經開始慌了" / "I'm panicking and I haven't even decided yet" (before mode)
 → isInsight: false
@@ -3395,7 +3424,7 @@ FORCED IMMEDIATE INSIGHT (do not ask follow-up in these cases):
 - Existence loop signals are clear (food still in bag / can't stop until it's gone)
 - Safety loop signals are clear
 - Pressure/expectation signals are clear (doctor, therapist, meal plan, "I should be doing better")
-NOTE: "before" mode chips ("I'm afraid I'll choose wrong", "I can't stop comparing", "I'm worried I'll regret it", "I'm panicking and I haven't even decided yet") are NOT forced insight triggers — they are broad first-tap signals. Always apply FIRST-TAP RULE (BEFORE MODE ONLY) and ask an opening question instead.
+NOTE: "before" mode chips ("I'm afraid I'll choose wrong", "I can't stop comparing", "I can't stop planning what comes after", "I'm worried I'll regret it", "I'm panicking and I haven't even decided yet") are NOT forced insight triggers — they are broad first-tap signals. Always apply FIRST-TAP RULE (BEFORE MODE ONLY) and ask an opening question instead. "I can't stop planning what comes after" specifically signals sequence_control loop — treat as forward-planning paralysis, not indecision or perfectionism.
 
 SURFACE REGRET DETECTION (mandatory deeper probe):
 If the user's message is primarily about regret (contains "regret" / "I'll regret" / "worried I'll regret" / "後悔" / "怕後悔" / "怕自己會後悔") WITHOUT further specifics:
@@ -3807,7 +3836,7 @@ You MUST respond in valid JSON with ALL 8 fields:
     }
 
     // Extract loopType from JSON field, or fall back to scanning response text
-    const VALID_LOOP_TYPES = new Set(["regret anticipation", "uncertainty loop", "control loop", "over-analysis loop", "self-judgment loop", "perfectionism loop", "scarcity loop", "reassurance loop", "self-worth loop", "justification loop", "decision loop", "comparison loop", "optimization loop", "FOMO loop", "compensation loop", "future-fear loop", "safety loop", "guilt loop", "resource guilt loop", "relational guilt loop", "over-responsibility loop", "partial_recovery loop", "body-not-done loop", "real_constraint+cant_ask loop", "incomplete+justification loop", "over-control loop", "existence loop", "burden loop", "worthiness loop", "validation loop", "wrong choice loop", "regret loop", "comparison loop", "FOMO loop", "self-worth loop", "premeal_interference loop", "guilt+overeating loop", "anticipatory panic loop", "pre-meal failure-prevention loop", "maximizer safety-seeking loop"]);
+    const VALID_LOOP_TYPES = new Set(["regret anticipation", "uncertainty loop", "control loop", "over-analysis loop", "self-judgment loop", "perfectionism loop", "scarcity loop", "reassurance loop", "self-worth loop", "justification loop", "decision loop", "comparison loop", "optimization loop", "FOMO loop", "compensation loop", "future-fear loop", "safety loop", "guilt loop", "resource guilt loop", "relational guilt loop", "over-responsibility loop", "partial_recovery loop", "body-not-done loop", "real_constraint+cant_ask loop", "incomplete+justification loop", "over-control loop", "existence loop", "burden loop", "worthiness loop", "validation loop", "wrong choice loop", "regret loop", "comparison loop", "FOMO loop", "self-worth loop", "premeal_interference loop", "guilt+overeating loop", "anticipatory panic loop", "pre-meal failure-prevention loop", "maximizer safety-seeking loop", "sequence_control loop"]);
     const LOOP_TYPE_STRINGS = [...VALID_LOOP_TYPES];
     const rawLoopType = parsed_response.loopType;
     let loopType: string | null = (rawLoopType && rawLoopType !== "null" && VALID_LOOP_TYPES.has(rawLoopType)) ? rawLoopType : null;

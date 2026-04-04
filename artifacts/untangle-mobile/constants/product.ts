@@ -20,7 +20,7 @@ export const LAYER2_DATA: Record<UiLang, Record<Mode, { question: string; chips:
   en: {
     before: {
       question: "What feels wrong before you even start?",
-      chips: ["I'm afraid I'll choose wrong", "I can't stop comparing", "I'm worried I'll regret it", "I'm panicking and I haven't even decided yet", "I'm so hungry I feel less in control", "I want it, but I don't feel allowed to", "Let me type it out"],
+      chips: ["I'm afraid I'll choose wrong", "I can't stop comparing", "I can't stop planning what comes after", "I'm worried I'll regret it", "I'm panicking and I haven't even decided yet", "I'm so hungry I feel less in control", "I want it, but I don't feel allowed to", "Let me type it out"],
     },
     after: {
       question: "Which of these feels closest right now?",
@@ -38,7 +38,7 @@ export const LAYER2_DATA: Record<UiLang, Record<Mode, { question: string; chips:
   tc: {
     before: {
       question: "開始之前，什麼感覺不對？",
-      chips: ["我怕選錯", "我停不下來比較", "我怕自己會後悔", "我還沒決定，已經開始慌了", "我太餓了，覺得自己快要失控", "我想要，但感覺自己沒有資格", "讓我自己打"],
+      chips: ["我怕選錯", "我停不下來比較", "我停不下來，一直在算後面怎麼辦", "我怕自己會後悔", "我還沒決定，已經開始慌了", "我太餓了，覺得自己快要失控", "我想要，但感覺自己沒有資格", "讓我自己打"],
     },
     after: {
       question: "現在最卡你的，比較像哪一句？",
@@ -56,6 +56,14 @@ export const LAYER2_DATA: Record<UiLang, Record<Mode, { question: string; chips:
 };
 
 export const BROAD_CHIP_ROUTING: Record<string, { response: string; suggestions: string[] }> = {
+  "I can't stop planning what comes after": {
+    response: "What does 'planning what comes after' feel like right now?",
+    suggestions: ["I'm trying to save room for later", "I need every bite to count", "I can't start until the whole sequence is mapped out", "I'm not just choosing this — I'm managing the whole stretch", "Let me type it"],
+  },
+  "我停不下來，一直在算後面怎麼辦": {
+    response: "這個「一直在算後面」，比較像是哪一種？",
+    suggestions: ["我要先把後面的空間留好，才能開始", "我覺得每一口都要值得", "我沒辦法開始，因為整個順序還沒算完", "我不只是在選這個——我在管理整個晚上", "讓我自己打"],
+  },
   "I want it, but I don't feel allowed to": {
     response: "What does 'not allowed' feel closest to right now?",
     suggestions: ["I feel like I haven't done enough to deserve it", "Wanting it already feels like something's wrong", "I feel like I need a reason — hunger doesn't feel like enough", "I'm not sure if I'm actually hungry or just wanting", "Let me type it"],
