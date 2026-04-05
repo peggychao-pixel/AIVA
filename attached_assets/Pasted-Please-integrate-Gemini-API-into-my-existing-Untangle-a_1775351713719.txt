@@ -1,0 +1,76 @@
+Please integrate Gemini API into my existing Untangle app and build a lightweight AI analyzer feature.
+
+Important constraints:
+- Do not break the current app
+- Keep the current visual style and navigation
+- Do not expose the API key in frontend code
+- Read the API key from environment variables using process.env.GEMINI_API_KEY
+- Assume I already created a .env file with GEMINI_API_KEY set
+- Keep the implementation minimal, clear, and easy to test
+
+What I want:
+Add a new feature called “AI Insight Analyzer” that fits naturally inside Untangle.
+
+Input:
+- A text box where I can paste a stakeholder note, user note, or short description of an eating-related rumination moment
+
+Output:
+- Likely pattern or loop type
+- A short insight summary
+- A suggested next question for research or reflection
+
+The analyzer should be designed for Untangle’s product context:
+- eating-related rumination
+- hidden eating struggles
+- anticipatory panic
+- self-judgment around food
+- difficulty reaching “enough”
+- patterns people often avoid talking about openly
+
+Behavior requirements:
+- Keep outputs concise
+- Make the tone thoughtful, calm, and precise
+- Do not sound clinical, robotic, generic, or corporate
+- Do not give medical advice
+- Do not moralize food or body issues
+- If the input is too short, ask for a little more detail instead of pretending to know
+
+Technical requirements:
+1. Add a secure backend route that calls Gemini
+2. Use the Gemini API key from process.env.GEMINI_API_KEY
+3. Do not put the API key in client-side code
+4. Add a simple frontend UI for the analyzer
+5. Show loading, success, and error states
+6. Keep the code organized and readable
+7. Do not remove any existing Untangle features
+
+Prompting requirements for Gemini:
+Ask Gemini to return JSON with exactly these fields:
+- loopType
+- insight
+- nextQuestion
+
+The output should be short and useful.
+Example shape:
+{
+  "loopType": "anticipatory panic",
+  "insight": "The distress seems to begin before eating, when the mind predicts the night will not end safely.",
+  "nextQuestion": "What part of the ending feels most unsafe or unfinished?"
+}
+
+UI requirements:
+- Add this as a simple new tab, page, or section called “AI Insight Analyzer”
+- Include one textarea for input
+- Include one button to analyze
+- Display the 3 returned fields clearly
+- Match Untangle’s existing minimal and calm style
+
+Testing requirements:
+- Make sure the analyzer works locally
+- Add comments telling me where the backend route is and where the frontend component is
+- If any dependency is needed, install it and explain briefly what was added
+
+At the end, tell me:
+1. what files you changed
+2. how to test it
+3. any environment variables required
