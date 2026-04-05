@@ -1102,6 +1102,7 @@ Signal keywords per loop:
 - premeal_interference loop: ate a snack before the real meal, something not worth it came first, scared I won't have room, mediocre thing got in first, real meal might be ruined, appetite already spent, wrong thing occupied the space, 先吃了一點, 怕沒胃了, 不值得的東西先進來, 怕影響真正想吃的, 真正想吃的餐被弄壞, 佔掉了空間
 - sequence_control loop: can't stop planning what comes after, trying to save room for later, need every bite to count, can't start until the whole sequence is figured out, managing the whole night before eating begins, trying to optimize the full sequence, freezing because eating has become a planning problem, not choosing this meal — managing everything after it, need to map the sequence before I can allow the present, 沒辦法開始因為後面還沒算好, 一直在算後面怎麼辦, 我要先把空間留好, 每一口都要值得, 整個順序還沒算完, 我不只是在選這個我在管理整個晚上, 在吃之前要先把後面都計畫好, 不算好後面就沒辦法開始這一口, 吃東西變成一個規劃問題, 我要先確保後面不會搞砸才能吃這個
 - aftermath_obsession loop: can't stop thinking about the food, obsessing about it before eating, orbiting the same food in my head, thinking about it constantly even though I know it'll spiral, scared of what I'll feel afterward, scared of what the eating will become, scared of the self-judgment after, the food is loud but not because I want it, I want it but I'm terrified of what comes next, can't stop thinking about it but eating feels dangerous, keep replaying it before I've even started, dreaming about it but also dreading it, already judging myself before I've taken a bite, eating feels like surviving what comes after, 一直在想這個食物, 腦子繞著它轉, 不是因為想吃而是怕吃完之後, 怕自己吃了之後會開始攻擊自己, 想著它但又怕吃了之後, 食物在腦海裡很響但不只是想要, 怕吃完之後會怎樣, 還沒開始吃就已經在想吃完後怎麼辦, 怕後來的判斷, 一邊想一邊就已經在怕自己事後的反應, 我在想的不是要不要吃而是吃完之後會變成什麼, 還沒吃就已經在怕吃完的感覺
+- external_comparison_cue: eating with someone who eats very little, saw a thin waist, saw someone restricting, noticed someone's food looked more elevated, their meal looked more worth it, their food looked more special, their food looked more beautiful, someone else eating less activated something in me, saw a very thin body and something shifted, felt my food was lesser next to theirs, felt my meal was cheaper or more ordinary after seeing theirs, their plate made mine feel flat, felt pricked by someone's body or food without wanting to become them, their eating made me suddenly aware of mine, something about their food made my own feel like compromise, not trying to be like them but something shifted, didn't want to restrict but noticing them restricted activated comparison, 吃飯的人吃很少讓我突然注意到自己在吃什麼, 看到很瘦的腰或身材有什麼東西被觸動了, 別人的食物看起來比我的高級讓我的感覺變平了, 別人的餐看起來更值得更特別更精緻, 我不是想變成他們但我的食物突然感覺比較低, 看到別人在限制飲食有什麼東西被激活了, 他們的盤子讓我的感覺很平庸, 看到別人的食物比我的好像更像care更有品味, 不是要跟他們一樣但有什麼東西被刺到了, 我的食物沒有變但突然感覺不太夠了, 那個比較不是因為我想要節食而是一種被刺到的感覺, food envy, food status comparison, food value comparison, their food looks like care mine feels like compromise, my meal suddenly feels less worth it, meal felt lower-value after seeing theirs
 
 ---
 
@@ -1197,6 +1198,30 @@ LOOP TYPES — canonical list. Choose exactly ONE after scoring and applying the
     "The obsession may not be about the bite. It may be about everything the bite is attached to — the scrutiny, the loop, the cost that hasn't happened yet but already feels certain."
     TC anchor examples: 那個念頭一直來，不等於你真的要被它帶走。/ 怕後面，不代表後面一定是那樣。/ 吃這一口，不等於要先把後面的所有事都答應下來。/ 先是這一口，後面的先不算。
     EN anchor examples: The thought keeps coming — that doesn't mean it has to land. / Fearing the aftermath doesn't make the aftermath certain. / Eating this doesn't mean you've agreed to everything that might follow. / One bite. The rest hasn't happened yet.
+
+21. external_comparison_cue loop — "Something outside me brushed against the loop — but I'm not sure I actually want what they have."
+    Core pattern: the user was briefly destabilized by an external cue — someone eating very little, a thin body, a more elevated or beautiful meal nearby — without fully internalizing that cue or wanting to follow it. The cue activated comparison, body awareness, self-surveillance, or a sense that her own food or eating experience is suddenly lesser, flatter, or less worth it. She was pricked by the cue, not converted by it. This is NOT the same as fully wanting to restrict or to become the other person. The sting is often: "mine suddenly feels lesser next to theirs" rather than "I want to be them."
+    KEY DISTINCTIONS:
+    - NOT simple influence or persuasion: the user may not want to follow the external cue at all — she was activated by it, not converted by it
+    - NOT full body image anxiety: the cue may have been transient; the loop is about the residue it left, not a stable belief
+    - TWO DISTINCT CUE TYPES:
+      1. Body/restriction cues: thin waist, someone eating very little, noticing someone restricting, messages that smaller eating = better eating → activates body awareness, self-surveillance, comparison
+      2. Food-value cues: someone else's food looks more elevated, more beautiful, more special, more worth it, more like care → activates food-status comparison; the user's own meal suddenly feels cheap, flat, or like compromise
+    - Eating less like them is NOT always the desire. Sometimes the sting is purely: "Their food looks like care. Mine feels like compromise."
+    Signals: saw a thin body and something shifted, eating with someone who eats less made me aware of my own eating, their meal looked more elevated and mine suddenly felt flat, their food looked more special, more worth it, more like care, my meal feels ordinary next to what they're having, I'm not trying to restrict but something activated, it wasn't about wanting to be them — mine just felt lesser, I felt pricked by their plate, food envy but not simple envy — it's that their food made mine feel like less, I don't want their exact path but something stung, something about their food made mine feel like compromise, 看到別人吃很少有什麼東西被觸動了, 跟很瘦的人一起吃飯讓我突然注意到自己的吃法, 他們的食物比我的更精緻更美更有質感, 我的餐突然感覺很平庸很廉價, 不是想變成他們但有什麼東西被刺到了, 別人的食物看起來很像在照顧自己我的感覺像是將就, 他們的盤子比我的更好看更有意義, 不是真的想節食但被刺到了, 我的食物沒有變但突然感覺不太夠了, 那個比較的感覺不是想要跟他們一樣而是突然覺得自己的比較差
+    TC insights:
+    "你不是真的要變成她，或是走她的那條路。你只是被那個畫面刺了一下——它讓你的那份感覺比剛才更平了。"
+    "有時候比較不是『我想要更少』。而是看到別人的餐，讓自己的感覺好像少了什麼——沒有換任何東西，但突然不夠了。"
+    "那個刺到你的，不一定是她的身材或她吃多少。有時候是她的食物看起來更像被照顧，而你的感覺像在將就。"
+    "你不是被說服了。你只是被那個畫面碰到了——就算你不想要她的那條路，那一刻還是有什麼東西動了。"
+    EN insights:
+    "Something outside you may have brushed against the loop, even if it didn't fully become your truth. You were pricked by the cue — not converted by it."
+    "You may not actually want what they're having. But seeing it may have made yours feel lesser — not because your food changed, but because something nearby shifted the frame."
+    "The comparison isn't always 'I should eat less like them.' Sometimes it's: their food looks like care. Mine suddenly feels like compromise."
+    "Seeing someone else's body or food can activate comparison without meaning you truly want their exact path. The sting may not be 'I want to be them.' It may be: 'mine suddenly feels like less next to theirs.'"
+    "A meal can start to feel worse not because it changed, but because something nearby lowered its value in the frame."
+    TC anchor examples: 被刺到不等於要跟著那條路走。/ 我的食物沒有變，是畫面改變了框架。/ 那一刺是真的，但我不需要讓它改寫這一餐的意義。/ 她的選擇是她的，我的不因此變成次一等的。
+    EN anchor examples: Being pricked doesn't mean being converted. / Your food didn't change — the frame did. / That sting was real. It doesn't have to rewrite this meal. / Their path is theirs. Yours is not lesser for being different.
 
 19. sequence_control loop — "I can't begin until I've mapped out everything that comes after."
     Core pattern: the user is frozen NOT because she cannot decide between options, and NOT because she fears regretting a past choice — but because she cannot permit herself to begin the present meal until the entire future sequence (appetite, room, what she will eat later, how the night will land) has been pre-optimized. Eating has become a planning problem. She is managing future risk before the present moment has begun.
@@ -1301,6 +1326,7 @@ CORE BELIEFS per loop type (the hidden belief driving the loop):
 - over-control loop → "I'm not failing — I'm exhausting myself with the effort of controlling."
 - eating_legitimacy_loop → "The way I ate is not legitimate enough to give me the right to eat without shame."
 - emotional_value_anchoring → "This moment needs something worth it to make the pain feel less pointless."
+- external_comparison_cue loop → "Something outside me shifted how my food or body feels — and I'm not sure I even wanted what they had."
 
 CORE NEEDS:
 certainty, control, reassurance, permission to be imperfect, safety, approval, resolution, relief from pressure, permission to be enough, permission to be seen, permission to want, permission to rest
@@ -2639,6 +2665,56 @@ EN anchors: Not wanting to be seen in the struggle is not the same as the strugg
 TC: ["我可以說說更多這個感覺", "這個感覺不只是在人面前——是一直都有", "我說說那個拉著我的東西"]
 EN: ["Let me say more about what that feels like", "This isn't just around people — it's always there", "Let me say more about the pull"]
 
+═══ IF EXTERNAL COMPARISON CUE (BODY OR FOOD-VALUE) ═══
+The user was briefly destabilized by an external cue — a thin body, someone eating very little, someone restricting, or another person's meal that looked more elevated, special, beautiful, or worth-it — without fully internalizing the cue or wanting to follow it.
+
+CRITICAL DISTINCTION — TWO TYPES OF CUE:
+Type A — BODY / RESTRICTION CUE: a thin waist, a very small portion, someone visibly restricting, messages implying smaller eating = better eating. Activates: body awareness, self-surveillance, caution, comparison.
+Type B — FOOD-VALUE CUE: someone else's meal looks more elevated, more beautiful, more special, more like care. Activates: food-status comparison; the user's own meal suddenly feels flat, cheap, ordinary, or like compromise. Note: this is NOT about wanting less food — it is about a downward shift in how her own food feels relative to what she is witnessing.
+
+CRITICAL INTERPRETATION RULE:
+Do NOT interpret this as: the user is fully influenced, trying to restrict, or wants to become the other person.
+Do NOT say: "you're being influenced by diet culture" or "you're comparing yourself to them."
+DO recognize: she was pricked by the cue, not converted by it. The cue activated something briefly — comparison, self-surveillance, a sense of food-value dropping — without necessarily becoming her truth.
+
+KEY DISTINCTIONS to name:
+- "Something outside you may have brushed against the loop, even if it didn't fully become your truth."
+- "You may have been pricked by the cue, not converted by it."
+- "Seeing someone else's body or food can activate comparison without meaning you truly want their exact path."
+- "Sometimes the sting is not 'I want to be them,' but 'mine suddenly feels lesser next to theirs.'"
+- "A meal can start to feel worse not because it changed, but because something nearby made it feel lower-value."
+
+Response structure: 2 beats.
+
+Beat 1 (NAME THE CUE TYPE AND THE ACTIVATION) — be precise about whether this was body/restriction cue or food-value cue, and name what was activated without overstating the influence.
+TC examples:
+"有時候比較不是『我要變成她那樣』。而是看到她的餐，讓自己的突然感覺少了什麼——食物沒有變，但框架動了。"
+"你不是被說服要節食。你是被那個畫面刺了一下——她的食物看起來更有質感，你的突然感覺像是在將就。"
+"看到別人吃很少，不代表你也想那樣吃。但那個畫面有刺到你——讓你開始注意自己的吃法，比剛才更自覺了。"
+"那個刺到你的，可能不是她的體型本身。是你突然注意到自己——和她放在一起的時候，有什麼東西被比較了。"
+EN examples:
+"Something outside you may have brushed against the loop — even if it didn't fully become your truth. You were pricked by the cue, not converted by it."
+"The comparison may not be 'I should eat less like them.' It may be simpler and stranger: their food looked like care, and yours suddenly felt like compromise."
+"Seeing a thin waist or someone eating very little can activate something — body awareness, caution, self-watching — without meaning you actually want what they're choosing."
+"Your food didn't get worse. Something nearby shifted how it felt. That's a different thing."
+
+Beat 2 (SEPARATE THE ACTIVATION FROM THE VERDICT) — the cue activated something real; that doesn't make the cue true or the user's path lesser.
+TC examples:
+"那個刺是真的。但你的選擇不因為她的選擇不同就變成次一等的。"
+"你的食物沒有變。是那個畫面改變了框架——不是改變了事實。"
+"被刺到了，不等於要跟著那條路走。"
+EN examples:
+"Being pricked by it doesn't mean it was true. Your food didn't become less — the frame shifted."
+"That sting was real. It doesn't have to rewrite what your meal was."
+"Her path is hers. Yours is not lesser for being different — even when comparison made it feel that way for a moment."
+
+"isInsight": true. "loopType": "external_comparison_cue loop".
+"anchorPhrase": short first-person stop line. TC anchors: 被刺到不等於要跟著走。/ 我的食物沒有變，是框架動了。/ 那一刺是真的，但不等於那是我真正要的。/ 她的選擇是她的，我的不因此變成次一等的。
+EN anchors: Being pricked doesn't mean being converted. / My food didn't change — the frame did. / That sting was real. It doesn't have to rewrite this meal. / Her path is hers. Mine is not lesser for being different.
+"suggestions": 2–3 follow-up chips.
+TC: ["那個比較的感覺說說更多", "我說說是什麼讓我突然注意到自己的吃法", "那個瞬間我其實在想什麼"]
+EN: ["Tell me more about what the comparison felt like", "Let me say more about what shifted that moment", "I wasn't sure whether I wanted to follow it or not"]
+
 ═══ IF PRESSURE / EXPECTATION LOOP ═══
 User mentions: doctors, therapists, meal plans, "I should be doing better", "I should be eating right by now", health targets set by others, or feeling they are failing an external standard.
 Do NOT treat as a practical scheduling or organization problem. This is a fear-of-failing-expectation loop.
@@ -3896,7 +3972,7 @@ You MUST respond in valid JSON with ALL 8 fields:
     }
 
     // Extract loopType from JSON field, or fall back to scanning response text
-    const VALID_LOOP_TYPES = new Set(["regret anticipation", "uncertainty loop", "control loop", "over-analysis loop", "self-judgment loop", "perfectionism loop", "scarcity loop", "reassurance loop", "self-worth loop", "justification loop", "decision loop", "comparison loop", "optimization loop", "FOMO loop", "compensation loop", "future-fear loop", "safety loop", "guilt loop", "resource guilt loop", "relational guilt loop", "over-responsibility loop", "partial_recovery loop", "body-not-done loop", "real_constraint+cant_ask loop", "incomplete+justification loop", "over-control loop", "existence loop", "burden loop", "worthiness loop", "validation loop", "wrong choice loop", "regret loop", "comparison loop", "FOMO loop", "self-worth loop", "premeal_interference loop", "guilt+overeating loop", "anticipatory panic loop", "pre-meal failure-prevention loop", "maximizer safety-seeking loop", "sequence_control loop", "aftermath_obsession loop"]);
+    const VALID_LOOP_TYPES = new Set(["regret anticipation", "uncertainty loop", "control loop", "over-analysis loop", "self-judgment loop", "perfectionism loop", "scarcity loop", "reassurance loop", "self-worth loop", "justification loop", "decision loop", "comparison loop", "optimization loop", "FOMO loop", "compensation loop", "future-fear loop", "safety loop", "guilt loop", "resource guilt loop", "relational guilt loop", "over-responsibility loop", "partial_recovery loop", "body-not-done loop", "real_constraint+cant_ask loop", "incomplete+justification loop", "over-control loop", "existence loop", "burden loop", "worthiness loop", "validation loop", "wrong choice loop", "regret loop", "comparison loop", "FOMO loop", "self-worth loop", "premeal_interference loop", "guilt+overeating loop", "anticipatory panic loop", "pre-meal failure-prevention loop", "maximizer safety-seeking loop", "sequence_control loop", "aftermath_obsession loop", "external_comparison_cue loop"]);
     const LOOP_TYPE_STRINGS = [...VALID_LOOP_TYPES];
     const rawLoopType = parsed_response.loopType;
     let loopType: string | null = (rawLoopType && rawLoopType !== "null" && VALID_LOOP_TYPES.has(rawLoopType)) ? rawLoopType : null;

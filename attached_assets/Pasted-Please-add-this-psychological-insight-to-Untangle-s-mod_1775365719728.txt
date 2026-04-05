@@ -1,0 +1,61 @@
+Please add this psychological insight to Untangle’s model and interpretation logic.
+
+New insight:
+The user may be sensitive to external comparison cues without fully identifying with them or wanting to follow them.
+
+These cues are not only about thinness, restriction, or diet culture.
+They can also include:
+- eating with someone who eats very little
+- seeing a very thin waist/body
+- noticing other people restricting
+- being around messages that imply smaller eating = better eating
+- seeing other people eat food that looks more impressive, more special, more expensive, more beautiful, more “worth it,” or more emotionally satisfying
+- feeling that someone else’s food looks more complete, more elevated, more desirable, or more legitimate than her own
+
+Important nuance:
+This does not always mean the user is fully influenced, persuaded, or trying to become that person.
+Often the external cue briefly activates:
+- comparison
+- self-surveillance
+- caution
+- body awareness
+- value comparison
+- food-status comparison
+- the feeling that her own food or eating experience is lesser, less worthy, less beautiful, or less worth it
+
+Please make Untangle able to distinguish between:
+1. fully internalizing external ideals
+and
+2. being briefly activated, pricked, or destabilized by outside cues without truly wanting to follow them
+
+Helpful framing:
+- “Something outside you may have brushed against the loop, even if it didn’t fully become your truth.”
+- “You may have been pricked by the cue, not converted by it.”
+- “Seeing someone else’s body or food can activate comparison without meaning you truly want their exact path.”
+- “Sometimes the sting is not ‘I want to be them,’ but ‘mine suddenly feels lesser next to theirs.’”
+- “A meal can start to feel worse not because it changed, but because something nearby made it feel lower-value.”
+
+Please reflect this in:
+- social eating branches
+- comparison-related flows
+- body/waist/thinness trigger moments
+- food envy / worth-it comparison moments
+- typed-input interpretation
+- quick untangle generation
+
+Important:
+Do not oversimplify this into “you are just influenced by other people.”
+Keep it nuanced:
+the user may be sensitive to cues, briefly activated by them, or pricked by them, without actually being governed by them.
+
+Also include this distinction:
+Sometimes the comparison is not “I should eat less like them.”
+Sometimes it is:
+- “Their food looks better than mine.”
+- “Their meal looks more worth it.”
+- “What they’re having makes mine feel cheap, flat, or disappointing.”
+- “Their food looks like care; mine suddenly feels like compromise.”
+
+Untangle should recognize both:
+- body comparison
+- food-value comparison
