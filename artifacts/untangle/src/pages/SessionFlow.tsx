@@ -89,6 +89,7 @@ const UI_TEXT = {
     back: "← Back",
     moments: (n: number) => n > 0 ? `${n} saved` : "Moments",
     history: "History",
+    insights: "Insights",
     headline: "What feels tangled\nright now?",
     subtext: "Start where the loop is happening.",
     inputPlaceholder: "Or type what's tangled.",
@@ -127,6 +128,7 @@ const UI_TEXT = {
     back: "← 返回",
     moments: (n: number) => n > 0 ? `${n} 已儲存` : "紀錄",
     history: "歷史",
+    insights: "洞察",
     headline: "現在卡住你的\n是什麼？",
     subtext: "從最卡的地方開始。",
     inputPlaceholder: "或者直接打出來。",
@@ -998,6 +1000,12 @@ export function SessionFlow() {
               className="text-sm text-muted-foreground hover:text-primary transition-colors whitespace-nowrap"
             >
               {t.history}
+            </Link>
+            <Link
+              href="/insights"
+              className="text-sm text-muted-foreground hover:text-primary transition-colors whitespace-nowrap"
+            >
+              {t.insights}
             </Link>
           </div>
         </header>

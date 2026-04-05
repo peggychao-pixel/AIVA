@@ -5,6 +5,7 @@ import { SessionFlow } from "./pages/SessionFlow";
 import { History } from "./pages/History";
 import { SessionDetail } from "./pages/SessionDetail";
 import { Moments } from "./pages/Moments";
+import { StakeholderInsights } from "./pages/StakeholderInsights";
 import NotFound from "./pages/not-found";
 
 const queryClient = new QueryClient({
@@ -23,6 +24,7 @@ function Router() {
       <Route path="/history" component={History} />
       <Route path="/history/:id" component={SessionDetail} />
       <Route path="/moments" component={Moments} />
+      <Route path="/insights" component={StakeholderInsights} />
       <Route component={NotFound} />
     </Switch>
   );
