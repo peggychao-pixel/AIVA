@@ -73,22 +73,39 @@ router.post("/analyze", async (req, res) => {
       contents: [
         { role: "user", parts: [{ text: `${SYSTEM_PROMPT}\n\nUser note:\n${text.trim()}` }] },
       ],
-      config: {
-        responseMimeType: "application/json",
-        maxOutputTokens: 512,
-      },
     });
 
     const raw = response.text ?? "";
+    console.log("[Analyzer] Raw Gemini response:", raw.slice(0, 400));
 
-    // Parse the JSON from Gemini's response
-    let parsed: { loopType?: string; insight?: string; nextQuestion?: string };
+    // Extract and parse JSON from Gemini's response robustly
+    let parsed: { loopType?: string; insight?: string; nextQuestion?: string } = {};
+
+    // Strip markdown fences if present
+    let jsonStr = raw.trim();
+    const fenceMatch = jsonStr.match(/```(?:json)?\s*([\s\S]*?)```/s);
+    if (fenceMatch) {
+      jsonStr = fenceMatch[1].trim();
+    }
+
+    // Find first JSON object block
+    const braceMatch = jsonStr.match(/\{[\s\S]*\}/s);
+    if (braceMatch) {
+      jsonStr = braceMatch[0];
+    }
+
+    // Try clean parse first
     try {
-      parsed = JSON.parse(raw);
+      parsed = JSON.parse(jsonStr);
     } catch {
-      // Gemini sometimes wraps JSON in markdown — strip fences and retry
-      const stripped = raw.replace(/```json?\n?/g, "").replace(/```/g, "").trim();
-      parsed = JSON.parse(stripped);
+      // Fallback: extract fields individually using regex in case JSON was truncated
+      console.warn("[Analyzer] JSON parse failed, attempting field extraction. Raw:", raw.slice(0, 200));
+      const loopTypeMatch = raw.match(/"loopType"\s*:\s*"([^"]+)"/);
+      const insightMatch = raw.match(/"insight"\s*:\s*"((?:[^"\\]|\\.)*)"/s);
+      const nextQuestionMatch = raw.match(/"nextQuestion"\s*:\s*"((?:[^"\\]|\\.)*)"/s);
+      if (loopTypeMatch) parsed.loopType = loopTypeMatch[1];
+      if (insightMatch) parsed.insight = insightMatch[1].replace(/\\"/g, '"').replace(/\\n/g, ' ');
+      if (nextQuestionMatch) parsed.nextQuestion = nextQuestionMatch[1].replace(/\\"/g, '"').replace(/\\n/g, ' ');
     }
 
     const loopType = (parsed.loopType ?? "").trim();
