@@ -6,22 +6,45 @@ Prototype: Untangle current version
 Completed usability sessions: 3
 Screened out / rejected participants: 2
 Participant confidence: Low to medium for open-form respondents; higher-quality warm-introduction testing is planned next.
-Issue 1: Product may feel like open-ended chat
-Description: Some users interpreted Untangle as something they could continue chatting with.
-Evidence: One participant wanted to keep interacting / continue the conversation.
-Severity: High
-Frequency: 1/3 participants, 33%
-Original Goal: Misaligned. Untangle is meant to create bounded interruption, not open-ended AI conversation.
-Category: Usability / Flow Boundary
-Priority: P1 Major
-MoSCoW: MUST
-Action Plan:
-Remove or de-emphasize any “keep talking” CTA.
-Replace open-ended language with bounded actions:
-Add one line
-Do a short reset
-Done for now
-Reach someone
+## Issue 1: Product may feel like open-ended chat
+
+**Description:** Some users interpreted Untangle as something they could continue chatting with.
+
+**Evidence:** One participant wanted to keep interacting / continue the conversation.
+
+**Severity:** High  
+**Frequency:** 1/3 participants, 33%  
+**Original Goal:** Misaligned. Untangle is meant to create bounded interruption, not open-ended AI conversation.  
+**Category:** Usability / Flow Boundary  
+**Priority:** P1 Major  
+**MoSCoW:** MUST
+
+**Action Plan:**
+- Remove or de-emphasize any “keep talking” CTA.
+- Replace open-ended language with bounded actions:
+  - Add one line
+  - Do a short reset
+  - Done for now
+  - Reach someone
+
+**Teach Me Debugging Notes:**
+Root cause investigation found that the post-response terminal card in `SessionFlow.tsx` includes a visible “Keep talking” CTA. When selected, it sets `keepTalkingOpen = true`, which reopens the free-text chat input. This makes the flow feel like an open-ended chatbot instead of a bounded interruption tool.
+
+**Where to look first:**
+- `artifacts/untangle/src/pages/SessionFlow.tsx`
+- `keepTalking` label
+- `keepTalkingOpen` state
+- terminal-card CTA hierarchy
+- post-response input gate
+- `inChatTypeHint`
+
+**Recommended Fix Plan:**
+- Remove the unbounded “Keep talking” CTA.
+- Remove or simplify the `keepTalkingOpen` pathway if no longer needed.
+- Keep bounded continuation paths such as “Let me add one line” and “Go a bit deeper.”
+- Tighten the free-form chat hint so it does not make the product feel like a general chatbot.
+
+**Status:** Investigation complete. No code changed yet.
 Issue 2: Entry screen needs clearer onboarding
 Description: Users may need a short onboarding gate before seeing voice, chips, typing, and support paths.
 Evidence: One participant suggested that the entry interface should first help users understand where to begin.
