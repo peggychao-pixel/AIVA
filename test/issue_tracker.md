@@ -63,7 +63,15 @@
 
 **Why this fix should work:** Removing the unbounded continuation path should make the terminal card feel truly bounded. Users can still add one line, go one layer deeper, reset, stop, or reach someone, but the product no longer invites open-ended conversation.
 
-**Status:** Investigation complete. No code changed yet.
+**Root cause:** The post-response terminal card in `SessionFlow.tsx` included an unbounded “Keep talking” CTA. When selected, it set `keepTalkingOpen = true`, which re-mounted the chat textarea and made the terminal state feel like open-ended chat.
+
+**What changed in the code:** Removed the “Keep talking” CTA, removed the `keepTalkingOpen` state/pathway, simplified the input mount gate from `(!exitMessage || keepTalkingOpen) && !repairVisible` to `!exitMessage && !repairVisible`, and reduced the ambient free-form hint so it only appears on turn 0.
+
+**Tested:** Yes. Typecheck passed, no stale references remained, and architect review passed. The terminal card now keeps bounded paths only: “I’m good for now,” “Let me add one line,” “Go a bit deeper” when available, reset/hold when eligible, and human support.
+
+**Date:** May 22, 2026
+
+**Status:** Fixed and tested.
 ---
 
 ## Issue 2: Entry screen needs clearer onboarding
