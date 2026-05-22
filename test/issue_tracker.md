@@ -37,25 +37,33 @@
   - Done for now
   - Reach someone
 
-**Teach Me Debugging Notes:**  
-Root cause investigation found that the post-response terminal card in `SessionFlow.tsx` includes a visible “Keep talking” CTA. When selected, it sets `keepTalkingOpen = true`, which reopens the free-text chat input. This makes the flow feel like an open-ended chatbot instead of a bounded interruption tool.
+**Teach Me Debugging Output:**
+
+**Root cause investigation:** The issue comes from the post-response terminal card in `SessionFlow.tsx`. The card includes a visible “Keep talking” CTA. When selected, it sets `keepTalkingOpen = true`, which reopens the free-text chat input. This turns a bounded terminal state back into an open-ended chat surface.
+
+**Most likely root causes:**
+1. The “Keep talking” CTA is visible after the response, which signals that continued conversation is expected.
+2. `keepTalkingOpen` reopens the textarea without a clear turn cap, soft stop, or return to the terminal card.
+3. “Let me add one line” and “Go a bit deeper” already provide bounded continuation paths, so “Keep talking” is redundant and more open-ended.
+4. The in-chat hint “Or type the whole thing in your own words” may reinforce a free-form chat mental model.
 
 **Where to look first:**
 - `artifacts/untangle/src/pages/SessionFlow.tsx`
 - `keepTalking` label
 - `keepTalkingOpen` state
-- Terminal-card CTA hierarchy
+- Terminal-card CTA block
 - Post-response input gate
 - `inChatTypeHint`
 
-**Recommended Fix Plan:**
-- Remove the unbounded “Keep talking” CTA.
-- Remove or simplify the `keepTalkingOpen` pathway if no longer needed.
-- Keep bounded continuation paths such as “Let me add one line” and “Go a bit deeper.”
-- Tighten the free-form chat hint so it does not make the product feel like a general chatbot.
+**Recommended fix plan:**
+1. Remove the unbounded “Keep talking” CTA.
+2. Remove or simplify the `keepTalkingOpen` pathway if it is no longer needed.
+3. Keep bounded continuation paths such as “Let me add one line” and “Go a bit deeper.”
+4. Tighten the free-form chat hint so it appears less like a general chatbot invitation.
+
+**Why this fix should work:** Removing the unbounded continuation path should make the terminal card feel truly bounded. Users can still add one line, go one layer deeper, reset, stop, or reach someone, but the product no longer invites open-ended conversation.
 
 **Status:** Investigation complete. No code changed yet.
-
 ---
 
 ## Issue 2: Entry screen needs clearer onboarding
