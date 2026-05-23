@@ -146,7 +146,17 @@ Add a lightweight onboarding gate before the main entry choices. Keep it short a
 **Suggested fix approach:**
 Replace the opening with language that feels steady, low-pressure, and not overly familiar.
 
-**Status:** Not fixed yet.
+**Deferred Fix Note:** This issue is intentionally deferred until after the next meeting. It is a P1 copy/tone issue, but it is lower risk than the open-ended chat boundary issue already fixed in Stage 5A.
+
+**Next step:** Reopen Voice Bridge copy and replace overly intimate opening language such as “hey baby” with calmer, lower-pressure wording.
+
+**Possible replacement directions:**
+- “I’m here. You don’t have to explain yet.”
+- “No explaining. Just listen first.”
+- “You don’t have to solve this right now.”
+- “Let me hold this with you for a moment.”
+
+**Status:** Deferred. Not fixed yet.
 
 ---
 
